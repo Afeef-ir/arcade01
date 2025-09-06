@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://mojf4cvbkvav"]
+
+[ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://0et120xy8jih" path="res://scenes/platform.tscn" id="3_lbhrr"]
+
+[node name="Game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(150, 170)
+
+[node name="level" type="Node" parent="."]
+
+[node name="platform" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(436, 435)
+scale = Vector2(3.36404, 2.60126)
+
+[node name="platform5" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(237, 502)
+scale = Vector2(3.36404, 2.60126)
+
+[node name="platform2" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(598, 355)
+rotation = 0.000831947
+scale = Vector2(2.69036, -2.91271)
+
+[node name="platform3" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(786, 330)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="ground" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(555, 634)
+scale = Vector2(32.584, 12.3814)
+
+[node name="wall1" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(-47, 405)
+scale = Vector2(4.3021, 180.322)
+
+[node name="wall2" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1200, 405)
+scale = Vector2(4.3021, 180.322)

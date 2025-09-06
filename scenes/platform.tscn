@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://0et120xy8jih"]
+
+[ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_ba0x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(40.0156, 5.46875)
+
+[node name="platform" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0.279785, 1, 0.136276, 1)
+scale = Vector2(3.64, 0.5)
+texture = ExtResource("1_ba0x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.0078125, 0)
+shape = SubResource("RectangleShape2D_nlgqw")
