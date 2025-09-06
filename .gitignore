@@ -1,0 +1,75 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.nomedia
+.import/
+.export/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# Exported binaries
+*.exe
+*.apk
+*.aab
+*.xcodeproj
+*.xcworkspace
+*.ios/
+
+# User-specific Godot editor files
+*.godot/    # Used by the Godot editor for user-specific data
+*.tres      # Optional: if you're generating runtime-only resources
+*.res       # Optional: same as above
+*.cfg       # Optional: config files sometimes generated
+
+# Godot-generated logs
+*.log
+
+# Editor folders (VS Code, JetBrains, etc.)
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build output folders
+bin/
+build/
+dist/
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Windows image file caches
+*.stackdump
+
+# Windows shortcuts
+*.lnk
+
+# File explorer settings
+*.directory
+
+# OneDrive files
+*.tmp
+~$*
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
