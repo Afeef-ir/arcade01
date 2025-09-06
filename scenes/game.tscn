@@ -24,17 +24,21 @@ rotation = 0.000831947
 scale = Vector2(2.69036, -2.91271)
 
 [node name="platform3" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(786, 330)
+position = Vector2(770, 231)
 scale = Vector2(2.79771, 4.06059)
 
 [node name="ground" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(555, 634)
+position = Vector2(555, 669)
 scale = Vector2(32.584, 12.3814)
 
 [node name="wall1" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(-47, 405)
-scale = Vector2(4.3021, 180.322)
+position = Vector2(-47, 140)
+scale = Vector2(4.302, 200)
+
+[node name="wall3" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(954, 458)
+scale = Vector2(1, 120)
 
 [node name="wall2" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(1200, 405)
-scale = Vector2(4.3021, 180.322)
+position = Vector2(1195, 122)
+scale = Vector2(4.302, 200)

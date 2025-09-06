@@ -1,39 +1,41 @@
 extends CharacterBody2D
 
-
-const SPEED = 400.0
-const JUMP_VELOCITY = -950.0
+const SPEED:float = 400.0
+const JUMP_VELOCITY:float = -950.0
+const WALL_JUMP_VELOCITY:float = 1000.0 
+const WALL_FACTOR:float = 0.75
+const GRAVITY_SCALE:float = 2.5
+const MAX_JUMPS:int = 2
+const SPRINT_SCALE:float = 2.0
 
 var jumps_left:int = 0
 
-const total_jumps :int= 2
-
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta * 2.5
-
-	# Handle jump.
 	
 	if is_on_floor():
-		jumps_left=total_jumps
-		
-	if Input.is_action_just_pressed("jump"):
-		if jumps_left>0:
-			velocity.y = JUMP_VELOCITY
-			jumps_left -=1 
-		
-		 
+		jumps_left = MAX_JUMPS
+	else: # gravity
+		velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at	
 	
-		
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move left" , "move right")
-	if direction:
-		velocity.x = direction * SPEED
+	if is_on_wall():
+		if Input.is_action_just_pressed("jump"):
+			velocity.x = WALL_JUMP_VELOCITY * get_wall_normal().x
+			velocity.y = JUMP_VELOCITY
+		else:
+			velocity.y *= WALL_FACTOR
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if direction and Input.is_action_pressed("fast"):
-		velocity.x= direction * SPEED * 2.0
+		# Get the input direction for horizontal movement
+		var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
+		if horizontal_input:
+			velocity.x = horizontal_input * SPEED # -SPEED to SPEED
+			if Input.is_action_pressed("fast"):
+				velocity.x *= SPRINT_SCALE
+		else: # no horizontal input
+			velocity.x = 0.0
+		
+		if Input.is_action_just_pressed("jump"):
+			if jumps_left > 0:
+				velocity.y = JUMP_VELOCITY
+				jumps_left -= 1
+		
 	move_and_slide()
