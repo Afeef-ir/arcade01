@@ -1,7 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://mojf4cvbkvav"]
+[gd_scene load_steps=7 format=3 uid="uid://mojf4cvbkvav"]
 
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://0et120xy8jih" path="res://scenes/platform.tscn" id="3_lbhrr"]
+
+[sub_resource type="Animation" id="Animation_lnu2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3469, 469)]
+}
+
+[sub_resource type="Animation" id="Animation_yqjtg"]
+resource_name = "move\\"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3469, 469)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "new_animation"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.03333, 5.98297),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3469, 469), Vector2(3469, -304), Vector2(4084, -304)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iywne"]
+_data = {
+&"RESET": SubResource("Animation_lnu2h"),
+&"move\\": SubResource("Animation_yqjtg"),
+&"new_animation": SubResource("Animation_lbhrr")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -27,18 +81,84 @@ scale = Vector2(2.69036, -2.91271)
 position = Vector2(770, 231)
 scale = Vector2(2.79771, 4.06059)
 
+[node name="platform4" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1118, 479)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform6" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1262, 357)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform7" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1441, 238)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform9" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(2235, -32)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform10" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(2408, 81)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform11" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(2593, 226)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform15" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(2696, 443)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform12" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(2788, 78)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform13" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(3058, -95)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="platform14" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(3469, 469)
+scale = Vector2(2.79771, 4.06059)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="level/platform14"]
+libraries = {
+&"": SubResource("AnimationLibrary_iywne")
+}
+autoplay = "new_animation"
+
+[node name="platform8" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1595, 125)
+scale = Vector2(2.79771, 4.06059)
+
 [node name="ground" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(555, 669)
-scale = Vector2(32.584, 12.3814)
+position = Vector2(2363, 669)
+scale = Vector2(120, 12.381)
 
 [node name="wall1" parent="level" instance=ExtResource("3_lbhrr")]
 position = Vector2(-47, 140)
 scale = Vector2(4.302, 200)
 
 [node name="wall3" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(954, 458)
+position = Vector2(932, 367)
 scale = Vector2(1, 120)
 
-[node name="wall2" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(1195, 122)
-scale = Vector2(4.302, 200)
+[node name="wall4" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1735, 267)
+scale = Vector2(1, 160)
+
+[node name="wall5" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(1964, 267)
+scale = Vector2(1, 160)
+
+[node name="wall6" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(4235, 114)
+scale = Vector2(1, 204.64)
+
+[node name="wall8" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(4464, 114)
+scale = Vector2(1, 204.64)
+
+[node name="wall7" parent="level" instance=ExtResource("3_lbhrr")]
+position = Vector2(5286, 35)
+scale = Vector2(2.902, 220)
