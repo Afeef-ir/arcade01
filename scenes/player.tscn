@@ -5,25 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://bb5j3c2kelvw3" path="res://scenes/gun.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(30, 72)
+size = Vector2(10, 23)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.23516e-22, -36)
-scale = Vector2(2.68, 6.56)
+position = Vector2(-1.19209e-07, -9.23)
+scale = Vector2(0.909091, 2.14)
 texture = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -36)
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_u8vuu")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(149, -46)
-zoom = Vector2(0.9, 0.9)
-limit_smoothed = true
-
 [node name="Gun" parent="." instance=ExtResource("3_qhqgy")]
-position = Vector2(15, -45)
+position = Vector2(8, -12)
 scale = Vector2(1, 0.760001)

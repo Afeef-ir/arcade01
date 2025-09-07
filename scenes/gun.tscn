@@ -7,11 +7,12 @@
 script = ExtResource("1_gp1hk")
 
 [node name="RotationOffset" type="Node2D" parent="."]
+position = Vector2(-5.35835, -0.189117)
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
 modulate = Color(0.612299, 1.50409e-06, 5.77569e-07, 1)
-position = Vector2(14.6029, -2.15453)
-scale = Vector2(3.78565, 0.869422)
+position = Vector2(6.18071, -1.10185)
+scale = Vector2(1.38325, 0.36921)
 texture = ExtResource("1_x77fm")
 
 [node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D"]
