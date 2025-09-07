@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://brt512384idja"]
+
+[ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://26tynx0fa0e6" path="res://scenes/bullet.gd" id="2_y25gk"]
+
+[node name="Bullet" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_mkf8s")
+script = ExtResource("2_y25gk")
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0.888705, 0, 0.378163, 1)
+show_behind_parent = true
+scale = Vector2(1.27991, 1.2799)
+texture = ExtResource("1_mkf8s")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-4, 0)
+target_position = Vector2(8, 0)
+hit_from_inside = true
+
+[node name="istanceTimeout" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true

@@ -132,8 +132,8 @@ position = Vector2(1595, 125)
 scale = Vector2(2.79771, 4.06059)
 
 [node name="ground" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(2363, 669)
-scale = Vector2(120, 12.381)
+position = Vector2(2717, 669)
+scale = Vector2(152.8, 12.381)
 
 [node name="wall1" parent="level" instance=ExtResource("3_lbhrr")]
 position = Vector2(-47, 140)
@@ -152,12 +152,12 @@ position = Vector2(1964, 267)
 scale = Vector2(1, 160)
 
 [node name="wall6" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(4235, 114)
-scale = Vector2(1, 204.64)
+position = Vector2(4235, 258)
+scale = Vector2(1, 160)
 
 [node name="wall8" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(4464, 114)
-scale = Vector2(1, 204.64)
+position = Vector2(4464, 266)
+scale = Vector2(1, 160)
 
 [node name="wall7" parent="level" instance=ExtResource("3_lbhrr")]
 position = Vector2(5286, 35)

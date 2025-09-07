@@ -14,7 +14,6 @@ var jumps_left:int = 0
 var no_input_timer:float = 0.0
 
 func _physics_process(delta: float) -> void:
-	
 	if is_on_floor():
 		jumps_left = MAX_JUMPS
 	else: # gravity
@@ -22,8 +21,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_wall():
 		if Input.is_action_just_pressed("jump"):
-			velocity.x = WALL_JUMP_VELOCITY * get_wall_normal().x
-			velocity.y = JUMP_VELOCITY
+			velocity = WALL_JUMP_VELOCITY * get_wall_normal()
+			velocity.y += JUMP_VELOCITY
 			no_input_timer = NO_INPUT_TIME
 		else:
 			velocity.y *= WALL_FACTOR

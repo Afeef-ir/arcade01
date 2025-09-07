@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5j3c2kelvw3"]
+
+[ext_resource type="Script" uid="uid://bs6oe77wgynaq" path="res://scenes/gun.gd" id="1_gp1hk"]
+[ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_x77fm"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_gp1hk")
+
+[node name="RotationOffset" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
+modulate = Color(0.612299, 1.50409e-06, 5.77569e-07, 1)
+position = Vector2(14.6029, -2.15453)
+scale = Vector2(3.78565, 0.869422)
+texture = ExtResource("1_x77fm")
+
+[node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D"]
+modulate = Color(0, 0, 0, 0.215686)
+z_index = -1
+texture = ExtResource("1_x77fm")
+
+[node name="shoop_pos" type="Marker2D" parent="RotationOffset/Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(5.12217, -2.64333)
+
+[node name="shoot_timer" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
