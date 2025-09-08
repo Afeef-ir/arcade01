@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb5j3c2kelvw3"]
+[gd_scene load_steps=4 format=3 uid="uid://bb5j3c2kelvw3"]
 
 [ext_resource type="Script" uid="uid://bs6oe77wgynaq" path="res://scenes/gun.gd" id="1_gp1hk"]
 [ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_x77fm"]
+[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="3_gp1hk"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_gp1hk")
@@ -27,5 +28,10 @@ position = Vector2(5.12217, -2.64333)
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 50.0
 one_shot = true
+
+[node name="exploding" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gp1hk")
+volume_db = -0.2
+pitch_scale = 4.52
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

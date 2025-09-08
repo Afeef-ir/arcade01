@@ -8,7 +8,8 @@ const IS_PLAYER = true
 @onready var  RotationOffset:Node2D = $RotationOffset
 @onready var spriteShadow : Sprite2D = $RotationOffset/Sprite2D/shadow
 @onready var ShootPos:Marker2D =%shoop_pos
- 
+@onready var exploding: AudioStreamPlayer2D = $exploding
+
 var time_between_shot : float = 0.25
 var can_shoot : bool = true
 
@@ -39,6 +40,7 @@ func _shoot():
 	get_tree().root.add_child(new_bullet)
 	new_bullet.global_position = ShootPos.global_position
 	new_bullet.global_rotation = ShootPos.global_rotation
+	exploding.play()
 	
 	
 	

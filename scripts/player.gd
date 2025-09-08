@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 const SPEED:float = 150.0
-const JUMP_VELOCITY:float = -305.0
+const JUMP_VELOCITY:float = -270.0
 const WALL_JUMP_VELOCITY:float = 150.0 
 const WALL_FACTOR:float = 0.75
-const GRAVITY_SCALE:float = 0.94
+const GRAVITY_SCALE:float = 0.7
 const MAX_JUMPS:int = 2
 const SPRINT_SCALE:float = 2.0
-const NO_INPUT_TIME = 0.33
+const NO_INPUT_TIME = 0.3
 
 var jumps_left:int = 0
 
