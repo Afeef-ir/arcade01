@@ -4,7 +4,8 @@ extends Sprite2D
 @onready var RayCast : RayCast2D = $RayCast2D
 @onready var explosion: AudioStreamPlayer2D = $explosion
 @onready var vanishing: Timer = $vanishing
-@onready var exploding: AudioStreamPlayer2D = %exploding
+#@onready var exploding: AudioStreamPlayer2D = %exploding
+@onready var disappear: Timer = $disappear
 
 @export var  deathParticle : PackedScene
 var speed : float = 400.0
@@ -32,6 +33,8 @@ func Kill():
 func _physics_process(delta: float) -> void:
 	global_position += Vector2(1,0).rotated(rotation)* speed *delta
 	Shadow.position = Vector2(-2,2).rotated(-rotation)
+	
+	
 
 
 

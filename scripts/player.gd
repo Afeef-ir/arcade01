@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 @onready var jump: AudioStreamPlayer2D = $"../Jump"
-@onready var slide: AudioStreamPlayer2D = $slide
-@onready var footsteps: AudioStreamPlayer2D = $footsteps
+
+
+@onready var footstep: AudioStreamPlayer2D = $footstep
 
 const SPEED:float = 150.0
 const JUMP_VELOCITY:float = -270.0
@@ -16,7 +17,10 @@ const NO_INPUT_TIME = 0.3
 var jumps_left:int = 0
 
 var no_input_timer:float = 0.0
-
+func _ready() -> void:
+	pass
+		
+		
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jumps_left = MAX_JUMPS
@@ -37,14 +41,21 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Get the input direction for horizontal movement
 		var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
-		if horizontal_input:
-			
-			
+		if horizontal_input != 0:
 			velocity.x = horizontal_input * SPEED # -SPEED to SPEED
+			#d
+			if is_on_floor():
+				if not footstep.playing:
+					footstep.play()
+					
 			if Input.is_action_pressed("fast"):
 				velocity.x *= SPRINT_SCALE
+				footstep.pitch_scale= 2.3
+			else:
+				footstep.pitch_scale = 1.5
 		else: # no horizontal input
 			velocity.x = 0.0
+			footstep.stop()
 		
 		if Input.is_action_just_pressed("jump"):
 			if jumps_left > 0:

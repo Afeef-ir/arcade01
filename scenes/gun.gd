@@ -9,6 +9,8 @@ const IS_PLAYER = true
 @onready var spriteShadow : Sprite2D = $RotationOffset/Sprite2D/shadow
 @onready var ShootPos:Marker2D =%shoop_pos
 @onready var exploding: AudioStreamPlayer2D = $exploding
+@onready var vanishing: Timer = $vanishing
+@onready var disappear: Timer = $disappear
 
 
 var time_between_shot : float = 0.25
@@ -46,7 +48,14 @@ func _shoot():
 	
 	
 
+	
+	
+	
+	
+
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 	
+	
+
 	

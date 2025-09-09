@@ -243,20 +243,14 @@ limit_bottom = 300
 
 [node name="level" type="Node" parent="."]
 
-[node name="platform6" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(349, 180)
-
 [node name="platform8" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(388, 156)
+position = Vector2(377, 156)
 
 [node name="platform11" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(430, 117)
+position = Vector2(441, 118)
 
 [node name="platform12" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(478, 157)
-
-[node name="platform13" parent="level" instance=ExtResource("3_lbhrr")]
-position = Vector2(525, 178)
+position = Vector2(499, 155)
 
 [node name="platform14" parent="level" instance=ExtResource("3_lbhrr")]
 position = Vector2(712, 118)

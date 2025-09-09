@@ -35,4 +35,7 @@ stream = ExtResource("3_gp1hk")
 volume_db = -0.2
 pitch_scale = 4.52
 
+[node name="disappear" type="Timer" parent="."]
+
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="disappear" to="." method="_on_disappear_timeout"]

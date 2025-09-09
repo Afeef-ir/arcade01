@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj7335nue8u71"]
+[gd_scene load_steps=7 format=3 uid="uid://bj7335nue8u71"]
 
 [ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bb5j3c2kelvw3" path="res://scenes/gun.tscn" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://3uh7cmags5t4" path="res://sound/cce0-f5fe-460b-93bf-e544a9ca184a.mp3" id="4_dqkch"]
-[ext_resource type="AudioStream" uid="uid://ddci5o4mowp7j" path="res://sound/dc1e-e4a1-4305-8d27-df6164c35e9f.mp3" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://oovsd8ibyrx2" path="res://sound/mario-walking-soundboard39.com.mp3" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
@@ -14,6 +13,7 @@ size = Vector2(10, 23)
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.281187, 0.281187, 0.281187, 1)
 position = Vector2(-1.19209e-07, -9.23)
 scale = Vector2(0.909091, 2.14)
 texture = ExtResource("2_g2els")
@@ -30,12 +30,7 @@ scale = Vector2(1, 0.760001)
 stream = ExtResource("4_dqkch")
 volume_db = 24.0
 
-[node name="slide" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_qlg0r")
-volume_db = 24.0
-pitch_scale = 3.74
-
-[node name="footsteps" type="AudioStreamPlayer2D" parent="."]
+[node name="footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tuyoq")
-volume_db = 8.049
-pitch_scale = 1.35
+volume_db = 6.729
+pitch_scale = 1.5
