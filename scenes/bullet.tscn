@@ -1,21 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://brt512384idja"]
+[gd_scene load_steps=9 format=3 uid="uid://brt512384idja"]
 
-[ext_resource type="Texture2D" uid="uid://cvkgee60b472v" path="res://images/M484BulletCollection2.png" id="1_l5glv"]
 [ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_mkf8s"]
+[ext_resource type="Texture2D" uid="uid://vjr1vgytj1gf" path="res://images/Bullet_12x3.png" id="1_qncy5"]
 [ext_resource type="Script" uid="uid://26tynx0fa0e6" path="res://scenes/bullet.gd" id="2_y25gk"]
 [ext_resource type="PackedScene" uid="uid://ce5b5abbrl4ly" path="res://particlesystmeBullet.tscn" id="3_qncy5"]
 [ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="4_eoqba"]
+[ext_resource type="PackedScene" uid="uid://fkwor8c4fmsi" path="res://scenes/audio_stream_player_2d.tscn" id="6_tamys"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l5glv"]
-radius = 3.82526
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qncy5"]
+size = Vector2(6.94932, 2.93471)
 
 [sub_resource type="AudioStream" id="AudioStream_l5glv"]
 
 [node name="Bullet" type="Sprite2D"]
-z_index = -1
 rotation = 6.28319
-scale = Vector2(0.50717, 0.54056)
-texture = ExtResource("1_l5glv")
+scale = Vector2(0.510392, 0.535082)
+texture = ExtResource("1_qncy5")
 flip_h = true
 script = ExtResource("2_y25gk")
 deathParticle = ExtResource("3_qncy5")
@@ -33,14 +33,14 @@ autostart = true
 [node name="shadow" type="Sprite2D" parent="."]
 modulate = Color(0.888705, 0, 0.378163, 1)
 show_behind_parent = true
-scale = Vector2(0.397359, 0.359525)
+scale = Vector2(0.177433, 0.159072)
 texture = ExtResource("1_mkf8s")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.762776)
-shape = SubResource("CircleShape2D_l5glv")
+position = Vector2(-0.466951, 8.89599e-05)
+shape = SubResource("RectangleShape2D_qncy5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D"]
 stream = SubResource("AudioStream_l5glv")
@@ -49,10 +49,14 @@ pitch_scale = 1.25
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_eoqba")
-volume_db = 4.456
+volume_db = 24.0
 pitch_scale = 30.0
 
 [node name="vanishing" type="Timer" parent="."]
 wait_time = 0.001
 
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource("6_tamys")]
+position = Vector2(-0.191303, -0.0660934)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="explosion" to="." method="_on_explosion_finished"]

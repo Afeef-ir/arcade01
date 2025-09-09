@@ -10,6 +10,7 @@ const IS_PLAYER = true
 @onready var ShootPos:Marker2D =%shoop_pos
 @onready var exploding: AudioStreamPlayer2D = $exploding
 
+
 var time_between_shot : float = 0.25
 var can_shoot : bool = true
 
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("aim"):
 		RotationOffset.rotation= get_angle_to(global_position) 
 	spriteShadow.position = Vector2(-2,2).rotated(-RotationOffset.rotation)
-	if Input.is_action_just_pressed("shoot")and can_shoot:
+	if Input.is_action_just_pressed("shoot") and can_shoot:
 		_shoot()
 		can_shoot=true
 		$shoot_timer.start()

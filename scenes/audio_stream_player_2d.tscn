@@ -1,7 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://swy3v3mvvknc"]
+[gd_scene load_steps=2 format=3 uid="uid://fkwor8c4fmsi"]
 
-[ext_resource type="AudioStream" uid="uid://dsncestc0v3ia" path="res://sound/Background Music 2.mp3" id="1_1udxr"]
+[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="1_1udxr"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_1udxr")
-autoplay = true
+volume_db = 24.0
+pitch_scale = 16.0
