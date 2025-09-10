@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var footstep: AudioStreamPlayer2D = $footstep
 
 const SPEED:float = 115.0
-const JUMP_VELOCITY:float = -270.0
+const JUMP_VELOCITY:float = -360.0
 const WALL_JUMP_VELOCITY:float = 150.0 
 const WALL_FACTOR:float = 0.75
 const GRAVITY_SCALE:float = 0.7

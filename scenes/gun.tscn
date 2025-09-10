@@ -23,7 +23,7 @@ texture = ExtResource("1_x77fm")
 
 [node name="shoop_pos" type="Marker2D" parent="RotationOffset/Sprite2D"]
 unique_name_in_owner = true
-position = Vector2(5.12217, -2.64333)
+position = Vector2(5.12217, -0.014812)
 
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 50.0
@@ -32,7 +32,7 @@ one_shot = true
 [node name="exploding" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_gp1hk")
-volume_db = -0.2
+volume_db = -0.05
 pitch_scale = 4.52
 
 [node name="disappear" type="Timer" parent="."]
