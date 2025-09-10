@@ -4,5 +4,5 @@
 
 [node name="bg music" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_f6gl3")
-volume_db = 7.006
+volume_db = -0.794
 autoplay = true

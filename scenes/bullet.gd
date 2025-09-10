@@ -9,7 +9,7 @@ extends Sprite2D
 
 @export var  deathParticle : PackedScene
 var speed : float = 400.0
-
+var travelled_distance = 0
 func _ready() -> void:
 	pass
 		
@@ -33,6 +33,12 @@ func Kill():
 func _physics_process(delta: float) -> void:
 	global_position += Vector2(1,0).rotated(rotation)* speed *delta
 	Shadow.position = Vector2(-2,2).rotated(-rotation)
+	const SPEED = 1000
+	const RANGE = 1000
+		
+	travelled_distance += SPEED*delta
+	if travelled_distance>RANGE:
+		Kill()
 	
 	
 

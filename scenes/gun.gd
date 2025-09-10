@@ -19,12 +19,15 @@ var can_shoot : bool = true
 func _ready() -> void:
 	$shoot_timer.wait_time = time_between_shot
 	
+	
 func _physics_process(delta: float) -> void:
+
 	var joy_axis_hor:float = Input.get_axis("aim right", "aim left")
 	var joy_axis_vert:float = Input.get_axis("aim up", "aim down")
 	var joy_aim:Vector2 = Vector2(-joy_axis_hor, joy_axis_vert)
 	
 	var aim_direction:Vector2 = joy_aim
+	
 	if joy_aim.is_zero_approx():
 		var aim_point:Vector2 = get_global_mouse_position()
 		aim_direction = aim_point - global_position

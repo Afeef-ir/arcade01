@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 @onready var footstep: AudioStreamPlayer2D = $footstep
 
-const SPEED:float = 150.0
+const SPEED:float = 115.0
 const JUMP_VELOCITY:float = -270.0
 const WALL_JUMP_VELOCITY:float = 150.0 
 const WALL_FACTOR:float = 0.75
@@ -50,9 +50,9 @@ func _physics_process(delta: float) -> void:
 					
 			if Input.is_action_pressed("fast"):
 				velocity.x *= SPRINT_SCALE
-				footstep.pitch_scale= 2.3
+				footstep.pitch_scale= 1.5
 			else:
-				footstep.pitch_scale = 1.5
+				footstep.pitch_scale = 1
 		else: # no horizontal input
 			velocity.x = 0.0
 			footstep.stop()
@@ -62,5 +62,6 @@ func _physics_process(delta: float) -> void:
 				$Jump.play()
 				velocity.y = JUMP_VELOCITY
 				jumps_left -= 1
+				footstep.stop()
 		
 	move_and_slide()
