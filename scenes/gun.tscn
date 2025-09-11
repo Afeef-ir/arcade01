@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="3_gp1hk"]
 
 [node name="Gun" type="Node2D"]
+scale = Vector2(1, 1.16)
 script = ExtResource("1_gp1hk")
 
 [node name="RotationOffset" type="Node2D" parent="."]
@@ -23,7 +24,7 @@ texture = ExtResource("1_x77fm")
 
 [node name="shoop_pos" type="Marker2D" parent="RotationOffset/Sprite2D"]
 unique_name_in_owner = true
-position = Vector2(5.12217, -0.014812)
+position = Vector2(5.40281, -0.014812)
 
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 50.0

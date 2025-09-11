@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var jump: AudioStreamPlayer2D = $"../Jump"
+@onready var gun: Node2D = $"."
 
 
 @onready var footstep: AudioStreamPlayer2D = $footstep
@@ -13,6 +14,9 @@ const GRAVITY_SCALE:float = 0.7
 const MAX_JUMPS:int = 2
 const SPRINT_SCALE:float = 2.0
 const NO_INPUT_TIME = 0.3
+@onready var bg_music: AudioStreamPlayer2D = $"bg music"
+@onready var player: CharacterBody2D = $"."
+var is_paused = false
 
 var jumps_left:int = 0
 
@@ -22,6 +26,8 @@ func _ready() -> void:
 		
 		
 func _physics_process(delta: float) -> void:
+	if is_paused:
+		return
 	if is_on_floor():
 		jumps_left = MAX_JUMPS
 	else: # gravity
@@ -47,8 +53,8 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor():
 				if not footstep.playing:
 					footstep.play()
-					
-			if Input.is_action_pressed("fast"):
+				
+			if Input.is_action_pressed("fast") and is_on_floor():
 				velocity.x *= SPRINT_SCALE
 				footstep.pitch_scale= 1.5
 			else:
@@ -65,3 +71,10 @@ func _physics_process(delta: float) -> void:
 				footstep.stop()
 		
 	move_and_slide()
+func pause():
+	is_paused = true
+func resume():
+	is_paused = false
+
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	player.PROCESS_MODE_DISABLED

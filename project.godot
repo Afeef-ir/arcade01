@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 AudioStreamPlayer2d="*res://scenes/audio_stream_player_2d.tscn"
-BgMusic="*res://scenes/bg_music.tscn"
+BgMusic="res://scenes/bg_music.tscn"
+BgMusic1="res://scenes/bg_music.tscn"
 
 [editor_plugins]
 

@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj7335nue8u71"]
+[gd_scene load_steps=8 format=3 uid="uid://bj7335nue8u71"]
 
 [ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bb5j3c2kelvw3" path="res://scenes/gun.tscn" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://cfravucr1ckif" path="res://sound/350899__cabled_mess__jump_c_09.wav" id="4_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://q3p7hiujmn7a" path="res://sound/501102__evretro__8-bit-footsteps.mp3" id="5_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dgrg0ex575qvw" path="res://scenes/bg_music.tscn" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(10, 23)
 
 [node name="player" type="CharacterBody2D"]
+z_index = 2
+z_as_relative = false
 collision_layer = 3
 script = ExtResource("1_g2els")
 
@@ -24,8 +27,8 @@ position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_u8vuu")
 
 [node name="Gun" parent="." instance=ExtResource("3_qhqgy")]
-position = Vector2(8, -12)
-scale = Vector2(1, 0.760001)
+position = Vector2(11, -10)
+scale = Vector2(1.67747, 1.12)
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_qlg0r")
@@ -35,3 +38,6 @@ volume_db = 10.0
 stream = ExtResource("5_qlg0r")
 volume_db = 6.0
 pitch_scale = 3.0
+
+[node name="bg music" parent="." instance=ExtResource("6_tuyoq")]
+autoplay = true

@@ -6,6 +6,10 @@ extends Sprite2D
 @onready var vanishing: Timer = $vanishing
 #@onready var exploding: AudioStreamPlayer2D = %exploding
 @onready var disappear: Timer = $disappear
+#@onready var exploding: AudioStreamPlayer2D = %exploding
+#@onready var bullethit: AudioStreamPlayer2D = $bullethit
+
+
 
 @export var  deathParticle : PackedScene
 var speed : float = 400.0
@@ -54,3 +58,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 
 	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	AudioStreamPlayer2d.play()
+	Kill()

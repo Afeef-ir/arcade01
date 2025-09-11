@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgrg0ex575qvw"]
 
-[ext_resource type="AudioStream" uid="uid://dsncestc0v3ia" path="res://sound/Background Music 2.mp3" id="1_f6gl3"]
+[ext_resource type="AudioStream" uid="uid://clp8hl7li0d83" path="res://sound/retro-arcade-game-music-396890.mp3" id="1_f6gl3"]
 
 [node name="bg music" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_f6gl3")
-volume_db = -0.794
-autoplay = true
+volume_db = -0.025

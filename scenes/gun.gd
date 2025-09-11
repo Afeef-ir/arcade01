@@ -42,14 +42,15 @@ func _physics_process(delta: float) -> void:
 		$shoot_timer.start()
 		
 func _shoot():
+	if not can_shoot:
+		return
 	var new_bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(new_bullet)
 	new_bullet.global_position = ShootPos.global_position
 	new_bullet.global_rotation = ShootPos.global_rotation
 	exploding.play()
 	
-	
-	
+
 
 	
 	
