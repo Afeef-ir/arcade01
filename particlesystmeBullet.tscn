@@ -28,7 +28,7 @@ initial_velocity_min = 931.04
 initial_velocity_max = 931.04
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
-scale_max = 7.9
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_1j1tt")
 color_ramp = SubResource("GradientTexture1D_jjwk0")
 
