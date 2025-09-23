@@ -6,10 +6,10 @@ var direction = 1
 const SPEED = 40
 @export_enum("loop", "linear") var patrol_type: String = "linear"
 @export var  deathParticle : PackedScene
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 var is_paused = false
 var player: CharacterBody2D = null  # To store reference to player
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 	
 #const JUMP_VELOCITY = -400.0
 #
@@ -113,7 +113,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	_particle.rotation = global_rotation
 	_particle.emitting = true
 	get_tree().current_scene.add_child(_particle)
-	animated_sprite_2d.queue_free()
+	queue_free()
 	audio_stream_player_2d.play()
 	await audio_stream_player_2d.finished
 	queue_free()
