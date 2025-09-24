@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @onready var footstep: AudioStreamPlayer2D = $footstep
 
+
 const SPEED:float = 115.0
 const JUMP_VELOCITY:float = -360.0
 const WALL_JUMP_VELOCITY:float = 150.0 
@@ -23,7 +24,6 @@ var jumps_left:int = 0
 var no_input_timer:float = 0.0
 func _ready() -> void:
 	pass
-		
 		
 func _physics_process(delta: float) -> void:
 	if is_paused:
