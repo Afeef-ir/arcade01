@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+@export var enemy_health : float
 @onready var pathfollow = get_parent()
 var direction = 1
 const SPEED = 40
@@ -10,7 +10,9 @@ const SPEED = 40
 var is_paused = false
 var player: CharacterBody2D = null  # To store reference to player
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-	
+@onready var e_nemy_damge: AudioStreamPlayer2D = $ENemyDamge
+@onready var hurt_enemy: Timer = $Hurt_enemy
+const burst = preload("res://burst.tscn")
 #const JUMP_VELOCITY = -400.0
 #
 #
@@ -49,7 +51,7 @@ func patrol(delta):
 				await get_tree().create_timer(0.3).timeout
 				#rotation_degrees = lerp(rotation_degrees,180.0,0.1)
 				await get_tree().create_timer(0.5).timeout
-				animated_sprite_2d.flip_h = false
+				animated_sprite_2d.flip_h = true
 				
 				direction = 0
 			else:
@@ -57,7 +59,7 @@ func patrol(delta):
 		else:
 			if pathfollow.progress_ratio == 0:
 				await get_tree().create_timer(0.3).timeout
-				animated_sprite_2d.flip_h = true
+				animated_sprite_2d.flip_h = false
 				#rotation_degrees = lerp(rotation_degrees,0.0,0.1)
 				await get_tree().create_timer(0.5).timeout
 
@@ -74,15 +76,15 @@ func patrol(delta):
 
 
 
-
-func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-	if body.name == "player":  # Assuming player node is named "Player"
-		player = body
-		is_paused = true
-		if player.has_method("pause"):
-			player.pause()  # Custom pause method in player
-			is_paused = true
-		timer.start()
+#
+#func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	#if body.name == "player":  # Assuming player node is named "Player"
+		#player = body
+		#is_paused = true
+		#if player.has_method("pause"):
+			#player.pause()  # Custom pause method in player
+			#is_paused = true
+		#timer.start()
 	
 	
 
@@ -91,31 +93,82 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	
 
 
-func _on_timer_timeout() -> void:
-	is_paused = false
-	if player and player.has_method("resume"):
-		player.resume()  # Custom resume method in player
-	get_tree().reload_current_scene()
-	is_paused = false 
 	
 
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if is_paused:
-		return
+#func _on_area_2d_area_entered(area: Area2D) -> void:
+	#if is_paused:
+		#return
+	#
+	#var _particle = deathParticle.instantiate()
+#
+	#
+	#
+	#_particle.position = global_position
+	#_particle.rotation = global_rotation
+	#_particle.emitting = true
+	#get_tree().current_scene.add_child(_particle)
+	#queue_free()
+	#audio_stream_player_2d.play()
+	#await audio_stream_player_2d.finished
+	#queue_free()
 	
-	var _particle = deathParticle.instantiate()
+	
 
+
+func _on_enemy_area_entered(area:Area2D) -> void:
+	
+	enemy_health -= 20
+	e_nemy_damge.play()
+	hurt_enemy.start()
+	animated_sprite_2d.play("Hurt_enemy")
 	
 	
-	_particle.position = global_position
-	_particle.rotation = global_rotation
-	_particle.emitting = true
-	get_tree().current_scene.add_child(_particle)
-	queue_free()
-	audio_stream_player_2d.play()
-	await audio_stream_player_2d.finished
-	queue_free()
 	
+	#var _particle = deathParticle.instantiate()
+#
+	#
+	#
+	#_particle.position = global_position
+	#_particle.rotation = global_rotation
+	#_particle.emitting = true
+	#get_tree().current_scene.add_child(_particle)
+	#queue_free()
+	#audio_stream_player_2d.play()
+	#await audio_stream_player_2d.finished
+	#queue_free()
+	if enemy_health<=0:
+		var _particle = deathParticle.instantiate()
+		var sound =burst.instantiate()
+		sound.global_position= animated_sprite_2d.global_position
+		get_tree().current_scene.add_child(sound)
+		sound.play()
+		
+		
+		_particle.position = global_position
+		_particle.rotation = global_rotation
+		_particle.emitting = true
+		get_tree().current_scene.add_child(_particle)
+		animated_sprite_2d.queue_free()
+		audio_stream_player_2d.play()
+		queue_free()
+		
 	
+#func _on_enemy_body_entered(body: CharacterBody2D) -> void:
+	#var _particle = deathParticle.instantiate()
+#
+	#
+	#
+	#_particle.position = global_position
+	#_particle.rotation = global_rotation
+	#_particle.emitting = true
+	#get_tree().current_scene.add_child(_particle)
+	#queue_free()
+	#audio_stream_player_2d.play()
+	#await audio_stream_player_2d.finished
+	#queue_free()
+
+
+func _on_hurt_enemy_timeout() -> void:
+	animated_sprite_2d.play("default")

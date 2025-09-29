@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbhucle5c2ikd"]
+[gd_scene load_steps=7 format=3 uid="uid://dbhucle5c2ikd"]
 
 [ext_resource type="Script" uid="uid://byt2dnboa7yef" path="res://scenes/mushroom.gd" id="1_0bdi0"]
 [ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/fgtiles-alpha.png" id="1_b0s10"]
+[ext_resource type="AudioStream" uid="uid://ddi7iufejlypo" path="res://sound/bounce.ogg" id="3_qxrkd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bdi0"]
 texture = ExtResource("1_b0s10")
@@ -2576,6 +2577,7 @@ radius = 12.0
 height = 50.0
 
 [node name="Mushroom" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_0bdi0")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2588,5 +2590,9 @@ position = Vector2(8, -24)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0bdi0")
 one_way_collision = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qxrkd")
+volume_db = 21.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

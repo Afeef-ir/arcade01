@@ -1,11 +1,18 @@
 extends CharacterBody2D
+signal health_depleted
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var p_layer_s_prite: AnimatedSprite2D = $PLayerSPrite
+@onready var hurt_t_ime: Timer = $HurtTIme
 
-@onready var jump: AudioStreamPlayer2D = $"../Jump"
 @onready var gun: Node2D = $"."
+@onready var jump: AudioStreamPlayer2D = $Jump
+@onready var damage: AudioStreamPlayer2D = $Damage
 
+@onready var hurt_box: Area2D = $HurtBox
 
 @onready var footstep: AudioStreamPlayer2D = $footstep
-
+@onready var maxHealth = 30
+@onready var currentHealth : int = maxHealth
 
 const SPEED:float = 115.0
 const JUMP_VELOCITY:float = -360.0
@@ -21,11 +28,25 @@ var is_paused = false
 
 var jumps_left:int = 0
 
+var health_player = 100.0
+
 var no_input_timer:float = 0.0
 func _ready() -> void:
-	pass
+	hurt_box.area_entered.connect(_on_HurtBox_area_entered)
 		
 func _physics_process(delta: float) -> void:
+	#const DAMAGE_RATE = 40.0
+	#var overlapping_mobs =hurt_box.has_overlapping_areas()
+	#if overlapping_mobs:
+	#
+		#health_player-= 40.0 * delta
+		#
+		#
+	#
+		#$Jump.play()
+		#velocity.y = JUMP_VELOCITY
+		#if health_player<= 0.0:
+			#get_tree().reload_current_scene()
 	if is_paused:
 		return
 	if is_on_floor():
@@ -70,6 +91,7 @@ func _physics_process(delta: float) -> void:
 				jumps_left -= 1
 				footstep.stop()
 		
+		
 	move_and_slide()
 func pause():
 	is_paused = true
@@ -78,3 +100,23 @@ func resume():
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	player.PROCESS_MODE_DISABLED
+func _on_HurtBox_area_entered(area: Area2D) -> void:
+	# You can check if the area belongs to an enemy
+	if area.name.contains("Enemy"):  
+		health_player -= 40
+		
+		damage.play()
+		hurt_t_ime.start()
+		velocity.y = JUMP_VELOCITY 
+		velocity.x = 100
+		%ProgressBar.value = health_player
+		p_layer_s_prite.play("hurt")
+		
+		
+		
+	if health_player <= 0:
+		get_tree().reload_current_scene()
+
+
+func _on_hurt_t_ime_timeout() -> void:
+	p_layer_s_prite.play("default")

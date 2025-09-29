@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb5j3c2kelvw3"]
+[gd_scene load_steps=5 format=3 uid="uid://bb5j3c2kelvw3"]
 
 [ext_resource type="Script" uid="uid://bs6oe77wgynaq" path="res://scenes/gun.gd" id="1_gp1hk"]
 [ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_x77fm"]
+[ext_resource type="Texture2D" uid="uid://dcbjc6tcep5p6" path="res://images/ChatGPT Image Sep 24, 2025, 08_53_36 PM.png" id="2_qd4js"]
 [ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="3_gp1hk"]
 
 [node name="Gun" type="Node2D"]
@@ -9,13 +10,12 @@ scale = Vector2(1, 1.16)
 script = ExtResource("1_gp1hk")
 
 [node name="RotationOffset" type="Node2D" parent="."]
-position = Vector2(-5.35835, -0.189117)
+position = Vector2(-5.05695, -0.00352785)
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
-modulate = Color(0.612299, 1.50409e-06, 5.77569e-07, 1)
 position = Vector2(6.18071, -1.10185)
-scale = Vector2(1.38325, 0.36921)
-texture = ExtResource("1_x77fm")
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_qd4js")
 
 [node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D"]
 modulate = Color(0, 0, 0, 0.215686)
@@ -24,7 +24,7 @@ texture = ExtResource("1_x77fm")
 
 [node name="shoop_pos" type="Marker2D" parent="RotationOffset/Sprite2D"]
 unique_name_in_owner = true
-position = Vector2(5.40281, -0.014812)
+position = Vector2(556.529, -74.2505)
 
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 50.0

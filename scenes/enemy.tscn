@@ -1,44 +1,58 @@
-[gd_scene load_steps=8 format=3 uid="uid://di7ki8pdkyaxd"]
+[gd_scene load_steps=11 format=3 uid="uid://di7ki8pdkyaxd"]
 
-[ext_resource type="Texture2D" uid="uid://dro7cd0urh28l" path="res://images/drone-1.png" id="1_5uy6h"]
 [ext_resource type="Script" uid="uid://b1l1a78477n1x" path="res://scenes/enemy.gd" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://ce5b5abbrl4ly" path="res://particlesystmeBullet.tscn" id="2_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://bhidn31nwlt2y" path="res://images/Jaguar Creature in Pixel Art.png" id="3_5uy6h"]
 [ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="4_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://ditrxm4qpd3va" path="res://images/Jaguar Creature in Pixel Art - Copy.png" id="4_xwavj"]
+[ext_resource type="AudioStream" uid="uid://k6put2ec02cm" path="res://sound/Player hit.mp3" id="5_c4w8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
-atlas = ExtResource("1_5uy6h")
-region = Rect2(0, 0, 55, 52)
+atlas = ExtResource("4_xwavj")
+region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_otmr2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_md484")
+}],
+"loop": true,
+"name": &"Hurt_enemy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5uy6h")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtq4b"]
-size = Vector2(14, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
+size = Vector2(26, 24)
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(1.7, 1.7)
+collision_layer = 3
+collision_mask = 2
 script = ExtResource("1_md0e3")
+enemy_health = 100.0
 deathParticle = ExtResource("2_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.618182, 0.615385)
+scale = Vector2(0.0273437, 0.0292969)
 sprite_frames = SubResource("SpriteFrames_otmr2")
 autoplay = "default"
-frame_progress = 1.0
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_wtq4b")
+flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -47,7 +61,24 @@ stream = ExtResource("4_5uy6h")
 volume_db = 24.0
 pitch_scale = 2.2
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="Enemy" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="ENemyDamge" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_c4w8v")
+volume_db = 24.0
+pitch_scale = 1.23
+attenuation = 0.901249
+
+[node name="Hurt_enemy" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Enemy" to="." method="_on_enemy_area_entered"]
+[connection signal="body_entered" from="Enemy" to="." method="_on_enemy_body_entered"]
+[connection signal="timeout" from="Hurt_enemy" to="." method="_on_hurt_enemy_timeout"]
