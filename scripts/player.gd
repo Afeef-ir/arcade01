@@ -3,28 +3,33 @@ signal health_depleted
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var p_layer_s_prite: AnimatedSprite2D = $PLayerSPrite
 @onready var hurt_t_ime: Timer = $HurtTIme
-
 @onready var gun: Node2D = $"."
 @onready var jump: AudioStreamPlayer2D = $Jump
 @onready var damage: AudioStreamPlayer2D = $Damage
-
 @onready var hurt_box: Area2D = $HurtBox
-
 @onready var footstep: AudioStreamPlayer2D = $footstep
 @onready var maxHealth = 30
 @onready var currentHealth : int = maxHealth
-
 const SPEED:float = 115.0
 const JUMP_VELOCITY:float = -360.0
 const WALL_JUMP_VELOCITY:float = 150.0 
 const WALL_FACTOR:float = 0.75
-const GRAVITY_SCALE:float = 0.7
+var  GRAVITY_SCALE:float = 0.7
 const MAX_JUMPS:int = 2
 const SPRINT_SCALE:float = 2.0
 const NO_INPUT_TIME = 0.3
 @onready var bg_music: AudioStreamPlayer2D = $"bg music"
 @onready var player: CharacterBody2D = $"."
 var is_paused = false
+@export var  deathParticle : PackedScene
+@onready var deathtimer: Timer = $deathtimer
+@onready var camera_2d_2: Camera2D = $Camera2D2
+@onready var deathaudio: AudioStreamPlayer2D = $Deathaudio
+@export var knockback_force: float = 300
+@export var knockback_time: float = 0.2
+@export var knockback_upward: float = 200
+
+var is_knocked_back: bool = false
 
 var jumps_left:int = 0
 
@@ -35,6 +40,12 @@ func _ready() -> void:
 	hurt_box.area_entered.connect(_on_HurtBox_area_entered)
 		
 func _physics_process(delta: float) -> void:
+	if is_knocked_back:
+		# Move player during knockback
+		move_and_slide()
+		return
+	floor_max_angle = deg_to_rad(45)
+	floor_snap_length= 8
 	#const DAMAGE_RATE = 40.0
 	#var overlapping_mobs =hurt_box.has_overlapping_areas()
 	#if overlapping_mobs:
@@ -91,7 +102,6 @@ func _physics_process(delta: float) -> void:
 				jumps_left -= 1
 				footstep.stop()
 		
-		
 	move_and_slide()
 func pause():
 	is_paused = true
@@ -104,19 +114,49 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 	# You can check if the area belongs to an enemy
 	if area.name.contains("Enemy"):  
 		health_player -= 40
-		
 		damage.play()
 		hurt_t_ime.start()
-		velocity.y = JUMP_VELOCITY 
-		velocity.x = 100
+		
+		
+		#velocity.y = JUMP_VELOCITY 
+		#velocity.x = SPEED
 		%ProgressBar.value = health_player
 		p_layer_s_prite.play("hurt")
+	
 		
 		
 		
 	if health_player <= 0:
-		get_tree().reload_current_scene()
-
+		p_layer_s_prite.hide()
+		gun.hide()
+		velocity.y=0
+		velocity.x=0
+		GRAVITY_SCALE=0
+		var _particle = deathParticle.instantiate()
+		_particle.position = global_position
+		_particle.rotation = global_rotation
+		_particle.emitting = true
+		_particle.amount = 100
+		get_tree().current_scene.add_child(_particle)
+		deathaudio.play()
+		deathtimer.start()
+		set_process(false)
+		set_physics_process(false)
 
 func _on_hurt_t_ime_timeout() -> void:
 	p_layer_s_prite.play("default")
+
+
+func _on_deathtimer_timeout() -> void:
+	get_tree().reload_current_scene()
+func apply_knockback(from_position: Vector2) -> void:
+	# Calculate direction away from enemy
+	var direction = (global_position - from_position).normalized()
+	velocity = Vector2(direction.x * knockback_force, -knockback_upward)
+	
+	is_knocked_back = true
+	
+	# Timer to end knockback
+	var t = get_tree().create_timer(knockback_time)
+	await t.timeout
+	is_knocked_back = false

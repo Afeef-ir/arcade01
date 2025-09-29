@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://bj7335nue8u71"]
+[gd_scene load_steps=19 format=3 uid="uid://bj7335nue8u71"]
 
 [ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://ce5b5abbrl4ly" path="res://particlesystmeBullet.tscn" id="2_0pev8"]
 [ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bb5j3c2kelvw3" path="res://scenes/gun.tscn" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://d3g266atbo0vn" path="res://sound/jump.ogg" id="4_0jhex"]
 [ext_resource type="AudioStream" uid="uid://bqtnvyuig7ool" path="res://sound/step.ogg" id="5_0jhex"]
 [ext_resource type="PackedScene" uid="uid://dgrg0ex575qvw" path="res://scenes/bg_music.tscn" id="6_tuyoq"]
-[ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/forest.ogg" id="7_38am0"]
-[ext_resource type="AudioStream" uid="uid://dt1nae745upfm" path="res://sound/PlayerDamage.mp3" id="8_xfidv"]
+[ext_resource type="AudioStream" uid="uid://cxbhj2yixxxyg" path="res://sound/pain3.ogg" id="7_nxd4c"]
 [ext_resource type="Texture2D" uid="uid://bao17ae2f73nf" path="res://images/red.png" id="9_nxd4c"]
+[ext_resource type="AudioStream" uid="uid://bajinc2822jho" path="res://images/explode3.ogg" id="11_fytk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(10, 23)
@@ -64,11 +65,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 z_as_relative = false
 collision_layer = 2
 script = ExtResource("1_g2els")
+deathParticle = ExtResource("2_0pev8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
@@ -76,8 +78,9 @@ shape = SubResource("RectangleShape2D_u8vuu")
 debug_color = Color(0.257442, 0.612832, 0.471461, 0.42)
 
 [node name="Gun" parent="." instance=ExtResource("3_qhqgy")]
+z_index = 5
 position = Vector2(11, -10)
-scale = Vector2(1.67747, 1.12)
+scale = Vector2(1.677, 1.677)
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_0jhex")
@@ -88,9 +91,7 @@ stream = ExtResource("5_0jhex")
 volume_db = 12.0
 
 [node name="bg music" parent="." instance=ExtResource("6_tuyoq")]
-stream = ExtResource("7_38am0")
 volume_db = 15.0
-autoplay = true
 
 [node name="HurtBox" type="Area2D" parent="."]
 z_index = 2
@@ -122,9 +123,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Damage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_xfidv")
-volume_db = 24.0
-pitch_scale = 1.71
+stream = ExtResource("7_nxd4c")
+volume_db = -5.0
 
 [node name="PLayerSPrite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9.4425)
@@ -135,4 +135,13 @@ animation = &"hurt"
 [node name="HurtTIme" type="Timer" parent="."]
 one_shot = true
 
+[node name="deathtimer" type="Timer" parent="."]
+wait_time = 1.465
+one_shot = true
+
+[node name="Deathaudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_fytk8")
+volume_db = 2.0
+
 [connection signal="timeout" from="HurtTIme" to="." method="_on_hurt_t_ime_timeout"]
+[connection signal="timeout" from="deathtimer" to="." method="_on_deathtimer_timeout"]

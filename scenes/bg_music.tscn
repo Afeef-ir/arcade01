@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgrg0ex575qvw"]
+[gd_scene load_steps=3 format=3 uid="uid://dgrg0ex575qvw"]
 
-[ext_resource type="AudioStream" uid="uid://clp8hl7li0d83" path="res://sound/retro-arcade-game-music-396890.mp3" id="1_f6gl3"]
+[ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/forest.ogg" id="1_8f2av"]
+[ext_resource type="Script" uid="uid://6mrneind8jjj" path="res://scenes/bg_music.gd" id="2_188bi"]
 
 [node name="bg music" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_f6gl3")
-volume_db = -0.025
+stream = ExtResource("1_8f2av")
+volume_db = -1.0
+autoplay = true
+script = ExtResource("2_188bi")

@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://cls4qjxg5tams"]
 
-[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="1_27hfr"]
+[ext_resource type="AudioStream" uid="uid://6vvnikpcrpwm" path="res://images/death5.ogg" id="1_27hfr"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_27hfr")
-volume_db = 24.0
-pitch_scale = 2.2
+volume_db = 1.0

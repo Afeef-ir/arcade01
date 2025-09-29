@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		aim_direction = aim_point - global_position
 	
 	RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * delta)
-	if Input.is_action_pressed("aim"):
+	if Input.is_action_pressed("aim "):
 		RotationOffset.rotation= get_angle_to(global_position) 
 	spriteShadow.position = Vector2(-2,2).rotated(-RotationOffset.rotation)
 	if Input.is_action_just_pressed("shoot") and can_shoot:

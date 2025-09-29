@@ -18,8 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 AudioStreamPlayer2d="*res://scenes/audio_stream_player_2d.tscn"
-BgMusic="res://scenes/bg_music.tscn"
-BgMusic1="res://scenes/bg_music.tscn"
+BgMusic="*res://scenes/bg_music.tscn"
+BgMusic1="*res://scenes/bg_music.tscn"
+MUsicOfBg="*res://m_usic_of_bg.gd"
+BgMusic3="*res://scenes/bg_music.tscn"
 
 [editor_plugins]
 
@@ -78,6 +80,10 @@ shoot={
 "deadzone": 0.2,
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":-1.0,"script":null)
 ]
+}
+aim={
+"deadzone": 0.2,
+"events": []
 }
 
 [rendering]

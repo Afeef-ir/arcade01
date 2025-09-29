@@ -172,3 +172,9 @@ func _on_enemy_area_entered(area:Area2D) -> void:
 
 func _on_hurt_enemy_timeout() -> void:
 	animated_sprite_2d.play("default")
+
+
+func _on_enemy_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		body.apply_knockback(global_position)
+		print("Hit player!")  # check the output
