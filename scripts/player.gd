@@ -3,7 +3,8 @@ signal health_depleted
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var p_layer_s_prite: AnimatedSprite2D = $PLayerSPrite
 @onready var hurt_t_ime: Timer = $HurtTIme
-@onready var gun: Node2D = $"."
+@onready var slidecol: CollisionShape2D = $Slidecol
+
 @onready var jump: AudioStreamPlayer2D = $Jump
 @onready var damage: AudioStreamPlayer2D = $Damage
 @onready var hurt_box: Area2D = $HurtBox
@@ -28,10 +29,23 @@ var is_paused = false
 @export var knockback_force: float = 300
 @export var knockback_time: float = 0.2
 @export var knockback_upward: float = 200
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var wallslide: Timer = $wallslide
+@onready var gunnlocation_1: Area2D = $gunnlocation1
+@onready var thrust: AudioStreamPlayer2D = $Thrust
+@onready var slide: AudioStreamPlayer2D = $Slide
+@onready var gun: Node2D = $Gun
+@onready var hutcol: CollisionShape2D = $HurtBox/Hutcol
+@onready var playercol: CollisionShape2D = $Playercol
+@onready var slidepos_1: Area2D = $slidepos1
+@onready var slidepos_2: Area2D = $slidepos2
+@onready var slide_time: Timer = $slideTime
 
 var is_knocked_back: bool = false
 
 var jumps_left:int = 0
+@onready var gunoglocation: Area2D = $Gunoglocation
+@onready var gunoglocation_2: Area2D = $Gunoglocation2
 
 var health_player = 100.0
 
@@ -46,6 +60,19 @@ func _physics_process(delta: float) -> void:
 		return
 	floor_max_angle = deg_to_rad(45)
 	floor_snap_length= 8
+	if is_on_wall() and is_on_floor():
+		pass
+	elif p_layer_s_prite.animation == "thrust":
+		pass
+	elif is_on_floor_only():
+		pass
+	elif is_on_wall():
+		pass
+	else:
+		pass
+		#p_layer_s_prite.play("jump")
+		
+		#p_layer_s_prite.play("jump")
 	#const DAMAGE_RATE = 40.0
 	#var overlapping_mobs =hurt_box.has_overlapping_areas()
 	#if overlapping_mobs:
@@ -61,16 +88,45 @@ func _physics_process(delta: float) -> void:
 	if is_paused:
 		return
 	if is_on_floor():
+		slidecol.disabled = true
 		jumps_left = MAX_JUMPS
 	else: # gravity
 		velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at	
 	
-	if is_on_wall_only():
+	if is_on_wall():
+		if is_on_floor():
+				slidecol.disabled = true
+		
+		if is_on_wall_only():
+			slide.play()
+			p_layer_s_prite.play("slide")
+			slide_time.stop()
+		if is_on_floor():
+			pass
+		else:
+			for i in range(get_slide_collision_count()):
+				var collision = get_slide_collision(i)   # get the collision info
+				var normal = collision.get_normal()      # get the surface normal (Vector2)
+	
+	# check direction of wall
+			
+				if normal.x > 0:
+					slidecol.disabled = false
+					p_layer_s_prite.flip_h=true
+					slidecol.position = slidepos_2.position
+				elif normal.x < 0:
+					slidecol.disabled = false
+					p_layer_s_prite.flip_h=false
+					slidecol.position = slidepos_1.position
+				
+			
+
 		
 		if Input.is_action_just_pressed("jump"):
 			velocity = WALL_JUMP_VELOCITY * get_wall_normal()
 			velocity.y += JUMP_VELOCITY
 			no_input_timer = NO_INPUT_TIME
+			slide_time.start()
 			
 		else:
 			velocity.y *= WALL_FACTOR
@@ -82,9 +138,12 @@ func _physics_process(delta: float) -> void:
 		if horizontal_input != 0:
 			velocity.x = horizontal_input * SPEED # -SPEED to SPEED
 			#d
+			if is_on_wall():
+				p_layer_s_prite.play("slide")
 			if is_on_floor():
 				if not footstep.playing:
 					footstep.play()
+					p_layer_s_prite.play("walk")
 				
 			if Input.is_action_pressed("fast") and is_on_floor():
 				velocity.x *= SPRINT_SCALE
@@ -94,14 +153,42 @@ func _physics_process(delta: float) -> void:
 		else: # no horizontal input
 			velocity.x = 0.0
 			footstep.stop()
-		
+			
+		if horizontal_input==0 and is_on_floor():
+			p_layer_s_prite.play("default")
+		if horizontal_input == -1:
+			p_layer_s_prite.flip_h=true
+			gunchange()
+		else:
+			p_layer_s_prite.flip_h=false
+			gun.position = gunoglocation.position
 		if Input.is_action_just_pressed("jump"):
-			if jumps_left > 0:
+			if jumps_left > 0 and jumps_left<2:
+				var _particle = deathParticle.instantiate()
+				_particle.position = gunnlocation_1.global_position
+				_particle.rotation = global_rotation
+				_particle.emitting = true
+				_particle.amount = 50
+				_particle.lifetime = 0.5
+				_particle.explosiveness = 0
+				_particle.modulate.a =12
+				_particle.position.x -=5
+				
+				get_tree().current_scene.add_child(_particle)
+				p_layer_s_prite.play("thrust")
+				thrust.play()
+				
+				
 				$Jump.play()
 				velocity.y = JUMP_VELOCITY
 				jumps_left -= 1
 				footstep.stop()
-		
+			if jumps_left>1:
+				p_layer_s_prite.play("jump")
+				$Jump.play()
+				velocity.y = JUMP_VELOCITY
+				jumps_left -= 1
+				footstep.stop()
 	move_and_slide()
 func pause():
 	is_paused = true
@@ -111,7 +198,7 @@ func resume():
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	player.PROCESS_MODE_DISABLED
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	# You can check if the area belongs to an enemy
+	# You can check if the area belongs to an enemy"res://sfx2/thrust.ogg"
 	if area.name.contains("Enemy"):  
 		health_player -= 40
 		damage.play()
@@ -121,8 +208,8 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 		#velocity.y = JUMP_VELOCITY 
 		#velocity.x = SPEED
 		%ProgressBar.value = health_player
-		p_layer_s_prite.play("hurt")
-	
+		
+		animation_player.play("hurt")
 		
 		
 		
@@ -160,3 +247,13 @@ func apply_knockback(from_position: Vector2) -> void:
 	var t = get_tree().create_timer(knockback_time)
 	await t.timeout
 	is_knocked_back = false
+	
+func gunchange():
+	if Input.is_action_pressed("move left"):
+		gun.position = gunoglocation_2.position
+		
+	
+
+
+func _on_slide_time_timeout() -> void:
+	p_layer_s_prite.play("jump")
