@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgrg0ex575qvw"]
+[gd_scene load_steps=2 format=3 uid="uid://dgrg0ex575qvw"]
 
-[ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/forest.ogg" id="1_8f2av"]
-[ext_resource type="Script" uid="uid://6mrneind8jjj" path="res://scenes/bg_music.gd" id="2_188bi"]
+[ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/BGMusic.ogg" id="1_8f2av"]
 
-[node name="bg music" type="AudioStreamPlayer2D"]
+[node name="BgMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_8f2av")
-volume_db = -1.0
+volume_db = 1.0
 autoplay = true
-script = ExtResource("2_188bi")
+parameters/looping = true

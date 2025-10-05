@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb5j3c2kelvw3"]
+[gd_scene load_steps=5 format=3 uid="uid://bo7ladesdr6tw"]
 
-[ext_resource type="Script" uid="uid://bs6oe77wgynaq" path="res://scenes/gun.gd" id="1_gp1hk"]
-[ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_x77fm"]
-[ext_resource type="Texture2D" uid="uid://dt2wa0ncv3yle" path="res://images/gun_turret.png" id="2_6b133"]
-[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="3_gp1hk"]
-[ext_resource type="Texture2D" uid="uid://7writkar1nvm" path="res://images/gun_base.png" id="5_haq8l"]
+[ext_resource type="Script" uid="uid://bs6oe77wgynaq" path="res://scripts/gun.gd" id="1_gp1hk"]
+[ext_resource type="Texture2D" uid="uid://dt2wa0ncv3yle" path="res://images/player/gun_turret.png" id="2_6b133"]
+[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion.mp3" id="3_gp1hk"]
+[ext_resource type="Texture2D" uid="uid://7writkar1nvm" path="res://images/player/gun_base.png" id="5_haq8l"]
 
 [node name="Gun" type="Node2D"]
 scale = Vector2(1, 1.16)
@@ -12,32 +11,27 @@ script = ExtResource("1_gp1hk")
 
 [node name="Base" type="Sprite2D" parent="."]
 position = Vector2(0.302223, -4.73438)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.3, 0.5)
 texture = ExtResource("5_haq8l")
 
 [node name="RotationOffset" type="Node2D" parent="."]
 position = Vector2(0.385499, -7.43687)
 
 [node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
+z_index = 3
 position = Vector2(2.64922, 0.909702)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_6b133")
 
-[node name="shadow" type="Sprite2D" parent="RotationOffset/Sprite2D"]
-modulate = Color(0, 0, 0, 0.215686)
-z_index = -1
-position = Vector2(-3.11026, -1.16069)
-texture = ExtResource("1_x77fm")
-
-[node name="shoop_pos" type="Marker2D" parent="RotationOffset/Sprite2D"]
+[node name="ShootPos" type="Marker2D" parent="RotationOffset/Sprite2D"]
 unique_name_in_owner = true
-position = Vector2(18.0147, -5.8277)
+position = Vector2(20.0178, -5.8277)
 
 [node name="shoot_timer" type="Timer" parent="."]
 wait_time = 50.0
 one_shot = true
 
-[node name="exploding" type="AudioStreamPlayer2D" parent="."]
+[node name="ShootSfx" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_gp1hk")
 volume_db = -0.05

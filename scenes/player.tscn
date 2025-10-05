@@ -1,0 +1,269 @@
+[gd_scene load_steps=27 format=3 uid="uid://bj7335nue8u71"]
+
+[ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bg5qdvkik6qfk" path="res://images/player/PlayerSprites.png" id="3_o8o0x"]
+[ext_resource type="PackedScene" uid="uid://bo7ladesdr6tw" path="res://scenes/gun.tscn" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://d3g266atbo0vn" path="res://sound/jump.ogg" id="4_0jhex"]
+[ext_resource type="Texture2D" uid="uid://coa2bml5wcn6x" path="res://images/player/PlayerSlideSprite.png" id="4_fytk8"]
+[ext_resource type="AudioStream" uid="uid://bqtnvyuig7ool" path="res://sound/step.ogg" id="5_0jhex"]
+[ext_resource type="AudioStream" uid="uid://cxbhj2yixxxyg" path="res://sound/Playerdamage.ogg" id="7_nxd4c"]
+[ext_resource type="AudioStream" uid="uid://pivrdd8fgml8" path="res://sound/thrust.ogg" id="11_clacw"]
+[ext_resource type="AudioStream" uid="uid://bajinc2822jho" path="res://sound/PlayerDeath.ogg" id="11_fytk8"]
+[ext_resource type="AudioStream" uid="uid://k72gs7ndvxxu" path="res://sound/sliding.ogg" id="12_jj7ip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
+size = Vector2(22, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fytk8"]
+atlas = ExtResource("3_o8o0x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clacw"]
+atlas = ExtResource("3_o8o0x")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj7ip"]
+atlas = ExtResource("4_fytk8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ripyi"]
+atlas = ExtResource("3_o8o0x")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahudb"]
+atlas = ExtResource("3_o8o0x")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c160a"]
+atlas = ExtResource("3_o8o0x")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pfnn"]
+atlas = ExtResource("3_o8o0x")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_clacw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fytk8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clacw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj7ip")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ripyi")
+}],
+"loop": true,
+"name": &"thrust",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahudb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c160a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pfnn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38am0"]
+size = Vector2(22, 44)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38am0"]
+bg_color = Color(0.230315, 0.230315, 0.230315, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfidv"]
+bg_color = Color(1.29953e-06, 0.728303, 0.0347789, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_clacw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fytk8"]
+resource_name = "hurt"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.45, 0.666667, 0.9, 1.13333, 1.36667, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jj7ip"]
+_data = {
+&"RESET": SubResource("Animation_clacw"),
+&"hurt": SubResource("Animation_fytk8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fytk8"]
+size = Vector2(29.75, 34)
+
+[node name="player" type="CharacterBody2D" groups=["Player"]]
+z_index = 2
+z_as_relative = false
+collision_mask = 3
+script = ExtResource("1_g2els")
+
+[node name="PlayerCol" type="CollisionShape2D" parent="."]
+position = Vector2(4.17233e-07, -15)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_u8vuu")
+debug_color = Color(0.257442, 0.612832, 0.471461, 0.42)
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -20)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_clacw")
+animation = &"walk"
+
+[node name="Gun" parent="." groups=["Player"] instance=ExtResource("3_qhqgy")]
+z_index = -1
+position = Vector2(-6, -27)
+scale = Vector2(1.677, 1.677)
+
+[node name="JumpSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0jhex")
+volume_db = 15.0
+
+[node name="FootStepSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0jhex")
+volume_db = 12.0
+autoplay = true
+
+[node name="HurtBox" type="Area2D" parent="." groups=["Player"]]
+z_index = 2
+collision_mask = 3
+monitorable = false
+
+[node name="HurtCol" type="CollisionShape2D" parent="HurtBox"]
+z_index = 2
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_38am0")
+debug_color = Color(0.87348, 0.308177, 0.41928, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 29.0
+offset_top = 25.0
+offset_right = 391.0
+offset_bottom = 52.0
+theme_override_styles/background = SubResource("StyleBoxFlat_38am0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xfidv")
+value = 100.0
+show_percentage = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nxd4c")
+volume_db = -5.0
+
+[node name="HurtTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="deathtimer" type="Timer" parent="."]
+wait_time = 0.755
+one_shot = true
+
+[node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_fytk8")
+volume_db = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jj7ip")
+}
+
+[node name="ThrustSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_clacw")
+
+[node name="SlideSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_jj7ip")
+volume_db = 5.0
+
+[node name="SlideTimer" type="Timer" parent="."]
+wait_time = 0.135
+
+[node name="SlideCol" type="CollisionShape2D" parent="."]
+position = Vector2(5.125, -28)
+shape = SubResource("RectangleShape2D_fytk8")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.139
+
+[node name="GunLocationDefault" type="Marker2D" parent="."]
+position = Vector2(-7, -27)
+
+[node name="ThrustLocation" type="Marker2D" parent="."]
+position = Vector2(0, -14)
+
+[node name="SlidePositionR" type="Marker2D" parent="."]
+position = Vector2(6, -28)
+
+[node name="SlidePositionL" type="Marker2D" parent="."]
+position = Vector2(-6, -28)
+
+[node name="GunLocationFlipped" type="Marker2D" parent="."]
+position = Vector2(6, -27)
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="HurtTime" to="." method="_on_hurt_time_timeout"]
+[connection signal="timeout" from="deathtimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="SlideTimer" to="." method="_on_slide_time_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy6bm6yxrtfj"]
-
-[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="1_1bp8r"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_1bp8r")
-volume_db = 24.0
-pitch_scale = 5.0

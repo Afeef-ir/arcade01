@@ -1,14 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://brt512384idja"]
+[gd_scene load_steps=13 format=3 uid="uid://brt512384idja"]
 
-[ext_resource type="Texture2D" uid="uid://ds4eahx7yfhpr" path="res://images/whitebox_11.png" id="1_mkf8s"]
-[ext_resource type="Texture2D" uid="uid://ce2fyokcpcfec" path="res://images/shot-2.png" id="1_tamys"]
-[ext_resource type="Texture2D" uid="uid://qn0v7besux4r" path="res://images/shot-hit-1.png" id="2_in4mv"]
-[ext_resource type="PackedScene" uid="uid://ce5b5abbrl4ly" path="res://particlesystmeBullet.tscn" id="2_k76ql"]
-[ext_resource type="Script" uid="uid://26tynx0fa0e6" path="res://scenes/bullet.gd" id="2_y25gk"]
-[ext_resource type="Texture2D" uid="uid://c0qcncv46hxu" path="res://images/shot-hit-2.png" id="3_s437g"]
-[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion_1.mp3" id="4_eoqba"]
-[ext_resource type="Texture2D" uid="uid://d4d7ux3qbhah3" path="res://images/shot-hit-3.png" id="4_iqq7w"]
-[ext_resource type="PackedScene" uid="uid://fkwor8c4fmsi" path="res://scenes/audio_stream_player_2d.tscn" id="6_tamys"]
+[ext_resource type="Texture2D" uid="uid://bu27igmaxun7a" path="res://images/bullet/shot.png" id="1_tamys"]
+[ext_resource type="Texture2D" uid="uid://d01tbbwfnb2jr" path="res://images/bullet/shot-hit-1.png" id="2_in4mv"]
+[ext_resource type="AudioStream" uid="uid://mr3k4n1u7u33" path="res://sound/synthetic_explosion.mp3" id="2_tamys"]
+[ext_resource type="Script" uid="uid://26tynx0fa0e6" path="res://scripts/bullet.gd" id="2_y25gk"]
+[ext_resource type="Texture2D" uid="uid://1dej1qnl4jdy" path="res://images/bullet/shot-hit-2.png" id="3_s437g"]
+[ext_resource type="Texture2D" uid="uid://cmm5uwbcuerfu" path="res://images/bullet/shot-hit-3.png" id="4_iqq7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0apvr"]
 atlas = ExtResource("1_tamys")
@@ -47,63 +44,29 @@ animations = [{
 "texture": SubResource("AtlasTexture_bssuu")
 }],
 "loop": false,
-"name": &"excplodeeee",
+"name": &"explode",
 "speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tamys"]
 size = Vector2(8.52682, 6.56527)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 9
+[node name="Node2D" type="Node2D"]
+physics_interpolation_mode = 1
 script = ExtResource("2_y25gk")
-deathParticle = ExtResource("2_k76ql")
+explode_sfx = ExtResource("2_tamys")
 
-[node name="bullet7" type="AnimatedSprite2D" parent="."]
-z_index = 1
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
 scale = Vector2(0.701473, 0.600747)
 sprite_frames = SubResource("SpriteFrames_2o84m")
+animation = &"explode"
 autoplay = "default"
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-2.23085, 0.265095)
-scale = Vector2(0.510392, 0.535082)
-target_position = Vector2(11.8143, 0.0238383)
-hit_from_inside = true
-
-[node name="istanceTimeout" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-autostart = true
-
-[node name="shadow" type="Sprite2D" parent="."]
-modulate = Color(0.888705, 0, 0.378163, 1)
-show_behind_parent = true
-scale = Vector2(0.0905604, 0.0851166)
-texture = ExtResource("1_mkf8s")
-
-[node name="explosion" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(0.510392, 0.535082)
-stream = ExtResource("4_eoqba")
-volume_db = 5.114
-pitch_scale = 3.0
-autoplay = true
-
-[node name="vanishing" type="Timer" parent="."]
-wait_time = 2.0
-
-[node name="AudioStreamPlayer2d" parent="." instance=ExtResource("6_tamys")]
-position = Vector2(-0.0976395, -0.0353654)
-scale = Vector2(0.510392, 0.535082)
-volume_db = 20.0
-pitch_scale = 5.0
 
 [node name="Area2D" type="Area2D" parent="."]
 z_index = 2
 scale = Vector2(0.510392, 0.535082)
-collision_layer = 5
-collision_mask = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 1

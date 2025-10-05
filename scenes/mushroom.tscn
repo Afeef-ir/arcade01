@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbhucle5c2ikd"]
+[gd_scene load_steps=6 format=4 uid="uid://dbhucle5c2ikd"]
 
-[ext_resource type="Script" uid="uid://byt2dnboa7yef" path="res://scenes/mushroom.gd" id="1_0bdi0"]
-[ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/fgtiles-alpha.png" id="1_b0s10"]
+[ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="1_b0s10"]
+[ext_resource type="Script" uid="uid://byt2dnboa7yef" path="res://scripts/mushroom.gd" id="1_qxrkd"]
 [ext_resource type="AudioStream" uid="uid://ddi7iufejlypo" path="res://sound/bounce.ogg" id="3_qxrkd"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0bdi0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxrkd"]
 texture = ExtResource("1_b0s10")
 0:0/0 = 0
 1:0/0 = 0
@@ -1545,6 +1545,7 @@ texture = ExtResource("1_b0s10")
 5:55/0 = 0
 6:55/0 = 0
 7:55/0 = 0
+8:55/0 = 0
 9:55/0 = 0
 10:55/0 = 0
 11:55/0 = 0
@@ -1561,6 +1562,10 @@ texture = ExtResource("1_b0s10")
 24:55/0 = 0
 8:56/0 = 0
 9:56/0 = 0
+19:56/0 = 0
+20:56/0 = 0
+21:56/0 = 0
+22:56/0 = 0
 23:56/0 = 0
 24:56/0 = 0
 25:56/0 = 0
@@ -1568,6 +1573,10 @@ texture = ExtResource("1_b0s10")
 8:57/0 = 0
 9:57/0 = 0
 10:57/0 = 0
+19:57/0 = 0
+20:57/0 = 0
+21:57/0 = 0
+22:57/0 = 0
 23:57/0 = 0
 24:57/0 = 0
 25:57/0 = 0
@@ -1583,6 +1592,8 @@ texture = ExtResource("1_b0s10")
 9:58/0 = 0
 10:58/0 = 0
 11:58/0 = 0
+20:58/0 = 0
+21:58/0 = 0
 23:58/0 = 0
 24:58/0 = 0
 25:58/0 = 0
@@ -1610,6 +1621,8 @@ texture = ExtResource("1_b0s10")
 15:59/0 = 0
 16:59/0 = 0
 17:59/0 = 0
+20:59/0 = 0
+21:59/0 = 0
 23:59/0 = 0
 24:59/0 = 0
 25:59/0 = 0
@@ -2565,34 +2578,29 @@ texture = ExtResource("1_b0s10")
 25:103/0 = 0
 28:103/0 = 0
 29:103/0 = 0
-19:56/size_in_atlas = Vector2i(4, 4)
-19:56/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_qxrkd"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_0bdi0")
+[sub_resource type="TileSet" id="TileSet_6c3h1"]
+sources/0 = SubResource("TileSetAtlasSource_qxrkd")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bdi0"]
-radius = 12.0
-height = 50.0
-
-[node name="Mushroom" type="Area2D"]
-collision_mask = 3
-script = ExtResource("1_0bdi0")
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_qxrkd")
-format = 2
-layer_0/tile_data = PackedInt32Array(-65536, 1245184, 56)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -24)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_0bdi0")
-one_way_collision = true
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qxrkd")
+vel = -500
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qxrkd")
 volume_db = 21.0
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-16, -16)
+tile_map_data = PackedByteArray("AAD///3/AAATADgAAAD///7/AAATADkAAAAAAP3/AAAUADgAAAAAAP7/AAAUADkAAAAAAP//AAAUADoAAAAAAAAAAAAUADsAAAABAP3/AAAVADgAAAABAP7/AAAVADkAAAABAP//AAAVADoAAAABAAAAAAAVADsAAAACAP3/AAAWADgAAAACAP7/AAAWADkAAAA=")
+tile_set = SubResource("TileSet_6c3h1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(0.999999, -57.4766)
+scale = Vector2(2.7, 0.78125)
+polygon = PackedVector2Array(-3.33333, -8.35, -9.25926, 3.17, 7.40741, 1.89, 3.7037, -7.07)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

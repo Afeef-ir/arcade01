@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cls4qjxg5tams"]
-
-[ext_resource type="AudioStream" uid="uid://6vvnikpcrpwm" path="res://images/death5.ogg" id="1_27hfr"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_27hfr")
-volume_db = 1.0
