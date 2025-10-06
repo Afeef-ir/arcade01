@@ -14,6 +14,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(22, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
+size = Vector2(41.375, 34)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fytk8"]
 atlas = ExtResource("3_o8o0x")
 region = Rect2(0, 0, 64, 64)
@@ -145,9 +148,6 @@ _data = {
 &"hurt": SubResource("Animation_fytk8")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fytk8"]
-size = Vector2(29.75, 34)
-
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 z_as_relative = false
@@ -160,11 +160,16 @@ scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_u8vuu")
 debug_color = Color(0.257442, 0.612832, 0.471461, 0.42)
 
+[node name="SlideCol" type="CollisionShape2D" parent="."]
+position = Vector2(0.3125, -28)
+shape = SubResource("RectangleShape2D_y4r1p")
+disabled = true
+
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.90735e-06, -20)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_clacw")
-animation = &"walk"
+animation = &"slide"
 
 [node name="Gun" parent="." groups=["Player"] instance=ExtResource("3_qhqgy")]
 z_index = -1
@@ -178,9 +183,10 @@ volume_db = 15.0
 [node name="FootStepSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_0jhex")
 volume_db = 12.0
-autoplay = true
+parameters/looping = true
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player"]]
+visible = false
 z_index = 2
 collision_mask = 3
 monitorable = false
@@ -209,14 +215,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("7_nxd4c")
 volume_db = -5.0
 
-[node name="HurtTime" type="Timer" parent="."]
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.75
 one_shot = true
 
-[node name="deathtimer" type="Timer" parent="."]
-wait_time = 0.755
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 1.75
 one_shot = true
 
 [node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
@@ -234,17 +242,7 @@ stream = ExtResource("11_clacw")
 [node name="SlideSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_jj7ip")
 volume_db = 5.0
-
-[node name="SlideTimer" type="Timer" parent="."]
-wait_time = 0.135
-
-[node name="SlideCol" type="CollisionShape2D" parent="."]
-position = Vector2(5.125, -28)
-shape = SubResource("RectangleShape2D_fytk8")
-disabled = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.139
+parameters/looping = true
 
 [node name="GunLocationDefault" type="Marker2D" parent="."]
 position = Vector2(-7, -27)
@@ -263,7 +261,5 @@ position = Vector2(6, -27)
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
-[connection signal="timeout" from="HurtTime" to="." method="_on_hurt_time_timeout"]
-[connection signal="timeout" from="deathtimer" to="." method="_on_death_timer_timeout"]
-[connection signal="timeout" from="SlideTimer" to="." method="_on_slide_time_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_time_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

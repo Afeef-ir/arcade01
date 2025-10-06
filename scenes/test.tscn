@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://c81ne2b5hki1s"]
+
+[ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_errlg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uh7m"]
+size = Vector2(140, 517)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_errlg")]
+position = Vector2(179, 454)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(2, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_right = 133.0
+offset_bottom = 518.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(70, 259.5)
+shape = SubResource("RectangleShape2D_8uh7m")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(220, 0)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_right = 133.0
+offset_bottom = 518.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(70, 259.5)
+shape = SubResource("RectangleShape2D_8uh7m")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(133, 518)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
+offset_right = 133.0
+offset_bottom = 518.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(70, 259.5)
+shape = SubResource("RectangleShape2D_8uh7m")
