@@ -1,15 +1,61 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmj8tm3ogt6vf"]
+[gd_scene load_steps=18 format=3 uid="uid://bmj8tm3ogt6vf"]
 
 [ext_resource type="Script" uid="uid://b1l1a78477n1x" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="AudioStream" uid="uid://6vvnikpcrpwm" path="res://sound/EnemyDeath.ogg" id="2_5uy6h"]
-[ext_resource type="Texture2D" uid="uid://bhidn31nwlt2y" path="res://images/placeholder/JaguarCreature.png" id="3_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://cvoloukpf3fgv" path="res://images/Enemies/grenade-guy-sheet-alpha.png" id="3_5uy6h"]
 [ext_resource type="AudioStream" uid="uid://b0y6knvyh0a6d" path="res://sound/EnemyHurt.ogg" id="6_xwavj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(1, 33, 36, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(37, 33, 36, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(73, 33, 36, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(109, 33, 36, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(145, 33, 36, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(181, 33, 36, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(217, 33, 36, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_otmr2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5uy6h")
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md484")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipns3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8i8w")
 }],
 "loop": true,
 "name": &"default",
@@ -71,9 +117,12 @@ speed = 100.0
 patrol_points = Array[Vector2]([Vector2(150, 0), Vector2(-250, 0)])
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.0273437, 0.0292969)
+position = Vector2(0.588235, 2.84217e-14)
+scale = Vector2(0.898693, 0.796964)
 sprite_frames = SubResource("SpriteFrames_otmr2")
 autoplay = "default"
+frame = 4
+frame_progress = 0.933249
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -91,7 +140,7 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 visibility_layer = 3
-position = Vector2(-0.294118, -2.80492e-07)
+position = Vector2(-0.294118, 3.15554e-07)
 shape = SubResource("RectangleShape2D_c4w8v")
 
 [node name="HurtAnim" type="AnimationPlayer" parent="."]

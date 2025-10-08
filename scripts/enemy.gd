@@ -3,18 +3,19 @@ extends CharacterBody2D
 const burst = preload("res://scenes/burst.tscn")
 const ERROR_SQ = 400.0 # 20
 
+
 @export var enemy_health : float
 @export_enum("loop", "linear") var patrol_type: String = "linear"
 @export var death_audio : AudioStream
 @export var speed : float = 300
 @export var patrol_points : Array[Vector2] = []
-
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hurt_sfx: AudioStreamPlayer2D = $HurtSfx
 @onready var hurt_timer: Timer = $HurtTimer
 @onready var timer: Timer = $Timer
 @onready var hurt_anim: AnimationPlayer = $HurtAnim
 @onready var path_follow = get_parent()
+
 
 var is_paused = false
 var player: CharacterBody2D = null
@@ -36,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	if difference.length_squared() > ERROR_SQ:
 		var patrol_velocity = difference.normalized() * speed
 		velocity.x = patrol_velocity.x
-		sprite.flip_h = velocity.x < 0
+		sprite.flip_h = velocity.x >0
 	else:
 		patrol_index = (patrol_index+1) % patrol_points.size()
 		patrol_target = patrol_points[patrol_index]
@@ -52,7 +53,7 @@ func take_damage(damage_val:float) -> void:
 	
 	if enemy_health <= 0:
 		var death_fx = burst.instantiate()
-		death_fx.self_modulate = "orange"
+		death_fx.self_modulate = "gray"
 		death_fx.position = global_position
 		death_fx.rotation = global_rotation
 		death_fx.amount = 60

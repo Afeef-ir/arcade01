@@ -95,7 +95,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38am0"]
-size = Vector2(22, 44)
+size = Vector2(24, 44)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38am0"]
 bg_color = Color(0.230315, 0.230315, 0.230315, 1)
@@ -186,7 +186,6 @@ volume_db = 12.0
 parameters/looping = true
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player"]]
-visible = false
 z_index = 2
 collision_mask = 3
 monitorable = false
@@ -224,7 +223,7 @@ wait_time = 0.75
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 1.75
+wait_time = 0.75
 one_shot = true
 
 [node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]

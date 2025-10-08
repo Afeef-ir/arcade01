@@ -9,7 +9,7 @@ const GRAVITY_SCALE:float = 0.7
 const MAX_JUMPS:int = 2
 const SPRINT_SCALE:float = 2.0
 const NO_INPUT_TIME = 0.3
-const MAX_HEALTH = 30
+const MAX_HEALTH = 100
 const KNOCKBACK_TIME = 0.25
 const FOOTSTEP_VOL = 5.0 * 2
 const SLIDE_VOL = 1.0
@@ -34,6 +34,9 @@ const vfx = preload("res://scenes/burst.tscn")
 @onready var gun_loc_flipped: Marker2D = $GunLocationFlipped
 @onready var slide_pos_r: Marker2D = $SlidePositionR
 @onready var slide_pos_l: Marker2D = $SlidePositionL
+@onready var progress_bar: ProgressBar = %ProgressBar
+@onready var kill_zone: Area2D = $"../KillZone"
+
 
 var current_health = MAX_HEALTH
 var knockback_force = Vector2.ZERO
@@ -44,6 +47,7 @@ var jumps_left:int = 0
 var no_input_timer:float = 0.0
 var default_col_pos:Vector2
 var default_col_shape:Shape2D
+var spawn_position = Vector2.ZERO
 
 func pause():
 	is_paused = true
@@ -52,6 +56,7 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	remove_from_group("Key")
 	floor_max_angle = deg_to_rad(45)
 	floor_snap_length= 8
 	#footstep_audio.play()
@@ -60,28 +65,23 @@ func _ready() -> void:
 	#slide_audio.volume_db=0
 	default_col_pos = default_col.position
 	default_col_shape = default_col.shape
+	spawn_position = global_position
 	
 func _physics_process(delta: float) -> void:
-	
-	#resetAudio()
-	
-	#print(velocity)
-	
+	wall_min_slide_angle = 9
 	if is_paused:
 		return
-
-	if is_on_floor() and velocity.x !=0:
 		
+	if is_on_floor() and velocity.x !=0:
 		footstep_audio.volume_db=FOOTSTEP_VOL 
 		if not Input.is_action_just_pressed("fast"):
-			
 			if footstep_audio.playing == false:
 				footstep_audio.playing = true
-			
 	else:
 		#footstep_audio.volume_db=0
 		footstep_audio.playing = false
 	#if is_on_wall_only():
+	
 		#if slide_audio.playing == false:
 			#slide_audio.playing = true
 		#slide_audio.volume_db = SLIDE_VOL
@@ -185,7 +185,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_death_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	respawn()
 	
 func reset_collision() -> void:
 	default_col.shape = default_col_shape
@@ -250,3 +250,13 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		death_timer.start()
 		set_process(false)
 		set_physics_process(false)
+	
+func respawn():
+	global_position = spawn_position
+	current_health= MAX_HEALTH
+	#velocity = Vector2.ZERO
+	player_sprite.show()
+	gun.show()  
+	set_process(true)
+	set_physics_process(true)
+	progress_bar.value =MAX_HEALTH

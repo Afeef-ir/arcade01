@@ -1,36 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl48eppft3doy"]
+[gd_scene load_steps=5 format=3 uid="uid://t5r11wr7dmv5"]
 
-[ext_resource type="Script" uid="uid://dbm8gsp0jnuvr" path="res://scripts/key.gd" id="1_5a400"]
-[ext_resource type="Texture2D" uid="uid://c6su1x8c64xb6" path="res://images/placeholder/Skeleton Key.png" id="1_up4cr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_krfvd"]
-size = Vector2(21, 6)
+[ext_resource type="Script" uid="uid://btuqxricta3u0" path="res://scripts/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/Key.png" id="2_fttkb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0yg6"]
-size = Vector2(56, 14)
+size = Vector2(26, 13)
 
-[node name="StaticBody2D" type="StaticBody2D"]
-script = ExtResource("1_5a400")
+[sub_resource type="LabelSettings" id="LabelSettings_fttkb"]
+line_spacing = 13.25
+font_size = 50
+outline_size = 20
+outline_color = Color(0, 0.58, 0.164333, 1)
 
-[node name="Key" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_5a400")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
-position = Vector2(0.5, -1)
-shape = SubResource("RectangleShape2D_krfvd")
+[node name="Key" type="Area2D"]
+script = ExtResource("1_fttkb")
 
 [node name="Keysprite" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("1_up4cr")
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_fttkb")
 
-[node name="KeyCollison" type="CollisionShape2D" parent="."]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-2, -1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_p0yg6")
-disabled = true
-one_way_collision_margin = 0.0
 
-[connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 192.0
+offset_top = 529.0
+offset_right = 315.0
+offset_bottom = 666.0
+text = "Keys:
+        1A"
+label_settings = SubResource("LabelSettings_fttkb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
