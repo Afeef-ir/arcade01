@@ -169,7 +169,6 @@ disabled = true
 position = Vector2(-1.90735e-06, -20)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_clacw")
-animation = &"slide"
 
 [node name="Gun" parent="." groups=["Player"] instance=ExtResource("3_qhqgy")]
 z_index = -1
@@ -200,10 +199,10 @@ debug_color = Color(0.87348, 0.308177, 0.41928, 0.42)
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 29.0
-offset_top = 25.0
-offset_right = 391.0
-offset_bottom = 52.0
+offset_left = 26.0
+offset_top = 40.0
+offset_right = 388.0
+offset_bottom = 67.0
 theme_override_styles/background = SubResource("StyleBoxFlat_38am0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xfidv")
 value = 100.0
@@ -212,6 +211,14 @@ show_percentage = false
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -1
+offset_left = 15.0
+offset_top = 30.0
+offset_right = 402.0
+offset_bottom = 77.0
+expand_mode = 1
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false

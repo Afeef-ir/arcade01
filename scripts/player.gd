@@ -15,6 +15,9 @@ const FOOTSTEP_VOL = 5.0 * 2
 const SLIDE_VOL = 1.0
 const vfx = preload("res://scenes/burst.tscn")
 
+signal key_picked(tag)
+signal key_used(tag, remaining)
+
 @onready var default_col: CollisionShape2D = $PlayerCol
 @onready var slide_col: CollisionShape2D = $SlideCol
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -36,6 +39,7 @@ const vfx = preload("res://scenes/burst.tscn")
 @onready var slide_pos_l: Marker2D = $SlidePositionL
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var kill_zone: Area2D = $"../KillZone"
+@onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 
 
 var current_health = MAX_HEALTH
@@ -48,6 +52,7 @@ var no_input_timer:float = 0.0
 var default_col_pos:Vector2
 var default_col_shape:Shape2D
 var spawn_position = Vector2.ZERO
+var key_inventory := {} 
 
 func pause():
 	is_paused = true
@@ -56,13 +61,15 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+  # 1️⃣ Create the gradient data
+	var grad = Gradient.new()
+	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
+	var gradient_texture = GradientTexture2D.new()
+	gradient_texture.gradient = grad
+	texture_rect.texture = gradient_texture
 	remove_from_group("Key")
 	floor_max_angle = deg_to_rad(45)
 	floor_snap_length= 8
-	#footstep_audio.play()
-	#footstep_audio.volume_db=0
-	#slide_audio.play()
-	#slide_audio.volume_db=0
 	default_col_pos = default_col.position
 	default_col_shape = default_col.shape
 	spawn_position = global_position
@@ -78,18 +85,8 @@ func _physics_process(delta: float) -> void:
 			if footstep_audio.playing == false:
 				footstep_audio.playing = true
 	else:
-		#footstep_audio.volume_db=0
 		footstep_audio.playing = false
-	#if is_on_wall_only():
-	
-		#if slide_audio.playing == false:
-			#slide_audio.playing = true
-		#slide_audio.volume_db = SLIDE_VOL
-	#else:
-		#slide_audio.volume_db = 0
-		#slide_audio.playing = false
 	if is_knocked_back:
-		# Move player during knockback
 		velocity = knockback_force
 		move_and_slide()
 		return
@@ -97,8 +94,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		reset_collision()
 		jumps_left = MAX_JUMPS
-	#elif is_on_wall_only():
-		#pass
 	else: # gravity
 		velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at
 	
@@ -116,8 +111,6 @@ func _physics_process(delta: float) -> void:
 			no_input_timer = NO_INPUT_TIME
 			reset_collision()
 		else:
-			
-			#slide_audio.volume_db = SLIDE_VOL
 			play_sprite_anim("slide")
 			set_horizontal_flip(get_wall_normal().x > 0)
 			velocity.y *= WALL_FACTOR
@@ -131,35 +124,31 @@ func _physics_process(delta: float) -> void:
 		slide_audio.volume_db = 0
 		slide_audio.playing = false
 		var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
-		#var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
+		
 		if horizontal_input:
-			#footstep_audio.play()
-			
 			velocity.x = horizontal_input * SPEED # -SPEED to SPEED
 			set_horizontal_flip(velocity.x < 0)
-			
 			if is_on_floor():
 				if Input.is_action_pressed("fast"):
 					velocity.x *= SPRINT_SCALE
 					footstep_audio.pitch_scale = 1.5
 				else:
 					footstep_audio.pitch_scale = 1
-					
+				
 				var horizontal_speed = abs(velocity.x)
+				
 				if horizontal_speed > 0:
 					const FEEDBACK_SPEED_FACTOR : float = 0.01
 					#footstep_audio.volume_db = FOOTSTEP_VOL * horizontal_speed * FEEDBACK_SPEED_FACTOR
 					play_sprite_anim("walk", horizontal_speed * FEEDBACK_SPEED_FACTOR)				
 		else:
 			if is_on_floor():
-				#footstep_audio.stop()
 				pass
 			velocity.x = 0.0
 			
 		if is_on_floor() and abs(velocity.x) < TINY_NUMBER:
 			play_sprite_anim("default")
 			
-				
 		if Input.is_action_just_pressed("jump") and jumps_left > 0:
 			#resetAudio()
 			footstep_audio.volume_db = 0.0
@@ -190,10 +179,6 @@ func _on_death_timer_timeout() -> void:
 func reset_collision() -> void:
 	default_col.shape = default_col_shape
 	default_col.position = default_col_pos
-	
-#func resetAudio() -> void:
-	#slide_audio.volume_db = 0.0
-	#footstep_audio.volume_db = 0.0
 	
 func apply_knockback(from_position: Vector2, strength: float = 300, upward: float = -200) -> void:
 	if is_knocked_back:
@@ -260,3 +245,30 @@ func respawn():
 	set_process(true)
 	set_physics_process(true)
 	progress_bar.value =MAX_HEALTH
+	
+	
+func pickup_key(tag: String) -> void:
+	if not key_inventory.has(tag):
+		key_inventory[tag] = 0
+	key_inventory[tag] += 1
+	emit_signal("key_picked", tag)
+	# optionally show UI feedback, sound, etc.
+	print("Picked key:", tag, "Total:", key_inventory[tag])
+
+func has_key(tag: String) -> bool:
+	return key_inventory.get(tag, 0) > 0
+
+func use_key(tag: String) -> bool:
+	# returns true if used successfully
+	if has_key(tag):
+		key_inventory[tag] -= 1
+		if key_inventory[tag] <= 0:
+			key_inventory.erase(tag)
+		emit_signal("key_used", tag, key_inventory.get(tag, 0))
+		print("Used key:", tag, "Remaining:", key_inventory.get(tag, 0))
+		return true
+	return false
+
+func get_key_count(tag: String) -> int:
+	return key_inventory.get(tag, 0)
+	

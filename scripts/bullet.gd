@@ -1,5 +1,4 @@
 # Bullet
-
 extends Node2D
 
 const RANGE = 1000
