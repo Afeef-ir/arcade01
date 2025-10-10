@@ -141,7 +141,6 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 visibility_layer = 3
 position = Vector2(-4.90862e-07, 3.15554e-07)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_c4w8v")
 
 [node name="HurtAnim" type="AnimationPlayer" parent="."]
@@ -151,7 +150,6 @@ libraries = {
 
 [node name="PhysicsCol" type="CollisionShape2D" parent="."]
 position = Vector2(-0.294119, 0.588224)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5uy6h")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

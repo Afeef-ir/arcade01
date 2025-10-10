@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5hdfp3v7ciwl" path="res://images/Basic Door Kit/Door_Sliding.png" id="5_q5w8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hwww"]
-size = Vector2(10, 42.5)
+size = Vector2(13.3377, 44.146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1oua"]
-size = Vector2(7, 42)
+size = Vector2(7.8032, 44.2224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t58dd"]
 atlas = ExtResource("2_18pbm")
@@ -34,28 +34,37 @@ animations = [{
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_83dcw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="LockArea" type="Area2D" parent="."]
+position = Vector2(13, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, 8.75)
+[node name="LockTrigger" type="CollisionShape2D" parent="LockArea"]
 shape = SubResource("RectangleShape2D_6hwww")
 
-[node name="DoorCol" type="CollisionShape2D" parent="."]
-z_index = 1
-position = Vector2(16.5, 9)
+[node name="LockCol" type="CollisionShape2D" parent="."]
+position = Vector2(16.0109, 10.1112)
 shape = SubResource("RectangleShape2D_v1oua")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
-position = Vector2(20.5076, -3)
+[node name="LockSprite" type="AnimatedSprite2D" parent="."]
+z_index = 10
+position = Vector2(20.5, 0)
 sprite_frames = SubResource("SpriteFrames_4xadh")
 animation = &"Closed"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Frame" type="Sprite2D" parent="."]
+z_index = -2
 texture = ExtResource("4_18pbm")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -2)
+[node name="SlidingDoor" type="Sprite2D" parent="."]
+z_index = -2
 texture = ExtResource("5_q5w8r")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="LockSpritePosLeft" type="Marker2D" parent="."]
+position = Vector2(-19.5, 0)
+
+[node name="LockColPosLeft" type="Marker2D" parent="."]
+position = Vector2(-15, 10)
+
+[node name="LockAreaPos" type="Marker2D" parent="."]
+position = Vector2(-13, 10)
+
+[connection signal="body_entered" from="LockArea" to="." method="_on_lock_area_body_entered"]

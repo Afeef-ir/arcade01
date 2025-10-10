@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 	else: # gravity
 		velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at
 	
-	if is_on_wall():
+	if is_on_wall() and not is_on_floor():
 		if slide_audio.playing == false:
 			slide_audio.playing = true
 			slide_audio.volume_db = SLIDE_VOL
