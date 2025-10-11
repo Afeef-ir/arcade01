@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/forest/Bglayer1.png" id="11_ir15t"]
 [ext_resource type="PackedScene" uid="uid://dgrg0ex575qvw" path="res://scenes/bg_music.tscn" id="11_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://c7v5kcadeegw5" path="res://images/forest/bg-layer-2-full-alpha.png" id="11_kvuet"]
-[ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/Key.png" id="11_rysoc"]
+[ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/LockAndKey/Key.png" id="11_rysoc"]
 [ext_resource type="Texture2D" uid="uid://c3jb5hg6fpip3" path="res://images/props/spaceshipdamaged.png" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dylrlvnbiu0lb" path="res://scenes/checkpoint.tscn" id="12_kvuet"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xfduehkfhrnj"
-path="res://.godot/imported/Basic_Door_Pixel.png-5ac9c67331db907115da229b5d82b4dc.ctex"
+uid="uid://mh36wpquhc6u"
+path="res://.godot/imported/Key.png-79f5e2f7cc9e5d008b81352cbff32a23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Basic Door Kit/Basic_Door_Pixel.png"
-dest_files=["res://.godot/imported/Basic_Door_Pixel.png-5ac9c67331db907115da229b5d82b4dc.ctex"]
+source_file="res://images/LockAndKey/Key.png"
+dest_files=["res://.godot/imported/Key.png-79f5e2f7cc9e5d008b81352cbff32a23.ctex"]
 
 [params]
 

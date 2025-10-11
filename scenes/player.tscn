@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bj7335nue8u71"]
+[gd_scene load_steps=28 format=3 uid="uid://bj7335nue8u71"]
 
 [ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bg5qdvkik6qfk" path="res://images/player/PlayerSprites.png" id="3_o8o0x"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://d3g266atbo0vn" path="res://sound/jump.ogg" id="4_0jhex"]
 [ext_resource type="Texture2D" uid="uid://coa2bml5wcn6x" path="res://images/player/PlayerSlideSprite.png" id="4_fytk8"]
 [ext_resource type="AudioStream" uid="uid://bqtnvyuig7ool" path="res://sound/step.ogg" id="5_0jhex"]
+[ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="7_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://cxbhj2yixxxyg" path="res://sound/Playerdamage.ogg" id="7_nxd4c"]
 [ext_resource type="AudioStream" uid="uid://pivrdd8fgml8" path="res://sound/thrust.ogg" id="11_clacw"]
 [ext_resource type="AudioStream" uid="uid://bajinc2822jho" path="res://sound/PlayerDeath.ogg" id="11_fytk8"]
@@ -169,6 +170,7 @@ disabled = true
 position = Vector2(-1.90735e-06, -20)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_clacw")
+animation = &"slide"
 
 [node name="Gun" parent="." groups=["Player"] instance=ExtResource("3_qhqgy")]
 z_index = -1
@@ -216,19 +218,28 @@ offset_right = 402.0
 offset_bottom = 77.0
 expand_mode = 1
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="KeyContainer" type="HBoxContainer" parent="CanvasLayer"]
+clip_contents = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -48.0
+offset_right = 940.0
+offset_bottom = -16.0
+grow_vertical = 0
 
-[node name="KeyContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 570.974
-offset_right = 80.0
-offset_bottom = 610.974
-scale = Vector2(2, 2)
+[node name="HBoxContainer" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
+layout_mode = 2
+
+[node name="HBoxContainer2" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
+layout_mode = 2
+
+[node name="HBoxContainer3" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
+layout_mode = 2
+
+[node name="HBoxContainer4" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
+layout_mode = 2
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
@@ -257,7 +268,7 @@ stream = ExtResource("11_clacw")
 
 [node name="SlideSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_jj7ip")
-volume_db = 5.0
+volume_db = 10.0
 parameters/looping = true
 
 [node name="GunLocationDefault" type="Marker2D" parent="."]

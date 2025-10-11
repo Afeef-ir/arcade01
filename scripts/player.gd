@@ -1,25 +1,33 @@
 extends CharacterBody2D
 
-const TINY_NUMBER = 1.0
+enum State
+{
+	Idle,
+	Walking,
+	Falling,
+	Sliding
+}
+
+const TINY_NUMBER = 0.1
 const SPEED:float = 115.0
-const JUMP_VELOCITY:float = -360.0
-const WALL_VELOCITY = Vector2(300.0, -300.0)
-const WALL_FACTOR:float = 0.25
+const JUMP_VELOCITY = Vector2(0.0, -360.0)
+const JUMP_OFFSET:float = -5.0
+const WALL_OFFSET:float = 20.0
+const WALL_VELOCITY = Vector2(270.0, -250.0)
+const WALL_SPEED_FACTOR:float = 0.75
 const GRAVITY_SCALE:float = 0.7
 const MAX_JUMPS:int = 2
 const SPRINT_SCALE:float = 2.0
 const NO_INPUT_TIME = 0.3
 const MAX_HEALTH = 100
 const KNOCKBACK_TIME = 0.25
-const FOOTSTEP_VOL = 5.0 * 2
-const SLIDE_VOL = 1.0
 const vfx = preload("res://scenes/burst.tscn")
-const KEY_UI_SCENE := preload("res://KeyUI.tscn")
+const KEY_UI_SCENE := preload("res://scenes/KeyUI.tscn")
 
 signal key_picked(tag)
 signal key_used(tag, remaining)
 
-@onready var keys_container: HBoxContainer = $CanvasLayer/Control/KeyContainer
+@onready var keys_container: HBoxContainer = $CanvasLayer/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
 @onready var slide_col: CollisionShape2D = $SlideCol
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -43,7 +51,6 @@ signal key_used(tag, remaining)
 @onready var kill_zone: Area2D = $"../KillZone"
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 
-
 var current_health = MAX_HEALTH
 var knockback_force = Vector2.ZERO
 var knockback_upward: float = 200
@@ -56,6 +63,7 @@ var default_col_shape:Shape2D
 var spawn_position = Vector2.ZERO
 var key_inventory := {} 
 var collected_keys: Array[String] = []
+var current_state: State
 
 func pause():
 	is_paused = true
@@ -70,110 +78,154 @@ func _ready() -> void:
 	var gradient_texture = GradientTexture2D.new()
 	gradient_texture.gradient = grad
 	texture_rect.texture = gradient_texture
-	remove_from_group("Key")
+	
 	floor_max_angle = deg_to_rad(45)
-	floor_snap_length= 8
+	floor_snap_length = 8
+	wall_min_slide_angle = 9
+	
 	default_col_pos = default_col.position
 	default_col_shape = default_col.shape
 	spawn_position = global_position
 	
-func _physics_process(delta: float) -> void:
-	wall_min_slide_angle = 9
+	for child in keys_container.get_children():
+		keys_container.remove_child(child)
+		
+	enter_state(State.Idle) # initialize
+		
+func apply_gravity(delta:float):
+	velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at
+	
+func enter_state(new_state: State):
+	exit_state(current_state)
+	current_state = new_state
+	print("entered state:" + State.keys()[current_state])	
+	match current_state:
+		State.Idle:
+			jumps_left = MAX_JUMPS
+			velocity = Vector2.ZERO
+			play_sprite_anim("default")
+		State.Walking:
+			footstep_audio.playing = true
+		State.Falling:
+			play_sprite_anim("jump")
+		State.Sliding:
+			jumps_left = MAX_JUMPS
+			default_col.shape = slide_col.shape
+			default_col.position = slide_col.position
+			slide_audio.playing = true
+			play_sprite_anim("slide")
+		
+func exit_state(old_state: State):
+	match old_state:
+		State.Idle:
+			pass
+		State.Walking:
+			footstep_audio.playing = false
+		State.Falling:
+			pass
+		State.Sliding:
+			reset_collision()
+			slide_audio.playing = false
+			
+func try_jump(jump_velocity:Vector2) -> bool:
+	if Input.is_action_just_pressed("jump") and jumps_left > 0:
+		jump_audio.play()
+		velocity += jump_velocity
+		position.y += JUMP_OFFSET
+		jumps_left -= 1
+		enter_state(State.Falling)
+		return true
+	return false
+	
+func _physics_process(delta: float) -> void:	
 	if is_paused:
+		footstep_audio.playing = false
+		slide_audio.playing = false
 		return
 		
-	if is_on_floor() and velocity.x !=0:
-		footstep_audio.volume_db=FOOTSTEP_VOL 
-		if not Input.is_action_just_pressed("fast"):
-			if footstep_audio.playing == false:
-				footstep_audio.playing = true
-	else:
-		footstep_audio.playing = false
 	if is_knocked_back:
 		velocity = knockback_force
 		move_and_slide()
 		return
-
-	if is_on_floor():
-		reset_collision()
-		jumps_left = MAX_JUMPS
-	else: # gravity
-		velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at
 	
-	if is_on_wall() and not is_on_floor():
-		if slide_audio.playing == false:
-			slide_audio.playing = true
-			slide_audio.volume_db = SLIDE_VOL
-			
-		if Input.is_action_just_pressed("jump"):
-			play_sprite_anim("jump")
-			set_horizontal_flip(velocity.x < 0)
-			jump_audio.play()
-			velocity = WALL_VELOCITY.x * get_wall_normal()
-			velocity.y = WALL_VELOCITY.y
-			no_input_timer = NO_INPUT_TIME
-			reset_collision()
-		else:
-			play_sprite_anim("slide")
-			set_horizontal_flip(get_wall_normal().x > 0)
-			velocity.y *= WALL_FACTOR
-			default_col.shape = slide_col.shape
-			default_col.position = slide_col.position
-				
-	elif no_input_timer > 0: # no-input for a bit when wall jumping
-		no_input_timer -= delta
+	no_input_timer -= delta
+	if no_input_timer > 0:
+		move_and_slide()
+		return
 		
-	else: # regular movement
-		slide_audio.volume_db = 0
-		slide_audio.playing = false
-		var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
-		
-		if horizontal_input:
-			velocity.x = horizontal_input * SPEED # -SPEED to SPEED
-			set_horizontal_flip(velocity.x < 0)
+	var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
+	
+	# update state
+	match current_state:
+		State.Idle:
 			if is_on_floor():
-				if Input.is_action_pressed("fast"):
-					velocity.x *= SPRINT_SCALE
-					footstep_audio.pitch_scale = 1.5
+				if horizontal_input:
+					enter_state(State.Walking)
 				else:
-					footstep_audio.pitch_scale = 1
-				
-				var horizontal_speed = abs(velocity.x)
-				
-				if horizontal_speed > 0:
-					const FEEDBACK_SPEED_FACTOR : float = 0.01
-					#footstep_audio.volume_db = FOOTSTEP_VOL * horizontal_speed * FEEDBACK_SPEED_FACTOR
-					play_sprite_anim("walk", horizontal_speed * FEEDBACK_SPEED_FACTOR)				
-		else:
+					try_jump(JUMP_VELOCITY)
+			else:	
+				enter_state(State.Falling)
+
+		State.Walking:
+			if is_on_floor(): # update
+				if not try_jump(JUMP_VELOCITY):
+					if horizontal_input: # ground control
+						velocity.x = horizontal_input * SPEED # -SPEED to SPEED
+						set_horizontal_flip(velocity.x < 0) # set flip only on input
+						
+						if Input.is_action_pressed("fast"):
+							velocity.x *= SPRINT_SCALE
+						
+						var horizontal_speed = abs(velocity.x)
+						const SPEED_FEEDBACK_FACTOR = 0.01
+						footstep_audio.pitch_scale = horizontal_speed * SPEED_FEEDBACK_FACTOR
+						play_sprite_anim("walk", horizontal_speed * SPEED_FEEDBACK_FACTOR)
+					else:
+						enter_state(State.Idle)
+			elif not is_on_wall():
+				enter_state(State.Falling)
+
+		State.Falling:
 			if is_on_floor():
-				pass
-			velocity.x = 0.0
-			
-		if is_on_floor() and abs(velocity.x) < TINY_NUMBER:
-			play_sprite_anim("default")
-			
-		if Input.is_action_just_pressed("jump") and jumps_left > 0:
-			#resetAudio()
-			footstep_audio.volume_db = 0.0
-			if jumps_left > 1: # not the final jump
-				play_sprite_anim("jump")
-				jump_audio.play()
-			else: # thruster
-				play_sprite_anim("thrust")
-				var _particle = vfx.instantiate()
-				_particle.self_modulate = "yellow"
-				_particle.emitting = true
-				_particle.amount = 75
-				_particle.lifetime = 0.5
-				_particle.explosiveness = 0
-				_particle.modulate.a =12
-				get_tree().current_scene.add_child(_particle)
-				_particle.global_position = thrust_location.global_position
-				_particle.global_rotation = global_rotation
-				thrust_audio.play()
-			velocity.y = JUMP_VELOCITY
-			jumps_left -= 1
-				
+				enter_state(State.Idle)
+			elif is_on_wall_only():
+				enter_state(State.Sliding)
+			else: # update
+				apply_gravity(delta)
+				if horizontal_input: # air or ground control
+					velocity.x = horizontal_input * SPEED # -SPEED to SPEED
+					set_horizontal_flip(velocity.x < 0) # set flip only on input
+					
+				if try_jump(JUMP_VELOCITY):
+					play_sprite_anim("thrust")
+					var _particle = vfx.instantiate()
+					_particle.self_modulate = "yellow"
+					_particle.emitting = true
+					_particle.amount = 75
+					_particle.lifetime = 0.5
+					_particle.explosiveness = 0
+					_particle.modulate.a =12
+					get_tree().current_scene.add_child(_particle)
+					_particle.global_position = thrust_location.global_position
+					_particle.global_rotation = global_rotation
+					thrust_audio.play()
+
+		State.Sliding:
+			if is_on_floor():
+				position += WALL_OFFSET * get_wall_normal()
+				enter_state(State.Idle)
+			elif not is_on_wall():
+				enter_state(State.Falling)
+			else: # update
+				set_horizontal_flip(get_wall_normal().x > 0)
+				var jump_velocity = WALL_VELOCITY.x * get_wall_normal()
+				jump_velocity.y = WALL_VELOCITY.y
+				if not try_jump(jump_velocity):
+					apply_gravity(delta)
+					velocity.y *= WALL_SPEED_FACTOR
+				else:
+					no_input_timer = NO_INPUT_TIME
+					
 	move_and_slide()
 
 func _on_death_timer_timeout() -> void:
@@ -207,7 +259,7 @@ func set_horizontal_flip(value:bool):
 		gun.position = gun_loc_default.position
 		
 func play_sprite_anim(anim_name:String, speed:float = 1.0, reverse:bool = false):
-	if player_sprite.get_animation() == anim_name and (player_sprite.is_playing() || abs(player_sprite.get_playing_speed() - speed) > TINY_NUMBER):
+	if player_sprite.get_animation() == anim_name and player_sprite.is_playing() and abs(player_sprite.get_playing_speed() - speed) < TINY_NUMBER:
 		return
 	player_sprite.speed_scale = speed
 	player_sprite.play(anim_name, 1.0, reverse)
@@ -285,8 +337,8 @@ func add_key(tag: String, icon: Texture2D) -> void:
 
 func _add_key_to_ui(tag: String, icon: Texture2D) -> void:
 	var key_ui = KEY_UI_SCENE.instantiate()
-	var icon_node: TextureRect = key_ui.get_node("HBoxContainer/Icon")
-	var label_node: Label = key_ui.get_node("HBoxContainer/TagLabel")
+	var icon_node: TextureRect = key_ui.get_node("Icon")
+	var label_node: Label = key_ui.get_node("TagLabel")
 	icon_node.texture = icon
 	label_node.text = tag
 
@@ -299,7 +351,7 @@ func _add_key_to_ui(tag: String, icon: Texture2D) -> void:
 	
 func remove_key_from_ui(tag: String):
 	for key_ui in keys_container.get_children():
-		var label_node = key_ui.get_node("HBoxContainer/TagLabel")
+		var label_node = key_ui.get_node("TagLabel")
 		if label_node.text.to_lower() == tag.to_lower():
 			key_ui.queue_free()
 			break

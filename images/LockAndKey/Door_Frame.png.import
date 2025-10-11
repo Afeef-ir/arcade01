@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs8t1x7qq0eeu"
-path="res://.godot/imported/Door_Frame.png-7908e95cf6b6001c036b7b0c9ff5e3d6.ctex"
+path="res://.godot/imported/Door_Frame.png-e87a77a6ae44b7521091ccbe9440f0d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Basic Door Kit/Door_Frame.png"
-dest_files=["res://.godot/imported/Door_Frame.png-7908e95cf6b6001c036b7b0c9ff5e3d6.ctex"]
+source_file="res://images/LockAndKey/Door_Frame.png"
+dest_files=["res://.godot/imported/Door_Frame.png-e87a77a6ae44b7521091ccbe9440f0d4.ctex"]
 
 [params]
 

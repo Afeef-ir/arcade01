@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqu6olbrai1hx"
-path="res://.godot/imported/Door_Lock_Left.png-e369c33ec032827d209c7289026596f3.ctex"
+uid="uid://yp8wpluw1usp"
+path="res://.godot/imported/Door_Lock_Right.png-97e87b8b3f868845efddb9e77b563fe4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Basic Door Kit/Door_Lock_Left.png"
-dest_files=["res://.godot/imported/Door_Lock_Left.png-e369c33ec032827d209c7289026596f3.ctex"]
+source_file="res://images/LockAndKey/Door_Lock_Right.png"
+dest_files=["res://.godot/imported/Door_Lock_Right.png-97e87b8b3f868845efddb9e77b563fe4.ctex"]
 
 [params]
 
