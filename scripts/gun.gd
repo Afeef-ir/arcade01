@@ -22,11 +22,12 @@ func _physics_process(delta: float) -> void:
 	var joy_axis_vert:float = Input.get_axis("aim up", "aim down")
 	var joy_aim:Vector2 = Vector2(-joy_axis_hor, joy_axis_vert)
 	
-	var mouse_pos:Vector2 = get_global_mouse_position()
+	var mouse_pos:Vector2 = DisplayServer.mouse_get_position()
 	if joy_aim.is_zero_approx():
 		var mouse_delta_pos = mouse_pos - last_mouse_pos
 		if not mouse_delta_pos.is_zero_approx():
-			aim_direction = mouse_pos - global_position
+			#print("mouse moved")
+			aim_direction = get_global_mouse_position() - global_position
 	else:
 		aim_direction = joy_aim
 		

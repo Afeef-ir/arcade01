@@ -13,10 +13,10 @@
 [ext_resource type="AudioStream" uid="uid://k72gs7ndvxxu" path="res://sound/sliding.ogg" id="12_jj7ip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(22, 40.4844)
+size = Vector2(4, 22.484)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
-size = Vector2(41.375, 34)
+size = Vector2(24.375, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fytk8"]
 atlas = ExtResource("3_o8o0x")
@@ -152,7 +152,7 @@ _data = {
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 z_as_relative = false
-collision_mask = 3
+safe_margin = 10.0
 script = ExtResource("1_g2els")
 
 [node name="PlayerCol" type="CollisionShape2D" parent="."]
@@ -188,7 +188,8 @@ parameters/looping = true
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player"]]
 z_index = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 2
 monitorable = false
 
 [node name="HurtCol" type="CollisionShape2D" parent="HurtBox"]

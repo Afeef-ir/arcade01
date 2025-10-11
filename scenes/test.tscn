@@ -8,7 +8,7 @@ size = Vector2(133, 518)
 [node name="Node2D" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_errlg")]
-position = Vector2(179, 454)
+position = Vector2(4021, 1878)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(2, 2)
@@ -40,7 +40,32 @@ position = Vector2(133, 518)
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
 offset_right = 133.0
 offset_bottom = 518.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(66.5, 259)
+shape = SubResource("RectangleShape2D_8uh7m")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(4180, 1486)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D4"]
+offset_right = 133.0
+offset_bottom = 518.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(66.5, 259)
+shape = SubResource("RectangleShape2D_8uh7m")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+position = Vector2(3986, 1924)
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D5"]
+offset_right = 133.0
+offset_bottom = 518.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
 position = Vector2(66.5, 259)
 shape = SubResource("RectangleShape2D_8uh7m")

@@ -1,7 +1,7 @@
 # Bullet
 extends Node2D
 
-const RANGE = 1000
+const RANGE = 500
 const TAKE_DAMAGE_FN = "take_damage"
 const DAMAGE:float = 20.0
 const burst_fx = preload("res://scenes/burst.tscn")

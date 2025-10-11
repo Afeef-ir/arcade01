@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://da0cdu5plnd28"]
+[gd_scene load_steps=11 format=3 uid="uid://da0cdu5plnd28"]
 
 [ext_resource type="Script" uid="uid://d0cnuuyqk3qhb" path="res://scripts/door.gd" id="1_83dcw"]
 [ext_resource type="Texture2D" uid="uid://yp8wpluw1usp" path="res://images/LockAndKey/Door_Lock_Right.png" id="2_18pbm"]
 [ext_resource type="Texture2D" uid="uid://bs8t1x7qq0eeu" path="res://images/LockAndKey/Door_Frame.png" id="4_18pbm"]
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="5_18pbm"]
 [ext_resource type="Texture2D" uid="uid://c5hdfp3v7ciwl" path="res://images/LockAndKey/Door_Sliding.png" id="5_q5w8r"]
+[ext_resource type="AudioStream" uid="uid://buuhm4reqi145" path="res://sound/unlock.wav" id="6_q5w8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hwww"]
 size = Vector2(13.3377, 44.146)
@@ -33,6 +34,7 @@ animations = [{
 }]
 
 [node name="Door" type="StaticBody2D"]
+collision_layer = 3
 script = ExtResource("1_83dcw")
 
 [node name="LockArea" type="Area2D" parent="."]
@@ -82,5 +84,9 @@ theme_override_font_sizes/font_size = 96
 text = "1A"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UnlockAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_q5w8r")
+volume_db = 12.0
 
 [connection signal="body_entered" from="LockArea" to="." method="_on_lock_area_body_entered"]

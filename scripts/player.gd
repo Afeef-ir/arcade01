@@ -21,6 +21,7 @@ const SPRINT_SCALE:float = 2.0
 const NO_INPUT_TIME = 0.3
 const MAX_HEALTH = 100
 const KNOCKBACK_TIME = 0.25
+const COLLISION_OFFSET = Vector2(0, -16)
 const vfx = preload("res://scenes/burst.tscn")
 const KEY_UI_SCENE := preload("res://scenes/KeyUI.tscn")
 
@@ -61,7 +62,6 @@ var no_input_timer:float = 0.0
 var default_col_pos:Vector2
 var default_col_shape:Shape2D
 var spawn_position = Vector2.ZERO
-var key_inventory := {} 
 var collected_keys: Array[String] = []
 var current_state: State
 
@@ -98,7 +98,7 @@ func apply_gravity(delta:float):
 func enter_state(new_state: State):
 	exit_state(current_state)
 	current_state = new_state
-	print("entered state:" + State.keys()[current_state])	
+	#print("entered state:" + State.keys()[current_state])	
 	match current_state:
 		State.Idle:
 			jumps_left = MAX_JUMPS
@@ -107,6 +107,7 @@ func enter_state(new_state: State):
 		State.Walking:
 			footstep_audio.playing = true
 		State.Falling:
+			jumps_left -= 1
 			play_sprite_anim("jump")
 		State.Sliding:
 			jumps_left = MAX_JUMPS
@@ -130,9 +131,8 @@ func exit_state(old_state: State):
 func try_jump(jump_velocity:Vector2) -> bool:
 	if Input.is_action_just_pressed("jump") and jumps_left > 0:
 		jump_audio.play()
-		velocity += jump_velocity
+		velocity = jump_velocity
 		position.y += JUMP_OFFSET
-		jumps_left -= 1
 		enter_state(State.Falling)
 		return true
 	return false
@@ -153,6 +153,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 		
+	#print(velocity)
 	var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
 	
 	# update state
@@ -177,7 +178,7 @@ func _physics_process(delta: float) -> void:
 							velocity.x *= SPRINT_SCALE
 						
 						var horizontal_speed = abs(velocity.x)
-						const SPEED_FEEDBACK_FACTOR = 0.01
+						const SPEED_FEEDBACK_FACTOR = 0.0075
 						footstep_audio.pitch_scale = horizontal_speed * SPEED_FEEDBACK_FACTOR
 						play_sprite_anim("walk", horizontal_speed * SPEED_FEEDBACK_FACTOR)
 					else:
@@ -191,12 +192,12 @@ func _physics_process(delta: float) -> void:
 			elif is_on_wall_only():
 				enter_state(State.Sliding)
 			else: # update
-				apply_gravity(delta)
 				if horizontal_input: # air or ground control
 					velocity.x = horizontal_input * SPEED # -SPEED to SPEED
 					set_horizontal_flip(velocity.x < 0) # set flip only on input
 					
 				if try_jump(JUMP_VELOCITY):
+					jumps_left -= 1
 					play_sprite_anim("thrust")
 					var _particle = vfx.instantiate()
 					_particle.self_modulate = "yellow"
@@ -204,27 +205,29 @@ func _physics_process(delta: float) -> void:
 					_particle.amount = 75
 					_particle.lifetime = 0.5
 					_particle.explosiveness = 0
-					_particle.modulate.a =12
+					_particle.modulate.a = 12
 					get_tree().current_scene.add_child(_particle)
 					_particle.global_position = thrust_location.global_position
 					_particle.global_rotation = global_rotation
 					thrust_audio.play()
+				else:
+					apply_gravity(delta)
 
 		State.Sliding:
 			if is_on_floor():
-				position += WALL_OFFSET * get_wall_normal()
+				position.x -= WALL_OFFSET * get_wall_normal().x
 				enter_state(State.Idle)
-			elif not is_on_wall():
-				enter_state(State.Falling)
-			else: # update
+			elif is_on_wall():
 				set_horizontal_flip(get_wall_normal().x > 0)
-				var jump_velocity = WALL_VELOCITY.x * get_wall_normal()
-				jump_velocity.y = WALL_VELOCITY.y
-				if not try_jump(jump_velocity):
+				var jump_velocity = WALL_VELOCITY.x * get_wall_normal() # right or left
+				jump_velocity.y = WALL_VELOCITY.y # always go up
+				if try_jump(jump_velocity):
+					no_input_timer = NO_INPUT_TIME
+				else:
 					apply_gravity(delta)
 					velocity.y *= WALL_SPEED_FACTOR
-				else:
-					no_input_timer = NO_INPUT_TIME
+			else:
+				enter_state(State.Falling)
 					
 	move_and_slide()
 
@@ -234,6 +237,7 @@ func _on_death_timer_timeout() -> void:
 func reset_collision() -> void:
 	default_col.shape = default_col_shape
 	default_col.position = default_col_pos
+	position += COLLISION_OFFSET  # shift because of collision size diff
 	
 func apply_knockback(from_position: Vector2, strength: float = 300, upward: float = -200) -> void:
 	if is_knocked_back:
@@ -301,39 +305,28 @@ func respawn():
 	set_physics_process(true)
 	progress_bar.value =MAX_HEALTH
 	
-	
-func pickup_key(tag: String) -> void:
-	if not key_inventory.has(tag):
-		key_inventory[tag] = 0
-	key_inventory[tag] += 1
-	emit_signal("key_picked", tag)
-	# optionally show UI feedback, sound, etc.
-	print("Picked key:", tag, "Total:", key_inventory[tag])
-
-func has_key(tag: String) -> bool:
-	return key_inventory.get(tag, 0) > 0
-
-func use_key(tag: String) -> bool:
-	# returns true if used successfully
-	if has_key(tag):
-		key_inventory[tag] -= 1
-		if key_inventory[tag] <= 0:
-			key_inventory.erase(tag)
-		emit_signal("key_used", tag, key_inventory.get(tag, 0))
-		print("Used key:", tag, "Remaining:", key_inventory.get(tag, 0))
-		return true
-	return false
-
-func get_key_count(tag: String) -> int:
-	return key_inventory.get(tag, 0)
-	
-	
-func add_key(tag: String, icon: Texture2D) -> void:
+func pickup_key(tag: String, icon: Texture2D) -> void:
 	if tag in collected_keys:
 		return
+		
 	collected_keys.append(tag)
 	_add_key_to_ui(tag, icon)
+		
+	emit_signal("key_picked", tag)
+	print("Picked key:", tag)
 
+func has_key(tag: String) -> bool:
+	return collected_keys.find(tag) != -1
+
+func use_key(tag: String) -> bool:
+	if has_key(tag):
+		collected_keys.erase(tag)
+		remove_key_from_ui(tag)
+		emit_signal("key_used", tag)
+		print("Used key:", tag)
+		return true
+		
+	return false
 
 func _add_key_to_ui(tag: String, icon: Texture2D) -> void:
 	var key_ui = KEY_UI_SCENE.instantiate()

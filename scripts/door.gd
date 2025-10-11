@@ -8,12 +8,12 @@ extends StaticBody2D
 @onready var lock_area_pos: Marker2D = $LockAreaPos
 @onready var lock_area: Area2D = $LockArea
 @onready var lock_col: CollisionShape2D = $LockCol
+@onready var open_audio: AudioStreamPlayer2D = $UnlockAudio
 
 @export var is_unlocked : bool = false
 @export var is_left : bool = false
 @export var required_key_tag: String = "red"
 @export var consume_key: bool = true
-var player_in_range = null
 
 func _ready():
 	label.text = required_key_tag
@@ -26,19 +26,19 @@ func _ready():
 		_open()
 		
 func attempt_open(player) -> void:
-	player_in_range = player
 	if not player or not player.has_method("has_key"):
 		return
+		
 	if player.has_key(required_key_tag):
 		# open the door
 		_open()
-		player.remove_key_from_ui(required_key_tag)
 		if consume_key:
 			player.use_key(required_key_tag)
 	else:
 		_deny_open()
 
 func _open():
+	open_audio.play()
 	print("Door opened with key:", required_key_tag)
 	if has_node("AnimationPlayer"):
 		pass
@@ -56,7 +56,5 @@ func _deny_open():
 
 func _on_lock_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):
-		player_in_range = body
-		attempt_open(player_in_range)
-		
-		
+		attempt_open(body)
+	

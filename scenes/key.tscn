@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://t5r11wr7dmv5"]
+[gd_scene load_steps=5 format=3 uid="uid://t5r11wr7dmv5"]
 
 [ext_resource type="Script" uid="uid://btuqxricta3u0" path="res://scripts/key.gd" id="1_fttkb"]
 [ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/LockAndKey/Key.png" id="2_fttkb"]
+[ext_resource type="AudioStream" uid="uid://7pw2ojihhvsg" path="res://sound/Pickup.wav" id="3_wy8tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0yg6"]
 size = Vector2(26, 13)
@@ -18,5 +19,9 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_p0yg6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="KeyCollect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wy8tx")
+volume_db = 24.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
