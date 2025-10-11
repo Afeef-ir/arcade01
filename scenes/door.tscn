@@ -67,4 +67,12 @@ position = Vector2(-15, 10)
 [node name="LockAreaPos" type="Marker2D" parent="."]
 position = Vector2(-13, 10)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -1.0
+offset_right = 32.0
+offset_bottom = 157.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 116
+
 [connection signal="body_entered" from="LockArea" to="." method="_on_lock_area_body_entered"]

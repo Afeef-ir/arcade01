@@ -14,10 +14,12 @@ const KNOCKBACK_TIME = 0.25
 const FOOTSTEP_VOL = 5.0 * 2
 const SLIDE_VOL = 1.0
 const vfx = preload("res://scenes/burst.tscn")
+const KEY_UI_SCENE := preload("res://KeyUI.tscn")
 
 signal key_picked(tag)
 signal key_used(tag, remaining)
 
+@onready var keys_container: HBoxContainer = $CanvasLayer/Control/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
 @onready var slide_col: CollisionShape2D = $SlideCol
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -53,6 +55,7 @@ var default_col_pos:Vector2
 var default_col_shape:Shape2D
 var spawn_position = Vector2.ZERO
 var key_inventory := {} 
+var collected_keys: Array[String] = []
 
 func pause():
 	is_paused = true
@@ -271,4 +274,33 @@ func use_key(tag: String) -> bool:
 
 func get_key_count(tag: String) -> int:
 	return key_inventory.get(tag, 0)
+	
+	
+func add_key(tag: String, icon: Texture2D) -> void:
+	if tag in collected_keys:
+		return
+	collected_keys.append(tag)
+	_add_key_to_ui(tag, icon)
+
+
+func _add_key_to_ui(tag: String, icon: Texture2D) -> void:
+	var key_ui = KEY_UI_SCENE.instantiate()
+	var icon_node: TextureRect = key_ui.get_node("HBoxContainer/Icon")
+	var label_node: Label = key_ui.get_node("HBoxContainer/TagLabel")
+	icon_node.texture = icon
+	label_node.text = tag
+
+	keys_container.add_child(key_ui)
+	key_ui.modulate.a = 0
+	key_ui.position = Vector2(60 * (collected_keys.size() - 1), 0)
+
+	var tween = create_tween()
+	tween.tween_property(key_ui, "modulate:a", 1.0, 1.0).set_trans(Tween.TRANS_SINE)
+	
+func remove_key_from_ui(tag: String):
+	for key_ui in keys_container.get_children():
+		var label_node = key_ui.get_node("HBoxContainer/TagLabel")
+		if label_node.text.to_lower() == tag.to_lower():
+			key_ui.queue_free()
+			break
 	

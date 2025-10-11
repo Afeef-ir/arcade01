@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bx8jd8qln8wjo"]
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 58.08
+offset_top = 571.12
+offset_right = 158.08
+offset_bottom = 611.12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="TagLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2

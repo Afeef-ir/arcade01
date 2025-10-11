@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://k72gs7ndvxxu" path="res://sound/sliding.ogg" id="12_jj7ip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
-size = Vector2(22, 40)
+size = Vector2(22, 40.4844)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
 size = Vector2(41.375, 34)
@@ -155,7 +155,7 @@ collision_mask = 3
 script = ExtResource("1_g2els")
 
 [node name="PlayerCol" type="CollisionShape2D" parent="."]
-position = Vector2(4.17233e-07, -15)
+position = Vector2(4.17233e-07, -14.7578)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_u8vuu")
 debug_color = Color(0.257442, 0.612832, 0.471461, 0.42)
@@ -208,10 +208,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_xfidv")
 value = 100.0
 show_percentage = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 z_index = -1
 offset_left = 15.0
@@ -219,6 +215,20 @@ offset_top = 30.0
 offset_right = 402.0
 offset_bottom = 77.0
 expand_mode = 1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="KeyContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 570.974
+offset_right = 80.0
+offset_bottom = 610.974
+scale = Vector2(2, 2)
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
