@@ -49,7 +49,6 @@ signal key_used(tag, remaining)
 @onready var slide_pos_r: Marker2D = $SlidePositionR
 @onready var slide_pos_l: Marker2D = $SlidePositionL
 @onready var progress_bar: ProgressBar = %ProgressBar
-@onready var kill_zone: Area2D = $"../KillZone"
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
 
 var current_health = MAX_HEALTH
