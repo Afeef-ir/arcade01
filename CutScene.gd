@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Control2/Control/AnimationPlayer
+
 signal cutscene_finished
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
