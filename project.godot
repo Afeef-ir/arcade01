@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ProjectShiba"
-run/main_scene="uid://mojf4cvbkvav"
+run/main_scene="uid://brfhxrpwyg6ek"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,8 +21,6 @@ buses/default_bus_layout=""
 
 [display]
 
-window/size/viewport_width=1300
-window/size/viewport_height=500
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

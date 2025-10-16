@@ -1,7 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://brfhxrpwyg6ek"]
 
 [ext_resource type="Script" uid="uid://crbn1ctuc6s2u" path="res://CutScene.gd" id="1_leggj"]
-[ext_resource type="Script" uid="uid://ctaxau3hdrkl7" path="res://scenes/control.gd" id="2_815rf"]
 [ext_resource type="Texture2D" uid="uid://cqx8uk47lmbfu" path="res://images/CutScene/planet_jangroh/Background.jpg" id="2_leggj"]
 [ext_resource type="Texture2D" uid="uid://ba2xfhq84j7dx" path="res://images/CutScene/spaceship.png" id="3_leggj"]
 [ext_resource type="Texture2D" uid="uid://c5kyxwksuwbjn" path="res://images/CutScene/cockpit_space.png" id="4_leggj"]
@@ -9,145 +8,379 @@
 [ext_resource type="Texture2D" uid="uid://bmilnuhdm0usy" path="res://images/CutScene/planet_17.png" id="6_2jyaw"]
 [ext_resource type="Texture2D" uid="uid://cwllkwx1lywrj" path="res://images/CutScene/planet_jangroh/JANGROH.png" id="6_267lg"]
 [ext_resource type="Texture2D" uid="uid://dqtn8j0ebyo3m" path="res://images/CutScene/planet_13.png" id="8_267lg"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="9_815rf"]
 
-[sub_resource type="Animation" id="Animation_24831"]
-length = 5.0
+[sub_resource type="Animation" id="Animation_267lg"]
+resource_name = "CutScene"
+length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control2/Control/Ship:visible")
+tracks/0/path = NodePath("Control/Cutscene/Bg:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 5.01, 8, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 8.792), Vector2(4, 8.792), Vector2(15, 28.26), Vector2(12, 26.376), Vector2(4, 6.594)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Cutscene/Bg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 5.01, 8, 20, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(457.5, 396.667), Vector2(235.625, 396.667), Vector2(1387.5, 1547.78), Vector2(-677.5, -898.889), Vector2(407.5, 352.222), Vector2(319.375, 352.222)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Cutscene/Bg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.97, 5, 8, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.349066, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Cutscene/Ship:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 5.01, 5.2, 5.3, 5.43333, 5.56667, 5.7, 5.8, 5.92, 6.03333, 6.16667, 6.26667, 6.4, 6.56667, 6.73333, 6.86667, 7, 7.13333, 7.3, 7.46667, 7.6, 7.76667, 7.86667, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-838.75, 396.667), Vector2(875.625, 400), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Cutscene/Ship:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 5.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.523598]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Cutscene/Ship:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5, 5.01),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.875), Vector2(0.5, 0.875), Vector2(2, 3.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Cutscene/Cockpit:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 8, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/Cutscene/Cockpit:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(8.01),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/Cutscene/Cockpit:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(8.01, 8.09, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9.03333, 9.16667, 9.26667, 9.4, 9.53333, 9.66667, 9.8, 9.93333, 10.0667, 10.2, 10.3333, 10.4333, 10.5667, 10.6667, 10.8, 10.9333, 11.0667, 11.2333, 11.3667, 11.5, 11.6333, 11.7667, 11.9, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control/Cutscene/Ship:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Control/Cutscene/Bg:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 8, 20, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Control/Cutscene/Shoulder_view:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 12, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Control/Cutscene/Jungroh:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 20, 26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Control/Cutscene/Jungroh:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(20, 26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(701.875, 668.889), Vector2(551.875, 528.889)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Control/Cutscene/Jungroh:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Panel:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Panel/VBoxContainer/Label:text")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(12.2, 20.0667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Ship AI:", "JUNGROH"]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Panel/VBoxContainer/RichTextLabel:text")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(12.0333, 14.3, 17.7667, 20.055),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Distress call !!!", "Planet JUNGROH", "We should investigate", "Classification: Planet
+Mostly unhabitable"]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(12.01, 12.72, 14.2333, 14.3, 14.9667, 17.7333, 17.7667, 18.6, 19.9667, 20, 24.0667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_815rf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Cutscene/Bg:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(4, 8.792)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control2/Control/Bg:visible")
+tracks/1/path = NodePath("Control/Cutscene/Bg:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(457.5, 396.667)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control2/Control/Cockpit:visible")
+tracks/2/path = NodePath("Control/Cutscene/Bg:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Control2/Control/Shoulder_view:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control2/Control/Sprite2D5:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Control2/Control/Bg:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(576, 324)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Control2/Control/Planet17:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Control2/Control/Ship:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-143, 378)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Control2/Control/Ship:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.75, 0.801)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Control2/Control/Ship:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Cutscene/Ship:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-838.75, 396.667)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Cutscene/Ship:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Cutscene/Ship:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.875)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Cutscene/Cockpit:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/Cutscene/Cockpit:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 5.739)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/Cutscene/Cockpit:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(356.25, 361.111)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control/Cutscene/Ship:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Control2/Control/Cockpit:position")
+tracks/10/path = NodePath("Control/Cutscene/Bg:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(576, 307)]
+"update": 1,
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Control2/Control/Planet18:visible")
+tracks/11/path = NodePath("Control/Cutscene/Shoulder_view:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -159,7 +392,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Control2/Control/Jungroh:visible")
+tracks/12/path = NodePath("Control/Cutscene/Jungroh:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -171,289 +404,180 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Control2/Control/Bg:scale")
+tracks/13/path = NodePath("Control/Cutscene/Jungroh:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4.3287, 7.03125)]
+"values": [Vector2(701.875, 668.889)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Control2/Control/Cockpit:scale")
+tracks/14/path = NodePath("Control/Cutscene/Jungroh:rotation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4.13014, 7.89931)]
+"values": [0.0]
 }
-
-[sub_resource type="Animation" id="Animation_yue76"]
-resource_name = "new_animation"
-length = 12.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control2/Control/Ship:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 6.03333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control2/Control/Bg:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 6.06667, 10.0333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control2/Control/Cockpit:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 6.06667, 8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Control2/Control/Shoulder_view:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.6, 7.96667, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("Control2/Control/Sprite2D5:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Panel:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Control2/Control/Bg:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 4.52, 4.53333, 6.03333, 6.06667, 10.72),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(520, 497.778), Vector2(466.875, 491.111), Vector2(1679, 967), Vector2(-450, -323), Vector2(498.75, 510), Vector2(498.75, 510)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Control2/Control/Planet17:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 4.53333),
-"transitions": PackedFloat32Array(1, 1),
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Panel/VBoxContainer/Label:text")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": ["Ship AI:"]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Control2/Control/Ship:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(2.03333, 4.56667, 4.6, 4.76667, 4.85667, 4.97, 5.13333, 5.23, 5.36667, 5.46667, 5.56667, 5.66667, 5.76667, 5.86667, 5.96667, 6.06667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-143, 317), Vector2(1228.75, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667), Vector2(435, 232.222), Vector2(435.625, 396.667)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Control2/Control/Ship:scale")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 4.56667, 4.59),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.9), Vector2(0.5, 0.9), Vector2(2.5, 3.738)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Control2/Control/Ship:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 4.56667, 4.59),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 0.261799]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Control2/Control/Cockpit:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(6.06667, 6.19, 6.33333, 6.47, 6.6, 6.71, 6.82, 6.95, 7.09, 7.22, 7.32, 7.45, 7.59, 7.72, 7.86, 8.01),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667), Vector2(498.75, 511.111), Vector2(498.75, 496.667)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Control2/Control/Planet18:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 4.53333),
-"transitions": PackedFloat32Array(1, 1),
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Panel/VBoxContainer/RichTextLabel:text")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": ["Distress call !!!"]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Control2/Control/Jungroh:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 10.0667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Control2/Control/Bg:scale")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 4.52, 4.53333, 6.06667, 6.1, 10.72),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(4.59619, 9.29253), Vector2(4.59619, 9.29253), Vector2(14.727, 30), Vector2(14.727, 30), Vector2(5, 8.388), Vector2(5, 8.388)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Control2/Control/Cockpit:scale")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(6.09),
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Panel/VBoxContainer/RichTextLabel:visible_ratio")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(4.13014, 7.89931)]
+"values": [0.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fokry"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5p8cn"]
 _data = {
-&"RESET": SubResource("Animation_24831"),
-&"new_animation": SubResource("Animation_yue76")
+&"CutScene": SubResource("Animation_267lg"),
+&"RESET": SubResource("Animation_815rf")
 }
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(1.6, 0.9)
 transform = Transform2D(1.6, 0, 0, 0.9, 0, 0)
 follow_viewport_scale = 2.0
 script = ExtResource("1_leggj")
 
-[node name="Control2" type="Control" parent="."]
+[node name="Text" type="Node2D" parent="CanvasLayer"]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+clip_contents = true
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -599.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 721.0
+offset_bottom = 587.0
 
-[node name="Control" type="Control" parent="Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_815rf")
+[node name="Cutscene" type="Node2D" parent="CanvasLayer/Control"]
+position = Vector2(0, -75.5556)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control2/Control"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/Cutscene"]
 root_node = NodePath("../../..")
 libraries = {
-&"": SubResource("AnimationLibrary_fokry")
+&"": SubResource("AnimationLibrary_5p8cn")
 }
 
-[node name="Bg" type="Sprite2D" parent="Control2/Control"]
-position = Vector2(576, 324)
-scale = Vector2(4.3287, 7.03125)
+[node name="Bg" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+visible = false
+position = Vector2(457.5, 396.667)
+scale = Vector2(4, 8.792)
 texture = ExtResource("2_leggj")
 
-[node name="Ship" type="Sprite2D" parent="Control2/Control"]
+[node name="Ship" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
 visible = false
 z_index = 3
-position = Vector2(-143, 378)
-scale = Vector2(0.75, 0.801)
+position = Vector2(-838.75, 396.667)
+scale = Vector2(0.5, 0.875)
 texture = ExtResource("3_leggj")
 
-[node name="Cockpit" type="Sprite2D" parent="Control2/Control"]
-position = Vector2(576, 307)
-scale = Vector2(4.13014, 7.89931)
+[node name="Cockpit" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+visible = false
+position = Vector2(356.25, 361.111)
+scale = Vector2(3, 5.739)
 texture = ExtResource("4_leggj")
 
-[node name="Shoulder_view" type="Sprite2D" parent="Control2/Control"]
-position = Vector2(498.75, 509.433)
-scale = Vector2(4.31584, 8.08177)
+[node name="Shoulder_view" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+position = Vector2(360, 358.889)
+scale = Vector2(3.1, 5.805)
 texture = ExtResource("5_2jyaw")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Control2/Control"]
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
 visible = false
 texture = ExtResource("6_267lg")
 
-[node name="Planet17" type="Sprite2D" parent="Control2/Control"]
+[node name="Planet17" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
 visible = false
 position = Vector2(904, 489)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_2jyaw")
 
-[node name="Planet18" type="Sprite2D" parent="Control2/Control"]
+[node name="Planet18" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+visible = false
 position = Vector2(218, 115)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_267lg")
 
-[node name="Jungroh" type="Sprite2D" parent="Control2/Control"]
+[node name="Jungroh" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
 visible = false
-position = Vector2(943, 626)
-scale = Vector2(7, 7)
+position = Vector2(701.875, 668.889)
+scale = Vector2(4, 7)
 texture = ExtResource("6_267lg")
 
-[connection signal="animation_finished" from="Control2/Control/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 63.75
+offset_top = 586.667
+offset_right = 663.75
+offset_bottom = 706.667
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = -48.125
+offset_right = 551.875
+offset_bottom = 150.0
+scale = Vector2(1.5, 2)
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_815rf")
+text = "Ship AI:"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(600, 90)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_815rf")
+text = "Distress call !!!"
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
