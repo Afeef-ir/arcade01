@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brfhxrpwyg6ek"]
+[gd_scene load_steps=14 format=3 uid="uid://brfhxrpwyg6ek"]
 
 [ext_resource type="Script" uid="uid://crbn1ctuc6s2u" path="res://CutScene.gd" id="1_leggj"]
 [ext_resource type="Texture2D" uid="uid://cqx8uk47lmbfu" path="res://images/CutScene/planet_jangroh/Background.jpg" id="2_leggj"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="Animation" id="Animation_267lg"]
 resource_name = "CutScene"
-length = 30.0
+length = 43.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,7 +20,7 @@ tracks/0/path = NodePath("Control/Cutscene/Bg:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5, 5.01, 8, 20),
+"times": PackedFloat32Array(0, 5, 5.01, 8, 21.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(4, 8.792), Vector2(4, 8.792), Vector2(15, 28.26), Vector2(12, 26.376), Vector2(4, 6.594)]
@@ -32,7 +32,7 @@ tracks/1/path = NodePath("Control/Cutscene/Bg:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5, 5.01, 8, 20, 26),
+"times": PackedFloat32Array(0, 5, 5.01, 8, 21.5, 26),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(457.5, 396.667), Vector2(235.625, 396.667), Vector2(1387.5, 1547.78), Vector2(-677.5, -898.889), Vector2(407.5, 352.222), Vector2(319.375, 352.222)]
@@ -44,7 +44,7 @@ tracks/2/path = NodePath("Control/Cutscene/Bg:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.97, 5, 8, 20),
+"times": PackedFloat32Array(0, 4.97, 5, 8, 21.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.349066, 0.0, 0.0]
@@ -56,10 +56,10 @@ tracks/3/path = NodePath("Control/Cutscene/Ship:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5, 5.01, 5.2, 5.3, 5.43333, 5.56667, 5.7, 5.8, 5.92, 6.03333, 6.16667, 6.26667, 6.4, 6.56667, 6.73333, 6.86667, 7, 7.13333, 7.3, 7.46667, 7.6, 7.76667, 7.86667, 8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5.05, 5.25, 5.34, 5.48333, 5.61667, 5.74, 5.84, 5.96, 6.06333, 6.19667, 6.28667, 6.42, 6.57667, 6.73333, 6.86667, 7, 7.13333, 7.3, 7.46667, 7.6, 7.76667, 7.86667, 8, 31, 32.5333, 39.2667, 39.5867, 39.73, 39.8633, 39.9867, 40.0867, 40.2067, 40.31, 40.4433, 40.5333, 40.6667, 40.8233, 40.98, 41.1133, 41.2467, 41.38, 41.5467, 41.7133, 41.8467, 42.0133, 42.1133, 42.2467),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-838.75, 396.667), Vector2(875.625, 400), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252)]
+"values": [Vector2(-838.75, 396.667), Vector2(875.625, 400), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(-318.125, 171.111), Vector2(523.75, 396.667), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252), Vector2(399.375, 242), Vector2(399.375, 252)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -68,10 +68,10 @@ tracks/4/path = NodePath("Control/Cutscene/Ship:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5, 5.01),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 5, 5.01, 31),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 0.523598]
+"values": [0.0, 0.0, 0.523598, 0.366519]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -80,10 +80,10 @@ tracks/5/path = NodePath("Control/Cutscene/Ship:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 5, 5.01),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 5, 5.01, 31, 32.5333, 39.1333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.875), Vector2(0.5, 0.875), Vector2(2, 3.5)]
+"values": [Vector2(0.5, 0.875), Vector2(0.5, 0.875), Vector2(2, 3.5), Vector2(0.85, 1.488), Vector2(0.1, 0.175), Vector2(2, 3.5)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -92,10 +92,10 @@ tracks/6/path = NodePath("Control/Cutscene/Cockpit:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 8, 12),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 8, 12, 34.5333, 39.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [false, true, false, true, false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -116,10 +116,10 @@ tracks/8/path = NodePath("Control/Cutscene/Cockpit:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(8.01, 8.09, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9.03333, 9.16667, 9.26667, 9.4, 9.53333, 9.66667, 9.8, 9.93333, 10.0667, 10.2, 10.3333, 10.4333, 10.5667, 10.6667, 10.8, 10.9333, 11.0667, 11.2333, 11.3667, 11.5, 11.6333, 11.7667, 11.9, 12),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(8.01, 8.09, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9.03333, 9.16667, 9.26667, 9.4, 9.53333, 9.66667, 9.8, 9.93333, 10.0667, 10.2, 10.3333, 10.4333, 10.5667, 10.6667, 10.8, 10.9333, 11.0667, 11.2333, 11.3667, 11.5, 11.6333, 11.7667, 11.9, 12, 34.5667, 34.6667, 34.8, 34.9, 35.0333, 35.1333, 35.2333, 35.3667, 35.4667, 35.6, 35.7333, 35.8667, 36, 36.1, 36.2, 36.3333, 36.4667, 36.6, 36.7, 36.8, 36.9, 36.99, 37.0567, 37.19, 37.3233, 37.4567, 37.59, 37.7233, 37.8567, 38.0233, 38.18, 38.3133, 38.4133, 38.5467, 38.68, 38.8133, 38.9467, 39.0252),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778)]
+"values": [Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 357.778), Vector2(356.25, 367.778), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333), Vector2(356.25, 361.111), Vector2(357.5, 373.333)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -128,10 +128,10 @@ tracks/9/path = NodePath("Control/Cutscene/Ship:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 8, 30.9667, 32.5667, 39.3333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, false, true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -140,10 +140,10 @@ tracks/10/path = NodePath("Control/Cutscene/Bg:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 8, 20, 26),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 8, 21.5333, 26, 34.6667, 39.1333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true, false]
+"values": [true, false, true, true, false, false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -152,7 +152,7 @@ tracks/11/path = NodePath("Control/Cutscene/Shoulder_view:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 12, 20),
+"times": PackedFloat32Array(0, 12, 21.5667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -164,10 +164,10 @@ tracks/12/path = NodePath("Control/Cutscene/Jungroh:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 20, 26),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 21.5333, 26, 34.8333, 39.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [false, true, true, false, true]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -176,10 +176,10 @@ tracks/13/path = NodePath("Control/Cutscene/Jungroh:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(20, 26),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(20, 39.2333, 39.3, 41.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(701.875, 668.889), Vector2(551.875, 528.889)]
+"values": [Vector2(701.875, 668.889), Vector2(701.875, 668.889), Vector2(1715.63, 3252.22), Vector2(-959.375, -2525.56)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -200,10 +200,10 @@ tracks/15/path = NodePath("Panel:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 12),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 12, 21, 24.5333, 32.7, 34.1, 35.6333, 38.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, false, true, true, false, true, false]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -212,10 +212,10 @@ tracks/16/path = NodePath("Panel/VBoxContainer/Label:text")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(12.2, 20.0667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(12.2, 24.5333, 35.4667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": ["Ship AI:", "JUNGROH"]
+"values": ["Ship AI:", "JANGROH", "Ship AI:"]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
@@ -224,11 +224,14 @@ tracks/17/path = NodePath("Panel/VBoxContainer/RichTextLabel:text")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(12.0333, 14.3, 17.7667, 20.055),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(12.0333, 14.3, 17.8, 24.5333, 35.4667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": ["Distress call !!!", "Planet JUNGROH", "We should investigate", "Classification: Planet
-Mostly unhabitable"]
+"values": ["Distress call !!!", "Planet JANGROH", "We should investigatee", "Classification: Planet 
+Gravity : 0.7G
+Info : Mostly unhabitable
+", "Entering Atmosphere
+"]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
@@ -237,10 +240,106 @@ tracks/18/path = NodePath("Panel/VBoxContainer/RichTextLabel:visible_ratio")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(12.01, 12.72, 14.2333, 14.3, 14.9667, 17.7333, 17.7667, 18.6, 19.9667, 20, 24.0667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(12.01, 12.72, 14.2333, 14.3, 14.9667, 17.7333, 17.8, 19.5, 24.4, 24.5, 28.0333, 35.3333, 35.4, 36.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Panel:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 32.5333, 34.1, 34.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Control/Cutscene/Planet17:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 4.98),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Control/Cutscene/Planet18:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 4.97),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Control/Cutscene/Jungroh:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(21.5333, 22.6333, 32.7, 34.8667, 39.1667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Control/Cutscene/Cockpit:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0.0666667, 34.6, 35.6333, 38.6667, 39.2667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Control/Cutscene/Bg:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 21.5333, 23.0333, 33, 34.6, 34.7333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Control/Cutscene/Shoulder_view:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(20.02, 21.48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Control/Cutscene/Jungroh:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(21.345, 39.2667, 39.34),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, 10.5), Vector2(6, 10.5), Vector2(40, 70)]
 }
 
 [sub_resource type="Animation" id="Animation_815rf"]
@@ -473,111 +572,223 @@ tracks/18/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Panel:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Control/Cutscene/Planet17:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Control/Cutscene/Planet18:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Control/Cutscene/Jungroh:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Control/Cutscene/Cockpit:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Control/Cutscene/Bg:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Control/Cutscene/Shoulder_view:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Control/Cutscene/Jungroh:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 70)]
+}
+
+[sub_resource type="Animation" id="Animation_5p8cn"]
+resource_name = "blank"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5p8cn"]
 _data = {
 &"CutScene": SubResource("Animation_267lg"),
-&"RESET": SubResource("Animation_815rf")
+&"RESET": SubResource("Animation_815rf"),
+&"blank": SubResource("Animation_5p8cn")
 }
 
-[node name="Node2D" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer"]
 scale = Vector2(1.6, 0.9)
 transform = Transform2D(1.6, 0, 0, 0.9, 0, 0)
 follow_viewport_scale = 2.0
 script = ExtResource("1_leggj")
 
-[node name="Text" type="Node2D" parent="CanvasLayer"]
+[node name="Text" type="Node2D" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="."]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 721.0
-offset_bottom = 587.0
+offset_bottom = 522.0
 
-[node name="Cutscene" type="Node2D" parent="CanvasLayer/Control"]
+[node name="Cutscene" type="Node2D" parent="Control"]
 position = Vector2(0, -75.5556)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/Cutscene"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Cutscene"]
 root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_5p8cn")
 }
+playback_auto_capture = false
 
-[node name="Bg" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Bg" type="Sprite2D" parent="Control/Cutscene"]
 visible = false
 position = Vector2(457.5, 396.667)
 scale = Vector2(4, 8.792)
 texture = ExtResource("2_leggj")
 
-[node name="Ship" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Ship" type="Sprite2D" parent="Control/Cutscene"]
 visible = false
 z_index = 3
 position = Vector2(-838.75, 396.667)
 scale = Vector2(0.5, 0.875)
 texture = ExtResource("3_leggj")
 
-[node name="Cockpit" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Cockpit" type="Sprite2D" parent="Control/Cutscene"]
 visible = false
 position = Vector2(356.25, 361.111)
 scale = Vector2(3, 5.739)
 texture = ExtResource("4_leggj")
 
-[node name="Shoulder_view" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Shoulder_view" type="Sprite2D" parent="Control/Cutscene"]
 position = Vector2(360, 358.889)
 scale = Vector2(3.1, 5.805)
 texture = ExtResource("5_2jyaw")
 
-[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Sprite2D5" type="Sprite2D" parent="Control/Cutscene"]
 visible = false
 texture = ExtResource("6_267lg")
 
-[node name="Planet17" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Planet17" type="Sprite2D" parent="Control/Cutscene"]
 visible = false
-position = Vector2(904, 489)
-scale = Vector2(0.25, 0.25)
+position = Vector2(547.5, 224.444)
+scale = Vector2(0.25, 0.4)
 texture = ExtResource("6_2jyaw")
 
-[node name="Planet18" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
-visible = false
-position = Vector2(218, 115)
-scale = Vector2(0.25, 0.25)
+[node name="Planet18" type="Sprite2D" parent="Control/Cutscene"]
+position = Vector2(115, 506.667)
+scale = Vector2(0.2, 0.35)
 texture = ExtResource("8_267lg")
 
-[node name="Jungroh" type="Sprite2D" parent="CanvasLayer/Control/Cutscene"]
+[node name="Jungroh" type="Sprite2D" parent="Control/Cutscene"]
 visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(701.875, 668.889)
-scale = Vector2(4, 7)
+scale = Vector2(40, 70)
 texture = ExtResource("6_267lg")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="."]
 visible = false
-offset_left = 63.75
-offset_top = 586.667
-offset_right = 663.75
-offset_bottom = 706.667
+offset_left = 50.625
+offset_top = 543.333
+offset_right = 650.625
+offset_bottom = 663.333
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
 offset_left = -48.125
 offset_right = 551.875
 offset_bottom = 150.0
 scale = Vector2(1.5, 2)
+theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_815rf")
 text = "Ship AI:"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(600, 90)
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(600, 53.225)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("9_815rf")
 text = "Distress call !!!"
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 194.375
+offset_top = 296.667
+offset_right = 861.375
+offset_bottom = 772.667
+scale = Vector2(1, 1.5)
+theme_override_fonts/font = ExtResource("9_815rf")
+text = "Press Enter to start"
+
+[connection signal="animation_finished" from="Control/Cutscene/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
