@@ -28,6 +28,6 @@ func _find_anim_player(node: Node) -> AnimationPlayer:
 			return f
 	return null
 
-func _on_cutscene_finished(anim_name: StringName) -> void:
+func _on_cutscene_finished(_anim_name: StringName) -> void:
 	print("Cutscene finished")
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
