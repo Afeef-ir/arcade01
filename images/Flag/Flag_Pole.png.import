@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwllkwx1lywrj"
-path="res://.godot/imported/JANGROH.png-01a4a24a47e4b2d2e8b5110de358ed43.ctex"
+uid="uid://loc7ylsxjmr7"
+path="res://.godot/imported/Flag_Pole.png-90360a715068fdc9361eaaaa8e46aadb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/CutScene/planet_jangroh/JANGROH.png"
-dest_files=["res://.godot/imported/JANGROH.png-01a4a24a47e4b2d2e8b5110de358ed43.ctex"]
+source_file="res://images/Flag/Flag_Pole.png"
+dest_files=["res://.godot/imported/Flag_Pole.png-90360a715068fdc9361eaaaa8e46aadb.ctex"]
 
 [params]
 

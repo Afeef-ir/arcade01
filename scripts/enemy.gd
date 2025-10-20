@@ -21,10 +21,35 @@ var is_paused = false
 var player: CharacterBody2D = null
 var patrol_target : Vector2
 var patrol_index : int = 0
+var current_state : State
+
+enum State 
+{
+	Patrol,
+	Chase
+}
 
 func _ready() -> void:
 	patrol_target = patrol_points[patrol_index]
+
 	
+	
+	
+func enter_state(new_state: State):
+	current_state = new_state
+	match current_state:
+		State.Patrol:
+			var difference : Vector2 = patrol_target - global_position
+	#print(difference.length_squared())
+			if difference.length_squared() > ERROR_SQ:
+				var patrol_velocity = difference.normalized() * speed
+				velocity.x = patrol_velocity.x
+				sprite.flip_h = velocity.x >0
+			else:
+				patrol_index = (patrol_index+1) % patrol_points.size()
+				patrol_target = patrol_points[patrol_index]
+		State.Chase:
+			pass
 func _physics_process(delta: float) -> void:
 	if is_paused:
 		return  # Skip processing while paused

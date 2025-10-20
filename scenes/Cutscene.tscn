@@ -175,7 +175,7 @@ tracks/12/path = NodePath("Panel/VBoxContainer/RichTextLabel:text")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(12.0333, 14.1667, 17.8667, 24.5333, 35.4667, 46.7333, 50.77, 56.1667, 59.5217, 66.1367),
+"times": PackedFloat32Array(12.0333, 14.2667, 17.8667, 24.5333, 35.4667, 46.7333, 50.77, 56.1667, 59.5217, 66.1367),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["Incoming Distress Signal !!!", "Source: JANGROH", "We should investigate...", "Classification: Planet 
@@ -197,7 +197,7 @@ tracks/13/path = NodePath("Panel/VBoxContainer/RichTextLabel:visible_ratio")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(12.01, 12.72, 14.2333, 14.3, 14.9667, 17.7333, 17.8, 19.5, 24.4, 24.5, 28.0333, 35.3333, 35.4, 36.6, 46.6667, 46.7667, 48.01, 50.7367, 50.77, 52.07, 56.0667, 56.1667, 56.84, 59.5317, 59.5983, 60.4983, 66.1034, 66.1667, 66.7367, 66.98, 67.9267),
+"times": PackedFloat32Array(12.01, 12.72, 14.2333, 14.2351, 14.9667, 17.7333, 17.8, 19.5, 24.4, 24.5, 28.0333, 35.3333, 35.4, 36.6, 46.6667, 46.7667, 48.01, 50.7367, 50.77, 52.07, 56.0667, 56.1667, 56.84, 59.5317, 59.5983, 60.4983, 66.1034, 66.1667, 66.7367, 66.98, 67.9267),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.401, 0.401, 1.0]

@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://buuhm4reqi145" path="res://sound/unlock.wav" id="6_q5w8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hwww"]
-size = Vector2(13.3377, 44.146)
+size = Vector2(23.6688, 44.146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1oua"]
 size = Vector2(7.8032, 44.2224)
@@ -41,6 +41,7 @@ script = ExtResource("1_83dcw")
 position = Vector2(13, 10)
 
 [node name="LockTrigger" type="CollisionShape2D" parent="LockArea"]
+position = Vector2(-5.16558, 0)
 shape = SubResource("RectangleShape2D_6hwww")
 
 [node name="LockCol" type="CollisionShape2D" parent="."]
@@ -68,7 +69,7 @@ position = Vector2(-19.5, 0)
 position = Vector2(-15, 10)
 
 [node name="LockAreaPos" type="Marker2D" parent="."]
-position = Vector2(-13, 10)
+position = Vector2(-2, 10)
 
 [node name="Label" type="Label" parent="."]
 z_index = -2

@@ -38,11 +38,16 @@ func attempt_open(player) -> void:
 		_deny_open()
 
 func _open():
+	if is_unlocked:
+		return
+		
+	is_unlocked = true
 	open_audio.play()
 	print("Door opened with key:", required_key_tag)
 	if has_node("AnimationPlayer"):
 		pass
-	lock_area.monitoring = false
+	#lock_area.monitoring = false
+	call_deferred("disable_monitoring")
 	lock_col.disabled = true
 	lock_col.queue_free()
 	lock_area.queue_free()
@@ -58,3 +63,5 @@ func _on_lock_area_body_entered(body) -> void:
 	if body.is_in_group("Player"):
 		attempt_open(body)
 	
+func disable_monitoring():
+	lock_area.monitoring = false

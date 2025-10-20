@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmj8tm3ogt6vf"]
+[gd_scene load_steps=19 format=3 uid="uid://bmj8tm3ogt6vf"]
 
 [ext_resource type="Script" uid="uid://b1l1a78477n1x" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="AudioStream" uid="uid://6vvnikpcrpwm" path="res://sound/EnemyDeath.ogg" id="2_5uy6h"]
@@ -106,6 +106,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
 size = Vector2(17.0588, 23.5294)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
+size = Vector2(180.588, 117.059)
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(1.7, 1.7)
 collision_layer = 2
@@ -151,6 +154,12 @@ libraries = {
 [node name="PhysicsCol" type="CollisionShape2D" parent="."]
 position = Vector2(-0.294119, 0.588224)
 shape = SubResource("RectangleShape2D_5uy6h")
+
+[node name="Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0.294115, -45)
+shape = SubResource("RectangleShape2D_xwavj")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]

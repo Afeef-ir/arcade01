@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqx8uk47lmbfu"
-path="res://.godot/imported/Background.jpg-1169c0d1ffd03d8e3cd3e34842e1cb6a.ctex"
+uid="uid://cgs5vrsoplgrv"
+path="res://.godot/imported/Flag_Base.png-b64fe3158dff7f46b61ddd81d29e035d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/CutScene/planet_jangroh/Background.jpg"
-dest_files=["res://.godot/imported/Background.jpg-1169c0d1ffd03d8e3cd3e34842e1cb6a.ctex"]
+source_file="res://images/Flag/Flag_Base.png"
+dest_files=["res://.godot/imported/Flag_Base.png-b64fe3158dff7f46b61ddd81d29e035d.ctex"]
 
 [params]
 

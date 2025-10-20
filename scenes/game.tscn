@@ -3131,7 +3131,7 @@ position = Vector2(5967, 1271)
 scale = Vector2(0.25, 0.25)
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("12_kvuet")]
-position = Vector2(8094, 824)
+position = Vector2(7339, 1432)
 scale = Vector2(0.25, 0.25)
 
 [node name="LocknKeys" type="Node" parent="."]

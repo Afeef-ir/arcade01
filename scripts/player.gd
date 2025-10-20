@@ -97,7 +97,7 @@ func apply_gravity(delta:float):
 func enter_state(new_state: State):
 	exit_state(current_state)
 	current_state = new_state
-	#print("entered state:" + State.keys()[current_state])	
+	#print("entered state:" + State.keys()[current_state])
 	match current_state:
 		State.Idle:
 			jumps_left = MAX_JUMPS
@@ -296,13 +296,14 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	
 func respawn():
 	global_position = spawn_position
-	current_health= MAX_HEALTH
+	current_health = MAX_HEALTH
 	#velocity = Vector2.ZERO
 	player_sprite.show()
 	gun.show()  
 	set_process(true)
 	set_physics_process(true)
-	progress_bar.value =MAX_HEALTH
+	progress_bar.value = MAX_HEALTH
+	enter_state(State.Idle)
 	
 func pickup_key(tag: String, icon: Texture2D) -> void:
 	if tag in collected_keys:

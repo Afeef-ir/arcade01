@@ -1,33 +1,25 @@
 extends Node2D
 
+var menu = load("res://scenes/menu.tscn").instantiate()
+var cut_scene = load("res://scenes/Cutscene.tscn").instantiate()
 func _ready() -> void:
-	var cutscene = load("res://scenes/Cutscene.tscn").instantiate()
-	add_child(cutscene)
-	
-	# wait a frame so children exist
-	await get_tree().process_frame
-	
-	# try exact path first, fallback to recursive search
-	var anim = cutscene.get_node_or_null("Control/Node2D/Cutscene/AnimationPlayer")
-	if anim == null:
-		anim = _find_anim_player(cutscene)
-	
-	if anim == null:
-		printerr("AnimationPlayer not found!")
-		return
-	
-	anim.connect("animation_finished", Callable(self, "_on_cutscene_finished"))
 
-# recursive fallback to find AnimationPlayer
-func _find_anim_player(node: Node) -> AnimationPlayer:
-	for child in node.get_children():
-		if child is AnimationPlayer:
-			return child
-		var f := _find_anim_player(child)
-		if f:
-			return f
-	return null
+	add_child(menu)
+	menu.connect("start_game", Callable(self, "_on_menu_start_game"))
+	
+	
+func _on_menu_start_game():
+	print("hey")
+	remove_child(menu)
+	add_child(cut_scene)
+	cut_scene.connect("cut_scene_finished", Callable(self, "_on_cut_scene_finished"))
+	
+func _on_cut_scene_finished():
+	print("wassup")
+	remove_child(cut_scene)
+	var game = load("res://scenes/game.tscn").instantiate()
+	add_child(game)
+	
 
-func _on_cutscene_finished(_anim_name: StringName) -> void:
-	print("Cutscene finished")
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+	
