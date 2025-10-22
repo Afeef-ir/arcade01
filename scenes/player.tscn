@@ -155,7 +155,7 @@ z_as_relative = false
 safe_margin = 10.0
 script = ExtResource("1_g2els")
 
-[node name="PlayerCol" type="CollisionShape2D" parent="."]
+[node name="PlayerCol" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(4.17233e-07, -14.7578)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_u8vuu")
