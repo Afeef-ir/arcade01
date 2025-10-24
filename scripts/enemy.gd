@@ -57,14 +57,12 @@ func exit_state(old_state: State):
 			detector_col.disabled = false
 
 func _physics_process(delta: float) -> void:
-	
-	
 	if is_paused:
 		return  # Skip processing while paused
 	
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
-		
+		#
 	if not ray_cast_2d.is_colliding() and is_on_floor():
 		
 		velocity.x = 0
@@ -94,9 +92,10 @@ func _physics_process(delta: float) -> void:
 			if ray_cast_2d.is_colliding():
 				pass
 			else:
-				velocity.x = -1
+				velocity.x = 0
 			sprite.flip_h = player_pos.x-global_position.x > 0
-	#sprite.speed_scale =clamp(speed, 0.5, 3.0) 
+	sprite.speed_scale = abs(velocity.x/50)
+	move_and_slide()
 
 func take_damage(damage_val:float) -> void:
 	enemy_health -= damage_val
