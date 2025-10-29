@@ -66,7 +66,6 @@ func _physics_process(delta: float) -> void:
 	if not ray_cast_2d.is_colliding() and is_on_floor():
 		
 		velocity.x = 0
-		print("hi")
 	if sprite.flip_h:
 		ray_cast_2d.global_position = raycast_pos_2.global_position
 	else:

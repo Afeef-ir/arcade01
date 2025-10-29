@@ -293,7 +293,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		death_timer.start()
 		set_process(false)
 		set_physics_process(false)
-	
+		
 func respawn():
 	global_position = spawn_position
 	current_health = MAX_HEALTH
