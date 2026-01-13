@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdq1wej2vmpiv" path="res://area_2d.gd" id="1_ilub3"]
 [ext_resource type="Texture2D" uid="uid://bmg4bjo2fcjhs" path="res://images/props/health_potion.png" id="2_j1cgh"]
-[ext_resource type="AudioStream" uid="uid://c60hp5g0t5rkq" path="res://sound/coin.wav" id="3_j1cgh"]
+[ext_resource type="AudioStream" uid="uid://7pw2ojihhvsg" path="res://sound/Pickup.wav" id="3_j1cgh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1utab"]
 size = Vector2(93.3015, 109.629)
@@ -19,8 +19,9 @@ shape = SubResource("RectangleShape2D_1utab")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_j1cgh")
 
-[node name="Pick_up_sfx" type="AudioStreamPlayer2D" parent="."]
+[node name="Pick_up_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_j1cgh")
 volume_db = 24.0
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

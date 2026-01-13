@@ -266,6 +266,8 @@ func play_sprite_anim(anim_name:String, speed:float = 1.0, reverse:bool = false)
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name.contains("Enemy"):  
+		if current_health > 100:
+			current_health = MAX_HEALTH
 		current_health -= 40
 		damage_audio.play()
 		hurt_timer.start()
