@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 const burst = preload("res://scenes/burst.tscn")
 const ERROR_SQ = 400.0 # 20
-const max_distance = 200
+const max_distance_x = 200
+const max_distance_up = 120
+const max_distance_down = 50
 
 @export var enemy_health : float
 @export_enum("loop", "linear") var patrol_type: String = "linear"
@@ -88,11 +90,11 @@ func _physics_process(delta: float) -> void:
 				patrol_target = patrol_points[patrol_index]
 		State.Chase:
 			var player_pos = player.global_position
-			if abs(player_pos.x - global_position.x) >max_distance:
+			if abs(player_pos.x - global_position.x) >max_distance_x or player_pos.y < global_position.y - max_distance_up or player_pos.y > global_position.y +max_distance_down:
 				enter_state(State.Patrol)
 			sprite.flip_h = velocity.x >0
-			var velocity_y = (player_pos -global_position).normalized()* speed
-			velocity.x = velocity_y.x
+			var chase_vel = (player_pos -global_position).normalized() * speed
+			velocity.x = chase_vel.x
 			if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
 				sprite.play("default")
 			else:

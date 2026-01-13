@@ -2987,7 +2987,7 @@ animations = [{
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(1888, 1424)
+position = Vector2(8687, 1032)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -14)
@@ -3276,7 +3276,7 @@ DEMO COMPLETE"
 [node name="Potions" type="Node2D" parent="."]
 
 [node name="Health_potion1" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(2066, 1414)
+position = Vector2(7370, 341)
 
 [node name="Health_potion2" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(1937, 1414)
+position = Vector2(6149, 1636)
