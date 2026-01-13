@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmj8tm3ogt6vf"]
+[gd_scene load_steps=20 format=3 uid="uid://bmj8tm3ogt6vf"]
 
 [ext_resource type="Script" uid="uid://b1l1a78477n1x" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="AudioStream" uid="uid://6vvnikpcrpwm" path="res://sound/EnemyDeath.ogg" id="2_5uy6h"]
@@ -33,6 +33,10 @@ region = Rect2(181, 33, 36, 31)
 atlas = ExtResource("3_5uy6h")
 region = Rect2(217, 33, 36, 31)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("3_5uy6h")
+region = Rect2(0, 32, 36, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_otmr2"]
 animations = [{
 "frames": [{
@@ -59,6 +63,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -129,9 +141,8 @@ collide_with_areas = true
 position = Vector2(0.588235, 2.84217e-14)
 scale = Vector2(0.898693, 0.796964)
 sprite_frames = SubResource("SpriteFrames_otmr2")
-autoplay = "default"
-frame = 2
-frame_progress = 0.162249
+animation = &"idle"
+frame_progress = 0.495255
 
 [node name="Timer" type="Timer" parent="."]
 

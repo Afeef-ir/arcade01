@@ -65,10 +65,8 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
-		#
-	if not ray_cast_2d.is_colliding() and is_on_floor():
 		
-		velocity.x = 0
+		
 	if sprite.flip_h:
 		ray_cast_2d.global_position = raycast_pos_2.global_position
 		ray_cast_wall.global_position = raycast_pos_wallpos_1.global_position
@@ -79,6 +77,7 @@ func _physics_process(delta: float) -> void:
 		ray_cast_wall.rotation_degrees = 0
 	match current_state:
 		State.Patrol:
+			sprite.play("default")
 			var difference : Vector2 = patrol_target - global_position
 			#print(difference.length_squared())
 			if difference.length_squared() > ERROR_SQ:
@@ -96,11 +95,11 @@ func _physics_process(delta: float) -> void:
 			var velocity_y = (player_pos -global_position).normalized()* speed
 			velocity.x = velocity_y.x
 			if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
-				pass
+				sprite.play("default")
 			else:
 				velocity.x = 0
+				sprite.play("idle")
 			sprite.flip_h = player_pos.x-global_position.x > 0
-	sprite.speed_scale = abs(velocity.x/50)
 	move_and_slide()
 
 func take_damage(damage_val:float) -> void:
