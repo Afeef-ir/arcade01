@@ -141,6 +141,8 @@ func _physics_process(delta: float) -> void:
 		footstep_audio.playing = false
 		slide_audio.playing = false
 		return
+	
+	%ProgressBar.value = current_health
 		
 	if is_knocked_back:	
 		velocity = knockback_force
@@ -240,16 +242,11 @@ func reset_collision() -> void:
 	
 func apply_knockback(from_position: Vector2, strength: float = 300, upward: float = -200) -> void:
 	if is_knocked_back:
-		return  # already in knockback
+		return 
 	is_knocked_back = true
-	#current_health -= 1
-	print("Player damaged! Health:", current_health)
-	# Direction away from the enemy
 	var dir = (global_position - from_position).normalized()
-	# Apply force
 	knockback_force = Vector2(dir.x * strength, upward)
 	set_deferred("velocity", knockback_force)
-	# Short delay before control returns
 	await get_tree().create_timer(KNOCKBACK_TIME).timeout
 	is_knocked_back = false
 	print("Knockback from:", from_position, "to:", global_position)
@@ -274,7 +271,8 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		hurt_timer.start()
 		%ProgressBar.value = current_health
 		animation_player.play("hurt")
-		await(hurt_timer.timeout)
+		if current_health > 0:
+			await(hurt_timer.timeout)
 		animation_player.stop()
 		
 	if current_health <= 0:

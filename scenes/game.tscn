@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://mojf4cvbkvav"]
+[gd_scene load_steps=27 format=4 uid="uid://mojf4cvbkvav"]
 
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://djtuekka5eoo7" path="res://scenes/kill_zone.tscn" id="5_iywne"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c3jb5hg6fpip3" path="res://images/props/spaceshipdamaged.png" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dylrlvnbiu0lb" path="res://scenes/checkpoint.tscn" id="12_kvuet"]
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://dc2qkwwipnrvi" path="res://Health_potion.tscn" id="17_rysoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca42v"]
 texture = ExtResource("6_p57ef")
@@ -3271,3 +3272,11 @@ theme_override_fonts/font = ExtResource("16_ca42v")
 theme_override_font_sizes/font_size = 16
 text = "CONGRATS
 DEMO COMPLETE"
+
+[node name="Potions" type="Node2D" parent="."]
+
+[node name="Health_potion1" parent="." instance=ExtResource("17_rysoc")]
+position = Vector2(2066, 1414)
+
+[node name="Health_potion2" parent="." instance=ExtResource("17_rysoc")]
+position = Vector2(1937, 1414)

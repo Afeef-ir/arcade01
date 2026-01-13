@@ -47,7 +47,7 @@ func enter_state(new_state: State):
 		State.Patrol:
 			pass
 		State.Chase:
-			detector_col.disabled = false
+			pass
 
 
 	
@@ -55,13 +55,12 @@ func exit_state(old_state: State):
 	match old_state:
 		State.Patrol:
 			pass
-			#detector_col.disabled = true
 		State.Chase:
-			detector_col.disabled = false
+			pass
 
 func _physics_process(delta: float) -> void:
 	if is_paused:
-		return  # Skip processing while paused
+		return  
 	
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
@@ -107,7 +106,7 @@ func take_damage(damage_val:float) -> void:
 	hurt_sfx.play()
 	hurt_timer.start()
 	hurt_anim.play("Hurt")
-	# Start looping Animationaaaaaaaa
+
 	
 	if enemy_health <= 0:
 		var death_fx = burst.instantiate()
