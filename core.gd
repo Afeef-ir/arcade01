@@ -31,8 +31,7 @@ func _on_cut_scene_started():
 	eligible_for_skip = true
 func skip():
 	remove_child(cut_scene)
-	var game = load("res://scenes/game.tscn").instantiate()
-	add_child(game)
+	get_tree().change_scene_to_file("res://Levels/level_1.tscn")
 	
 	
 

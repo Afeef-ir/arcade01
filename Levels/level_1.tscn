@@ -1,25 +1,26 @@
-[gd_scene load_steps=27 format=4 uid="uid://mojf4cvbkvav"]
+[gd_scene load_steps=28 format=4 uid="uid://mojf4cvbkvav"]
 
-[ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://djtuekka5eoo7" path="res://scenes/kill_zone.tscn" id="5_iywne"]
-[ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="6_p57ef"]
-[ext_resource type="Texture2D" uid="uid://d3j4qpg6m3syo" path="res://images/forest/bg-layer-3-full-alpha.png" id="7_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://bmj8tm3ogt6vf" path="res://scenes/enemy.tscn" id="9_vtaks"]
-[ext_resource type="Texture2D" uid="uid://uk316m2xr3ug" path="res://images/forest/bg-layer-4-full.png" id="10_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dbhucle5c2ikd" path="res://scenes/mushroom.tscn" id="10_kvuet"]
-[ext_resource type="PackedScene" uid="uid://da0cdu5plnd28" path="res://scenes/door.tscn" id="10_trtic"]
-[ext_resource type="PackedScene" uid="uid://t5r11wr7dmv5" path="res://scenes/key.tscn" id="11_ca42v"]
-[ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/forest/Bglayer1.png" id="11_ir15t"]
-[ext_resource type="PackedScene" uid="uid://dgrg0ex575qvw" path="res://scenes/bg_music.tscn" id="11_kvpfn"]
-[ext_resource type="Texture2D" uid="uid://c7v5kcadeegw5" path="res://images/forest/bg-layer-2-full-alpha.png" id="11_kvuet"]
-[ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/LockAndKey/Key.png" id="11_rysoc"]
-[ext_resource type="Texture2D" uid="uid://c3jb5hg6fpip3" path="res://images/props/spaceshipdamaged.png" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://dylrlvnbiu0lb" path="res://scenes/checkpoint.tscn" id="12_kvuet"]
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="16_ca42v"]
-[ext_resource type="PackedScene" uid="uid://dc2qkwwipnrvi" path="res://Health_potion.tscn" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_c7pbv"]
+[ext_resource type="PackedScene" uid="uid://djtuekka5eoo7" path="res://scenes/kill_zone.tscn" id="2_77l7m"]
+[ext_resource type="Texture2D" uid="uid://uk316m2xr3ug" path="res://images/forest/bg-layer-4-full.png" id="3_1rr3k"]
+[ext_resource type="Texture2D" uid="uid://d3j4qpg6m3syo" path="res://images/forest/bg-layer-3-full-alpha.png" id="4_hsj5a"]
+[ext_resource type="Texture2D" uid="uid://c7v5kcadeegw5" path="res://images/forest/bg-layer-2-full-alpha.png" id="5_w38ni"]
+[ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/forest/Bglayer1.png" id="6_uclwg"]
+[ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="7_8x6gh"]
+[ext_resource type="Texture2D" uid="uid://c3jb5hg6fpip3" path="res://images/props/spaceshipdamaged.png" id="8_442u8"]
+[ext_resource type="PackedScene" uid="uid://dbhucle5c2ikd" path="res://scenes/mushroom.tscn" id="9_fxl23"]
+[ext_resource type="PackedScene" uid="uid://dgrg0ex575qvw" path="res://scenes/bg_music.tscn" id="10_xg5g8"]
+[ext_resource type="PackedScene" uid="uid://bmj8tm3ogt6vf" path="res://scenes/enemy.tscn" id="11_p7b0h"]
+[ext_resource type="PackedScene" uid="uid://dylrlvnbiu0lb" path="res://scenes/checkpoint.tscn" id="12_2i07x"]
+[ext_resource type="PackedScene" uid="uid://t5r11wr7dmv5" path="res://scenes/key.tscn" id="13_g50tq"]
+[ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/LockAndKey/Key.png" id="14_yegjp"]
+[ext_resource type="PackedScene" uid="uid://da0cdu5plnd28" path="res://scenes/door.tscn" id="15_d86m7"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="16_4qcx6"]
+[ext_resource type="PackedScene" uid="uid://dc2qkwwipnrvi" path="res://Health_potion.tscn" id="17_as0xv"]
+[ext_resource type="PackedScene" uid="uid://xuaovhjlydlt" path="res://scenes/portal.tscn" id="18_77l7m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca42v"]
-texture = ExtResource("6_p57ef")
+texture = ExtResource("7_8x6gh")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -2935,27 +2936,27 @@ physics_layer_0/collision_layer = 3
 sources/0 = SubResource("TileSetAtlasSource_ca42v")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
-atlas = ExtResource("12_dinhu")
+atlas = ExtResource("8_442u8")
 region = Rect2(0, 0, 203, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
-atlas = ExtResource("12_dinhu")
+atlas = ExtResource("8_442u8")
 region = Rect2(203, 0, 203, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
-atlas = ExtResource("12_dinhu")
+atlas = ExtResource("8_442u8")
 region = Rect2(406, 0, 203, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
-atlas = ExtResource("12_dinhu")
+atlas = ExtResource("8_442u8")
 region = Rect2(609, 0, 203, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
-atlas = ExtResource("12_dinhu")
+atlas = ExtResource("8_442u8")
 region = Rect2(812, 0, 203, 88)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
-atlas = ExtResource("12_dinhu")
+atlas = ExtResource("8_442u8")
 region = Rect2(1015, 0, 203, 88)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_264po"]
@@ -2984,10 +2985,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Game" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(8687, 1032)
+[node name="Player" parent="." instance=ExtResource("1_c7pbv")]
+position = Vector2(8722, 1015)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -14)
@@ -2997,7 +2998,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
-[node name="KillZone" parent="." instance=ExtResource("5_iywne")]
+[node name="KillZone" parent="." instance=ExtResource("2_77l7m")]
 position = Vector2(1561, 1875.15)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -3011,7 +3012,7 @@ motion_mirroring = Vector2(1234, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(72, -415)
 scale = Vector2(6, 1.5)
-texture = ExtResource("10_dinhu")
+texture = ExtResource("3_1rr3k")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1719, -415)
@@ -3021,7 +3022,7 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(589, 1527)
 scale = Vector2(2, 1.3)
-texture = ExtResource("7_u5sy4")
+texture = ExtResource("4_hsj5a")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(1732, 1079)
@@ -3031,7 +3032,7 @@ motion_mirroring = Vector2(1728, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 position = Vector2(44, 20)
 scale = Vector2(1.5, 1.25)
-texture = ExtResource("11_kvuet")
+texture = ExtResource("5_w38ni")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(586, 4119)
@@ -3041,7 +3042,7 @@ motion_mirroring = Vector2(2580, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
 position = Vector2(1310.39, -3026)
 scale = Vector2(1.5, 1.35)
-texture = ExtResource("11_ir15t")
+texture = ExtResource("6_uclwg")
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
@@ -3054,7 +3055,7 @@ motion_mirroring = Vector2(1234, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
 position = Vector2(72, -415)
 scale = Vector2(6, 1.5)
-texture = ExtResource("10_dinhu")
+texture = ExtResource("3_1rr3k")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
 position = Vector2(1711, -2166)
@@ -3064,7 +3065,7 @@ motion_mirroring = Vector2(1152, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
 position = Vector2(589, 1527)
 scale = Vector2(2, 1.3)
-texture = ExtResource("7_u5sy4")
+texture = ExtResource("4_hsj5a")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground2"]
 position = Vector2(1724, -672)
@@ -3074,7 +3075,7 @@ motion_mirroring = Vector2(1728, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer3"]
 position = Vector2(44, 20)
 scale = Vector2(1.5, 1.25)
-texture = ExtResource("11_kvuet")
+texture = ExtResource("5_w38ni")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground2"]
 position = Vector2(578, 2368)
@@ -3084,7 +3085,7 @@ motion_mirroring = Vector2(2580, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
 position = Vector2(1310.39, -3026)
 scale = Vector2(1.5, 1.35)
-texture = ExtResource("11_ir15t")
+texture = ExtResource("6_uclwg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -10
@@ -3102,160 +3103,160 @@ sprite_frames = SubResource("SpriteFrames_264po")
 autoplay = "default"
 frame_progress = 0.236243
 
-[node name="Mushroom1" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom1" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(2184.68, 1432)
 vel = -450
 
-[node name="Mushroom2" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom2" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(4694, 1398)
 vel = -450
 
-[node name="Mushroom3" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom3" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(5791, 1271)
 vel = -450
 
-[node name="Mushroom4" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom4" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(6305, 1575)
 vel = -480
 
-[node name="Mushroom5" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom5" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(8415, 969)
 vel = -600
 
-[node name="Mushroom6" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom6" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(10505, 182)
 vel = -480
 
-[node name="Mushroom7" parent="Props" instance=ExtResource("10_kvuet")]
+[node name="Mushroom7" parent="Props" instance=ExtResource("9_fxl23")]
 position = Vector2(8497, 151)
 vel = -480
 
-[node name="BgMusic" parent="." instance=ExtResource("11_kvpfn")]
+[node name="BgMusic" parent="." instance=ExtResource("10_xg5g8")]
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(2750, 1521)
 enemy_health = 59.975
 patrol_points = Array[Vector2]([Vector2(2960, 1518), Vector2(2460, 1518)])
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(3098, 1520)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(3530, 1518), Vector2(3100, 1518)])
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(4448, 1371)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(4344, 1380), Vector2(4606, 1380)])
 
-[node name="Enemy5" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy5" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(5052, 1229)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(5532, 1231), Vector2(4872, 1231)])
 
-[node name="Enemy6" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy6" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(5647, 1250)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(5950, 1250), Vector2(5658, 1250)])
 
-[node name="Enemy7" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy7" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(5804.54, 1473.31)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(5887, 1475), Vector2(5539, 1475)])
 
-[node name="Enemy8" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy8" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(5726, 1658)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(5876, 1665), Vector2(5435, 1665)])
 
-[node name="Enemy9" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy9" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(7105, 1392)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(6748, 1401), Vector2(7433, 1402)])
 
-[node name="Enemy10" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy10" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(8846, 946)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(8846, 946), Vector2(9009, 944)])
 
-[node name="Enemy11" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy11" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(9495, 815)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(9495, 815), Vector2(9677, 817)])
 
-[node name="Enemy12" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy12" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(9977, 65)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(9977, 65), Vector2(10150, 66)])
 
-[node name="Enemy18" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy18" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(10478, 161)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(10478, 161), Vector2(10767, 161)])
 
-[node name="Enemy13" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy13" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(9213, 2)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(9213, 2), Vector2(9399, 0.999992)])
 
-[node name="Enemy14" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy14" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(8722, 127)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(8722, 127), Vector2(8884, 129)])
 
-[node name="Enemy15" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy15" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(8249, 24)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(8249, 24), Vector2(8397, 17)])
 
-[node name="Enemy16" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy16" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(7724, -101)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(7724, -101), Vector2(7890, -102)])
 
-[node name="Enemy17" parent="Enemies" instance=ExtResource("9_vtaks")]
+[node name="Enemy17" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(7786, 298)
 enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(7786, 298), Vector2(8045, 298)])
 
 [node name="Checkpoints" type="Node" parent="."]
 
-[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_kvuet")]
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_2i07x")]
 position = Vector2(5967, 1271)
 scale = Vector2(0.25, 0.25)
 
-[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("12_kvuet")]
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("12_2i07x")]
 position = Vector2(7339, 1432)
 scale = Vector2(0.25, 0.25)
 
-[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("12_kvuet")]
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("12_2i07x")]
 position = Vector2(10477, 807)
 scale = Vector2(0.25, 0.25)
 
-[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("12_kvuet")]
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("12_2i07x")]
 position = Vector2(9487, 1079)
 scale = Vector2(0.25, 0.25)
 
 [node name="LocknKeys" type="Node" parent="."]
 
-[node name="Key_1A" parent="LocknKeys" instance=ExtResource("11_ca42v")]
+[node name="Key_1A" parent="LocknKeys" instance=ExtResource("13_g50tq")]
 position = Vector2(5410, 1677)
 tag = "1A"
-icon = ExtResource("11_rysoc")
+icon = ExtResource("14_yegjp")
 
-[node name="Key_2A" parent="LocknKeys" instance=ExtResource("11_ca42v")]
-position = Vector2(8497, 340)
+[node name="Key_2A" parent="LocknKeys" instance=ExtResource("13_g50tq")]
+position = Vector2(8863, 1047)
 tag = "2A"
-icon = ExtResource("11_rysoc")
+icon = ExtResource("14_yegjp")
 
-[node name="Door_2A" parent="LocknKeys" instance=ExtResource("10_trtic")]
+[node name="Door_2A" parent="LocknKeys" instance=ExtResource("15_d86m7")]
 z_index = 2
 position = Vector2(9048, 1032)
 scale = Vector2(1.5, 1.5)
 required_key_tag = "2A"
 
-[node name="Door_1A" parent="LocknKeys" instance=ExtResource("10_trtic")]
+[node name="Door_1A" parent="LocknKeys" instance=ExtResource("15_d86m7")]
 z_index = 2
 position = Vector2(10161, 760)
 scale = Vector2(1.5, 1.5)
@@ -3268,19 +3269,19 @@ offset_right = 9761.0
 offset_bottom = 1065.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
-theme_override_fonts/font = ExtResource("16_ca42v")
+theme_override_fonts/font = ExtResource("16_4qcx6")
 theme_override_font_sizes/font_size = 16
 text = "CONGRATS
 DEMO COMPLETE"
 
 [node name="Potions" type="Node2D" parent="."]
 
-[node name="Health_potion1" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(8820, 1038)
+[node name="Health_potion1" parent="." instance=ExtResource("17_as0xv")]
+position = Vector2(7466, 616)
 health_contained = 40
 
-[node name="Health_potion2" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(8566, 1053)
+[node name="Health_potion2" parent="." instance=ExtResource("17_as0xv")]
+position = Vector2(7369, 343)
 
-[node name="Health_potion3" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(7369, 328)
+[node name="Portal" parent="." instance=ExtResource("18_77l7m")]
+position = Vector2(9395, 1047)
