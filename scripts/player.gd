@@ -142,7 +142,7 @@ func _physics_process(delta: float) -> void:
 		slide_audio.playing = false
 		return
 		
-	if is_knocked_back:
+	if is_knocked_back:	
 		velocity = knockback_force
 		move_and_slide()
 		return

@@ -121,7 +121,7 @@ patrol_points = Array[Vector2]([Vector2(150, 0), Vector2(-250, 0)])
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-15.8824, -7.05882)
-target_position = Vector2(0.588236, 30)
+target_position = Vector2(4.673e-05, 30.5882)
 collision_mask = 7
 collide_with_areas = true
 
@@ -170,8 +170,18 @@ shape = SubResource("RectangleShape2D_xwavj")
 [node name="RaycastPos2" type="Marker2D" parent="."]
 position = Vector2(17.0588, -7.05882)
 
+[node name="RaycastPosWallpos1" type="Marker2D" parent="."]
+position = Vector2(10, 7.64706)
+
+[node name="RaycastPosWallpos2" type="Marker2D" parent="."]
+position = Vector2(-10.5882, 7.64706)
+
 [node name="RaycastPos1" type="Marker2D" parent="."]
 position = Vector2(-15.8824, -7.05882)
+
+[node name="RayCastWall" type="RayCast2D" parent="."]
+position = Vector2(-10.5882, 7.64706)
+target_position = Vector2(-15.2941, 9.53674e-07)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]

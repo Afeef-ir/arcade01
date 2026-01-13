@@ -19,6 +19,9 @@ const max_distance = 200
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var raycast_pos_2: Marker2D = $RaycastPos2
 @onready var raycast_pos_1: Marker2D = $RaycastPos1
+@onready var ray_cast_wall: RayCast2D = $RayCastWall
+@onready var raycast_pos_wallpos_2: Marker2D = $RaycastPosWallpos2
+@onready var raycast_pos_wallpos_1: Marker2D = $RaycastPosWallpos1
 
 
 var is_paused = false
@@ -68,8 +71,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 	if sprite.flip_h:
 		ray_cast_2d.global_position = raycast_pos_2.global_position
+		ray_cast_wall.global_position = raycast_pos_wallpos_1.global_position
+		ray_cast_wall.rotation_degrees = 180
 	else:
 		ray_cast_2d.global_position = raycast_pos_1.global_position
+		ray_cast_wall.global_position = raycast_pos_wallpos_2.global_position
+		ray_cast_wall.rotation_degrees = 0
 	match current_state:
 		State.Patrol:
 			var difference : Vector2 = patrol_target - global_position
@@ -88,7 +95,7 @@ func _physics_process(delta: float) -> void:
 			sprite.flip_h = velocity.x >0
 			var velocity_y = (player_pos -global_position).normalized()* speed
 			velocity.x = velocity_y.x
-			if ray_cast_2d.is_colliding():
+			if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
 				pass
 			else:
 				velocity.x = 0
