@@ -14,14 +14,20 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Skip"):
-		emit_signal("cut_scene_started")
+		skip()
+		
+		
 
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	emit_signal("cut_scene_finished")
+	skip()
+	
 
 
 func _on_animation_player_animation_started(_anim_name: StringName) -> void:
 	emit_signal("cut_scene_started")
+	
+func skip():
+	get_tree().change_scene_to_file("res://Levels/level_1.tscn")
 	

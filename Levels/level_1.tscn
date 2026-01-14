@@ -2988,7 +2988,7 @@ animations = [{
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_c7pbv")]
-position = Vector2(8722, 1015)
+position = Vector2(1924, 1414)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -14)
@@ -3246,7 +3246,7 @@ tag = "1A"
 icon = ExtResource("14_yegjp")
 
 [node name="Key_2A" parent="LocknKeys" instance=ExtResource("13_g50tq")]
-position = Vector2(8863, 1047)
+position = Vector2(8497, 320)
 tag = "2A"
 icon = ExtResource("14_yegjp")
 
@@ -3277,7 +3277,7 @@ DEMO COMPLETE"
 [node name="Potions" type="Node2D" parent="."]
 
 [node name="Health_potion1" parent="." instance=ExtResource("17_as0xv")]
-position = Vector2(8811, 1070)
+position = Vector2(6188, 651)
 
 [node name="Health_potion2" parent="." instance=ExtResource("17_as0xv")]
 position = Vector2(7369, 343)
