@@ -274,7 +274,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		%ProgressBar.value = current_health
 		animation_player.play("hurt")
 		if current_health > 0:
-			await(hurt_timer.timeouts)
+			await(hurt_timer.timeout)
 		animation_player.stop()
 		
 	if current_health <= 0:

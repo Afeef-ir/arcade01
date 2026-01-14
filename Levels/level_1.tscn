@@ -3277,8 +3277,7 @@ DEMO COMPLETE"
 [node name="Potions" type="Node2D" parent="."]
 
 [node name="Health_potion1" parent="." instance=ExtResource("17_as0xv")]
-position = Vector2(7466, 616)
-health_contained = 40
+position = Vector2(8811, 1070)
 
 [node name="Health_potion2" parent="." instance=ExtResource("17_as0xv")]
 position = Vector2(7369, 343)

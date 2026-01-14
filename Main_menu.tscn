@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cva8nf6p2l5v8"]
+[gd_scene load_steps=12 format=3 uid="uid://cva8nf6p2l5v8"]
 
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_b07fi"]
 [ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/jangroh_logo.png" id="2_x6lt7"]
@@ -8,8 +8,112 @@ texture = ExtResource("2_x6lt7")
 expand_margin_left = 18.0
 expand_margin_top = 142.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ps0"]
+bg_color = Color(0.202667, 0, 0.64, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.1292, 0.3128, 0.68, 1)
+border_blend = true
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ovav"]
+bg_color = Color(0.0672, 0.32592, 0.42, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6lt7"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.12636, 0.0432, 0.27, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.1292, 0.3128, 0.68, 1)
+border_blend = true
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlxw3"]
+bg_color = Color(0.202667, 0, 0.64, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.1292, 0.3128, 0.68, 1)
+border_blend = true
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx8t1"]
+bg_color = Color(0.0672, 0.32592, 0.42, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kukc"]
+bg_color = Color(0.202667, 0, 0.64, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.1292, 0.3128, 0.68, 1)
+border_blend = true
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p42dv"]
+bg_color = Color(0.0672, 0.32592, 0.42, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1jqq"]
+bg_color = Color(0.128333, 0, 0.35, 1)
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(0.566667, 0, 1, 1)
+border_blend = true
+shadow_color = Color(0.112, 0, 0.32, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -33,39 +137,69 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_x2ps0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 391.0
-offset_top = 382.0
+offset_top = 398.0
 offset_right = 1251.0
-offset_bottom = 756.0
+offset_bottom = 772.0
 scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 20
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.198145, 0.414111, 0.999994, 1)
+theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
 theme_override_constants/h_separation = 10
 theme_override_fonts/font = ExtResource("1_b07fi")
 theme_override_font_sizes/font_size = 86
+theme_override_styles/hover = SubResource("StyleBoxFlat_x2ps0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8ovav")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
 text = "Start Game"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.198145, 0.414111, 0.999994, 1)
+theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
 theme_override_constants/h_separation = 10
 theme_override_fonts/font = ExtResource("1_b07fi")
 theme_override_font_sizes/font_size = 86
+theme_override_styles/hover = SubResource("StyleBoxFlat_rlxw3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qx8t1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
 text = "Settings"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.198145, 0.414111, 0.999994, 1)
+theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
 theme_override_constants/h_separation = 10
 theme_override_fonts/font = ExtResource("1_b07fi")
 theme_override_font_sizes/font_size = 86
+theme_override_styles/hover = SubResource("StyleBoxFlat_5kukc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p42dv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
 text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.114704, 0.000118618, 0.335693, 1)
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r1jqq")
