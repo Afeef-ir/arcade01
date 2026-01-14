@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7qy60fkjekjb"]
+
+[ext_resource type="Script" uid="uid://dt88v5jc5jtwk" path="res://Levels/level_1.gd" id="1_cb8d3"]
+[ext_resource type="PackedScene" uid="uid://xuaovhjlydlt" path="res://scenes/portal.tscn" id="2_5lru4"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_cb8d3")
+
+[node name="Portal" parent="." instance=ExtResource("2_5lru4")]
+position = Vector2(361, 336)

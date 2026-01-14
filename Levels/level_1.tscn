@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://mojf4cvbkvav"]
+[gd_scene load_steps=29 format=4 uid="uid://mojf4cvbkvav"]
 
+[ext_resource type="Script" uid="uid://dt88v5jc5jtwk" path="res://Levels/level_1.gd" id="1_1rr3k"]
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="1_c7pbv"]
 [ext_resource type="PackedScene" uid="uid://djtuekka5eoo7" path="res://scenes/kill_zone.tscn" id="2_77l7m"]
 [ext_resource type="Texture2D" uid="uid://uk316m2xr3ug" path="res://images/forest/bg-layer-4-full.png" id="3_1rr3k"]
@@ -2986,9 +2987,10 @@ animations = [{
 }]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_1rr3k")
 
 [node name="Player" parent="." instance=ExtResource("1_c7pbv")]
-position = Vector2(1924, 1414)
+position = Vector2(8661, 1032)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -14)
@@ -3246,7 +3248,7 @@ tag = "1A"
 icon = ExtResource("14_yegjp")
 
 [node name="Key_2A" parent="LocknKeys" instance=ExtResource("13_g50tq")]
-position = Vector2(8497, 320)
+position = Vector2(8846, 1047)
 tag = "2A"
 icon = ExtResource("14_yegjp")
 

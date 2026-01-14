@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://d1byq4hvko0a3"]
+[gd_scene load_steps=7 format=4 uid="uid://d1byq4hvko0a3"]
 
+[ext_resource type="Script" uid="uid://dt88v5jc5jtwk" path="res://Levels/level_1.gd" id="1_arsda"]
 [ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="1_kbe2v"]
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="2_arsda"]
+[ext_resource type="PackedScene" uid="uid://xuaovhjlydlt" path="res://scenes/portal.tscn" id="4_dgq3b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgq3b"]
 texture = ExtResource("1_kbe2v")
@@ -2607,17 +2609,21 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dgq3b")
 
 [node name="Level_2" type="Node2D"]
+script = ExtResource("1_arsda")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAMABUAAAANAEQAAAAMABYAAAANAEUAAAAMABcAAAANAEYAAAANABUAAAAOAEQAAAANABYAAAAOAEUAAAANABcAAAAOAEYAAAAOABUAAAAPAEQAAAAOABYAAAAPAEUAAAAOABcAAAAPAEYAAAAPABUAAAAQAEQAAAAPABYAAAAQAEUAAAAPABcAAAAQAEYAAAAQABUAAAARAEQAAAAQABYAAAARAEUAAAAQABcAAAARAEYAAAARABUAAAASAEQAAAARABYAAAASAEUAAAARABcAAAASAEYAAAASABUAAAATAEQAAAASABYAAAATAEUAAAASABcAAAATAEYAAAATABUAAAAUAEQAAAATABYAAAAUAEUAAAATABcAAAAUAEYAAAAUABUAAAAVAEQAAAAUABYAAAAVAEUAAAAUABcAAAAVAEYAAAAXABkAAAANAEQAAAAXABoAAAANAEUAAAAXABsAAAANAEYAAAAYABkAAAAOAEQAAAAYABoAAAAOAEUAAAAYABsAAAAOAEYAAAAZABkAAAAPAEQAAAAZABoAAAAPAEUAAAAZABsAAAAPAEYAAAAaABkAAAAQAEQAAAAaABoAAAAQAEUAAAAaABsAAAAQAEYAAAAbABkAAAARAEQAAAAbABoAAAARAEUAAAAbABsAAAARAEYAAAAcABkAAAASAEQAAAAcABoAAAASAEUAAAAcABsAAAASAEYAAAAdABkAAAATAEQAAAAdABoAAAATAEUAAAAdABsAAAATAEYAAAAeABkAAAAUAEQAAAAeABoAAAAUAEUAAAAeABsAAAAUAEYAAAAfABkAAAAVAEQAAAAfABoAAAAVAEUAAAAfABsAAAAVAEYAAAAfAB0AAAANAEQAAAAfAB4AAAANAEUAAAAfAB8AAAANAEYAAAAgAB0AAAAOAEQAAAAgAB4AAAAOAEUAAAAgAB8AAAAOAEYAAAAhAB0AAAAPAEQAAAAhAB4AAAAPAEUAAAAhAB8AAAAPAEYAAAAiAB0AAAAQAEQAAAAiAB4AAAAQAEUAAAAiAB8AAAAQAEYAAAAjAB0AAAARAEQAAAAjAB4AAAARAEUAAAAjAB8AAAARAEYAAAAkAB0AAAASAEQAAAAkAB4AAAASAEUAAAAkAB8AAAASAEYAAAAlAB0AAAATAEQAAAAlAB4AAAATAEUAAAAlAB8AAAATAEYAAAAmAB0AAAAUAEQAAAAmAB4AAAAUAEUAAAAmAB8AAAAUAEYAAAAnAB0AAAAVAEQAAAAnAB4AAAAVAEUAAAAnAB8AAAAVAEYAAAA=")
 tile_set = SubResource("TileSet_bcgyv")
 
-[node name="player" parent="." instance=ExtResource("2_arsda")]
+[node name="Player" parent="." instance=ExtResource("2_arsda")]
 position = Vector2(276, 335)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.75, 2.75)
 limit_bottom = 1728
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
+
+[node name="Portal" parent="." instance=ExtResource("4_dgq3b")]
+position = Vector2(581, 445)
