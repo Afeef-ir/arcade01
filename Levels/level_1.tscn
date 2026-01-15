@@ -3134,6 +3134,7 @@ position = Vector2(8497, 151)
 vel = -480
 
 [node name="BgMusic" parent="." instance=ExtResource("10_xg5g8")]
+autoplay = false
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -3282,7 +3283,7 @@ DEMO COMPLETE"
 position = Vector2(6188, 651)
 
 [node name="Health_potion2" parent="." instance=ExtResource("17_as0xv")]
-position = Vector2(7369, 343)
+position = Vector2(8586, 1035)
 
 [node name="Portal" parent="." instance=ExtResource("18_77l7m")]
 position = Vector2(9395, 1047)

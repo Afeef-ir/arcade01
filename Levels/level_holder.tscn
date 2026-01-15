@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbq6aiqo5dvct"]
+
+[ext_resource type="Script" uid="uid://b4uyro5lc1v0p" path="res://Levels/level_holder.gd" id="1_f356j"]
+[ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/BGMusic.ogg" id="2_fqypy"]
+
+[node name="Levels" type="Node2D"]
+script = ExtResource("1_f356j")
+
+[node name="BG_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fqypy")
+volume_db = 1.0
+autoplay = true
+parameters/looping = true

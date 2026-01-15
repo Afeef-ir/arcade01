@@ -1,5 +1,7 @@
 extends Node2D
 
+signal change
+
 @onready var portal: Area2D 
 
 func _ready() -> void:
@@ -11,9 +13,6 @@ func _ready() -> void:
 
 
 func on_change_lvl():
-	print(4)
-	var current_scene = scene_file_path
-	var next_lvl_num = current_scene.to_int() + 1
-	var next_level_path = "res://Levels/level_" + str(next_lvl_num) + ".tscn"
-	get_tree().change_scene_to_file(next_level_path)
+	print(5)
+	emit_signal("change")
 	
