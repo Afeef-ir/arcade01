@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/LockAndKey/Key.png" id="14_yegjp"]
 [ext_resource type="PackedScene" uid="uid://da0cdu5plnd28" path="res://scenes/door.tscn" id="15_d86m7"]
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="16_4qcx6"]
-[ext_resource type="PackedScene" uid="uid://dc2qkwwipnrvi" path="res://Health_potion.tscn" id="17_as0xv"]
+[ext_resource type="PackedScene" uid="uid://dc2qkwwipnrvi" path="res://scenes/Health_potion.tscn" id="17_as0xv"]
 [ext_resource type="PackedScene" uid="uid://xuaovhjlydlt" path="res://scenes/portal.tscn" id="18_77l7m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca42v"]

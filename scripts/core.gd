@@ -1,6 +1,6 @@
 extends Node2D
 
-var menu = load("res://Main_menu.tscn").instantiate()
+var menu = load("res://scenes/Main_menu.tscn").instantiate()
 var cut_scene = load("res://scenes/Cutscene.tscn").instantiate()
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
 var level_holder = load("res://Levels/level_holder.tscn").instantiate()

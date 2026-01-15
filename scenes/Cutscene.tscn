@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://brfhxrpwyg6ek"]
 
-[ext_resource type="Script" uid="uid://crbn1ctuc6s2u" path="res://CutScene.gd" id="1_leggj"]
+[ext_resource type="Script" uid="uid://crbn1ctuc6s2u" path="res://scripts/CutScene.gd" id="1_leggj"]
 [ext_resource type="Texture2D" uid="uid://06dop6761ukb" path="res://images/CutScene/bg.jpg" id="2_cgj5r"]
 [ext_resource type="AudioStream" uid="uid://bo50enek28geg" path="res://sound/space.mp3" id="2_sdx3j"]
 [ext_resource type="AudioStream" uid="uid://bddcdg2ldkdim" path="res://sound/rocket_engine.wav" id="3_cgj5r"]

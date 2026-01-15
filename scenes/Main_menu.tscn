@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cva8nf6p2l5v8"]
 
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_b07fi"]
-[ext_resource type="Script" uid="uid://cjtna5mus3jwq" path="res://main_menu.gd" id="1_x2ps0"]
+[ext_resource type="Script" uid="uid://cjtna5mus3jwq" path="res://scripts/main_menu.gd" id="1_x2ps0"]
 [ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/jangroh_logo.png" id="2_x6lt7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1jqq"]
@@ -10,7 +10,7 @@ border_width_left = 100
 border_width_top = 100
 border_width_right = 100
 border_width_bottom = 100
-border_color = Color(0.566667, 0, 1, 1)
+border_color = Color(0, 0, 0, 1)
 border_blend = true
 shadow_color = Color(0.112, 0, 0.32, 1)
 
@@ -54,10 +54,10 @@ border_width_top = 10
 border_width_right = 10
 border_color = Color(0.1292, 0.3128, 0.68, 1)
 border_blend = true
-corner_radius_top_left = 120
-corner_radius_top_right = 120
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 expand_margin_left = 100.0
 expand_margin_right = 100.0
 shadow_color = Color(0, 0, 0, 1)
@@ -132,7 +132,8 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Panel2" type="Panel" parent="PanelContainer"]
+[node name="BG" type="Panel" parent="PanelContainer"]
+z_index = -1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r1jqq")
 
@@ -147,13 +148,13 @@ offset_bottom = 478.0
 ratio = 1.9003
 stretch_mode = 3
 
-[node name="Panel" type="Panel" parent="AspectRatioContainer"]
+[node name="Logo" type="Panel" parent="AspectRatioContainer"]
 z_as_relative = false
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_x2ps0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="buttons_holder" type="VBoxContainer" parent="."]
 z_index = 2
 layout_mode = 0
 offset_left = 391.0
@@ -163,11 +164,11 @@ offset_bottom = 772.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="buttons_holder"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
-theme_override_constants/h_separation = 10
+theme_override_constants/h_separation = 29
 theme_override_fonts/font = ExtResource("1_b07fi")
 theme_override_font_sizes/font_size = 86
 theme_override_styles/focus = SubResource("StyleBoxFlat_8ovav")
@@ -176,7 +177,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_8ovav")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="buttons_holder"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
@@ -189,7 +190,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qx8t1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
 text = "Settings"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="buttons_holder"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
@@ -202,6 +203,46 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_p42dv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 112.0
+offset_right = 970.0
+offset_bottom = 579.0
+ratio = 1.3496
+
+[node name="Settings" type="Panel" parent="AspectRatioContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AspectRatioContainer2/Settings"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 32.0
+offset_right = 527.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("1_b07fi")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Back" type="Button" parent="AspectRatioContainer2/Settings"]
+layout_mode = 2
+offset_left = 93.6316
+offset_top = 383.0
+offset_right = 973.632
+offset_bottom = 479.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
+theme_override_constants/h_separation = 10
+theme_override_fonts/font = ExtResource("1_b07fi")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/focus = SubResource("StyleBoxFlat_8ovav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5kukc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p42dv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_x6lt7")
+text = "Back"
+
+[connection signal="pressed" from="buttons_holder/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="buttons_holder/Settings" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="buttons_holder/Quit" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="AspectRatioContainer2/Settings/Back" to="." method="_on_back_pressed"]
