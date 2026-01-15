@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://uk316m2xr3ug" path="res://images/forest/bg-layer-4-full.png" id="3_1rr3k"]
 [ext_resource type="Texture2D" uid="uid://d3j4qpg6m3syo" path="res://images/forest/bg-layer-3-full-alpha.png" id="4_hsj5a"]
 [ext_resource type="Texture2D" uid="uid://c7v5kcadeegw5" path="res://images/forest/bg-layer-2-full-alpha.png" id="5_w38ni"]
-[ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/forest/Bglayer1.png" id="6_uclwg"]
+[ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/bullet/Bglayer1.png" id="6_uclwg"]
 [ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="7_8x6gh"]
 [ext_resource type="Texture2D" uid="uid://c3jb5hg6fpip3" path="res://images/props/spaceshipdamaged.png" id="8_442u8"]
 [ext_resource type="PackedScene" uid="uid://dbhucle5c2ikd" path="res://scenes/mushroom.tscn" id="9_fxl23"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="2_arsda"]
 [ext_resource type="PackedScene" uid="uid://xuaovhjlydlt" path="res://scenes/portal.tscn" id="4_dgq3b"]
 [ext_resource type="PackedScene" uid="uid://djtuekka5eoo7" path="res://scenes/kill_zone.tscn" id="5_bcgyv"]
-[ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/forest/Bglayer1.png" id="5_s275v"]
+[ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/bullet/Bglayer1.png" id="5_s275v"]
 [ext_resource type="Texture2D" uid="uid://c7v5kcadeegw5" path="res://images/forest/bg-layer-2-full-alpha.png" id="6_pml6m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgq3b"]
@@ -2633,21 +2633,29 @@ position = Vector2(388, 929)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -131)
+position = Vector2(1677, 699)
 motion_scale = Vector2(0.505, 0.5)
-motion_mirroring = Vector2(1728, 1728)
+motion_mirroring = Vector2(3456, 0)
 
 [node name="Bglayer1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-401, -374)
+position = Vector2(-801, -378)
+texture = ExtResource("5_s275v")
+
+[node name="Bglayer2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1728, -379)
 texture = ExtResource("5_s275v")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1068, 0)
+position = Vector2(1068, 477)
 motion_scale = Vector2(0.7, 0.5)
-motion_mirroring = Vector2(1152, 1152)
+motion_mirroring = Vector2(2304, 0)
 
-[node name="Bglayer1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Bglayer2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(-401, -374)
+texture = ExtResource("6_pml6m")
+
+[node name="Bglayer3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1152, -374)
 texture = ExtResource("6_pml6m")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
