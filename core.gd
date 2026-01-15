@@ -11,8 +11,6 @@ func _ready() -> void:
 	menu.connect("start_game", Callable(self,"on_menu_start_game"))
 	cut_scene.connect("cut_scene_finished", Callable(self,"on_cut_scene_finished"))
 	
-func _process(delta: float) -> void:
-	pass
 	
 	
 func on_menu_start_game():

@@ -109,7 +109,7 @@ func enter_state(new_state: State):
 			jumps_left -= 1
 			play_sprite_anim("jump")
 		State.Sliding:
-			jumps_left = MAX_JUMPS
+			jumps_left = 1
 			default_col.shape = slide_col.shape
 			default_col.position = slide_col.position
 			slide_audio.playing = true

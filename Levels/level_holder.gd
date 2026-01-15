@@ -9,8 +9,6 @@ func _ready() -> void:
 	level_1.connect("change", Callable(self, "on_change"))
 	#bg_music.play()
 
-func _process(delta: float) -> void:
-	pass
 
 func on_change():
 	print(6)
