@@ -136,7 +136,7 @@ func try_jump(jump_velocity:Vector2) -> bool:
 		return true
 	return false
 	
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	if is_paused:
 		footstep_audio.playing = false
 		slide_audio.playing = false

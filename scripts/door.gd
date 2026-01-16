@@ -48,7 +48,6 @@ func _open():
 		pass
 	#lock_area.monitoring = false
 	call_deferred("disable_monitoring")
-	lock_col.disabled = true
 	lock_col.queue_free()
 	lock_area.queue_free()
 	sliding_door.hide()
