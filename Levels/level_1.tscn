@@ -2990,7 +2990,7 @@ animations = [{
 script = ExtResource("1_1rr3k")
 
 [node name="Player" parent="." instance=ExtResource("1_c7pbv")]
-position = Vector2(8661, 1032)
+position = Vector2(9487, 1080)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(0, -14)

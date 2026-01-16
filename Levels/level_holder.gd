@@ -16,6 +16,7 @@ func on_change():
 	var next_lvl_num = current_scene.to_int() + 1
 	var next_level_path = "res://Levels/level_" + str(next_lvl_num) + ".tscn"
 	var next_level = load(next_level_path).instantiate()
+	level_1.hide()
 	remove_child(level_1)
 	add_child(next_level)
 	level_1 = next_level
