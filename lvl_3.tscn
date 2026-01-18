@@ -4,13 +4,15 @@
 size = Vector2(740, 465)
 
 [node name="lvl_3" type="Node2D"]
-position = Vector2(9437, 0)
+position = Vector2(11, 0)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 738.0
-offset_bottom = 465.0
+offset_left = 4973.0
+offset_top = 704.0
+offset_right = 5711.0
+offset_bottom = 1169.0
 color = Color(1, 0.6, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(371, 233.5)
+position = Vector2(5344, 937.5)
 shape = SubResource("RectangleShape2D_ootq0")

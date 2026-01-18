@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dup4wexx6aeli"]
+
+[ext_resource type="Script" uid="uid://dssgeu507p171" path="res://t-area.gd" id="1_ntr82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2l4k"]
+size = Vector2(341, 58)
+
+[node name="3_4" type="Area2D"]
+script = ExtResource("1_ntr82")
+from = 3
+to = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 6058.0
+offset_top = 936.0
+offset_right = 6383.0
+offset_bottom = 980.0
+color = Color(0.102, 0.34, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6218.5, 955)
+shape = SubResource("RectangleShape2D_w2l4k")

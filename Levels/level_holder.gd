@@ -6,7 +6,7 @@ var level_1 = load("res://Levels/level_1.tscn").instantiate()
 @onready var _1_2: Area2D = $"1_2"
 
 
-var loaded_areas : Array = ["1_2","2_1"]
+var loaded_areas : Array = ["1_2"]
 var to_load : Array
 var to_unload : Array
 var loaded_levels : Array = [1]
@@ -18,7 +18,7 @@ func _ready() -> void:
 	#level_1.connect("change", Callable(self, "on_change"))
 	#bg_music.play()
 	_1_2.connect("entered",Callable(self,"on_entered"))
-
+	#_2_1.connect("entered",Callable(self,"on_entered"))
 func on_entered(from:int, to:int):
 	print("emit_succes")
 	print(from)
@@ -47,6 +47,7 @@ func _load_n_unload():
 			if level in loaded_levels:
 				var unload = get_node("lvl_" + str(level))
 				remove_child(unload)
+				loaded_levels.erase(level)
 				unload_t_areas(level)
 			
 
@@ -58,23 +59,23 @@ func load_t_areas(lvl):
 	var area_name2 =str(lvl+1)+"_"+ str(lvl)
 	var area_name3 =str(lvl)+"_"+ str(lvl-1)
 	var area_name4 =str(lvl-1)+"_"+ str(lvl)
-	var area_names : Array = [area_name1,area_name2,area_name3,area_name4]
-	var t_area_1 = load("res://" + area_name1+ ".tscn").instantiate()
-	var t_area_2 = load("res://" + area_name2+ ".tscn").instantiate()
-	t_areas_to_load.append(t_area_1)
-	t_areas_to_load.append(t_area_2)
+	t_areas_to_load.append(area_name1)
+	t_areas_to_load.append(area_name2)
 	if lvl>1:
-		var t_area_3 = load("res://" + area_name3+ ".tscn").instantiate()
-		var t_area_4 = load("res://" + area_name4+ ".tscn").instantiate()
-		t_areas_to_load.append(t_area_3)
-		t_areas_to_load.append(t_area_4)
+		t_areas_to_load.append(area_name3)
+		t_areas_to_load.append(area_name4)
 	for area in t_areas_to_load:
-		if area.name in loaded_areas:
-			pass
+		if area in loaded_areas:
+			print("Area already loaded: ", area)
 		else:
-			add_child(area)
-			loaded_areas.append(area.name)  # Store the name string
-			area.connect("entered", Callable(self, "on_entered"))
+			print("Loading new area: ", area)
+			var area_instance = load("res://" + area+ ".tscn").instantiate()
+			add_child(area_instance)
+			loaded_areas.append(area)  # Store the name string
+			var area_node = get_node(area)
+			print("Connecting signal for: ", area_instance.name)
+			area_instance.connect("entered", Callable(self, "on_entered"))
+			print("Signal connected!")
 
 func unload_t_areas(lvl):
 	t_areas_to_unload.clear()
@@ -89,7 +90,7 @@ func unload_t_areas(lvl):
 		t_areas_to_unload.append(t_area_4)
 	for area in t_areas_to_unload:
 		if area.name in loaded_areas:
-			if area in t_areas_to_load:
+			if area.name in t_areas_to_load:
 				pass
 			else:
 				remove_child(area)
