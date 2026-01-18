@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6qae"]
 size = Vector2(462, 281)
 
-[node name="lvl2" type="Node2D"]
+[node name="lvl_2" type="Node2D"]
 position = Vector2(2377, 72)
 
 [node name="ColorRect" type="ColorRect" parent="."]
