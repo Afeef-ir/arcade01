@@ -22,11 +22,11 @@ scale = Vector2(4, 4)
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(0.2, 0.2)
 
-[node name="1-2" parent="." instance=ExtResource("5_sjl5a")]
+[node name="1_2" parent="." instance=ExtResource("5_sjl5a")]
 position = Vector2(812, 810)
 to = 2
 
 [node name="lvl_1" parent="." instance=ExtResource("6_q0u62")]
 
-[node name="2-1" parent="." instance=ExtResource("6_sjl5a")]
+[node name="2_1" parent="." instance=ExtResource("6_sjl5a")]
 position = Vector2(1874, 887)

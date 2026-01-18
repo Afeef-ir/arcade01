@@ -3,9 +3,10 @@ extends Node2D
 @onready var bg_music: AudioStreamPlayer = $BG_music
 
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
-@onready var _1_2: Area2D = $"1-2"
+@onready var _1_2: Area2D = $"1_2"
 
-var loaded_areas : Array = [load("res://1_2.tscn").instantiate(), load("res://2_1.tscn").instantiate()]
+
+var loaded_areas : Array = ["1_2","2_1"]
 var to_load : Array
 var to_unload : Array
 var loaded_levels : Array = [1]
@@ -44,7 +45,7 @@ func _load_n_unload():
 			pass
 		else:
 			if level in loaded_levels:
-				var unload = get_node("lvl_1")
+				var unload = get_node("lvl_" + str(level))
 				remove_child(unload)
 				unload_t_areas(level)
 			
@@ -52,42 +53,47 @@ func _load_n_unload():
 
 
 func load_t_areas(lvl):
-
-	
-	var t_area_1 = load("res://" + str(lvl)+"_"+ str(lvl + 1)+ ".tscn").instantiate()
-	var t_area_2 = load("res://" + str(lvl+1)+"_"+ str(lvl)+ ".tscn").instantiate()
+	t_areas_to_load.clear()
+	var area_name1 =str(lvl)+ "_"+ str(lvl+1)
+	var area_name2 =str(lvl+1)+"_"+ str(lvl)
+	var area_name3 =str(lvl)+"_"+ str(lvl-1)
+	var area_name4 =str(lvl-1)+"_"+ str(lvl)
+	var area_names : Array = [area_name1,area_name2,area_name3,area_name4]
+	var t_area_1 = load("res://" + area_name1+ ".tscn").instantiate()
+	var t_area_2 = load("res://" + area_name2+ ".tscn").instantiate()
 	t_areas_to_load.append(t_area_1)
 	t_areas_to_load.append(t_area_2)
 	if lvl>1:
-		var t_area_3 = load("res://" + str(lvl)+"_"+ str(lvl - 1)+ ".tscn").instantiate()
-		var t_area_4 = load("res://" + str(lvl-1)+"_"+ str(lvl)+ ".tscn").instantiate()
+		var t_area_3 = load("res://" + area_name3+ ".tscn").instantiate()
+		var t_area_4 = load("res://" + area_name4+ ".tscn").instantiate()
 		t_areas_to_load.append(t_area_3)
 		t_areas_to_load.append(t_area_4)
 	for area in t_areas_to_load:
-		if area in loaded_areas:
+		if area.name in loaded_areas:
 			pass
 		else:
 			add_child(area)
-			loaded_areas.append(area)
-			area.connect("entered",Callable(self,"on_entered"))
+			loaded_areas.append(area.name)  # Store the name string
+			area.connect("entered", Callable(self, "on_entered"))
 
 func unload_t_areas(lvl):
-	var t_area_1 = get_node(str(lvl) +"-"+ str(lvl+1))
-	var t_area_2 = get_node(str(lvl+1) + "-"+str(lvl))
+	t_areas_to_unload.clear()
+	var t_area_1 = get_node(str(lvl) +"_"+ str(lvl+1))
+	var t_area_2 = get_node(str(lvl+1) + "_"+str(lvl))
 	t_areas_to_unload.append(t_area_1)
 	t_areas_to_unload.append(t_area_2)
 	if lvl>1:
-		var t_area_3 = get_node(str(lvl) +"-"+ str(lvl-1))
-		var t_area_4 = get_node(str(lvl-1) +"-"+ str(lvl))
+		var t_area_3 = get_node(str(lvl) +"_"+ str(lvl-1))
+		var t_area_4 = get_node(str(lvl-1) +"_"+ str(lvl))
 		t_areas_to_unload.append(t_area_3)
 		t_areas_to_unload.append(t_area_4)
 	for area in t_areas_to_unload:
-		var area_path = load(area.scene_file_path).instantiate()
-		if area_path in loaded_areas:
-			if area_path in t_areas_to_load:
+		if area.name in loaded_areas:
+			if area in t_areas_to_load:
 				pass
 			else:
 				remove_child(area)
+				loaded_areas.erase(area.name)
 				
 				
 				

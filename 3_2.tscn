@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu44p"]
 size = Vector2(461, 50)
 
-[node name="3-2" type="Area2D"]
+[node name="3_2" type="Area2D"]
 position = Vector2(4337, 170)
 script = ExtResource("1_cvxbe")
 from = 3
