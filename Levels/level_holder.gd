@@ -14,7 +14,7 @@ var t_areas_to_unload : Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#add_child(level_1)
-	level_1.connect("change", Callable(self, "on_change"))
+	#level_1.connect("change", Callable(self, "on_change"))
 	#bg_music.play()
 	_1_2.connect("entered",Callable(self,"on_entered"))
 
@@ -27,8 +27,8 @@ func on_entered(from:int, to:int):
 	to_load.append(from)
 	to_unload.append(to)
 	_load_n_unload()
-
-
+	
+	
 
 
 
@@ -40,10 +40,13 @@ func _load_n_unload():
 		loaded_levels.append(level)
 		load_t_areas(level)
 	for level in to_unload:
-		if level in loaded_levels:
-			var unload = get_node("lvl_1")
-			remove_child(unload)
-			unload_t_areas(level)
+		if level in to_load:
+			pass
+		else:
+			if level in loaded_levels:
+				var unload = get_node("lvl_1")
+				remove_child(unload)
+				unload_t_areas(level)
 			
 
 
@@ -79,10 +82,9 @@ func unload_t_areas(lvl):
 		t_areas_to_unload.append(t_area_3)
 		t_areas_to_unload.append(t_area_4)
 	for area in t_areas_to_unload:
-		var area_path = area.scene_file_path
-		var area_loaded = load(area_path).instantiate() 
-		if area_loaded in loaded_areas:
-			if area in t_areas_to_load:
+		var area_path = load(area.scene_file_path).instantiate()
+		if area_path in loaded_areas:
+			if area_path in t_areas_to_load:
 				pass
 			else:
 				remove_child(area)
