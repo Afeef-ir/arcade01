@@ -6,18 +6,23 @@ var level_1 = load("res://Levels/level_1.tscn").instantiate()
 @onready var _1_2: Area2D = $"1_2"
 
 
+
 var loaded_areas : Array = ["1_2"]
-var to_load : Array
-var to_unload : Array
+var to_load : Array = []
+var to_unload : Array = []
 var loaded_levels : Array = [1]
-var t_areas_to_load : Array
-var t_areas_to_unload : Array
+var t_areas_to_load : Array = []
+var t_areas_to_unload : Array = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var lvl1 = load("res://lvl_1.tscn").instantiate()
+	var t1_2 = load("res://1_2.tscn").instantiate()
+	add_child(lvl1)
+	add_child(t1_2)
 	#add_child(level_1)
 	#level_1.connect("change", Callable(self, "on_change"))
 	#bg_music.play()
-	_1_2.connect("entered",Callable(self,"on_entered"))
+	t1_2.connect("entered",Callable(self,"on_entered"))
 	#_2_1.connect("entered",Callable(self,"on_entered"))
 func on_entered(from:int, to:int):
 	print("emit_succes")
@@ -36,19 +41,26 @@ func on_entered(from:int, to:int):
 
 func _load_n_unload():
 	for level in to_load:
-		var lvl_to_load = load("res://lvl_" + str(level)+ ".tscn").instantiate()
-		add_child(lvl_to_load)
-		loaded_levels.append(level)
-		load_t_areas(level)
+		if ResourceLoader.exists("res://lvl_" + str(level)+ ".tscn"):
+			var lvl_to_load = load("res://lvl_" + str(level)+ ".tscn").instantiate()
+			add_child(lvl_to_load)
+			loaded_levels.append(level)
+			load_t_areas(level)
+	# ... rest of code
+		else:
+			print("ERROR: Scene not found!")
+
 	for level in to_unload:
 		if level in to_load:
 			pass
 		else:
 			if level in loaded_levels:
-				var unload = get_node("lvl_" + str(level))
-				remove_child(unload)
-				loaded_levels.erase(level)
-				unload_t_areas(level)
+				if has_node("lvl_" + str(level)):
+					var unload = get_node("lvl_" + str(level))
+					remove_child(unload)
+					unload.queue_free()
+					loaded_levels.erase(level)
+					unload_t_areas(level)
 			
 
 
@@ -79,15 +91,21 @@ func load_t_areas(lvl):
 
 func unload_t_areas(lvl):
 	t_areas_to_unload.clear()
-	var t_area_1 = get_node(str(lvl) +"_"+ str(lvl+1))
-	var t_area_2 = get_node(str(lvl+1) + "_"+str(lvl))
-	t_areas_to_unload.append(t_area_1)
-	t_areas_to_unload.append(t_area_2)
+	if has_node(str(lvl) +"_"+ str(lvl+1)):
+		var t_area_1 = get_node(str(lvl) +"_"+ str(lvl+1))
+		t_areas_to_unload.append(t_area_1)
+	if has_node(str(lvl) +"_"+ str(lvl+1)):
+		var t_area_2 = get_node(str(lvl) +"_"+ str(lvl+1))
+		t_areas_to_unload.append(t_area_2)
+		
+		
 	if lvl>1:
-		var t_area_3 = get_node(str(lvl) +"_"+ str(lvl-1))
-		var t_area_4 = get_node(str(lvl-1) +"_"+ str(lvl))
-		t_areas_to_unload.append(t_area_3)
-		t_areas_to_unload.append(t_area_4)
+		if has_node(str(lvl) +"_"+ str(lvl+1)):
+			var t_area_2 = get_node(str(lvl) +"_"+ str(lvl+1))
+			t_areas_to_unload.append(t_area_2)
+		if has_node(str(lvl) +"_"+ str(lvl+1)):
+			var t_area_2 = get_node(str(lvl) +"_"+ str(lvl+1))
+			t_areas_to_unload.append(t_area_2)
 	for area in t_areas_to_unload:
 		if area.name in loaded_areas:
 			if area.name in t_areas_to_load:
