@@ -9,7 +9,7 @@ size = Vector2(693, 100)
 position = Vector2(11, 4)
 script = ExtResource("1_pmc8q")
 from = 1
-to = 3
+to = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1370.5, 1166)
