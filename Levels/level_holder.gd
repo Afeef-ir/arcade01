@@ -3,7 +3,6 @@ extends Node2D
 @onready var bg_music: AudioStreamPlayer = $BG_music
 
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
-@onready var _1_2: Area2D = $"1_2"
 
 
 
@@ -35,14 +34,15 @@ func on_entered(from:int, to:int):
 	to_unload.clear()
 	to_load.append(from)
 	to_unload.append(to)
-	_load_n_unload()
+	_load()
+	_unload()
 	
 	
 
 
 
 
-func _load_n_unload():
+func _load():
 	for level in to_load:
 		print("loading level")
 		if level in loaded_levels:
@@ -58,7 +58,8 @@ func _load_n_unload():
 		# ... rest of code
 			else:
 				print("ERROR: Scene not found!")
-
+				
+func _unload():
 	for level in to_unload:
 		print("trying to unload" + str(level))
 		if level in to_load:
@@ -95,23 +96,23 @@ func load_t_areas(lvl):
 	t_areas_to_load.append(area_name4)
 	for area in t_areas_to_load:
 		if not area in loaded_areas:
+			print(str(area))
 			print(t_areas_to_load)
 			print("Loading new area: ", area)
 			var area_instance = load("res://" + area+ ".tscn").instantiate()
 			add_child(area_instance)
 			loaded_areas.append(area) 
-			t_areas_to_load.erase(area)
-			var area_node = get_node(area)
 			print("Connecting signal for: ", area_instance.name)
 			area_instance.connect("entered", Callable(self, "on_entered"))
 			print("Signal connected!")
-			print(t_areas_to_load)
+			print(t_areas_to_load , str(area))
 		else:
 			print("area already loaded")
 
 func unload_t_areas(lvl):
 	print("    Unloading t_areas for level: ", lvl)
 	t_areas_to_unload.clear()
+	print(loaded_areas)
 	print("    Looking for: area 1name")
 	if has_node(str(lvl) +"_"+ str(lvl+1)):
 		print("found")
@@ -141,10 +142,15 @@ func unload_t_areas(lvl):
 				print("    Skipping area (in to_load): "+ str(area))
 			else:
 				print("removing area"+ str(area))
+				print(area.name)
+				var area_node = get_node(str(area.name))
+				area_node.queue_free()
 				remove_child(area)
-				loaded_areas.erase(area.name)
+				loaded_areas.erase(str(area.name))
+				print(loaded_areas)
 		else:
 			print("area not in loaded areas")
+	t_areas_to_load.clear()
 				
 				
 				
