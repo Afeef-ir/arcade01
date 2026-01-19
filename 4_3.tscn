@@ -21,3 +21,11 @@ color = Color(1, 0, 0.55, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6894.5, 1050.5)
 shape = SubResource("RectangleShape2D_aklp5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 6895.0
+offset_top = 1081.0
+offset_right = 7502.0
+offset_bottom = 1218.0
+theme_override_font_sizes/font_size = 100
+text = "T-area 4-3"

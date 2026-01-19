@@ -20,3 +20,11 @@ color = Color(0.102, 0.34, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6218.5, 955)
 shape = SubResource("RectangleShape2D_w2l4k")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 6058.0
+offset_top = 1097.0
+offset_right = 6665.0
+offset_bottom = 1234.0
+theme_override_font_sizes/font_size = 100
+text = "3-4"

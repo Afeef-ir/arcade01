@@ -20,3 +20,11 @@ offset_bottom = 1135.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4500.5, 1113)
 shape = SubResource("RectangleShape2D_iu44p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4270.0
+offset_top = 1217.0
+offset_right = 4877.0
+offset_bottom = 1354.0
+theme_override_font_sizes/font_size = 100
+text = "T-area 3-2"

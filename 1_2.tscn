@@ -20,3 +20,11 @@ offset_left = 1034.0
 offset_top = 1126.0
 offset_right = 1711.0
 offset_bottom = 1203.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1104.0
+offset_top = 1251.0
+offset_right = 1711.0
+offset_bottom = 1334.0
+theme_override_font_sizes/font_size = 100
+text = "T-area 1-2"

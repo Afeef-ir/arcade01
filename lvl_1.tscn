@@ -13,3 +13,11 @@ offset_bottom = 1277.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(327.5, 1076)
 shape = SubResource("RectangleShape2D_iqlhl")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 235.0
+offset_top = 1322.0
+offset_right = 842.0
+offset_bottom = 1459.0
+theme_override_font_sizes/font_size = 100
+text = "lvl 1"

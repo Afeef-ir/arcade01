@@ -16,3 +16,11 @@ color = Color(1, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3164, 1142.5)
 shape = SubResource("RectangleShape2D_m6qae")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2933.0
+offset_top = 1286.0
+offset_right = 3540.0
+offset_bottom = 1423.0
+theme_override_font_sizes/font_size = 100
+text = "lvl2"

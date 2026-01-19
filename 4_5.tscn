@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5qdynar2msjy"]
+
+[ext_resource type="Script" uid="uid://dssgeu507p171" path="res://t-area.gd" id="1_6bemg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_our14"]
+size = Vector2(309, 60)
+
+[node name="4_5" type="Area2D"]
+script = ExtResource("1_6bemg")
+from = 4
+to = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 8009.0
+offset_top = 953.0
+offset_right = 8309.0
+offset_bottom = 1002.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8153.5, 973)
+shape = SubResource("RectangleShape2D_our14")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8086.0
+offset_top = 1027.0
+offset_right = 8366.0
+offset_bottom = 1137.0
+theme_override_font_sizes/font_size = 80
+text = "4-5"

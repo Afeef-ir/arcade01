@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxkynt20jqyxf"]
+
+[ext_resource type="Script" uid="uid://dssgeu507p171" path="res://t-area.gd" id="1_waxq5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6meip"]
+size = Vector2(305, 48)
+
+[node name="5_6" type="Area2D"]
+script = ExtResource("1_waxq5")
+from = 5
+to = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 10057.0
+offset_top = 1000.0
+offset_right = 10361.0
+offset_bottom = 1041.0
+color = Color(0.35, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10209.5, 1020)
+shape = SubResource("RectangleShape2D_6meip")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10120.0
+offset_top = 1041.0
+offset_right = 10397.0
+offset_bottom = 1151.0
+theme_override_font_sizes/font_size = 80
+text = "5-6"

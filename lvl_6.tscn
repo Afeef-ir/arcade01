@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdnrf1ipqpx36"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_holo5"]
+size = Vector2(572, 326)
+
+[node name="lvl_6" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 11156.0
+offset_top = 949.0
+offset_right = 11722.0
+offset_bottom = 1263.0
+color = Color(1, 0.14, 0.14, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11432, 1102)
+shape = SubResource("RectangleShape2D_holo5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 11351.0
+offset_top = 1340.0
+offset_right = 11607.0
+offset_bottom = 1477.0
+theme_override_font_sizes/font_size = 100
+text = "lvl 6"

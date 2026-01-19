@@ -3,9 +3,7 @@ extends Node2D
 @onready var bg_music: AudioStreamPlayer = $BG_music
 
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
-
 var load_level
-
 var loaded_areas : Array = ["1_2", "2_1"]
 var to_load : Array = []
 var to_unload : Array = []
@@ -26,6 +24,7 @@ func _ready() -> void:
 	t1_2.connect("entered",Callable(self,"on_entered"))
 	t2_1.connect("entered",Callable(self,"on_entered"))
 	#_2_1.connect("entered",Callable(self,"on_entered"))
+	
 func on_entered(from:int, to:int):
 	print("emit_succes")
 	print("From level:", from)
@@ -36,18 +35,6 @@ func on_entered(from:int, to:int):
 	to_unload.append(to)  
 	_load()
 	_unload()
-	  
-	  
-	# Load new transition areas
-
-
-			
-		
-	
-	
-
-
-
 
 func _load():
 	for level in to_load:
@@ -59,7 +46,6 @@ func _load():
 				var lvl_to_load = load("res://lvl_" + str(level)+ ".tscn").instantiate()
 				add_child(lvl_to_load)
 				loaded_levels.append(level)
-		
 				print("loaded level"+ str(level)+ "succesfully")
 				to_load.erase(level)
 				load_t_areas(level)    
@@ -73,7 +59,6 @@ func _load():
 							var area_instance = load("res://" + area+ ".tscn").instantiate()
 							add_child(area_instance)
 							area_instance.connect("entered", Callable(self, "on_entered"))
-
 			else:
 				print("ERROR: Scene not found!")
 				
@@ -92,13 +77,11 @@ func _unload():
 					var areas_needed_at_destination = load_t_areas(load_level) 
 					print("Areas needed at destination: ", areas_needed_at_destination)
 					print("Areas to unload: ", t_areas_to_unload.size())
-					
 					for area in t_areas_to_unload:
 						var area_name = str(area.name)
 						print("Processing area to unload: ", area_name)
 						print("Is in loaded_areas? ", area_name in loaded_areas)
 						print("Is needed at destination? ", area_name in areas_needed_at_destination)
-						
 						if area_name in areas_needed_at_destination:
 							print("  -> Keeping (needed at destination)")
 							if area_name not in loaded_areas:
@@ -115,14 +98,10 @@ func _unload():
 					unload.queue_free()
 					loaded_levels.erase(level)
 					print("  Removed from tree")
-					
 				else:
 					print("node not found")
 			else:
 				print("level Not in loaded levels")
-			
-
-
 
 func load_t_areas(lvl):
 	t_areas_to_load.clear()
@@ -136,7 +115,7 @@ func load_t_areas(lvl):
 		t_areas_to_load.append(area_name3)
 		t_areas_to_load.append(area_name4)
 	return t_areas_to_load
-			
+
 func unload_t_areas(lvl):
 	print("    Unloading t_areas for level: ", lvl)
 	t_areas_to_unload.clear()
@@ -150,8 +129,7 @@ func unload_t_areas(lvl):
 		print("found")
 		var t_area_2 = get_node(str(lvl+1) +"_"+ str(lvl))
 		t_areas_to_unload.append(t_area_2)
-		
-		
+
 	if lvl==1:
 		pass
 	else:
@@ -161,9 +139,7 @@ func unload_t_areas(lvl):
 		if has_node(str(lvl-1) +"_"+ str(lvl)):
 			var t_area_2 = get_node(str(lvl-1) +"_"+ str(lvl))
 			t_areas_to_unload.append(t_area_2)
-			
 	print("    Total areas to unload: ", t_areas_to_unload.size())
-				#
 	return t_areas_to_unload
 				
 				
