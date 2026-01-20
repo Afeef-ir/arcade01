@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvtmltxwlirxh"]
 
-[ext_resource type="Script" uid="uid://dssgeu507p171" path="res://t-area.gd" id="1_pmc8q"]
+[ext_resource type="Script" uid="uid://dssgeu507p171" path="res://scripts/t-area.gd" id="1_pmc8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmc8q"]
 size = Vector2(693, 100)
@@ -12,19 +12,19 @@ from = 1
 to = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1370.5, 1166)
+position = Vector2(9646.5, 1028)
 shape = SubResource("RectangleShape2D_pmc8q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 1034.0
-offset_top = 1126.0
-offset_right = 1711.0
-offset_bottom = 1203.0
+offset_left = 9310.0
+offset_top = 988.0
+offset_right = 9987.0
+offset_bottom = 1065.0
 
 [node name="Label" type="Label" parent="."]
-offset_left = 1104.0
-offset_top = 1251.0
-offset_right = 1711.0
-offset_bottom = 1334.0
+offset_left = 9380.0
+offset_top = 1113.0
+offset_right = 9987.0
+offset_bottom = 1250.0
 theme_override_font_sizes/font_size = 100
 text = "T-area 1-2"

@@ -12,15 +12,20 @@ var t_areas_to_load : Array = []
 var t_areas_to_unload : Array = []
 
 func _ready() -> void:
-	var lvl1 = load("res://lvl_1.tscn").instantiate()
-	var t1_2 = load("res://1_2.tscn").instantiate()
-	var t2_1 = load("res://2_1.tscn").instantiate()
-	add_child(t2_1)
-	add_child(lvl1)
-	add_child(t1_2)
+	#var lvl1 = load("res://lvl_1.tscn").instantiate()
+	#var t1_2 = load("res://1_2.tscn").instantiate()
+	#var t2_1 = load("res://2_1.tscn").instantiate()
+	#add_child(t2_1)
+	#add_child(lvl1)
+	#add_child(t1_2)
 	#add_child(level_1)
 	#level_1.connect("change", Callable(self, "on_change"))
 	#bg_music.play()
+	var t1_2 = load("res://T-areas/1_2.tscn").instantiate()
+	var t2_1 = load("res://T-areas/2_1.tscn").instantiate()
+	add_child(t2_1)
+	add_child(level_1)
+	add_child(t1_2)
 	t1_2.connect("entered",Callable(self,"on_entered"))
 	t2_1.connect("entered",Callable(self,"on_entered"))
 	#_2_1.connect("entered",Callable(self,"on_entered"))
@@ -38,8 +43,8 @@ func _load():
 		if level in loaded_levels:
 			pass
 		else:
-			if ResourceLoader.exists("res://lvl_" + str(level)+ ".tscn") :
-				var lvl_to_load = load("res://lvl_" + str(level)+ ".tscn").instantiate()
+			if ResourceLoader.exists("res://Levels/level_" + str(level)+ ".tscn") :
+				var lvl_to_load = load("res://Levels/level_" + str(level)+ ".tscn").instantiate()
 				add_child(lvl_to_load)
 				loaded_levels.append(level)
 				to_load.erase(level)
@@ -50,21 +55,25 @@ func _load():
 						pass
 					else:
 						loaded_areas.append(area) 
-						if ResourceLoader.exists("res://" + area+ ".tscn"):
-							var area_instance = load("res://" + area+ ".tscn").instantiate()
+						if ResourceLoader.exists("res://T-area/" + area+ ".tscn"):
+							var area_instance = load("res://T-area/" + area+ ".tscn").instantiate()
 							add_child(area_instance)
 							area_instance.connect("entered", Callable(self, "on_entered"))
 							
 							
 func _unload():
 	for level in to_unload:
+		print("to unload")
 		if level in to_load:
-			pass
+			print("needed")
 		else:
 			if level in loaded_levels:
-				if has_node("lvl_" + str(level)):
+				print("level loaded, to unload")
+				print("Level_" + str(level))
+				if has_node("Level" + str(level)):
+					print("found node to unload")
 					unload_t_areas(level) 
-					var unload = get_node("lvl_" + str(level))
+					var unload = get_node("Level" + str(level))
 					var areas_needed_at_destination = load_t_areas(load_level) 
 					for area in t_areas_to_unload:
 						var area_name = str(area.name)
@@ -78,6 +87,8 @@ func _unload():
 					remove_child(unload)
 					unload.queue_free()
 					loaded_levels.erase(level)
+				else:
+					print("couldnt find node")
 
 
 

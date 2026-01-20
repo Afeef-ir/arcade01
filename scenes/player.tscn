@@ -149,7 +149,7 @@ _data = {
 &"hurt": SubResource("Animation_fytk8")
 }
 
-[node name="player" type="CharacterBody2D" groups=["Player"]]
+[node name="player" type="CharacterBody2D" groups=["Player", "player"]]
 z_index = 2
 z_as_relative = false
 safe_margin = 10.0

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b4uyro5lc1v0p" path="res://Levels/level_holder.gd" id="1_f356j"]
 [ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/BGMusic.ogg" id="2_fqypy"]
-[ext_resource type="PackedScene" uid="uid://q3fu0fnqnvcb" path="res://character_body_2d.tscn" id="3_w5p2j"]
+[ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="4_uqqdg"]
 
-[node name="Levels" type="Node2D"]
+[node name="Level_holder" type="Node2D"]
 script = ExtResource("1_f356j")
 
 [node name="BG_music" type="AudioStreamPlayer" parent="."]
@@ -12,9 +12,10 @@ stream = ExtResource("2_fqypy")
 volume_db = 1.0
 parameters/looping = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_w5p2j")]
-position = Vector2(868, 2100)
-scale = Vector2(4, 4)
+[node name="player" parent="." instance=ExtResource("4_uqqdg")]
+position = Vector2(9323, 1066)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(0.2, 0.2)
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(2.75, 2.75)
+limit_bottom = 1728
+limit_smoothed = true

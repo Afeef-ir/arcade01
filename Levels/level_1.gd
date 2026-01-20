@@ -2,7 +2,6 @@ extends Node2D
 
 signal change
 
-@onready var player: CharacterBody2D = $Player
 @onready var portal: Area2D 
 
 func _ready() -> void:
