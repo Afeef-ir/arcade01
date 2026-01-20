@@ -12,6 +12,7 @@ var t_areas_to_load : Array = []
 var t_areas_to_unload : Array = []
 
 func _ready() -> void:
+	bg_music.play()
 	#var lvl1 = load("res://lvl_1.tscn").instantiate()
 	#var t1_2 = load("res://1_2.tscn").instantiate()
 	#var t2_1 = load("res://2_1.tscn").instantiate()
@@ -89,8 +90,6 @@ func _unload():
 					loaded_levels.erase(level)
 				else:
 					print("couldnt find node")
-
-
 
 
 func load_t_areas(lvl):

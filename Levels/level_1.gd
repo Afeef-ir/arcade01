@@ -5,9 +5,9 @@ signal change
 @onready var portal: Area2D 
 
 func _ready() -> void:
-	#player.spawn_position =  player.position
-	portal = get_node("Portal")
-	portal.connect("change_lvl", Callable(self , "on_change_lvl"))
+	var player = get_parent().get_node("player")
+	player.spawn_position =  player.position
+
 
 
 
