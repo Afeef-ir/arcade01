@@ -26,9 +26,6 @@ func _ready() -> void:
 	#_2_1.connect("entered",Callable(self,"on_entered"))
 	
 func on_entered(from:int, to:int):
-	print("emit_succes")
-	print("From level:", from)
-	print("To level:", to)
 	to_load.clear()
 	to_unload.clear()
 	to_load.append(from)      
@@ -38,70 +35,52 @@ func on_entered(from:int, to:int):
 
 func _load():
 	for level in to_load:
-		print("loading level")
 		if level in loaded_levels:
-			print(str(level)+ "lvl already loaded")
+			pass
 		else:
 			if ResourceLoader.exists("res://lvl_" + str(level)+ ".tscn") :
 				var lvl_to_load = load("res://lvl_" + str(level)+ ".tscn").instantiate()
 				add_child(lvl_to_load)
 				loaded_levels.append(level)
-				print("loaded level"+ str(level)+ "succesfully")
 				to_load.erase(level)
 				load_t_areas(level)    
 				load_level = level
 				for area in t_areas_to_load:
 					if area in loaded_areas:
-						print("alreadyloaded")
+						pass
 					else:
 						loaded_areas.append(area) 
 						if ResourceLoader.exists("res://" + area+ ".tscn"):
 							var area_instance = load("res://" + area+ ".tscn").instantiate()
 							add_child(area_instance)
 							area_instance.connect("entered", Callable(self, "on_entered"))
-			else:
-				print("ERROR: Scene not found!")
-				
+							
+							
 func _unload():
 	for level in to_unload:
-		print("trying to unload" + str(level))
 		if level in to_load:
-			print("skipped loading" + str(level))
+			pass
 		else:
 			if level in loaded_levels:
-				print("  Level is in loaded_levels")
 				if has_node("lvl_" + str(level)):
 					unload_t_areas(level) 
-					print("  Found node: ")
 					var unload = get_node("lvl_" + str(level))
 					var areas_needed_at_destination = load_t_areas(load_level) 
-					print("Areas needed at destination: ", areas_needed_at_destination)
-					print("Areas to unload: ", t_areas_to_unload.size())
 					for area in t_areas_to_unload:
 						var area_name = str(area.name)
-						print("Processing area to unload: ", area_name)
-						print("Is in loaded_areas? ", area_name in loaded_areas)
-						print("Is needed at destination? ", area_name in areas_needed_at_destination)
 						if area_name in areas_needed_at_destination:
-							print("  -> Keeping (needed at destination)")
 							if area_name not in loaded_areas:
 								loaded_areas.append(area_name)
 						elif area_name in loaded_areas:
-							print("  -> Removing")
 							remove_child(area)
 							area.queue_free()
 							loaded_areas.erase(area_name)
-							print("  -> Unloaded transition area: ", area_name)
-						else:
-							print("  -> Not in loaded_areas, skipping")
 					remove_child(unload)
 					unload.queue_free()
 					loaded_levels.erase(level)
-					print("  Removed from tree")
-				else:
-					print("node not found")
-			else:
-				print("level Not in loaded levels")
+
+
+
 
 func load_t_areas(lvl):
 	t_areas_to_load.clear()
@@ -117,16 +96,12 @@ func load_t_areas(lvl):
 	return t_areas_to_load
 
 func unload_t_areas(lvl):
-	print("    Unloading t_areas for level: ", lvl)
 	t_areas_to_unload.clear()
 	print(loaded_areas)
-	print("    Looking for: area 1name")
 	if has_node(str(lvl) +"_"+ str(lvl+1)):
-		print("found")
 		var t_area_1 = get_node(str(lvl) +"_"+ str(lvl+1))
 		t_areas_to_unload.append(t_area_1)
 	if has_node(str(lvl+1) +"_"+ str(lvl)):
-		print("found")
 		var t_area_2 = get_node(str(lvl+1) +"_"+ str(lvl))
 		t_areas_to_unload.append(t_area_2)
 
@@ -139,31 +114,12 @@ func unload_t_areas(lvl):
 		if has_node(str(lvl-1) +"_"+ str(lvl)):
 			var t_area_2 = get_node(str(lvl-1) +"_"+ str(lvl))
 			t_areas_to_unload.append(t_area_2)
-	print("    Total areas to unload: ", t_areas_to_unload.size())
 	return t_areas_to_unload
 				
 				
 				
 				
 				
-			
-	#for area in t_areas_to_unload:
-		#if area.name in loaded_areas:
-			#if area.name in t_areas_to_load:
-				#loaded_areas.append(area) 
-				#var area_instance = load("res://" + str(area.name)+ ".tscn").instantiate()
-				#add_child(area_instance)
-				#area_instance.connect("entered", Callable(self, "on_entered"))
-				#print("    Skipping area (in to_load): "+ str(area))
-			#else:
-				#print("removing area"+ str(area))
-				#print(area.name)
-				#var area_node = get_node(str(area.name))
-				#remove_child(area)
-				#loaded_areas.erase(str(area.name))
-				#print(loaded_areas)
-		#else:
-			#print("area not in loaded areas")
 				
 				
 				
