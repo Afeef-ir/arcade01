@@ -35,7 +35,7 @@ func on_entered(from:int, to:int):
 	to_load.clear()
 	to_unload.clear()
 	to_load.append(from)      
-	to_unload.append(to)  
+	to_unload.append(to)  	
 	_load()
 	_unload()
 
