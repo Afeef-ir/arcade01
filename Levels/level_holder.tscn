@@ -13,7 +13,7 @@ volume_db = 1.0
 parameters/looping = true
 
 [node name="Player" parent="." instance=ExtResource("4_uqqdg")]
-position = Vector2(9755, 1126)
+position = Vector2(2008, 1397)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.75, 2.75)
