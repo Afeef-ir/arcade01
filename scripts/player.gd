@@ -50,6 +50,7 @@ signal key_used(tag, remaining)
 @onready var slide_pos_l: Marker2D = $SlidePositionL
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
+@onready var touch_buttons: Node2D = $CanvasLayer/TouchButtons
 
 var current_health = MAX_HEALTH
 var knockback_force = Vector2.ZERO
@@ -72,11 +73,18 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	var touch_btn = 0
+	while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
+		var touch_node =touch_buttons.get_child(touch_btn)
+		touch_node.visible = false
+		touch_btn += 1
 	if get_parent().has_node("MainMenu"):
+		pass
+	else:
 		if get_parent().get_parent().has_node("MainMenu"):
 			var menu = get_parent().get_parent().get_node("MainMenu")
 			menu.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
-			on_touch_control_toggled(menu.touch_controls)
+			print(str(menu.name))
   # 1️⃣ Create the gradient data
 	var grad = Gradient.new()
 	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
@@ -357,6 +365,14 @@ func remove_key_from_ui(tag: String):
 			
 func on_touch_control_toggled(touch_controls: bool):
 	print("doin")
-	if touch_controls == true:
-		print("yeasir")
+	var touch_btn = 0
+	while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
+		var touch_node =touch_buttons.get_child(touch_btn)
+		print(str(touch_node.name))
+		touch_node.visible = true
+		touch_btn += 1
+			
+			
+			
+	
 	

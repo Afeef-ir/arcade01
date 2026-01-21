@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bqtnvyuig7ool" path="res://sound/step.ogg" id="5_0jhex"]
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="7_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://cxbhj2yixxxyg" path="res://sound/Playerdamage.ogg" id="7_nxd4c"]
+[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="8_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://pivrdd8fgml8" path="res://sound/thrust.ogg" id="11_clacw"]
 [ext_resource type="AudioStream" uid="uid://bajinc2822jho" path="res://sound/PlayerDeath.ogg" id="11_fytk8"]
 [ext_resource type="AudioStream" uid="uid://k72gs7ndvxxu" path="res://sound/sliding.ogg" id="12_jj7ip"]
@@ -112,10 +113,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d2wvv"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3v2ag"]
-size = Vector2(1000, 1000)
+size = Vector2(150, 140)
 
 [sub_resource type="Animation" id="Animation_clacw"]
 length = 0.001
@@ -247,12 +246,44 @@ layout_mode = 2
 [node name="HBoxContainer4" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
 layout_mode = 2
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="TouchButtons" type="Node2D" parent="CanvasLayer"]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
 visible = false
-position = Vector2(608, 370.908)
-texture_normal = SubResource("ViewportTexture_d2wvv")
+position = Vector2(931.713, 285.551)
+texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
 action = "jump"
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
+visible = false
+position = Vector2(931.713, 77)
+texture_normal = ExtResource("8_3v2ag")
+shape = SubResource("RectangleShape2D_3v2ag")
+action = "fast"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
+visible = false
+position = Vector2(931.713, 448.982)
+texture_normal = ExtResource("8_3v2ag")
+shape = SubResource("RectangleShape2D_3v2ag")
+action = "shoot"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
+visible = false
+position = Vector2(322.94, 487.634)
+scale = Vector2(1.29, 0.315)
+texture_normal = ExtResource("8_3v2ag")
+shape = SubResource("RectangleShape2D_3v2ag")
+action = "move right"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
+visible = false
+position = Vector2(61.4312, 487.634)
+scale = Vector2(1.29, 0.315)
+texture_normal = ExtResource("8_3v2ag")
+shape = SubResource("RectangleShape2D_3v2ag")
+action = "move left"
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false

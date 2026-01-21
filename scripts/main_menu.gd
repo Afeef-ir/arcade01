@@ -40,10 +40,11 @@ func _on_back_pressed() -> void:
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		if touch_controls == false:
-			touch_controls = true
-			touch_control_toggle.emit(touch_controls)
-	else:
-		if touch_controls == true:
-			touch_controls = false
+	#if toggled_on == true:
+		#if touch_controls == false:
+			#touch_controls = true
+			#touch_control_toggle.emit(touch_controls)
+	#else:
+		#if touch_controls == true:
+			#touch_controls = false
+	emit_signal("touch_control_toggle")
