@@ -11,9 +11,7 @@ func _ready() -> void:
 	label.hide()
 	anim.play("CutScene")
 	
-func _process(_delta) -> void:
-	if Input.is_action_just_pressed("Skip"):
-		skip()
+
 		
 		
 
@@ -27,3 +25,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 func skip():
 	emit_signal("cut_scene_finished")
 	
+
+
+func _on_button_pressed() -> void:
+	skip()

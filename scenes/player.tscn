@@ -249,38 +249,31 @@ layout_mode = 2
 [node name="TouchButtons" type="Node2D" parent="CanvasLayer"]
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-visible = false
 position = Vector2(931.713, 285.551)
 texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
 action = "jump"
 
 [node name="TouchScreenButton5" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-visible = false
 position = Vector2(931.713, 77)
 texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
 action = "fast"
 
 [node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-visible = false
 position = Vector2(931.713, 448.982)
 texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
-action = "shoot"
+action = "touch"
 
 [node name="TouchScreenButton3" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-visible = false
 position = Vector2(322.94, 487.634)
-scale = Vector2(1.29, 0.315)
 texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
 action = "move right"
 
 [node name="TouchScreenButton4" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-visible = false
 position = Vector2(61.4312, 487.634)
-scale = Vector2(1.29, 0.315)
 texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
 action = "move left"

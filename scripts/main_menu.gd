@@ -10,7 +10,7 @@ signal touch_control_toggle(touch_controls)
 @onready var aspect_ratio_container: AspectRatioContainer = $AspectRatioContainer
 
 var touch_controls : bool = false
-
+var gun = load("res://scenes/gun.tscn").instantiate()
 
 
 func _ready() -> void:
@@ -42,9 +42,9 @@ func _on_back_pressed() -> void:
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	#if toggled_on == true:
 		#if touch_controls == false:
-			#touch_controls = true
-			#touch_control_toggle.emit(touch_controls)
+		touch_controls = true
+		touch_control_toggle.emit(touch_controls)
+		gun.shoot_method = "touch"
 	#else:
 		#if touch_controls == true:
 			#touch_controls = false
-	emit_signal("touch_control_toggle")

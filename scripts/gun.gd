@@ -12,6 +12,7 @@ var time_between_shot : float = 0.25
 var can_shoot : bool = true
 var last_mouse_pos : Vector2 = Vector2.ZERO
 var aim_direction : Vector2 = Vector2.ZERO
+var shoot_method : String = "shoot"
 
 func _ready() -> void:
 	$shoot_timer.wait_time = time_between_shot
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * delta)
 
-	if Input.is_action_just_pressed("shoot") and can_shoot:
+	if Input.is_action_just_pressed(shoot_method) and can_shoot:
 		_shoot()
 		can_shoot=true
 		$shoot_timer.start()
