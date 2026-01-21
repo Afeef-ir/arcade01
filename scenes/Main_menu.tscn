@@ -307,3 +307,4 @@ expand_icon = true
 [connection signal="pressed" from="buttons_holder/Settings" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="buttons_holder/Quit" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="AspectRatioContainer2/Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="AspectRatioContainer2/Settings/CheckButton" to="." method="_on_check_button_toggled"]

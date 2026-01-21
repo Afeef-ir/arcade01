@@ -64,6 +64,7 @@ var spawn_position = Vector2.ZERO
 var collected_keys: Array[String] = []
 var current_state: State
 
+
 func pause():
 	is_paused = true
 	
@@ -71,6 +72,11 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	if get_parent().has_node("MainMenu"):
+		if get_parent().get_parent().has_node("MainMenu"):
+			var menu = get_parent().get_parent().get_node("MainMenu")
+			menu.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
+			on_touch_control_toggled(menu.touch_controls)
   # 1️⃣ Create the gradient data
 	var grad = Gradient.new()
 	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
@@ -348,4 +354,9 @@ func remove_key_from_ui(tag: String):
 		if label_node.text.to_lower() == tag.to_lower():
 			key_ui.queue_free()
 			break
+			
+func on_touch_control_toggled(touch_controls: bool):
+	print("doin")
+	if touch_controls == true:
+		print("yeasir")
 	

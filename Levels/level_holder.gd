@@ -3,6 +3,7 @@ extends Node2D
 @onready var bg_music: AudioStreamPlayer = $BG_music
 
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
+var menu = load("res://scenes/Main_menu.tscn").instantiate()
 var load_level
 var loaded_areas : Array = ["1_2", "2_1"]
 var to_load : Array = []
@@ -30,6 +31,7 @@ func _ready() -> void:
 	t1_2.connect("entered",Callable(self,"on_entered"))
 	t2_1.connect("entered",Callable(self,"on_entered"))
 	#_2_1.connect("entered",Callable(self,"on_entered"))
+	
 	
 func on_entered(from:int, to:int):
 	to_load.clear()
@@ -126,8 +128,8 @@ func unload_t_areas(lvl):
 			t_areas_to_unload.append(t_area_2)
 	return t_areas_to_unload
 				
-				
-				
+		
+
 				
 				
 				

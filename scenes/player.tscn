@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bj7335nue8u71"]
+[gd_scene load_steps=30 format=3 uid="uid://bj7335nue8u71"]
 
 [ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bg5qdvkik6qfk" path="res://images/player/PlayerSprites.png" id="3_o8o0x"]
@@ -111,6 +111,11 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d2wvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v2ag"]
+size = Vector2(1000, 1000)
 
 [sub_resource type="Animation" id="Animation_clacw"]
 length = 0.001
@@ -241,6 +246,13 @@ layout_mode = 2
 
 [node name="HBoxContainer4" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
 layout_mode = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
+position = Vector2(608, 370.908)
+texture_normal = SubResource("ViewportTexture_d2wvv")
+shape = SubResource("RectangleShape2D_3v2ag")
+action = "jump"
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
