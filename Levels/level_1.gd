@@ -5,8 +5,11 @@ signal change
 @onready var portal: Area2D 
 
 func _ready() -> void:
-	var player = get_parent().get_node("player")
-	player.spawn_position =  player.position
+	print("checking")
+	if get_parent().has_node("Player"):
+		print("has")
+		var player = get_parent().get_node("Player")
+		player.spawn_position =  player.position
 
 
 
