@@ -68,6 +68,7 @@ var collected_keys: Array[String] = []
 var current_state: State
 
 
+
 func pause():
 	is_paused = true
 	
@@ -80,14 +81,13 @@ func _ready() -> void:
 		var touch_node =touch_buttons.get_child(touch_btn)
 		touch_node.visible = false
 		touch_btn += 1
-	if get_parent().has_node("MainMenu"):
-		pass
-	else:
-		if get_parent().get_parent().has_node("MainMenu"):
-			var menu = get_parent().get_parent().get_node("MainMenu")
-			menu.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
-			print(str(menu.name))
-			on_touch_control_toggled(menu.touch_controls)
+	#if get_parent().has_node("MainMenu"):
+		#pass
+	#else:
+	if get_parent().get_parent().get_node("MainMenu").has_node("Settings"):
+		var Settings = get_parent().get_parent().get_node("MainMenu").get_node("Settings")
+		Settings.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
+		on_touch_control_toggled(Settings.touch_controls)
   # 1️⃣ Create the gradient data
 	var grad = Gradient.new()
 	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
@@ -367,16 +367,16 @@ func remove_key_from_ui(tag: String):
 			
 func on_touch_control_toggled(touch_controls: bool):
 	print("doin")
-	var menu = get_parent().get_parent().get_node("MainMenu")
+	var Settings = get_parent().get_parent().get_node("MainMenu").get_node("Settings")
 	var touch_btn = 0
-	if menu.touch_controls:
+	if Settings.touch_controls:
 		gun.shoot_method = "touch"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			print(str(touch_node.name))
 			touch_node.visible = true
 			touch_btn += 1
-	elif menu.touch_controls == false:
+	elif Settings.touch_controls == false:
 		gun.shoot_method = "shoot"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
@@ -388,11 +388,3 @@ func on_touch_control_toggled(touch_controls: bool):
 			
 	
 	
-
-
-func _on_button_pressed() -> void:
-	var menu_node = get_parent().get_parent().get_node("MainMenu")
-	menu_node.visible = true
-	print("yeasrrr")
-	emit_signal("pause_clicked")
-	print(menu_node.visible)

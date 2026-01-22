@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8ndig5yekftn"]
+
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://cw574rh8cxm3y" path="res://scenes/settings.gd" id="1_r6d6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6d6q"]
+bg_color = Color(0.081246, 0.0595318, 0.376781, 1)
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(0.496859, 0.00323169, 0.981678, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wm04"]
+bg_color = Color(0.0672, 0.32592, 0.42, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4mfi"]
+bg_color = Color(0.202667, 0, 0.64, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.1292, 0.3128, 0.68, 1)
+border_blend = true
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es4n0"]
+bg_color = Color(0.0672, 0.32592, 0.42, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gis3k"]
+bg_color = Color(0.12636, 0.0432, 0.27, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.1292, 0.3128, 0.68, 1)
+border_blend = true
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+expand_margin_left = 100.0
+expand_margin_right = 100.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83j8s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjs24"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.00799999, 0.00799999, 1)
+border_blend = true
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="Settings" type="AspectRatioContainer"]
+offset_left = 143.0
+offset_top = 112.0
+offset_right = 970.0
+offset_bottom = 579.0
+ratio = 1.3496
+script = ExtResource("1_r6d6q")
+
+[node name="Settings" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings"]
+layout_mode = 2
+offset_right = 630.263
+offset_bottom = 467.0
+
+[node name="Panel" type="Panel" parent="Settings/PanelContainer"]
+z_as_relative = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6d6q")
+
+[node name="Label" type="Label" parent="Settings"]
+z_index = 1
+layout_mode = 0
+offset_left = 121.0
+offset_top = 32.0
+offset_right = 527.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Back" type="Button" parent="Settings"]
+z_index = 1
+layout_mode = 2
+offset_left = 93.6316
+offset_top = 383.0
+offset_right = 973.632
+offset_bottom = 479.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
+theme_override_constants/h_separation = 10
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 86
+theme_override_styles/focus = SubResource("StyleBoxFlat_6wm04")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f4mfi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_es4n0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gis3k")
+text = "Back"
+
+[node name="CheckButton" type="CheckButton" parent="Settings"]
+z_index = 1
+layout_mode = 0
+offset_left = 9.63159
+offset_top = 102.0
+offset_right = 366.342
+offset_bottom = 171.105
+scale = Vector2(1.645, 1.645)
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.21, 1, 0.223167, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0.21, 1, 0.223167, 1)
+theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.21, 1, 0.223167, 1)
+theme_override_constants/icon_max_width = 100
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("1_5p8wc")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_83j8s")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_gjs24")
+text = "Touch Controls"
+expand_icon = true
+
+[connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="Settings/CheckButton" to="." method="_on_check_button_toggled"]

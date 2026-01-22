@@ -2,56 +2,49 @@ extends Control
 
 
 signal start_game
-signal touch_control_toggle(touch_controls)
 
-@onready var buttons_holder: VBoxContainer = $buttons_holder
-@onready var aspect_ratio_container_2: AspectRatioContainer = $AspectRatioContainer2
 
-@onready var aspect_ratio_container: AspectRatioContainer = $AspectRatioContainer
+@onready var buttons_holder: VBoxContainer = $Menu/buttons_holder
 
-var touch_controls : bool = false
+@onready var aspect_ratio_container: AspectRatioContainer = $Menu/AspectRatioContainer
+
+
+@onready var menu: Node = $Menu
+
+
 var gun = load("res://scenes/gun.tscn").instantiate()
 var player = load("res://scenes/player.tscn").instantiate()
-
 func _ready() -> void:
 	buttons_holder.visible = true
-	aspect_ratio_container_2.visible = false
 	aspect_ratio_container.visible = true
 	player.connect("pause_clicked", Callable(self, "on_pause_clicked"))
-
+	if has_node("Settings"):
+		var Settings = get_node("Settings")
+		Settings.connect("go_back",Callable(self, "on_go_back"))
+		Settings.hide()
 
 func _on_button_pressed() -> void:
 	emit_signal("start_game")
 
 func _on_button_2_pressed() -> void:
-	buttons_holder.visible = false
-	aspect_ratio_container_2.visible = true
-	aspect_ratio_container.visible = false
-
-
+	menu.hide()
+	if has_node("Settings"):
+		var Settings = get_node("Settings")
+		Settings.show()
+	
 func _on_button_3_pressed() -> void:
 	get_tree().quit()
+	
+func on_go_back():
+	if has_node("Settings"):
+		var Settings = get_node("Settings")
+		menu.show()
+		Settings.hide()
 
 
-func _on_back_pressed() -> void:
-	buttons_holder.visible = true
-	aspect_ratio_container_2.visible = false
-	aspect_ratio_container.visible = true
 
 
-func _on_check_button_toggled(toggled_on: bool) -> void:
-	if toggled_on == true:
-		if touch_controls == false:
-			touch_controls = true
-			touch_control_toggle.emit(touch_controls)
-	else:
-		if touch_controls == true:
-			touch_controls = false
-			touch_control_toggle.emit(touch_controls)
-			
-			
-func on_pause_clicked():
-	buttons_holder.visible = false
-	aspect_ratio_container_2.visible = true
-	aspect_ratio_container.visible = false
+
+
+
 	
