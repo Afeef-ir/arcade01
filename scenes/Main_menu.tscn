@@ -142,6 +142,7 @@ corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
 
 [node name="MainMenu" type="Control"]
+top_level = true
 z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
@@ -281,10 +282,11 @@ text = "Back"
 [node name="CheckButton" type="CheckButton" parent="AspectRatioContainer2/Settings"]
 z_index = 1
 layout_mode = 0
-offset_left = 64.0
-offset_top = 122.0
-offset_right = 584.0
-offset_bottom = 186.0
+offset_left = 9.63159
+offset_top = 102.0
+offset_right = 366.342
+offset_bottom = 171.105
+scale = Vector2(1.645, 1.645)
 theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.21, 1, 0.223167, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
@@ -297,7 +299,7 @@ theme_override_colors/font_pressed_color = Color(0.21, 1, 0.223167, 1)
 theme_override_constants/icon_max_width = 100
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_fonts/font = ExtResource("1_b07fi")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_qtdab")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ow2sg")
 text = "Touch Controls"

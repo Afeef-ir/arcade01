@@ -278,6 +278,13 @@ texture_normal = ExtResource("8_3v2ag")
 shape = SubResource("RectangleShape2D_3v2ag")
 action = "move left"
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 986.7
+offset_top = 18.7
+offset_right = 1012.7
+offset_bottom = 49.7
+text = "||"
+
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("7_nxd4c")
@@ -325,5 +332,6 @@ position = Vector2(6, -27)
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -11,13 +11,13 @@ signal touch_control_toggle(touch_controls)
 
 var touch_controls : bool = false
 var gun = load("res://scenes/gun.tscn").instantiate()
-
+var player = load("res://scenes/player.tscn").instantiate()
 
 func _ready() -> void:
 	buttons_holder.visible = true
 	aspect_ratio_container_2.visible = false
 	aspect_ratio_container.visible = true
-
+	player.connect("pause_clicked", Callable(self, "on_pause_clicked"))
 
 
 func _on_button_pressed() -> void:
@@ -40,11 +40,18 @@ func _on_back_pressed() -> void:
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	#if toggled_on == true:
-		#if touch_controls == false:
-		touch_controls = true
-		touch_control_toggle.emit(touch_controls)
-		gun.shoot_method = "touch"
-	#else:
-		#if touch_controls == true:
-			#touch_controls = false
+	if toggled_on == true:
+		if touch_controls == false:
+			touch_controls = true
+			touch_control_toggle.emit(touch_controls)
+	else:
+		if touch_controls == true:
+			touch_controls = false
+			touch_control_toggle.emit(touch_controls)
+			
+			
+func on_pause_clicked():
+	buttons_holder.visible = false
+	aspect_ratio_container_2.visible = true
+	aspect_ratio_container.visible = false
+	

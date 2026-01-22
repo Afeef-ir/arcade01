@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	
 func on_menu_start_game():
-	menu.hide()
+	menu.visible = false
 	add_child(cut_scene)
 
 func on_cut_scene_finished():

@@ -27,6 +27,7 @@ const KEY_UI_SCENE := preload("res://scenes/KeyUI.tscn")
 
 signal key_picked(tag)
 signal key_used(tag, remaining)
+signal pause_clicked
 
 @onready var keys_container: HBoxContainer = $CanvasLayer/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
@@ -367,16 +368,31 @@ func remove_key_from_ui(tag: String):
 func on_touch_control_toggled(touch_controls: bool):
 	print("doin")
 	var menu = get_parent().get_parent().get_node("MainMenu")
-	gun.shoot_method = "touch"
+	var touch_btn = 0
 	if menu.touch_controls:
-		var touch_btn = 0
+		gun.shoot_method = "touch"
 		while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			print(str(touch_node.name))
 			touch_node.visible = true
+			touch_btn += 1
+	elif menu.touch_controls == false:
+		gun.shoot_method = "shoot"
+		while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
+			var touch_node =touch_buttons.get_child(touch_btn)
+			print(str(touch_node.name))
+			touch_node.visible = false
 			touch_btn += 1
 				
 			
 			
 	
 	
+
+
+func _on_button_pressed() -> void:
+	var menu_node = get_parent().get_parent().get_node("MainMenu")
+	menu_node.visible = true
+	print("yeasrrr")
+	emit_signal("pause_clicked")
+	print(menu_node.visible)

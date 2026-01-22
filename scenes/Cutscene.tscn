@@ -1388,10 +1388,10 @@ volume_db = 1.0
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 506.25
-offset_top = 485.556
-offset_right = 714.25
-offset_bottom = 662.556
+offset_left = 520.625
+offset_top = 350.0
+offset_right = 728.625
+offset_bottom = 527.0
 theme_override_fonts/font = ExtResource("9_815rf")
 theme_override_font_sizes/font_size = 50
 text = "Skip"
