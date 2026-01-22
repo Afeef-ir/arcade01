@@ -29,7 +29,7 @@ signal key_picked(tag)
 signal key_used(tag, remaining)
 signal pause_clicked
 
-@onready var keys_container: HBoxContainer = $CanvasLayer/KeyContainer
+@onready var keys_container: HBoxContainer = $player_hud/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
 @onready var slide_col: CollisionShape2D = $SlideCol
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -49,9 +49,10 @@ signal pause_clicked
 @onready var gun_loc_flipped: Marker2D = $GunLocationFlipped
 @onready var slide_pos_r: Marker2D = $SlidePositionR
 @onready var slide_pos_l: Marker2D = $SlidePositionL
-@onready var progress_bar: ProgressBar = %ProgressBar
-@onready var texture_rect: TextureRect = $CanvasLayer/TextureRect
-@onready var touch_buttons: Node2D = $CanvasLayer/TouchButtons
+@onready var progress_bar: ProgressBar = $player_hud/ProgressBar
+@onready var texture_rect: TextureRect = $player_hud/TextureRect
+@onready var touch_buttons: Node2D = $player_hud/TouchButtons
+
 
 var current_health = MAX_HEALTH
 var knockback_force = Vector2.ZERO
@@ -75,7 +76,7 @@ func resume():
 
 func _ready() -> void:
 	var touch_btn = 0
-	while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
+	while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 		var touch_node =touch_buttons.get_child(touch_btn)
 		touch_node.visible = false
 		touch_btn += 1
@@ -158,8 +159,7 @@ func _physics_process(delta: float) -> void:
 		slide_audio.playing = false
 		return
 	
-	%ProgressBar.value = current_health
-		
+	progress_bar.value = current_health
 	if is_knocked_back:	
 		velocity = knockback_force
 		move_and_slide()
@@ -287,7 +287,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		current_health -= 40
 		damage_audio.play()
 		hurt_timer.start()
-		%ProgressBar.value = current_health
+		progress_bar.value = current_health
 		animation_player.play("hurt")
 		if current_health > 0:
 			await(hurt_timer.timeout)
@@ -371,14 +371,14 @@ func on_touch_control_toggled(touch_controls: bool):
 	var touch_btn = 0
 	if menu.touch_controls:
 		gun.shoot_method = "touch"
-		while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
+		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			print(str(touch_node.name))
 			touch_node.visible = true
 			touch_btn += 1
 	elif menu.touch_controls == false:
 		gun.shoot_method = "shoot"
-		while touch_btn < get_node("CanvasLayer/TouchButtons").get_child_count():
+		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			print(str(touch_node.name))
 			touch_node.visible = false

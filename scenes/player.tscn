@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bj7335nue8u71"]
+[gd_scene load_steps=26 format=3 uid="uid://bj7335nue8u71"]
 
 [ext_resource type="Script" uid="uid://kx7sbwqsl6it" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bg5qdvkik6qfk" path="res://images/player/PlayerSprites.png" id="3_o8o0x"]
@@ -6,9 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://d3g266atbo0vn" path="res://sound/jump.ogg" id="4_0jhex"]
 [ext_resource type="Texture2D" uid="uid://coa2bml5wcn6x" path="res://images/player/PlayerSlideSprite.png" id="4_fytk8"]
 [ext_resource type="AudioStream" uid="uid://bqtnvyuig7ool" path="res://sound/step.ogg" id="5_0jhex"]
-[ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="7_d2wvv"]
+[ext_resource type="PackedScene" uid="uid://ce7ekodk61kg5" path="res://scenes/player_hud.tscn" id="7_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://cxbhj2yixxxyg" path="res://sound/Playerdamage.ogg" id="7_nxd4c"]
-[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="8_3v2ag"]
 [ext_resource type="AudioStream" uid="uid://pivrdd8fgml8" path="res://sound/thrust.ogg" id="11_clacw"]
 [ext_resource type="AudioStream" uid="uid://bajinc2822jho" path="res://sound/PlayerDeath.ogg" id="11_fytk8"]
 [ext_resource type="AudioStream" uid="uid://k72gs7ndvxxu" path="res://sound/sliding.ogg" id="12_jj7ip"]
@@ -99,23 +98,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38am0"]
 size = Vector2(24, 44)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38am0"]
-bg_color = Color(0.230315, 0.230315, 0.230315, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfidv"]
-bg_color = Color(1.29953e-06, 0.728303, 0.0347789, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v2ag"]
-size = Vector2(150, 140)
-
 [sub_resource type="Animation" id="Animation_clacw"]
 length = 0.001
 tracks/0/type = "value"
@@ -202,88 +184,7 @@ position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_38am0")
 debug_color = Color(0.87348, 0.308177, 0.41928, 0.42)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 26.0
-offset_top = 40.0
-offset_right = 388.0
-offset_bottom = 67.0
-theme_override_styles/background = SubResource("StyleBoxFlat_38am0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xfidv")
-value = 100.0
-show_percentage = false
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-z_index = -1
-offset_left = 15.0
-offset_top = 30.0
-offset_right = 402.0
-offset_bottom = 77.0
-expand_mode = 1
-
-[node name="KeyContainer" type="HBoxContainer" parent="CanvasLayer"]
-clip_contents = true
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -48.0
-offset_right = 940.0
-offset_bottom = -16.0
-grow_vertical = 0
-
-[node name="HBoxContainer" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
-layout_mode = 2
-
-[node name="HBoxContainer2" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
-layout_mode = 2
-
-[node name="HBoxContainer3" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
-layout_mode = 2
-
-[node name="HBoxContainer4" parent="CanvasLayer/KeyContainer" instance=ExtResource("7_d2wvv")]
-layout_mode = 2
-
-[node name="TouchButtons" type="Node2D" parent="CanvasLayer"]
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-position = Vector2(931.713, 285.551)
-texture_normal = ExtResource("8_3v2ag")
-shape = SubResource("RectangleShape2D_3v2ag")
-action = "jump"
-
-[node name="TouchScreenButton5" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-position = Vector2(931.713, 77)
-texture_normal = ExtResource("8_3v2ag")
-shape = SubResource("RectangleShape2D_3v2ag")
-action = "fast"
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-position = Vector2(931.713, 448.982)
-texture_normal = ExtResource("8_3v2ag")
-shape = SubResource("RectangleShape2D_3v2ag")
-action = "touch"
-
-[node name="TouchScreenButton3" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-position = Vector2(322.94, 487.634)
-texture_normal = ExtResource("8_3v2ag")
-shape = SubResource("RectangleShape2D_3v2ag")
-action = "move right"
-
-[node name="TouchScreenButton4" type="TouchScreenButton" parent="CanvasLayer/TouchButtons"]
-position = Vector2(61.4312, 487.634)
-texture_normal = ExtResource("8_3v2ag")
-shape = SubResource("RectangleShape2D_3v2ag")
-action = "move left"
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 986.7
-offset_top = 18.7
-offset_right = 1012.7
-offset_bottom = 49.7
-text = "||"
+[node name="player_hud" parent="." instance=ExtResource("7_d2wvv")]
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
@@ -332,6 +233,7 @@ position = Vector2(6, -27)
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+
+[editable path="player_hud"]

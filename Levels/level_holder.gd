@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var bg_music: AudioStreamPlayer = $BG_music
-
+@onready var pause_menu: Control = $CanvasLayer/pause_menu
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
 var menu = load("res://scenes/Main_menu.tscn").instantiate()
 var load_level
@@ -11,8 +11,9 @@ var to_unload : Array = []
 var loaded_levels : Array = [1]
 var t_areas_to_load : Array = []
 var t_areas_to_unload : Array = []
-
+var paused : bool = false
 func _ready() -> void:
+	pause_menu.hide()
 	bg_music.play()
 	#var lvl1 = load("res://lvl_1.tscn").instantiate()
 	#var t1_2 = load("res://1_2.tscn").instantiate()
@@ -32,7 +33,10 @@ func _ready() -> void:
 	t2_1.connect("entered",Callable(self,"on_entered"))
 	#_2_1.connect("entered",Callable(self,"on_entered"))
 	
-	
+func _process(delta: float) -> void:
+	pass
+	#if Input.is_action_just_pressed("pause"):
+		#pause_game()
 func on_entered(from:int, to:int):
 	to_load.clear()
 	to_unload.clear()
@@ -129,7 +133,14 @@ func unload_t_areas(lvl):
 	return t_areas_to_unload
 				
 		
-
+#func pause_game():
+	#if paused:
+		#pause_menu.visible = false
+		#get_tree().paused = false
+	#else:
+		#pause_menu.visible = true
+		#get_tree().paused = true
+	#paused = !paused
 				
 				
 				
