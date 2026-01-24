@@ -187,7 +187,10 @@ offset_right = 553.0
 offset_bottom = 294.0
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4ppmf")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uhhto")
-value = 50.0
+max_value = 1.0
+step = 0.02
+value = 1.0
 
 [connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="Settings/HSlider" to="." method="_on_h_slider_value_changed"]

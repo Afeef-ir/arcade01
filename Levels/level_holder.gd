@@ -14,7 +14,6 @@ var t_areas_to_unload : Array = []
 var paused : bool = false
 func _ready() -> void:
 	pause_menu.hide()
-	bg_music.play()
 	#var lvl1 = load("res://lvl_1.tscn").instantiate()
 	#var t1_2 = load("res://1_2.tscn").instantiate()
 	#var t2_1 = load("res://2_1.tscn").instantiate()

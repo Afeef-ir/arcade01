@@ -1,6 +1,7 @@
 extends Control
 
 signal start_game
+signal slider_change(value)
 
 @onready var buttons_holder: VBoxContainer = $Menu/buttons_holder
 @onready var aspect_ratio_container: AspectRatioContainer = $Menu/AspectRatioContainer
@@ -22,6 +23,7 @@ func _on_button_2_pressed() -> void:
 	var settings= load("res://scenes/settings.tscn").instantiate()
 	settings.connect("go_back",Callable(self,"on_go_back"))
 	settings.connect("touch_control_toggle",Callable(self,"on_touch_control_toggled"))
+	settings.connect("slider_value_change",Callable(self,"on_value_changed"))
 	add_child(settings)
 	
 func _on_button_3_pressed() -> void:
@@ -37,6 +39,9 @@ func on_go_back():
 func on_touch_control_toggled(touch_controls : bool):
 	pass
 
+func on_value_changed(value):
+	slider_change.emit(value)
+	
 
 
 
