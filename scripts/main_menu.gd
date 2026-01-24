@@ -1,25 +1,18 @@
 extends Control
 
-
 signal start_game
 
-
 @onready var buttons_holder: VBoxContainer = $Menu/buttons_holder
-
 @onready var aspect_ratio_container: AspectRatioContainer = $Menu/AspectRatioContainer
-
-
 @onready var menu: Node = $Menu
-
 
 var gun = load("res://scenes/gun.tscn").instantiate()
 var player = load("res://scenes/player.tscn").instantiate()
+
 func _ready() -> void:
-	
 	buttons_holder.visible = true
 	aspect_ratio_container.visible = true
 	player.connect("pause_clicked", Callable(self, "on_pause_clicked"))
-	print("yeassuurrr")
 
 func _on_button_pressed() -> void:
 	emit_signal("start_game")
@@ -35,7 +28,6 @@ func _on_button_3_pressed() -> void:
 	get_tree().quit()
 	
 func on_go_back():
-	print("yyyyyeeeeaaasssiirrrrr")
 	if has_node("Settings"):
 		var sett = get_node("Settings")
 		sett.save_settings()

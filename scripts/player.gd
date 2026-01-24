@@ -66,7 +66,7 @@ var default_col_shape:Shape2D
 var spawn_position = Vector2.ZERO
 var collected_keys: Array[String] = []
 var current_state: State
-
+var Settings = load("res://scenes/settings.tscn").instantiate()
 
 
 func pause():
@@ -76,20 +76,19 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	var pause_menu = get_parent().get_node("CanvasLayer").get_node("pause_menu")
+	pause_menu.connect("enable/disable_touch",Callable(self,"on_enable_or_disable_touch"))
 	var touch_btn = 0
 	while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 		var touch_node =touch_buttons.get_child(touch_btn)
 		touch_node.visible = false
 		touch_btn += 1
-	#if get_parent().has_node("MainMenu"):
-		#pass
-	#else:
-	#if get_parent().get_parent().get_node("MainMenu").has_node("Settings"):
-		#var Settings = get_parent().get_parent().get_node("MainMenu").get_node("Settings")
-		#Settings.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
-	var Settings = load("res://scenes/settings.tscn").instantiate()
-	on_touch_control_toggled(Settings.toggled)
-  # 1️⃣ Create the gradient data
+	
+	Settings.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
+	Settings.load_settings()
+	touch_buttons_visibility()
+	
+	
 	var grad = Gradient.new()
 	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
 	var gradient_texture = GradientTexture2D.new()
@@ -366,28 +365,23 @@ func remove_key_from_ui(tag: String):
 			key_ui.queue_free()
 			break
 			
-func on_touch_control_toggled(touch_controls: bool):
-	print("doin")
-	var Settings = load("res://scenes/settings.tscn").instantiate()
+func touch_buttons_visibility():
+	Settings.load_settings()
 	var touch_btn = 0
 	if Settings.toggled:
 		gun.shoot_method = "touch"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
-			print("enabling")
 			var touch_node =touch_buttons.get_child(touch_btn)
-			print(str(touch_node.name))
 			touch_node.visible = true
 			touch_btn += 1
 	elif Settings.toggled == false:
 		gun.shoot_method = "shoot"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
-			print("disablingsd")
 			var touch_node =touch_buttons.get_child(touch_btn)
-			print(str(touch_node.name))
 			touch_node.visible = false
 			touch_btn += 1
-				
-			
-			
+
+func on_enable_or_disable_touch():
+	touch_buttons_visibility()
 	
 	
