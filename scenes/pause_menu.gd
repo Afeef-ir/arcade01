@@ -6,7 +6,7 @@ var paused : bool = false
 var settings = load("res://scenes/settings.tscn").instantiate()
 
 signal back_to_menu
-signal enable_touch
+signal enable_or_disable_touch
 
 func _ready() -> void:
 	main_pause_menu.show()
@@ -56,5 +56,5 @@ func on_go_back():
 	main_pause_menu.show()
 
 func on_toggled():
-	emit_signal("enable_touch")
+	emit_signal("enable_or_disable_touch")
 	settings.save_settings()

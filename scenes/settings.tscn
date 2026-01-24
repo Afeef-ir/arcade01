@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8ndig5yekftn"]
+[gd_scene load_steps=12 format=3 uid="uid://c8ndig5yekftn"]
 
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_5p8wc"]
 [ext_resource type="Script" uid="uid://cw574rh8cxm3y" path="res://scenes/settings.gd" id="1_r6d6q"]
@@ -81,6 +81,12 @@ corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ppmf"]
+bg_color = Color(0.483334, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhhto"]
+bg_color = Color(0.84, 0.84, 0.84, 1)
 
 [node name="Settings" type="AspectRatioContainer"]
 process_mode = 3
@@ -179,6 +185,9 @@ offset_left = 121.0
 offset_top = 278.0
 offset_right = 553.0
 offset_bottom = 294.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4ppmf")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uhhto")
+value = 50.0
 
 [connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]

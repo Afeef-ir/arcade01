@@ -9,9 +9,10 @@ var config = ConfigFile.new()
 var toggled : bool = false
 
 @onready var check_box: CheckBox = $Settings/CheckBox
-
+@onready var h_slider: HSlider = $Settings/HSlider
 
 func _ready() -> void:
+	h_slider.value= 50
 	toggled = false
 	load_settings()
 	check_box.set_pressed_no_signal(toggled)
@@ -21,6 +22,7 @@ func _on_back_pressed() -> void:
 
 func save_settings():
 	config.set_value("button","toggled",toggled)
+	config.set_value("Audio","bg",h_slider.value)
 	config.save(SAVE_PATH)
 
 func load_settings():
@@ -28,13 +30,14 @@ func load_settings():
 	if error != OK:
 		return
 	toggled = config.get_value("button", "toggled",false)
+	if h_slider != null:
+		h_slider.value = config.get_value("Audio","bg",1.0)
+	
 
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	toggled= toggled_on
 	save_settings()
-	if toggled == true:
-		touch_control_toggle.emit()
-	else:
-		touch_control_toggle.emit()
+	touch_control_toggle.emit()
+
 	

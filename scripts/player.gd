@@ -77,7 +77,7 @@ func resume():
 
 func _ready() -> void:
 	var pause_menu = get_parent().get_node("CanvasLayer").get_node("pause_menu")
-	pause_menu.connect("enable/disable_touch",Callable(self,"on_enable_or_disable_touch"))
+	pause_menu.connect("enable_or_disable_touch",Callable(self,"on_enable_or_disable_touch"))
 	var touch_btn = 0
 	while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 		var touch_node =touch_buttons.get_child(touch_btn)

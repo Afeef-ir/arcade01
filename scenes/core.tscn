@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://7e5vycgowgi3"]
+[gd_scene load_steps=3 format=3 uid="uid://7e5vycgowgi3"]
 
 [ext_resource type="Script" uid="uid://cjjcrgssghubq" path="res://scripts/core.gd" id="1_5634n"]
+[ext_resource type="AudioStream" uid="uid://d4j48ktjkiydy" path="res://sound/BGMusic.ogg" id="2_hlf4f"]
 
 [node name="Core" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_5634n")
+
+[node name="BG_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hlf4f")
+volume_db = 1.0
+bus = &"BG"
+parameters/looping = true
