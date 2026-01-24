@@ -15,33 +15,38 @@ signal start_game
 var gun = load("res://scenes/gun.tscn").instantiate()
 var player = load("res://scenes/player.tscn").instantiate()
 func _ready() -> void:
+	
 	buttons_holder.visible = true
 	aspect_ratio_container.visible = true
 	player.connect("pause_clicked", Callable(self, "on_pause_clicked"))
-	if has_node("Settings"):
-		var Settings = get_node("Settings")
-		Settings.connect("go_back",Callable(self, "on_go_back"))
-		Settings.hide()
+	print("yeassuurrr")
 
 func _on_button_pressed() -> void:
 	emit_signal("start_game")
 
 func _on_button_2_pressed() -> void:
 	menu.hide()
-	if has_node("Settings"):
-		var Settings = get_node("Settings")
-		Settings.show()
+	var core = get_parent()
+	var settings= load("res://scenes/settings.tscn").instantiate()
+	settings.connect("go_back",Callable(self,"on_go_back"))
+	settings.connect("touch_control_toggle",Callable(self,"on_touch_control_toggled"))
+	add_child(settings)
+	settings.toggled = core.touch_value
 	
 func _on_button_3_pressed() -> void:
 	get_tree().quit()
 	
 func on_go_back():
+	print("yyyyyeeeeaaasssiirrrrr")
 	if has_node("Settings"):
-		var Settings = get_node("Settings")
+		get_node("Settings").queue_free()
 		menu.show()
-		Settings.hide()
 
-
+func on_touch_control_toggled(touch_controls : bool):
+	var core = get_parent()
+	core.touch_value = touch_controls
+	print(str(core.name))
+	print(core.touch_value)
 
 
 

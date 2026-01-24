@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cw574rh8cxm3y" path="res://scenes/settings.gd" id="1_r6d6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6d6q"]
-bg_color = Color(0.081246, 0.0595318, 0.376781, 1)
+bg_color = Color(0.6666, 0.6435, 0.99, 1)
 border_width_left = 100
 border_width_top = 100
 border_width_right = 100
@@ -70,6 +70,7 @@ shadow_size = 100
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gjs24"]
+bg_color = Color(0.6, 0.222, 0.222, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -82,10 +83,21 @@ corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
 
 [node name="Settings" type="AspectRatioContainer"]
-offset_left = 143.0
-offset_top = 112.0
-offset_right = 970.0
-offset_bottom = 579.0
+process_mode = 3
+top_level = true
+z_index = 1
+z_as_relative = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.5
+offset_top = -233.5
+offset_right = 413.5
+offset_bottom = 233.5
+grow_horizontal = 2
+grow_vertical = 2
 ratio = 1.3496
 script = ExtResource("1_r6d6q")
 
@@ -132,14 +144,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_es4n0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gis3k")
 text = "Back"
 
-[node name="CheckButton" type="CheckButton" parent="Settings"]
+[node name="CheckBox" type="CheckBox" parent="Settings"]
 z_index = 1
 layout_mode = 0
-offset_left = 9.63159
-offset_top = 102.0
-offset_right = 366.342
-offset_bottom = 171.105
-scale = Vector2(1.645, 1.645)
+offset_left = 40.1316
+offset_top = 88.5
+offset_right = 373.132
+offset_bottom = 177.5
+scale = Vector2(1.465, 1.465)
 theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.21, 1, 0.223167, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
@@ -149,6 +161,7 @@ theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.21, 1, 0.223167, 1)
+theme_override_constants/outline_size = 9
 theme_override_constants/icon_max_width = 100
 theme_override_constants/align_to_largest_stylebox = 0
 theme_override_fonts/font = ExtResource("1_5p8wc")
@@ -156,7 +169,16 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxFlat_83j8s")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_gjs24")
 text = "Touch Controls"
+alignment = 2
+icon_alignment = 2
 expand_icon = true
 
+[node name="HSlider" type="HSlider" parent="Settings"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 278.0
+offset_right = 553.0
+offset_bottom = 294.0
+
 [connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
-[connection signal="toggled" from="Settings/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]

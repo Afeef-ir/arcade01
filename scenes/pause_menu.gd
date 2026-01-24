@@ -3,14 +3,14 @@ extends Control
 var paused : bool = false
 # Called when the node enters the scene tree for the first time.
 @onready var main_pause_menu: MarginContainer = $main_pause_menu
-@onready var setting_menu: MarginContainer = $setting_menu
 
+var settings = load("res://scenes/settings.tscn").instantiate()
 
 signal back_to_menu
 
 func _ready() -> void:
 	main_pause_menu.show()
-	setting_menu.hide()
+	settings.connect("go_back",Callable(self,"on_go_back"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	pass
 	if Input.is_action_just_pressed("pause"):
 		main_pause_menu.show()
-		setting_menu.hide()	
+		#setting_menu.hide()	
 		pause_game()
 		
 func pause_game():
@@ -43,9 +43,17 @@ func _on_quit_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	main_pause_menu.hide()
-	setting_menu.show()
+	var settings = load("res://scenes/settings.tscn").instantiate()
+	settings.connect("go_back",Callable(self,"on_go_back"))
+	add_child(settings)
+	settings.show()
+	print(str(settings.name))
 
 
 func _on_back_pressed() -> void:
-	setting_menu.hide()
+	#setting_menu.hide()
+	main_pause_menu.show()
+	
+func on_go_back():
+	get_node("Settings").queue_free()
 	main_pause_menu.show()

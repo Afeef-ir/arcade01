@@ -130,10 +130,11 @@ script = ExtResource("1_x2ps0")
 
 [node name="Menu" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Menu"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
@@ -145,6 +146,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r1jqq")
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Menu"]
 z_index = -1
 z_as_relative = false
+layout_mode = 0
 offset_left = 242.0
 offset_top = 214.0
 offset_right = 882.0
@@ -160,6 +162,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_x2ps0")
 
 [node name="buttons_holder" type="VBoxContainer" parent="Menu"]
 z_index = 2
+layout_mode = 0
 offset_left = 391.0
 offset_top = 398.0
 offset_right = 1271.0

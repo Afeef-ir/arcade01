@@ -1,34 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://48eqml7vdd1w"]
+[gd_scene load_steps=4 format=3 uid="uid://48eqml7vdd1w"]
 
 [ext_resource type="Script" uid="uid://dfyqex0clsarg" path="res://scenes/pause_menu.gd" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_n87rw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myx47"]
 border_color = Color(0.184, 0.266133, 0.8, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l7mv"]
-bg_color = Color(0.0028, 0.15064, 0.28, 1)
-border_width_left = 50
-border_width_top = 50
-border_width_right = 50
-border_width_bottom = 50
-border_color = Color(0.52, 0, 0.8, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kukqi"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5d2l8"]
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.8, 0.00799999, 0.00799999, 1)
-border_blend = true
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
 
 [node name="pause_menu" type="Control"]
 process_mode = 3
@@ -41,7 +17,6 @@ grow_vertical = 2
 script = ExtResource("1_myx47")
 
 [node name="main_pause_menu" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,58 +60,6 @@ theme_override_font_sizes/font_size = 32
 text = "Quit
 "
 
-[node name="setting_menu" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 299.0
-offset_top = 113.0
-offset_right = 853.0
-offset_bottom = 535.0
-theme_override_constants/margin_top = 65
-theme_override_constants/margin_bottom = 45
-
-[node name="Panel" type="Panel" parent="setting_menu"]
-z_index = -1
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7l7mv")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="setting_menu"]
-layout_mode = 2
-theme_override_constants/separation = 298
-
-[node name="CheckButton" type="CheckButton" parent="setting_menu/VBoxContainer"]
-z_index = 1
-layout_mode = 2
-theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.21, 1, 0.223167, 1)
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0.21, 1, 0.223167, 1)
-theme_override_colors/icon_normal_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.21, 1, 0.223167, 1)
-theme_override_constants/icon_max_width = 100
-theme_override_constants/align_to_largest_stylebox = 0
-theme_override_fonts/font = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxFlat_kukqi")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_5d2l8")
-theme_override_constants/check_v_offset = 30
-text = "
-
-
-Touch Controls"
-expand_icon = true
-
-[node name="back" type="Button" parent="setting_menu/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 32
-text = "back to settings
-"
-
 [connection signal="pressed" from="main_pause_menu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="main_pause_menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main_pause_menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="setting_menu/VBoxContainer/back" to="." method="_on_back_pressed"]

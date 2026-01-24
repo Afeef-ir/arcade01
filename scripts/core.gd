@@ -6,12 +6,14 @@ var level_1 = load("res://Levels/level_1.tscn").instantiate()
 var level_holder = load("res://Levels/level_holder.tscn").instantiate()
 var num = 1
 var Settings = load("res://scenes/settings.tscn").instantiate()
+var touch_value : bool
+
+
+
+
 func _ready() -> void:
 	add_child(menu)
-	menu.add_child(Settings)
-	Settings.hide()
 	menu.connect("start_game", Callable(self,"on_menu_start_game"))
-	menu.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
 	cut_scene.connect("cut_scene_finished", Callable(self,"on_cut_scene_finished"))
 	
 
@@ -25,11 +27,8 @@ func on_cut_scene_finished():
 	add_child(level_holder)
 	var pause_menu = get_node("Level_holder").get_node("CanvasLayer").get_node("pause_menu")
 	pause_menu.connect("back_to_menu",Callable(self,"on_back_to_menu"))
-	
-#func on_touch_controls_toggled():
-	#while true:
-		#if has_node("Level_holder"):
-			#print("YEA")
+
+
 	
 func on_back_to_menu():
 	get_tree().reload_current_scene()
