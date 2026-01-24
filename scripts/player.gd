@@ -84,10 +84,11 @@ func _ready() -> void:
 	#if get_parent().has_node("MainMenu"):
 		#pass
 	#else:
-	if get_parent().get_parent().get_node("MainMenu").has_node("Settings"):
-		var Settings = get_parent().get_parent().get_node("MainMenu").get_node("Settings")
-		Settings.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
-		on_touch_control_toggled(Settings.touch_controls)
+	#if get_parent().get_parent().get_node("MainMenu").has_node("Settings"):
+		#var Settings = get_parent().get_parent().get_node("MainMenu").get_node("Settings")
+		#Settings.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
+	var Settings = load("res://scenes/settings.tscn").instantiate()
+	on_touch_control_toggled(Settings.toggled)
   # 1️⃣ Create the gradient data
 	var grad = Gradient.new()
 	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
@@ -367,18 +368,20 @@ func remove_key_from_ui(tag: String):
 			
 func on_touch_control_toggled(touch_controls: bool):
 	print("doin")
-	var Settings = get_parent().get_parent().get_node("MainMenu").get_node("Settings")
+	var Settings = load("res://scenes/settings.tscn").instantiate()
 	var touch_btn = 0
-	if Settings.touch_controls:
+	if Settings.toggled:
 		gun.shoot_method = "touch"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
+			print("enabling")
 			var touch_node =touch_buttons.get_child(touch_btn)
 			print(str(touch_node.name))
 			touch_node.visible = true
 			touch_btn += 1
-	elif Settings.touch_controls == false:
+	elif Settings.toggled == false:
 		gun.shoot_method = "shoot"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
+			print("disablingsd")
 			var touch_node =touch_buttons.get_child(touch_btn)
 			print(str(touch_node.name))
 			touch_node.visible = false

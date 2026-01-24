@@ -55,5 +55,7 @@ func _on_back_pressed() -> void:
 	main_pause_menu.show()
 	
 func on_go_back():
-	get_node("Settings").queue_free()
+	var sett = get_node("Settings")
+	sett.save_settings()
+	sett.queue_free()
 	main_pause_menu.show()

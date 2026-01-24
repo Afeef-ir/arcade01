@@ -5,7 +5,6 @@ var cut_scene = load("res://scenes/Cutscene.tscn").instantiate()
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
 var level_holder = load("res://Levels/level_holder.tscn").instantiate()
 var num = 1
-var Settings = load("res://scenes/settings.tscn").instantiate()
 var touch_value : bool
 
 

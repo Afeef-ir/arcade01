@@ -26,12 +26,10 @@ func _on_button_pressed() -> void:
 
 func _on_button_2_pressed() -> void:
 	menu.hide()
-	var core = get_parent()
 	var settings= load("res://scenes/settings.tscn").instantiate()
 	settings.connect("go_back",Callable(self,"on_go_back"))
 	settings.connect("touch_control_toggle",Callable(self,"on_touch_control_toggled"))
 	add_child(settings)
-	settings.toggled = core.touch_value
 	
 func _on_button_3_pressed() -> void:
 	get_tree().quit()
@@ -39,14 +37,13 @@ func _on_button_3_pressed() -> void:
 func on_go_back():
 	print("yyyyyeeeeaaasssiirrrrr")
 	if has_node("Settings"):
+		var sett = get_node("Settings")
+		sett.save_settings()
 		get_node("Settings").queue_free()
 		menu.show()
 
 func on_touch_control_toggled(touch_controls : bool):
-	var core = get_parent()
-	core.touch_value = touch_controls
-	print(str(core.name))
-	print(core.touch_value)
+	pass
 
 
 
