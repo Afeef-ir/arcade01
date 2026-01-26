@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce7ekodk61kg5"]
+[gd_scene load_steps=12 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
+[ext_resource type="Script" uid="uid://81jewafqxnsf" path="res://scenes/player_hud.gd" id="1_qcjqi"]
 [ext_resource type="Texture2D" uid="uid://8gegpl7kdq4o" path="res://scenes/powers.png" id="2_or0tx"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_er5qu"]
 [ext_resource type="Texture2D" uid="uid://c8g1tgf4qvar4" path="res://scenes/pause-button.png" id="4_qcjqi"]
@@ -34,6 +35,8 @@ region = Rect2(63.9, 31.85, 32.82, 31.92)
 size = Vector2(500, 500)
 
 [node name="player_hud" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_qcjqi")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -100,16 +103,10 @@ offset_top = 350.767
 offset_right = 380.0
 offset_bottom = 650.767
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 clampzone_size = 108.0
 action_left = "move left"
 action_right = "move right"
-
-[node name="Powers" type="Sprite2D" parent="TouchButtons"]
-position = Vector2(1865.85, 1030.26)
-scale = Vector2(8.69189, 7.78196)
-texture = ExtResource("2_or0tx")
-region_enabled = true
-region_rect = Rect2(96.0788, 96.3367, 32.4043, 31.6633)
 
 [node name="Menu" type="TouchScreenButton" parent="."]
 position = Vector2(1074.21, 11.2535)
@@ -117,3 +114,13 @@ scale = Vector2(0.0962355, 0.0962359)
 texture_normal = ExtResource("4_qcjqi")
 shape = SubResource("RectangleShape2D_lqhkl")
 action = "pause"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+z_index = 2
+offset_left = 99.3
+offset_top = 388.267
+offset_right = 275.3
+offset_bottom = 550.267
+mouse_filter = 2
+color = Color(1, 1, 1, 0.160784)

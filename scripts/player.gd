@@ -51,6 +51,7 @@ signal key_used(tag, remaining)
 @onready var progress_bar: ProgressBar = $player_hud/ProgressBar
 @onready var texture_rect: TextureRect = $player_hud/TextureRect
 @onready var touch_buttons: Node2D = $player_hud/TouchButtons
+@onready var player_hud: CanvasLayer = $player_hud
 
 
 var current_health = MAX_HEALTH
@@ -75,6 +76,8 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	var blocker = player_hud.get_node("ColorRect")
+	blocker.mouse_filter = Control.MOUSE_FILTER_STOP
 	jump_audio.bus = "Music"
 	footstep_audio.bus = "Music"
 	death_audio.bus = "Music"
@@ -163,7 +166,6 @@ func _physics_process(delta: float) -> void:
 		footstep_audio.playing = false
 		slide_audio.playing = false
 		return
-	
 	progress_bar.value = current_health
 	if is_knocked_back:	
 		velocity = knockback_force

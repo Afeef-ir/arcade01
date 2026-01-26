@@ -6,10 +6,11 @@ signal cut_scene_finished
 
 var started := false
 func _ready() -> void:
-	cutscene.show()
-	started = true
-	label.hide()
-	anim.play("CutScene")
+	pass
+	#cutscene.show()
+	#started = true
+	#label.hide()
+	#anim.play("CutScene")
 	
 
 		
@@ -28,4 +29,6 @@ func skip():
 
 
 func _on_button_pressed() -> void:
+	anim.stop()
+	hide()
 	skip()

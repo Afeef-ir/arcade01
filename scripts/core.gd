@@ -20,6 +20,8 @@ func _ready() -> void:
 	AudioServer.set_bus_name(music_bus, "BGM")
 	audio_bus_id = AudioServer.get_bus_index("BGM")
 	add_child(menu)
+	add_child(cut_scene)
+	cut_scene.hide()
 	menu.connect("start_game", Callable(self,"on_menu_start_game"))
 	menu.connect("slider_change",Callable(self,"on_slider_change"))
 	menu.connect("sfx_change",Callable(self,"on_sfx_change"))
@@ -32,8 +34,11 @@ func _ready() -> void:
 	AudioServer.set_bus_solo(2,true)
 func on_menu_start_game():
 	menu.visible = false
-	add_child(cut_scene)
 	bg_music.stop()
+	cut_scene.show()
+	var anim = cut_scene.get_node("Control/Cutscene/AnimationPlayer")
+	anim.play("CutScene")
+	
 	
 
 func on_cut_scene_finished():
