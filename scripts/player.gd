@@ -27,7 +27,6 @@ const KEY_UI_SCENE := preload("res://scenes/KeyUI.tscn")
 
 signal key_picked(tag)
 signal key_used(tag, remaining)
-signal pause_clicked
 
 @onready var keys_container: HBoxContainer = $player_hud/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
@@ -67,7 +66,7 @@ var spawn_position = Vector2.ZERO
 var collected_keys: Array[String] = []
 var current_state: State
 var Settings = load("res://scenes/settings.tscn").instantiate()
-
+var joystick
 
 func pause():
 	is_paused = true
@@ -375,13 +374,11 @@ func touch_buttons_visibility():
 	Settings.load_settings()
 	var touch_btn = 0
 	if Settings.toggled:
-		gun.shoot_method = "touch"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			touch_node.visible = true
 			touch_btn += 1
 	elif Settings.toggled == false:
-		gun.shoot_method = "shoot"
 		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			touch_node.visible = false
@@ -389,5 +386,3 @@ func touch_buttons_visibility():
 
 func on_enable_or_disable_touch():
 	touch_buttons_visibility()
-	
-	

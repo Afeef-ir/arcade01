@@ -14,7 +14,6 @@ var settings= load("res://scenes/settings.tscn").instantiate()
 func _ready() -> void:
 	buttons_holder.visible = true
 	aspect_ratio_container.visible = true
-	player.connect("pause_clicked", Callable(self, "on_pause_clicked"))
 
 func _on_button_pressed() -> void:
 	emit_signal("start_game")
@@ -38,8 +37,6 @@ func on_go_back():
 		remove_child(get_node("Settings"))
 		menu.show()
 
-func on_touch_control_toggled(touch_controls : bool):
-	pass
 
 func on_value_changed(value):
 	slider_change.emit(value)

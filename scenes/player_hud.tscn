@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce7ekodk61kg5"]
+[gd_scene load_steps=7 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
 [ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="2_er5qu"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_er5qu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0tx"]
 bg_color = Color(0.230315, 0.230315, 0.230315, 1)
@@ -68,37 +69,31 @@ layout_mode = 2
 [node name="TouchButtons" type="Node2D" parent="."]
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(931.713, 285.551)
+position = Vector2(1008.9, 336.126)
+scale = Vector2(0.621876, 0.508437)
 texture_normal = ExtResource("2_er5qu")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "jump"
 
 [node name="TouchScreenButton5" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(931.713, 77)
+position = Vector2(992.927, 467.75)
+scale = Vector2(0.686342, 0.659688)
 texture_normal = ExtResource("2_er5qu")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "fast"
 
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(931.713, 448.982)
-texture_normal = ExtResource("2_er5qu")
-shape = SubResource("RectangleShape2D_s25gh")
-action = "touch"
-
-[node name="TouchScreenButton3" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(322.94, 487.634)
-texture_normal = ExtResource("2_er5qu")
-shape = SubResource("RectangleShape2D_s25gh")
-action = "move right"
-
-[node name="TouchScreenButton4" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(61.4312, 487.634)
-texture_normal = ExtResource("2_er5qu")
-shape = SubResource("RectangleShape2D_s25gh")
-action = "move left"
-
 [node name="TouchScreenButton6" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(752.34, 30)
+position = Vector2(1068, 30)
+scale = Vector2(0.36814, 0.367188)
 texture_normal = ExtResource("2_er5qu")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "pause"
+
+[node name="VirtualJoystick" parent="TouchButtons" instance=ExtResource("3_er5qu")]
+offset_left = 80.0
+offset_top = 350.767
+offset_right = 380.0
+offset_bottom = 650.767
+scale = Vector2(0.75, 0.75)
+action_left = "move left"
+action_right = "move right"

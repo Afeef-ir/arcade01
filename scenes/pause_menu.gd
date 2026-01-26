@@ -16,8 +16,7 @@ func _ready() -> void:
 	settings.connect("touch_control_toggle",Callable(self,"on_toggled"))
 	settings.connect("slider_value_change",Callable(self,"on_value_changed"))
 	settings.connect("sfx_slider_value_change",Callable(self,"on_sfx_slider_value_change"))
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		main_pause_menu.show()
 		pause_game()

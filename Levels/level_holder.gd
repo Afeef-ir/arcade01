@@ -31,10 +31,6 @@ func _ready() -> void:
 	t2_1.connect("entered",Callable(self,"on_entered"))
 	#_2_1.connect("entered",Callable(self,"on_entered"))
 	
-func _process(delta: float) -> void:
-	pass
-	#if Input.is_action_just_pressed("pause"):
-		#pause_game()
 func on_entered(from:int, to:int):
 	to_load.clear()
 	to_unload.clear()
