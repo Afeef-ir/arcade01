@@ -28,7 +28,8 @@ func _ready() -> void:
 	AudioServer.add_bus(2) 
 	AudioServer.set_bus_name(AudioServer.bus_count -1,"Music")
 	music_bus_id = AudioServer.get_bus_index("Music")
-	
+	AudioServer.set_bus_solo(1,true)
+	AudioServer.set_bus_solo(2,true)
 func on_menu_start_game():
 	menu.visible = false
 	add_child(cut_scene)
