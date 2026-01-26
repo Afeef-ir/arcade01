@@ -80,10 +80,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if visible == false:
 		return
-	if is_pressed == true:
-		joystick_active.emit(true)
-	else:
-		joystick_active.emit(false)
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			if _is_point_inside_joystick_area(event.position) and _touch_index == -1:

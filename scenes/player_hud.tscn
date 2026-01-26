@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ce7ekodk61kg5"]
+[gd_scene load_steps=11 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
-[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://icon.svg" id="2_er5qu"]
+[ext_resource type="Texture2D" uid="uid://8gegpl7kdq4o" path="res://scenes/powers.png" id="2_or0tx"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_er5qu"]
+[ext_resource type="Texture2D" uid="uid://c8g1tgf4qvar4" path="res://scenes/pause-button.png" id="4_qcjqi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0tx"]
 bg_color = Color(0.230315, 0.230315, 0.230315, 1)
@@ -18,8 +19,19 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s25gh"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(96.63, 96.26, 31.195, 31.45)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s25gh"]
-size = Vector2(150, 140)
+size = Vector2(56.015, 51.63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujnyd"]
+atlas = ExtResource("2_or0tx")
+region = Rect2(63.9, 31.85, 32.82, 31.92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhkl"]
+size = Vector2(500, 500)
 
 [node name="player_hud" type="CanvasLayer"]
 
@@ -68,17 +80,17 @@ layout_mode = 2
 
 [node name="TouchButtons" type="Node2D" parent="."]
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="TouchButtons"]
-position = Vector2(1008.9, 336.126)
-scale = Vector2(0.621876, 0.508437)
-texture_normal = ExtResource("2_er5qu")
+[node name="Jump" type="TouchScreenButton" parent="TouchButtons"]
+position = Vector2(1001, 333.304)
+scale = Vector2(2.36171, 2.33749)
+texture_normal = SubResource("AtlasTexture_s25gh")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "jump"
 
-[node name="TouchScreenButton5" type="TouchScreenButton" parent="TouchButtons"]
+[node name="Sprint" type="TouchScreenButton" parent="TouchButtons"]
 position = Vector2(992.927, 467.75)
-scale = Vector2(0.686342, 0.659688)
-texture_normal = ExtResource("2_er5qu")
+scale = Vector2(2.34603, 2.27473)
+texture_normal = SubResource("AtlasTexture_ujnyd")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "fast"
 
@@ -92,9 +104,16 @@ clampzone_size = 108.0
 action_left = "move left"
 action_right = "move right"
 
-[node name="TouchScreenButton6" type="TouchScreenButton" parent="."]
-position = Vector2(1068, 30)
-scale = Vector2(0.36814, 0.367188)
-texture_normal = ExtResource("2_er5qu")
-shape = SubResource("RectangleShape2D_s25gh")
+[node name="Powers" type="Sprite2D" parent="TouchButtons"]
+position = Vector2(1865.85, 1030.26)
+scale = Vector2(8.69189, 7.78196)
+texture = ExtResource("2_or0tx")
+region_enabled = true
+region_rect = Rect2(96.0788, 96.3367, 32.4043, 31.6633)
+
+[node name="Menu" type="TouchScreenButton" parent="."]
+position = Vector2(1074.21, 11.2535)
+scale = Vector2(0.0962355, 0.0962359)
+texture_normal = ExtResource("4_qcjqi")
+shape = SubResource("RectangleShape2D_lqhkl")
 action = "pause"
