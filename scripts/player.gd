@@ -76,6 +76,12 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	jump_audio.bus = "Music"
+	footstep_audio.bus = "Music"
+	death_audio.bus = "Music"
+	thrust_audio.bus = "Music"
+	damage_audio.bus = "Music"
+	slide_audio.bus = "Music"
 	var pause_menu = get_parent().get_node("CanvasLayer").get_node("pause_menu")
 	pause_menu.connect("enable_or_disable_touch",Callable(self,"on_enable_or_disable_touch"))
 	var touch_btn = 0

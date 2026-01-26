@@ -2,6 +2,7 @@ extends Control
 
 signal start_game
 signal slider_change(value)
+signal sfx_change(value)
 
 @onready var buttons_holder: VBoxContainer = $Menu/buttons_holder
 @onready var aspect_ratio_container: AspectRatioContainer = $Menu/AspectRatioContainer
@@ -9,7 +10,7 @@ signal slider_change(value)
 
 var gun = load("res://scenes/gun.tscn").instantiate()
 var player = load("res://scenes/player.tscn").instantiate()
-
+var settings= load("res://scenes/settings.tscn").instantiate()
 func _ready() -> void:
 	buttons_holder.visible = true
 	aspect_ratio_container.visible = true
@@ -20,10 +21,11 @@ func _on_button_pressed() -> void:
 
 func _on_button_2_pressed() -> void:
 	menu.hide()
-	var settings= load("res://scenes/settings.tscn").instantiate()
+
 	settings.connect("go_back",Callable(self,"on_go_back"))
 	settings.connect("touch_control_toggle",Callable(self,"on_touch_control_toggled"))
 	settings.connect("slider_value_change",Callable(self,"on_value_changed"))
+	settings.connect("sfx_slider_value_change",Callable(self,"on_sfx_slider_value_change"))
 	add_child(settings)
 	
 func _on_button_3_pressed() -> void:
@@ -33,7 +35,7 @@ func on_go_back():
 	if has_node("Settings"):
 		var sett = get_node("Settings")
 		sett.save_settings()
-		get_node("Settings").queue_free()
+		remove_child(get_node("Settings"))
 		menu.show()
 
 func on_touch_control_toggled(touch_controls : bool):
@@ -43,7 +45,9 @@ func on_value_changed(value):
 	slider_change.emit(value)
 	
 
-
+func on_sfx_slider_value_change(value):
+	print("emited")
+	sfx_change.emit(value)
 
 
 	

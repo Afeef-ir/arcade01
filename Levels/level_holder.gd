@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var bg_music: AudioStreamPlayer = $BG_music
 @onready var pause_menu: Control = $CanvasLayer/pause_menu
 var level_1 = load("res://Levels/level_1.tscn").instantiate()
 var menu = load("res://scenes/Main_menu.tscn").instantiate()

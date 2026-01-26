@@ -8,13 +8,14 @@ var settings = load("res://scenes/settings.tscn").instantiate()
 signal slider_change(value)
 signal back_to_menu
 signal enable_or_disable_touch
+signal sfx_change(value)
 
 func _ready() -> void:
 	main_pause_menu.show()
 	settings.connect("go_back",Callable(self,"on_go_back"))
 	settings.connect("touch_control_toggle",Callable(self,"on_toggled"))
 	settings.connect("slider_value_change",Callable(self,"on_value_changed"))
-	
+	settings.connect("sfx_slider_value_change",Callable(self,"on_sfx_slider_value_change"))
 func _process(delta: float) -> void:
 	pass
 	if Input.is_action_just_pressed("pause"):
@@ -63,3 +64,7 @@ func on_toggled():
 
 func on_value_changed(value):
 	slider_change.emit(value)
+	
+func on_sfx_slider_value_change(value):
+	sfx_change.emit(value)
+	

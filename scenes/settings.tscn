@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8ndig5yekftn"]
+[gd_scene load_steps=13 format=3 uid="uid://c8ndig5yekftn"]
 
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_5p8wc"]
 [ext_resource type="Script" uid="uid://cw574rh8cxm3y" path="res://scenes/settings.gd" id="1_r6d6q"]
@@ -83,10 +83,13 @@ corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ppmf"]
-bg_color = Color(0.483334, 0, 1, 1)
+bg_color = Color(0.666667, 0, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhhto"]
 bg_color = Color(0.84, 0.84, 0.84, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am25x"]
+bg_color = Color(0.084, 0.1528, 0.6, 1)
 
 [node name="Settings" type="AspectRatioContainer"]
 process_mode = 3
@@ -181,16 +184,49 @@ expand_icon = true
 
 [node name="HSlider" type="HSlider" parent="Settings"]
 layout_mode = 0
-offset_left = 121.0
-offset_top = 278.0
-offset_right = 553.0
-offset_bottom = 294.0
+offset_left = 121.132
+offset_top = 237.5
+offset_right = 553.132
+offset_bottom = 253.5
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4ppmf")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uhhto")
 max_value = 1.0
 step = 0.02
 value = 1.0
 
+[node name="HSlider2" type="HSlider" parent="Settings"]
+layout_mode = 0
+offset_left = 121.132
+offset_top = 323.5
+offset_right = 553.132
+offset_bottom = 339.5
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_am25x")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uhhto")
+max_value = 1.0
+step = 0.02
+value = 0.3
+
+[node name="Button" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 219.0
+offset_right = 106.0
+offset_bottom = 271.0
+text = "Mute
+bgm"
+
+[node name="Button2" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 50.1316
+offset_top = 303.5
+offset_right = 106.132
+offset_bottom = 355.5
+text = "Mute
+sfx"
+
 [connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="Settings/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Settings/HSlider2" to="." method="_on_h_slider_2_value_changed"]
+[connection signal="pressed" from="Settings/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Settings/Button2" to="." method="_on_button_2_pressed"]

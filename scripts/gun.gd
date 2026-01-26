@@ -16,6 +16,7 @@ var shoot_method : String = "shoot"
 
 func _ready() -> void:
 	$shoot_timer.wait_time = time_between_shot
+	shoot_sfx.bus = "Music"
 	
 func _physics_process(delta: float) -> void:
 
