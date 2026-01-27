@@ -374,11 +374,13 @@ func touch_buttons_visibility():
 	Settings.load_settings()
 	var touch_btn = 0
 	if Settings.toggled:
+		gun.no_touch = false
 		while touch_btn < get_node("player_hud/Control/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			touch_node.visible = true
 			touch_btn += 1
 	elif Settings.toggled == false:
+		gun.no_touch = true
 		while touch_btn < get_node("player_hud/Control/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			touch_node.visible = false

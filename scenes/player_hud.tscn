@@ -40,8 +40,9 @@ layer = 2
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_right = 80.0
 offset_bottom = 77.0
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_qcjqi")
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
@@ -141,7 +142,6 @@ offset_top = 310.767
 offset_right = 380.0
 offset_bottom = 610.767
 scale = Vector2(0.75, 0.75)
-clampzone_size = 108.0
 action_left = "move left"
 action_right = "move right"
 metadata/_edit_use_anchors_ = true

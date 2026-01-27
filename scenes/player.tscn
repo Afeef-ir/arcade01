@@ -200,6 +200,11 @@ offset_top = 0.0
 offset_right = 387.0
 offset_bottom = 47.0
 
+[node name="VirtualJoystick" parent="player_hud/Control/TouchButtons" index="2"]
+clampzone_size = 75.0
+action_left = "ui_left"
+action_right = "ui_right"
+
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("7_nxd4c")
