@@ -188,6 +188,10 @@ debug_color = Color(0.87348, 0.308177, 0.41928, 0.42)
 
 [node name="ProgressBar" parent="player_hud/Control" index="0"]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 362.0
+offset_bottom = 27.0
 
 [node name="TextureRect" parent="player_hud/Control" index="1"]
 layout_mode = 0
@@ -195,13 +199,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 387.0
 offset_bottom = 47.0
-
-[node name="ColorRect" parent="player_hud/Control" index="5"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 176.0
-offset_bottom = 162.0
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false

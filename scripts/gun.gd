@@ -62,11 +62,11 @@ func _physics_process(delta: float) -> void:
 		#can_shoot = false
 		#await jump_btn.released
 		#can_shoot = true
-	if Input.is_action_just_pressed(shoot_method) and can_shoot:
-		_shoot()
-		can_shoot=true
-		$shoot_timer.start()
-		
+	#if Input.is_action_just_pressed(shoot_method) and can_shoot:
+		#_shoot()
+		#can_shoot=true
+		#$shoot_timer.start()
+	
 func _shoot():
 	if not can_shoot:
 		return
@@ -78,3 +78,9 @@ func _shoot():
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
+# Change _input to _unhandled_input in your shooting script
+func _unhandled_input(event):
+	if Input.is_action_just_pressed(shoot_method) and can_shoot:
+		_shoot()
+		can_shoot=true
+		$shoot_timer.start()

@@ -20,6 +20,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhkl"]
+size = Vector2(500, 500)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s25gh"]
 atlas = ExtResource("2_or0tx")
 region = Rect2(96.63, 96.26, 31.195, 31.45)
@@ -31,9 +34,6 @@ size = Vector2(56.015, 51.63)
 atlas = ExtResource("2_or0tx")
 region = Rect2(63.9, 31.85, 32.82, 31.92)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhkl"]
-size = Vector2(500, 500)
-
 [node name="player_hud" type="CanvasLayer"]
 layer = 2
 
@@ -41,8 +41,7 @@ layer = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
+offset_bottom = 77.0
 script = ExtResource("1_qcjqi")
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
@@ -91,7 +90,23 @@ layout_mode = 2
 [node name="HBoxContainer4" parent="Control/KeyContainer" instance=ExtResource("1_iraov")]
 layout_mode = 2
 
-[node name="TouchButtons" type="Node2D" parent="Control"]
+[node name="Menu" type="TouchScreenButton" parent="Control"]
+position = Vector2(1074.21, 11.2535)
+scale = Vector2(0.0962355, 0.0962359)
+texture_normal = ExtResource("4_qcjqi")
+shape = SubResource("RectangleShape2D_lqhkl")
+action = "pause"
+
+[node name="Panel3" type="Panel" parent="Control/Menu"]
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="TouchButtons" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Jump" type="TouchScreenButton" parent="Control/TouchButtons"]
 position = Vector2(1001, 333.304)
@@ -100,6 +115,12 @@ texture_normal = SubResource("AtlasTexture_s25gh")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "jump"
 
+[node name="Panel2" type="Panel" parent="Control/TouchButtons/Jump"]
+offset_left = -15.0
+offset_top = -14.0
+offset_right = 43.0
+offset_bottom = 40.0
+
 [node name="Sprint" type="TouchScreenButton" parent="Control/TouchButtons"]
 position = Vector2(992.927, 467.75)
 scale = Vector2(2.34603, 2.27473)
@@ -107,30 +128,20 @@ texture_normal = SubResource("AtlasTexture_ujnyd")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "fast"
 
+[node name="Panel" type="Panel" parent="Control/TouchButtons/Sprint"]
+offset_left = -12.0
+offset_top = -10.0
+offset_right = 43.0
+offset_bottom = 44.0
+
 [node name="VirtualJoystick" parent="Control/TouchButtons" instance=ExtResource("3_er5qu")]
+layout_mode = 1
 offset_left = 80.0
-offset_top = 350.767
+offset_top = 310.767
 offset_right = 380.0
-offset_bottom = 650.767
+offset_bottom = 610.767
 scale = Vector2(0.75, 0.75)
-mouse_filter = 2
 clampzone_size = 108.0
 action_left = "move left"
 action_right = "move right"
-
-[node name="Menu" type="TouchScreenButton" parent="Control"]
-position = Vector2(1074.21, 11.2535)
-scale = Vector2(0.0962355, 0.0962359)
-texture_normal = ExtResource("4_qcjqi")
-shape = SubResource("RectangleShape2D_lqhkl")
-action = "pause"
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-top_level = true
-z_index = 2
-offset_left = 99.3
-offset_top = 388.267
-offset_right = 275.3
-offset_bottom = 550.267
-mouse_filter = 2
-color = Color(1, 1, 1, 0.160784)
+metadata/_edit_use_anchors_ = true
