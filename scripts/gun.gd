@@ -23,10 +23,10 @@ func _ready() -> void:
 	mouse_pos_ = RotationOffset.global_position -  get_global_mouse_position()
 	
 func _physics_process(delta: float) -> void:
-	var jump_btn = get_parent().get_node("player_hud/TouchButtons/Jump")
-	var sprint_btn = get_parent().get_node("player_hud/TouchButtons/Sprint")
-	var joystick = get_parent().get_node("player_hud/TouchButtons/VirtualJoystick")
-	var Menu = get_parent().get_node("player_hud/Menu")
+	var jump_btn = get_parent().get_node("player_hud/Control/TouchButtons/Jump")
+	var sprint_btn = get_parent().get_node("player_hud/Control/TouchButtons/Sprint")
+	var joystick = get_parent().get_node("player_hud/Control/TouchButtons/VirtualJoystick")
+	var Menu = get_parent().get_node("player_hud/Control/Menu")
 	var joy_axis_hor:float = Input.get_axis("aim right", "aim left")
 	var joy_axis_vert:float = Input.get_axis("aim up", "aim down")
 	var joy_aim:Vector2 = Vector2(-joy_axis_hor, joy_axis_vert)

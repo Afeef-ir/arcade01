@@ -28,7 +28,7 @@ const KEY_UI_SCENE := preload("res://scenes/KeyUI.tscn")
 signal key_picked(tag)
 signal key_used(tag, remaining)
 
-@onready var keys_container: HBoxContainer = $player_hud/KeyContainer
+@onready var keys_container: HBoxContainer = $player_hud/Control/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
 @onready var slide_col: CollisionShape2D = $SlideCol
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -48,10 +48,10 @@ signal key_used(tag, remaining)
 @onready var gun_loc_flipped: Marker2D = $GunLocationFlipped
 @onready var slide_pos_r: Marker2D = $SlidePositionR
 @onready var slide_pos_l: Marker2D = $SlidePositionL
-@onready var progress_bar: ProgressBar = $player_hud/ProgressBar
-@onready var texture_rect: TextureRect = $player_hud/TextureRect
-@onready var touch_buttons: Node2D = $player_hud/TouchButtons
+@onready var texture_rect: TextureRect = $player_hud/Control/TextureRect
+@onready var touch_buttons: Node2D = $player_hud/Control/TouchButtons
 @onready var player_hud: CanvasLayer = $player_hud
+@onready var progress_bar: ProgressBar = $player_hud/Control/ProgressBar
 
 
 var current_health = MAX_HEALTH
@@ -77,7 +77,6 @@ func resume():
 
 func _ready() -> void:
 	var blocker = player_hud.get_node("ColorRect")
-	blocker.mouse_filter = Control.MOUSE_FILTER_STOP
 	jump_audio.bus = "Music"
 	footstep_audio.bus = "Music"
 	death_audio.bus = "Music"
@@ -87,7 +86,7 @@ func _ready() -> void:
 	var pause_menu = get_parent().get_node("CanvasLayer").get_node("pause_menu")
 	pause_menu.connect("enable_or_disable_touch",Callable(self,"on_enable_or_disable_touch"))
 	var touch_btn = 0
-	while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
+	while touch_btn < get_node("player_hud/Control/TouchButtons").get_child_count():
 		var touch_node =touch_buttons.get_child(touch_btn)
 		touch_node.visible = false
 		touch_btn += 1
@@ -376,12 +375,12 @@ func touch_buttons_visibility():
 	Settings.load_settings()
 	var touch_btn = 0
 	if Settings.toggled:
-		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
+		while touch_btn < get_node("player_hud/Control/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			touch_node.visible = true
 			touch_btn += 1
 	elif Settings.toggled == false:
-		while touch_btn < get_node("player_hud/TouchButtons").get_child_count():
+		while touch_btn < get_node("player_hud/Control/TouchButtons").get_child_count():
 			var touch_node =touch_buttons.get_child(touch_btn)
 			touch_node.visible = false
 			touch_btn += 1

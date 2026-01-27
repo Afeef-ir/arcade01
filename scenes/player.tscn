@@ -166,12 +166,10 @@ scale = Vector2(1.677, 1.677)
 [node name="JumpSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_0jhex")
 volume_db = 15.0
-bus = &"other"
 
 [node name="FootStepSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_0jhex")
 volume_db = 12.0
-bus = &"other"
 parameters/looping = true
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Player"]]
@@ -187,6 +185,23 @@ shape = SubResource("RectangleShape2D_38am0")
 debug_color = Color(0.87348, 0.308177, 0.41928, 0.42)
 
 [node name="player_hud" parent="." instance=ExtResource("7_d2wvv")]
+
+[node name="ProgressBar" parent="player_hud/Control" index="0"]
+layout_mode = 0
+
+[node name="TextureRect" parent="player_hud/Control" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 387.0
+offset_bottom = 47.0
+
+[node name="ColorRect" parent="player_hud/Control" index="5"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 176.0
+offset_bottom = 162.0
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
@@ -204,7 +219,6 @@ one_shot = true
 [node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_fytk8")
 volume_db = 2.0
-bus = &"other"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -213,12 +227,10 @@ libraries = {
 
 [node name="ThrustSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_clacw")
-bus = &"other"
 
 [node name="SlideSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_jj7ip")
 volume_db = 10.0
-bus = &"other"
 parameters/looping = true
 
 [node name="GunLocationDefault" type="Marker2D" parent="."]

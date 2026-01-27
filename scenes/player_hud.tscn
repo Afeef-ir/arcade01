@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
-[ext_resource type="Script" uid="uid://81jewafqxnsf" path="res://scenes/player_hud.gd" id="1_qcjqi"]
+[ext_resource type="Script" uid="uid://dwpcljw3m6il4" path="res://scenes/control.gd" id="1_qcjqi"]
 [ext_resource type="Texture2D" uid="uid://8gegpl7kdq4o" path="res://scenes/powers.png" id="2_or0tx"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_er5qu"]
 [ext_resource type="Texture2D" uid="uid://c8g1tgf4qvar4" path="res://scenes/pause-button.png" id="4_qcjqi"]
@@ -36,68 +36,78 @@ size = Vector2(500, 500)
 
 [node name="player_hud" type="CanvasLayer"]
 layer = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("1_qcjqi")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
 offset_left = 26.0
 offset_top = 40.0
 offset_right = 388.0
 offset_bottom = 67.0
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_or0tx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qcjqi")
 value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 z_index = -1
 offset_left = 15.0
 offset_top = 30.0
 offset_right = 402.0
 offset_bottom = 77.0
+mouse_filter = 2
 expand_mode = 1
 
-[node name="KeyContainer" type="HBoxContainer" parent="."]
+[node name="KeyContainer" type="HBoxContainer" parent="Control"]
 clip_contents = true
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -48.0
-offset_right = 940.0
-offset_bottom = -16.0
+offset_top = 528.0
+offset_right = 1068.0
+offset_bottom = 592.0
 grow_vertical = 0
+mouse_filter = 2
 
-[node name="HBoxContainer" parent="KeyContainer" instance=ExtResource("1_iraov")]
+[node name="HBoxContainer" parent="Control/KeyContainer" instance=ExtResource("1_iraov")]
 layout_mode = 2
 
-[node name="HBoxContainer2" parent="KeyContainer" instance=ExtResource("1_iraov")]
+[node name="HBoxContainer2" parent="Control/KeyContainer" instance=ExtResource("1_iraov")]
 layout_mode = 2
 
-[node name="HBoxContainer3" parent="KeyContainer" instance=ExtResource("1_iraov")]
+[node name="HBoxContainer3" parent="Control/KeyContainer" instance=ExtResource("1_iraov")]
 layout_mode = 2
 
-[node name="HBoxContainer4" parent="KeyContainer" instance=ExtResource("1_iraov")]
+[node name="HBoxContainer4" parent="Control/KeyContainer" instance=ExtResource("1_iraov")]
 layout_mode = 2
 
-[node name="TouchButtons" type="Node2D" parent="."]
+[node name="TouchButtons" type="Node2D" parent="Control"]
 
-[node name="Jump" type="TouchScreenButton" parent="TouchButtons"]
+[node name="Jump" type="TouchScreenButton" parent="Control/TouchButtons"]
 position = Vector2(1001, 333.304)
 scale = Vector2(2.36171, 2.33749)
 texture_normal = SubResource("AtlasTexture_s25gh")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "jump"
 
-[node name="Sprint" type="TouchScreenButton" parent="TouchButtons"]
+[node name="Sprint" type="TouchScreenButton" parent="Control/TouchButtons"]
 position = Vector2(992.927, 467.75)
 scale = Vector2(2.34603, 2.27473)
 texture_normal = SubResource("AtlasTexture_ujnyd")
 shape = SubResource("RectangleShape2D_s25gh")
 action = "fast"
 
-[node name="VirtualJoystick" parent="TouchButtons" instance=ExtResource("3_er5qu")]
+[node name="VirtualJoystick" parent="Control/TouchButtons" instance=ExtResource("3_er5qu")]
 offset_left = 80.0
 offset_top = 350.767
 offset_right = 380.0
@@ -108,14 +118,14 @@ clampzone_size = 108.0
 action_left = "move left"
 action_right = "move right"
 
-[node name="Menu" type="TouchScreenButton" parent="."]
+[node name="Menu" type="TouchScreenButton" parent="Control"]
 position = Vector2(1074.21, 11.2535)
 scale = Vector2(0.0962355, 0.0962359)
 texture_normal = ExtResource("4_qcjqi")
 shape = SubResource("RectangleShape2D_lqhkl")
 action = "pause"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Control"]
 top_level = true
 z_index = 2
 offset_left = 99.3
