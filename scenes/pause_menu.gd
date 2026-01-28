@@ -42,7 +42,6 @@ func _on_quit_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	main_pause_menu.hide()
-	settings.connect("go_back",Callable(self,"on_go_back"))
 	add_child(settings)
 	settings.show()
 

@@ -46,14 +46,10 @@ func _physics_process(delta: float) -> void:
 		last_mouse_pos = mouse_pos
 		
 		RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * delta * 5)
-		if Input.is_action_just_pressed(shoot_method) and can_shoot:
-			_shoot()
-	else:
-		if Input.is_action_just_pressed(shoot_method) and can_shoot:
-			var mouse_loc = get_global_mouse_position()
-			aim_direction = mouse_loc - global_position
-			RotationOffset.rotation = aim_direction.angle()
-			_shoot()
+			
+
+
+			
 			
 	if jump_btn.is_pressed():
 		can_shoot = false
@@ -88,9 +84,12 @@ func _shoot():
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 
-
-#func _unhandled_input(event):
-	#if Input.is_action_just_pressed(shoot_method) and can_shoot:
-		#_shoot()
-		#can_shoot=true
-		#$shoot_timer.start()
+func _unhandled_input(event):
+	if Input.is_action_just_pressed(shoot_method) and can_shoot:
+		if !no_touch:
+			var mouse_loc = get_global_mouse_position()
+			aim_direction = mouse_loc - global_position
+			RotationOffset.rotation = aim_direction.angle()
+		_shoot()
+		can_shoot=true
+		$shoot_timer.start()

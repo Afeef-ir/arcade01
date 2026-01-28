@@ -185,25 +185,19 @@ shape = SubResource("RectangleShape2D_38am0")
 debug_color = Color(0.87348, 0.308177, 0.41928, 0.42)
 
 [node name="player_hud" parent="." instance=ExtResource("7_d2wvv")]
+layer = 3
 
 [node name="ProgressBar" parent="player_hud/Control" index="0"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 362.0
 offset_bottom = 27.0
 
 [node name="TextureRect" parent="player_hud/Control" index="1"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 387.0
 offset_bottom = 47.0
-
-[node name="VirtualJoystick" parent="player_hud/Control/TouchButtons" index="2"]
-clampzone_size = 75.0
-action_left = "ui_left"
-action_right = "ui_right"
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
 visible = false
