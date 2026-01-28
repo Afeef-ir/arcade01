@@ -111,7 +111,6 @@ func _ready() -> void:
 		keys_container.remove_child(child)
 		
 	enter_state(State.Idle) # initialize
-		
 func apply_gravity(delta:float):
 	velocity += get_gravity() * delta * GRAVITY_SCALE # v = u + at
 	
