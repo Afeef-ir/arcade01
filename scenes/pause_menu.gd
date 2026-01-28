@@ -18,8 +18,7 @@ func _ready() -> void:
 	settings.connect("sfx_slider_value_change",Callable(self,"on_sfx_slider_value_change"))
 	control = get_parent().get_parent().get_node("Player/player_hud/Control")
 	control.connect("pressed",Callable(self,"on_show"))
-func _process(_delta: float) -> void:
-	pass
+	print(control.name)
 
 		
 func pause_game():
@@ -68,5 +67,6 @@ func on_sfx_slider_value_change(value):
 	sfx_change.emit(value)
 	
 func on_show():
-		main_pause_menu.show()
-		pause_game()
+	print(3)
+	main_pause_menu.show()
+	pause_game()

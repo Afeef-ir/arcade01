@@ -1,9 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://brfhxrpwyg6ek"]
+[gd_scene load_steps=41 format=3 uid="uid://brfhxrpwyg6ek"]
 
 [ext_resource type="Script" uid="uid://crbn1ctuc6s2u" path="res://scripts/CutScene.gd" id="1_leggj"]
 [ext_resource type="Texture2D" uid="uid://06dop6761ukb" path="res://images/CutScene/bg.jpg" id="2_cgj5r"]
 [ext_resource type="AudioStream" uid="uid://bo50enek28geg" path="res://sound/space.mp3" id="2_sdx3j"]
-[ext_resource type="AudioStream" uid="uid://bddcdg2ldkdim" path="res://sound/rocket_engine.wav" id="3_cgj5r"]
 [ext_resource type="Texture2D" uid="uid://ba2xfhq84j7dx" path="res://images/CutScene/spaceship.png" id="3_leggj"]
 [ext_resource type="AudioStream" uid="uid://bj6sxm8d0f7r8" path="res://sound/alarm.ogg" id="3_lined"]
 [ext_resource type="AudioStream" uid="uid://hrf2hldqluv0" path="res://sound/alarm_1.wav" id="4_6lpk4"]
@@ -595,7 +594,7 @@ tracks/44/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("5_ijfoq")
 }],
-"times": PackedFloat32Array(11.5333, 46.1, 55.6667, 64.4333, 70.1667)
+"times": PackedFloat32Array(11.5333, 46.1, 55.7, 64.4333, 70.1667)
 }
 tracks/44/use_blend = true
 tracks/45/type = "value"
@@ -1359,6 +1358,7 @@ texture = ExtResource("14_sdx3j")
 [node name="TypingSfx" type="AudioStreamPlayer2D" parent="Control/Cutscene"]
 stream = ExtResource("15_cgj5r")
 volume_db = 1.0
+playback_type = 1
 
 [node name="Crash" type="Sprite2D" parent="Control/Cutscene"]
 position = Vector2(355, 427.778)
@@ -1381,12 +1381,14 @@ frame = 9
 frame_progress = 0.324984
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="Control/Cutscene"]
+playback_type = 1
 
 [node name="EngineSfx" type="AudioStreamPlayer" parent="Control/Cutscene"]
-stream = ExtResource("3_cgj5r")
-volume_db = 1.0
+volume_db = 0.75
+playback_type = 1
 
 [node name="Sfx" type="AudioStreamPlayer" parent="Control/Cutscene"]
+playback_type = 1
 
 [node name="Panel" type="Panel" parent="."]
 visible = false

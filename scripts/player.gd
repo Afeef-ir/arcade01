@@ -78,7 +78,7 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
-	var menu_btn = get_node("player_hud/Control/TouchButtons/Menu")
+	var menu_btn = get_node("player_hud/Control/Menu")
 	menu_btn.connect("pressed",Callable(self, "on_menu_press"))
 	jump_audio.bus = "Music"
 	footstep_audio.bus = "Music"
@@ -98,13 +98,6 @@ func _ready() -> void:
 	Settings.connect("touch_control_toggle", Callable(self, "on_touch_control_toggled"))
 	Settings.load_settings()
 	touch_buttons_visibility()
-	
-	
-	var grad = Gradient.new()
-	grad.colors = [Color(0.1,0.1,0.1), Color(0.2,0.2,0.2)]
-	var gradient_texture = GradientTexture2D.new()
-	gradient_texture.gradient = grad
-	texture_rect.texture = gradient_texture
 	
 	floor_max_angle = deg_to_rad(45)
 	floor_snap_length = 8

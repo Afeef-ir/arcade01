@@ -11,4 +11,5 @@ script = ExtResource("1_5634n")
 stream = ExtResource("2_hlf4f")
 volume_db = 24.0
 autoplay = true
+playback_type = 1
 parameters/looping = true
