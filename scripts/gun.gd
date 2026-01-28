@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	var jump_btn = get_parent().get_node("player_hud/Control/TouchButtons/Jump")
 	var sprint_btn = get_parent().get_node("player_hud/Control/TouchButtons/Sprint")
 	var joystick = get_parent().get_node("player_hud/Control/TouchButtons/VirtualJoystick")
-	var Menu = get_parent().get_node("player_hud/Control/Menu")
 	var joy_axis_hor:float = Input.get_axis("aim right", "aim left")
 	var joy_axis_vert:float = Input.get_axis("aim up", "aim down")
 	var joy_aim:Vector2 = Vector2(-joy_axis_hor, joy_axis_vert)
@@ -51,18 +50,6 @@ func _physics_process(delta: float) -> void:
 
 			
 			
-	if jump_btn.is_pressed():
-		can_shoot = false
-		await jump_btn.released
-		can_shoot = true
-	if sprint_btn.is_pressed():
-		can_shoot = false
-		await sprint_btn.released
-		can_shoot = true
-	if Menu.is_pressed():
-		can_shoot = false
-		await Menu.released
-		can_shoot = true
 	#if joystick.is_pressed():
 		#can_shoot = false
 		#await jump_btn.released

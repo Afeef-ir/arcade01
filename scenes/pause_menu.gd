@@ -4,7 +4,7 @@ extends Control
 
 var paused : bool = false
 var settings = load("res://scenes/settings.tscn").instantiate()
-
+var control
 signal slider_change(value)
 signal back_to_menu
 signal enable_or_disable_touch
@@ -16,10 +16,11 @@ func _ready() -> void:
 	settings.connect("touch_control_toggle",Callable(self,"on_toggled"))
 	settings.connect("slider_value_change",Callable(self,"on_value_changed"))
 	settings.connect("sfx_slider_value_change",Callable(self,"on_sfx_slider_value_change"))
+	control = get_parent().get_parent().get_node("Player/player_hud/Control")
+	control.connect("pressed",Callable(self,"on_show"))
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		main_pause_menu.show()
-		pause_game()
+	pass
+
 		
 func pause_game():
 	if paused:
@@ -66,3 +67,6 @@ func on_value_changed(value):
 func on_sfx_slider_value_change(value):
 	sfx_change.emit(value)
 	
+func on_show():
+		main_pause_menu.show()
+		pause_game()

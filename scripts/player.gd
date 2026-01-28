@@ -8,6 +8,8 @@ enum State
 	Sliding
 }
 
+signal menu_show
+
 const TINY_NUMBER = 0.1
 const SPEED:float = 115.0
 const JUMP_VELOCITY = Vector2(0.0, -360.0)
@@ -76,14 +78,17 @@ func resume():
 	is_paused = false
 
 func _ready() -> void:
+	var menu_btn = get_node("player_hud/Control/TouchButtons/Menu")
+	menu_btn.connect("pressed",Callable(self, "on_menu_press"))
 	jump_audio.bus = "Music"
 	footstep_audio.bus = "Music"
 	death_audio.bus = "Music"
 	thrust_audio.bus = "Music"
 	damage_audio.bus = "Music"
 	slide_audio.bus = "Music"
-	var pause_menu = get_parent().get_node("CanvasLayer").get_node("pause_menu")
-	pause_menu.connect("enable_or_disable_touch",Callable(self,"on_enable_or_disable_touch"))
+	if get_parent().has_node("CanvasLayer"):
+		var pause_menu = get_parent().get_node("CanvasLayer").get_node("pause_menu")
+		pause_menu.connect("enable_or_disable_touch",Callable(self,"on_enable_or_disable_touch"))
 	var touch_btn = 0
 	while touch_btn < get_node("player_hud/Control/TouchButtons").get_child_count():
 		var touch_node =touch_buttons.get_child(touch_btn)
@@ -299,6 +304,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		animation_player.stop()
 		
 	if current_health <= 0:
+		gun.can_shoot = false
 		player_sprite.hide()
 		gun.hide()
 		velocity.y=0
@@ -316,6 +322,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		set_physics_process(false)
 		
 func respawn():
+	gun.can_shoot = true
 	global_position = spawn_position
 	current_health = MAX_HEALTH
 	#velocity = Vector2.ZERO
@@ -389,3 +396,10 @@ func touch_buttons_visibility():
 func on_enable_or_disable_touch():
 	touch_buttons_visibility()
 # In your game/player script
+func on_menu_press():
+	print(2)
+	emit_signal("menu_show")
+
+
+func _on_menu_pressed() -> void:
+	pass # Replace with function body.

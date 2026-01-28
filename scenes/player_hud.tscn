@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce7ekodk61kg5"]
+[gd_scene load_steps=11 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
 [ext_resource type="Script" uid="uid://dwpcljw3m6il4" path="res://scenes/control.gd" id="1_qcjqi"]
@@ -19,9 +19,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhkl"]
-size = Vector2(500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s25gh"]
 atlas = ExtResource("2_or0tx")
@@ -93,17 +90,6 @@ layout_mode = 2
 [node name="HBoxContainer4" parent="Control/KeyContainer" instance=ExtResource("1_iraov")]
 layout_mode = 2
 
-[node name="Menu" type="TouchScreenButton" parent="Control"]
-position = Vector2(1074.21, 11.2535)
-scale = Vector2(0.0962355, 0.0962359)
-texture_normal = ExtResource("4_qcjqi")
-shape = SubResource("RectangleShape2D_lqhkl")
-action = "pause"
-
-[node name="Panel3" type="Panel" parent="Control/Menu"]
-offset_right = 512.0
-offset_bottom = 512.0
-
 [node name="TouchButtons" type="Control" parent="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -119,6 +105,7 @@ shape = SubResource("RectangleShape2D_s25gh")
 action = "jump"
 
 [node name="Panel2" type="Panel" parent="Control/TouchButtons/Jump"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -15.0
 offset_top = -14.0
 offset_right = 39.0
@@ -132,6 +119,7 @@ shape = SubResource("RectangleShape2D_s25gh")
 action = "fast"
 
 [node name="Panel" type="Panel" parent="Control/TouchButtons/Sprint"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -12.0
 offset_top = -10.0
 offset_right = 43.0
@@ -147,3 +135,22 @@ scale = Vector2(0.75, 0.75)
 pressed_color = Color(0.75, 0.0975, 0.0975, 1)
 joystick_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Button" parent="Control/TouchButtons"]
+layout_mode = 0
+offset_left = 1081.32
+offset_top = 9.98023
+offset_right = 1601.32
+offset_bottom = 529.98
+scale = Vector2(0.085, 0.085)
+icon = ExtResource("4_qcjqi")
+
+[node name="Panel3" type="Panel" parent="Control/TouchButtons/Menu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -0.858887
+offset_top = -3.05176e-05
+offset_right = 511.141
+offset_bottom = 512.0
+
+[connection signal="pressed" from="Control/TouchButtons/Menu" to="Control" method="_on_menu_pressed"]
