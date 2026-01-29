@@ -20,7 +20,6 @@ func _ready() -> void:
 	control.connect("pressed",Callable(self,"on_show"))
 	print(control.name)
 
-		
 func pause_game():
 	if paused:
 		visible = false

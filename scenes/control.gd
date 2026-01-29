@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 func _on_menu_pressed() -> void:
 	print(2)
 	emit_signal("pressed")
+	
