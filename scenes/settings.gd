@@ -20,6 +20,7 @@ func _ready() -> void:
 	load_settings()
 	check_box.set_pressed_no_signal(toggled)
 
+		
 func _on_back_pressed() -> void:
 	emit_signal("go_back")
 
@@ -35,9 +36,9 @@ func load_settings():
 		return
 	toggled = config.get_value("button", "toggled",false)
 	if h_slider != null or h_slider_2 != null:
+		h_slider.value = config.get_value("Audio","bg",0.6)
 		h_slider_2.value = config.get_value("Other","sfx",0.5)
-		h_slider.value = config.get_value("Audio","bg",1.0)
-	#if h_slider_2 != null:
+		#if h_slider_2 != null:
 		print(h_slider_2.value)
 
 
@@ -52,12 +53,12 @@ func _on_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_h_slider_value_changed(value: float) -> void:
 	slider_value_change.emit(value)
+	save_settings()
 
 
 func _on_h_slider_2_value_changed(value: float) -> void:
 	sfx_slider_value_change.emit(value)
-	print(value)
-	print(value)
+	save_settings()
 
 
 func _on_button_pressed() -> void:

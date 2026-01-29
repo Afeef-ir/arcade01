@@ -8,8 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		print("registered")
+	if Input.is_action_just_pressed("pause"):
+		_on_menu_pressed()
 
 
 func _on_menu_pressed() -> void:

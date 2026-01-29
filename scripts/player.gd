@@ -50,7 +50,6 @@ signal key_used(tag, remaining)
 @onready var gun_loc_flipped: Marker2D = $GunLocationFlipped
 @onready var slide_pos_r: Marker2D = $SlidePositionR
 @onready var slide_pos_l: Marker2D = $SlidePositionL
-@onready var texture_rect: TextureRect = $player_hud/Control/TextureRect
 @onready var touch_buttons: Control = $player_hud/Control/TouchButtons
 @onready var player_hud: CanvasLayer = $player_hud
 @onready var progress_bar: ProgressBar = $player_hud/Control/ProgressBar

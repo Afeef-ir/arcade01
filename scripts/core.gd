@@ -32,6 +32,9 @@ func _ready() -> void:
 	music_bus_id = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_solo(1,true)
 	AudioServer.set_bus_solo(2,true)
+	var slider_bgm = settings.get_node("Settings/HSlider")
+	print(slider_bgm.name,slider_bgm.value)
+	bg_music.volume_db = linear_to_db(slider_bgm.value)
 func on_menu_start_game():
 	menu.visible = false
 	bg_music.stop()
