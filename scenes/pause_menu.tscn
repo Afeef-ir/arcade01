@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://48eqml7vdd1w"]
+[gd_scene load_steps=5 format=3 uid="uid://48eqml7vdd1w"]
 
 [ext_resource type="Script" uid="uid://dfyqex0clsarg" path="res://scenes/pause_menu.gd" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_n87rw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kukqi"]
+bg_color = Color(0.3786, 0.108, 0.6, 0.337255)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myx47"]
 border_color = Color(0.184, 0.266133, 0.8, 1)
@@ -16,19 +19,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_myx47")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kukqi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 246.0
+offset_top = 32.0
+offset_right = 966.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 120
+text = "Paused"
+
 [node name="main_pause_menu" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -277.0
-offset_top = -211.0
-offset_right = 277.0
-offset_bottom = 211.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="main_pause_menu"]
 layout_mode = 2

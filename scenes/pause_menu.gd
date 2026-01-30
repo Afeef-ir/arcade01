@@ -1,6 +1,8 @@
 extends Control
 
 @onready var main_pause_menu: MarginContainer = $main_pause_menu
+@onready var panel: Panel = $Panel
+@onready var label: Label = $Label
 
 var paused : bool = false
 var settings = load("res://scenes/settings.tscn").instantiate()
@@ -40,6 +42,8 @@ func _on_quit_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
+	panel.hide()
+	label.hide()
 	main_pause_menu.hide()
 	add_child(settings)
 	settings.show()
@@ -48,12 +52,16 @@ func _on_settings_pressed() -> void:
 func _on_back_pressed() -> void:
 	#setting_menu.hide()
 	main_pause_menu.show()
+	panel.show()
+	label.show()
 	
 func on_go_back():
 	var sett = get_node("Settings")
 	sett.save_settings()
 	remove_child(sett)
 	main_pause_menu.show()
+	panel.show()
+	label.show()
 
 func on_toggled():
 	emit_signal("enable_or_disable_touch")

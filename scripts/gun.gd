@@ -19,6 +19,7 @@ var no_touch : bool
 func _ready() -> void:
 	#print(get_parent().get_node("player_hud/TouchButtons/Jump"))
 	$shoot_timer.wait_time = time_between_shot
+	aim_direction = Vector2.RIGHT
 	shoot_sfx.bus = "Music"
 	mouse_pos_ = RotationOffset.global_position -  get_global_mouse_position()
 	
@@ -70,13 +71,24 @@ func _shoot():
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
-
 func _unhandled_input(event):
-	if Input.is_action_just_pressed(shoot_method) and can_shoot:
-		if !no_touch:
-			var mouse_loc = get_global_mouse_position()
-			aim_direction = mouse_loc - global_position
-			RotationOffset.rotation = aim_direction.angle()
+	if event is InputEventScreenDrag and !no_touch:
+		can_shoot =false
+		var delta = event.relative
+		aim_direction = aim_direction.rotated(delta.x * 0.01)
+		aim_direction = aim_direction
+		RotationOffset.rotation = aim_direction.angle()
+		can_shoot = true
+	if event is InputEventScreenTouch and event.pressed and can_shoot:
 		_shoot()
-		can_shoot=true
+		can_shoot = false
 		$shoot_timer.start()
+#func _unhandled_input(event):
+	#if event == shoot_method and event.is_pressed() and  can_shoot:
+		#if !no_touch:
+			#var delta = event.relative
+			#aim_direction += delta *0.5
+			#RotationOffset.rotation = aim_direction.angle()
+		#_shoot()
+		#can_shoot=true
+		#$shoot_timer.start()
