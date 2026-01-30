@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	var diff = RotationOffset.global_position -  get_global_mouse_position()
 	var mouse_pos:Vector2 = DisplayServer.mouse_get_position()
 	if no_touch:
+		shoot_method = "shoot"
 		if joy_aim.is_zero_approx():
 			if not mouse_pos.is_zero_approx():
 				if mouse_pos_ != null:
@@ -46,7 +47,8 @@ func _physics_process(delta: float) -> void:
 		last_mouse_pos = mouse_pos
 		
 		RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * delta * 5)
-			
+	else:
+		shoot_method = "tap"
 
 
 			
@@ -72,14 +74,18 @@ func _shoot():
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 func _unhandled_input(event):
-	if event is InputEventScreenDrag and !no_touch:
-		can_shoot =false
-		var delta = event.relative
-		aim_direction = aim_direction.rotated(delta.x * 0.01)
-		aim_direction = aim_direction
+	#if event is InputEventScreenDrag and !no_touch:
+		#can_shoot =false
+		#var delta = event.relative
+		#aim_direction = aim_direction.rotated(delta.x * 0.01)
+		#aim_direction = aim_direction
+		#RotationOffset.rotation = aim_direction.angle()
+		#can_shoot = true
+	if event is InputEventScreenTouch and event.pressed and !no_touch:
+		var global_pos = get_canvas_transform().affine_inverse() * event.position
+		aim_direction = global_pos - global_position
 		RotationOffset.rotation = aim_direction.angle()
-		can_shoot = true
-	if event is InputEventScreenTouch and event.pressed and can_shoot:
+	if Input.is_action_just_pressed(shoot_method) and can_shoot:
 		_shoot()
 		can_shoot = false
 		$shoot_timer.start()

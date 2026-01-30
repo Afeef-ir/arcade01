@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce7ekodk61kg5"]
+[gd_scene load_steps=13 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
 [ext_resource type="Script" uid="uid://dwpcljw3m6il4" path="res://scenes/control.gd" id="1_qcjqi"]
 [ext_resource type="Texture2D" uid="uid://8gegpl7kdq4o" path="res://scenes/powers.png" id="2_or0tx"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_er5qu"]
 [ext_resource type="Texture2D" uid="uid://c8g1tgf4qvar4" path="res://scenes/pause-button.png" id="4_qcjqi"]
+[ext_resource type="Texture2D" uid="uid://db83epu5uliac" path="res://images/icon.svg" id="5_s25gh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0tx"]
 bg_color = Color(0.230315, 0.230315, 0.230315, 1)
@@ -30,6 +31,9 @@ size = Vector2(56.015, 51.63)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujnyd"]
 atlas = ExtResource("2_or0tx")
 region = Rect2(63.9, 31.85, 32.82, 31.92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujnyd"]
+size = Vector2(200, 200)
 
 [node name="player_hud" type="CanvasLayer"]
 layer = 2
@@ -91,7 +95,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Jump" type="TouchScreenButton" parent="Control/TouchButtons"]
-position = Vector2(1001, 333.304)
+position = Vector2(1023.51, 388.267)
 scale = Vector2(2.36171, 2.33749)
 texture_normal = SubResource("AtlasTexture_s25gh")
 shape = SubResource("RectangleShape2D_s25gh")
@@ -105,7 +109,7 @@ offset_right = 39.0
 offset_bottom = 40.0
 
 [node name="Sprint" type="TouchScreenButton" parent="Control/TouchButtons"]
-position = Vector2(992.927, 467.75)
+position = Vector2(1023.51, 518.163)
 scale = Vector2(2.34603, 2.27473)
 texture_normal = SubResource("AtlasTexture_ujnyd")
 shape = SubResource("RectangleShape2D_s25gh")
@@ -113,10 +117,10 @@ action = "fast"
 
 [node name="Panel" type="Panel" parent="Control/TouchButtons/Sprint"]
 modulate = Color(1, 1, 1, 0)
-offset_left = -12.0
-offset_top = -10.0
-offset_right = 43.0
-offset_bottom = 44.0
+offset_left = -13.0329
+offset_top = -16.0004
+offset_right = 41.9671
+offset_bottom = 37.9996
 
 [node name="VirtualJoystick" parent="Control/TouchButtons" instance=ExtResource("3_er5qu")]
 layout_mode = 1
@@ -128,6 +132,17 @@ scale = Vector2(0.75, 0.75)
 pressed_color = Color(0.75, 0.0975, 0.0975, 1)
 joystick_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Shoot" type="TouchScreenButton" parent="Control/TouchButtons"]
+position = Vector2(826.054, 388.267)
+scale = Vector2(0.803204, 0.821773)
+texture_normal = ExtResource("5_s25gh")
+shape = SubResource("RectangleShape2D_ujnyd")
+action = "tap"
+
+[node name="Panel" type="Panel" parent="Control/TouchButtons/Shoot"]
+offset_right = 128.0
+offset_bottom = 128.0
 
 [node name="Menu" type="Button" parent="Control"]
 layout_mode = 0
