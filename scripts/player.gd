@@ -69,7 +69,7 @@ var collected_keys: Array[String] = []
 var current_state: State
 var Settings = load("res://scenes/settings.tscn").instantiate()
 var joystick
-
+var sprint_mode : bool = false
 func pause():
 	is_paused = true
 	
@@ -173,7 +173,12 @@ func _physics_process(delta: float) -> void:
 		
 	#print(velocity)
 	var horizontal_input := Input.get_axis("move left" , "move right") # between -1 to 1
-	
+	if Input.is_action_just_pressed("fast"):
+		if sprint_mode:
+			sprint_mode = false
+		else:
+			sprint_mode = true
+		print(sprint_mode)
 	# update state
 	match current_state:
 		State.Idle:
@@ -184,17 +189,16 @@ func _physics_process(delta: float) -> void:
 					try_jump(JUMP_VELOCITY)
 			else:	
 				enter_state(State.Falling)
-
+	
 		State.Walking:
 			if is_on_floor(): # update
 				if not try_jump(JUMP_VELOCITY):
 					if horizontal_input: # ground control
-						velocity.x = horizontal_input * SPEED # -SPEED to SPEED
+						if sprint_mode:
+							velocity.x = horizontal_input * SPEED * 2 # -SPEED to SPEED
+						else:
+							velocity.x = horizontal_input * SPEED
 						set_horizontal_flip(velocity.x < 0) # set flip only on input
-						
-						if Input.is_action_pressed("fast"):
-							velocity.x *= SPRINT_SCALE
-						
 						var horizontal_speed = abs(velocity.x)
 						const SPEED_FEEDBACK_FACTOR = 0.0075
 						footstep_audio.pitch_scale = horizontal_speed * SPEED_FEEDBACK_FACTOR
@@ -386,11 +390,11 @@ func touch_buttons_visibility():
 
 func on_enable_or_disable_touch():
 	touch_buttons_visibility()
-# In your game/player script
+
 func on_menu_press():
 	print(2)
 	emit_signal("menu_show")
 
 
 func _on_menu_pressed() -> void:
-	pass # Replace with function body.
+	pass

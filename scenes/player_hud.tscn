@@ -109,7 +109,7 @@ offset_right = 39.0
 offset_bottom = 40.0
 
 [node name="Sprint" type="TouchScreenButton" parent="Control/TouchButtons"]
-position = Vector2(1023.51, 518.163)
+position = Vector2(84, 215.094)
 scale = Vector2(2.34603, 2.27473)
 texture_normal = SubResource("AtlasTexture_ujnyd")
 shape = SubResource("RectangleShape2D_s25gh")
@@ -124,6 +124,9 @@ offset_bottom = 37.9996
 
 [node name="VirtualJoystick" parent="Control/TouchButtons" instance=ExtResource("3_er5qu")]
 layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.11938
+anchor_bottom = 1.11938
 offset_left = 80.0
 offset_top = 310.767
 offset_right = 380.0
@@ -134,7 +137,7 @@ joystick_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Shoot" type="TouchScreenButton" parent="Control/TouchButtons"]
-position = Vector2(826.054, 388.267)
+position = Vector2(876, 55.4421)
 scale = Vector2(0.803204, 0.821773)
 texture_normal = ExtResource("5_s25gh")
 shape = SubResource("RectangleShape2D_ujnyd")
@@ -146,10 +149,10 @@ offset_bottom = 128.0
 
 [node name="Menu" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 1081.25
-offset_top = 9.98023
-offset_right = 1601.25
-offset_bottom = 529.98
+offset_left = 1053.43
+offset_top = 29.0136
+offset_right = 1573.43
+offset_bottom = 549.013
 scale = Vector2(0.085, 0.085)
 icon = ExtResource("4_qcjqi")
 
