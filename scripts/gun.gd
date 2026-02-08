@@ -16,6 +16,9 @@ var aim_direction : Vector2 = Vector2.ZERO
 var shoot_method : String = "shoot"
 var mouse_pos_
 var no_touch : bool 
+var in_touch : bool
+var event_1_pos
+
 func _ready() -> void:
 	#print(get_parent().get_node("player_hud/TouchButtons/Jump"))
 	$shoot_timer.wait_time = time_between_shot
@@ -50,18 +53,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		shoot_method = "tap"
 
-
-			
-			
-	#if joystick.is_pressed():
-		#can_shoot = false
-		#await jump_btn.released
-		#can_shoot = true
-	#if Input.is_action_just_pressed(shoot_method) and can_shoot:
-		#_shoot()
-		#can_shoot=true
-		#$shoot_timer.start()
-	
 func _shoot():
 	if not can_shoot:
 		return
@@ -74,27 +65,16 @@ func _shoot():
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 func _unhandled_input(event):
-	#if event is InputEventScreenDrag and !no_touch:
-		#can_shoot =false
-		#var delta = event.relative
-		#aim_direction = aim_direction.rotated(delta.x * 0.01)
-		#aim_direction = aim_direction
-		#RotationOffset.rotation = aim_direction.angle()
-		#can_shoot = true
-	if event is InputEventScreenTouch and event.pressed and !no_touch:
-		var global_pos = get_canvas_transform().affine_inverse() * event.position
-		aim_direction = global_pos - global_position
+	if event is InputEventScreenTouch and !no_touch:
+		if event.is_pressed():
+			event_1_pos = get_canvas_transform().affine_inverse() * event.position
+	if event is InputEventScreenDrag and !no_touch:
+		var dir =  (get_canvas_transform().affine_inverse() * event.position) - event_1_pos 
+		aim_direction = dir
 		RotationOffset.rotation = aim_direction.angle()
+		
+
 	if Input.is_action_just_pressed(shoot_method) and can_shoot:
 		_shoot()
 		can_shoot = false
 		$shoot_timer.start()
-#func _unhandled_input(event):
-	#if event == shoot_method and event.is_pressed() and  can_shoot:
-		#if !no_touch:
-			#var delta = event.relative
-			#aim_direction += delta *0.5
-			#RotationOffset.rotation = aim_direction.angle()
-		#_shoot()
-		#can_shoot=true
-		#$shoot_timer.start()
