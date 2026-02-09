@@ -25,16 +25,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kukqi")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-offset_left = 246.0
-offset_top = 32.0
-offset_right = 966.0
-offset_bottom = 152.0
-theme_override_fonts/font = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 120
-text = "Paused"
-
 [node name="main_pause_menu" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 1152.0
@@ -69,6 +59,16 @@ theme_override_fonts/font = ExtResource("1_n87rw")
 theme_override_font_sizes/font_size = 32
 text = "Quit
 "
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 246.0
+offset_top = 32.0
+offset_right = 966.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 120
+text = "Paused"
 
 [connection signal="pressed" from="main_pause_menu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="main_pause_menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

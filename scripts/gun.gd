@@ -18,7 +18,7 @@ var mouse_pos_
 var no_touch : bool 
 var in_touch : bool
 var event_1_pos
-
+var drag : bool
 func _ready() -> void:
 	#print(get_parent().get_node("player_hud/TouchButtons/Jump"))
 	$shoot_timer.wait_time = time_between_shot
@@ -27,9 +27,6 @@ func _ready() -> void:
 	mouse_pos_ = RotationOffset.global_position -  get_global_mouse_position()
 	
 func _physics_process(delta: float) -> void:
-	var jump_btn = get_parent().get_node("player_hud/Control/TouchButtons/Jump")
-	var sprint_btn = get_parent().get_node("player_hud/Control/TouchButtons/Sprint")
-	var joystick = get_parent().get_node("player_hud/Control/TouchButtons/VirtualJoystick")
 	var joy_axis_hor:float = Input.get_axis("aim right", "aim left")
 	var joy_axis_vert:float = Input.get_axis("aim up", "aim down")
 	var joy_aim:Vector2 = Vector2(-joy_axis_hor, joy_axis_vert)
@@ -52,7 +49,6 @@ func _physics_process(delta: float) -> void:
 		RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * delta * 5)
 	else:
 		shoot_method = "tap"
-
 func _shoot():
 	if not can_shoot:
 		return
@@ -67,14 +63,18 @@ func _on_shoot_timer_timeout() -> void:
 func _unhandled_input(event):
 	if event is InputEventScreenTouch and !no_touch:
 		if event.is_pressed():
-			event_1_pos = get_canvas_transform().affine_inverse() * event.position
+			event_1_pos =event.position
 	if event is InputEventScreenDrag and !no_touch:
-		var dir =  (get_canvas_transform().affine_inverse() * event.position) - event_1_pos 
+		can_shoot = false
+		drag = true
+		var dir = event.position - event_1_pos 
 		aim_direction = dir
-		RotationOffset.rotation = aim_direction.angle()
-		
-
-	if Input.is_action_just_pressed(shoot_method) and can_shoot:
+		RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * 0.005)
+	else:
+		drag = false
+		can_shoot = true
+	if Input.is_action_just_pressed(shoot_method) and can_shoot and !drag:
+		print(1)
 		_shoot()
 		can_shoot = false
 		$shoot_timer.start()
