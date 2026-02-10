@@ -99,8 +99,15 @@ func _physics_process(delta: float) -> void:
 			if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
 				sprite.play("default")
 			else:
-				velocity.x = 0
-				sprite.play("idle")
+				var collider = ray_cast_wall.get_collider()
+				if collider == null:
+					pass
+				else:
+					if collider.name == "SlideCol" or collider.name == "PlayerCol" or collider.name == "HurtCol":
+						pass
+					else: 
+						velocity.x = 0
+						sprite.play("idle")
 			sprite.flip_h = player_pos.x-global_position.x > 0
 	move_and_slide()
 

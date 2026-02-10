@@ -191,7 +191,7 @@ position = Vector2(-10.5882, 7.64706)
 position = Vector2(-15.8824, -7.05882)
 
 [node name="RayCastWall" type="RayCast2D" parent="."]
-position = Vector2(-10.5882, 7.64706)
+position = Vector2(-10.5882, 3.52941)
 target_position = Vector2(-15.2941, 9.53674e-07)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
