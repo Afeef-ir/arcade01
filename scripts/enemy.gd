@@ -51,8 +51,6 @@ func enter_state(new_state: State):
 			pass
 		State.Chase:
 			pass
-
-
 	
 func exit_state(old_state: State):
 	match old_state:
@@ -126,7 +124,6 @@ func take_damage(damage_val:float) -> void:
 		death_fx.amount = 60
 		get_tree().current_scene.add_child(death_fx)
 		death_fx.play(death_audio, 0.5)
-		
 		sprite.queue_free()
 		queue_free()
 
