@@ -47,11 +47,12 @@ mouse_force_pass_scroll_events = false
 script = ExtResource("1_qcjqi")
 
 [node name="Panel" type="Panel" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = -1
 layout_mode = 0
 offset_left = 828.0
 offset_right = 1158.0
-offset_bottom = 215.0
+offset_bottom = 161.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 layout_mode = 1

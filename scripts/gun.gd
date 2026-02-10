@@ -69,7 +69,7 @@ func _unhandled_input(event):
 		drag = true
 		var dir = event.position - event_1_pos 
 		aim_direction = dir
-		RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * 0.005)
+		RotationOffset.rotation = lerp_angle(RotationOffset.rotation, aim_direction.angle(), AIM_SPEED * 0.01)
 	else:
 		drag = false
 		can_shoot = true
