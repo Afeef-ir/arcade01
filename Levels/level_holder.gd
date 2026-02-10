@@ -32,6 +32,7 @@ func _ready() -> void:
 	#_2_1.connect("entered",Callable(self,"on_entered"))
 	
 func on_entered(from:int, to:int):
+	print("emit success")
 	to_load.clear()
 	to_unload.clear()
 	to_load.append(from)      
@@ -53,12 +54,15 @@ func _load():
 				load_level = level
 				for area in t_areas_to_load:
 					if area in loaded_areas:
-						pass
+						print("loaded already" + str(area))
 					else:
 						loaded_areas.append(area) 
-						if ResourceLoader.exists("res://T-area/" + area+ ".tscn"):
-							var area_instance = load("res://T-area/" + area+ ".tscn").instantiate()
+						print("adding area" + str(area))
+						if ResourceLoader.exists("res://T-areas/" + area+ ".tscn"):
+							print("exists" + str(area))
+							var area_instance = load("res://T-areas/" + area+ ".tscn").instantiate()
 							add_child(area_instance)
+							print(area_instance.name)
 							area_instance.connect("entered", Callable(self, "on_entered"))
 							
 							
@@ -93,6 +97,7 @@ func _unload():
 
 
 func load_t_areas(lvl):
+	print("loading ts")
 	t_areas_to_load.clear()
 	var area_name1 =str(lvl)+ "_"+ str(lvl+1)
 	var area_name2 =str(lvl+1)+"_"+ str(lvl)

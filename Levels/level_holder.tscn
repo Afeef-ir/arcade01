@@ -1,19 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbq6aiqo5dvct"]
+[gd_scene load_steps=4 format=3 uid="uid://dbq6aiqo5dvct"]
 
 [ext_resource type="Script" uid="uid://b4uyro5lc1v0p" path="res://Levels/level_holder.gd" id="1_f356j"]
-[ext_resource type="PackedScene" uid="uid://d1byq4hvko0a3" path="res://Levels/level_2.tscn" id="4_q0u62"]
 [ext_resource type="PackedScene" uid="uid://48eqml7vdd1w" path="res://scenes/pause_menu.tscn" id="4_rsvb7"]
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="4_uqqdg"]
-[ext_resource type="PackedScene" uid="uid://48bbu3qv1o5u" path="res://T-areas/3_2.tscn" id="5_8ekfv"]
-[ext_resource type="PackedScene" uid="uid://cykb3aboua4v1" path="res://T-areas/2_3.tscn" id="6_okfib"]
-[ext_resource type="PackedScene" uid="uid://c7qy60fkjekjb" path="res://Levels/level_3.tscn" id="7_drmj2"]
 
 [node name="Level_holder" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_f356j")
 
 [node name="Player" parent="." instance=ExtResource("4_uqqdg")]
-position = Vector2(2008, 1397)
+position = Vector2(10209, 1105)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.75, 2.75)
@@ -26,13 +22,3 @@ process_mode = 3
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_rsvb7")]
 visible = false
 z_index = 1
-
-[node name="Level2" parent="." instance=ExtResource("4_q0u62")]
-
-[node name="3_2" parent="." instance=ExtResource("5_8ekfv")]
-
-[node name="2_3" parent="." instance=ExtResource("6_okfib")]
-position = Vector2(7, 20)
-
-[node name="Level3" parent="." instance=ExtResource("7_drmj2")]
-position = Vector2(7, 20)

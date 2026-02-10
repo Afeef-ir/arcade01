@@ -2709,7 +2709,7 @@ position = Vector2(12276, 684)
 
 [node name="Door" parent="LocknKeys" instance=ExtResource("8_pml6m")]
 z_index = 2
-position = Vector2(1911, 433)
+position = Vector2(1889, 567)
 scale = Vector2(1.5, 1.5)
 required_key_tag = "2B"
 
