@@ -317,6 +317,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		set_physics_process(false)
 		
 func respawn():
+	print("Tasty or nah")
 	gun.can_shoot = true
 	global_position = spawn_position
 	current_health = MAX_HEALTH

@@ -50,7 +50,7 @@ func _load():
 				add_child(lvl_to_load)
 				loaded_levels.append(level)
 				to_load.erase(level)
-				load_t_areas(level)    
+				load_t_areas(level) 
 				load_level = level
 				for area in t_areas_to_load:
 					if area in loaded_areas:

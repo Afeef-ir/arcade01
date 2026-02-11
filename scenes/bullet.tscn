@@ -63,7 +63,7 @@ sprite_frames = SubResource("SpriteFrames_2o84m")
 animation = &"explode"
 autoplay = "default"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
 z_index = 2
 scale = Vector2(0.510392, 0.535082)
 collision_mask = 2

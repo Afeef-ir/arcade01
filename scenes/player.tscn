@@ -194,9 +194,9 @@ offset_right = 362.0
 offset_bottom = 27.0
 
 [node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
-visible = false
 stream = ExtResource("7_nxd4c")
 volume_db = -5.0
+playback_type = 1
 
 [node name="HurtTimer" type="Timer" parent="."]
 wait_time = 0.75
@@ -209,6 +209,7 @@ one_shot = true
 [node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_fytk8")
 volume_db = 2.0
+playback_type = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -217,10 +218,12 @@ libraries = {
 
 [node name="ThrustSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_clacw")
+playback_type = 1
 
 [node name="SlideSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_jj7ip")
 volume_db = 10.0
+playback_type = 1
 parameters/looping = true
 
 [node name="GunLocationDefault" type="Marker2D" parent="."]

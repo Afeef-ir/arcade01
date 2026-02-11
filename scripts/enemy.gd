@@ -6,6 +6,7 @@ const max_distance_x = 200
 const max_distance_up = 120
 const max_distance_down = 50
 
+@onready var physics_col: CollisionShape2D = $PhysicsCol
 @export var enemy_health : float
 @export_enum("loop", "linear") var patrol_type: String = "linear"
 @export var death_audio : AudioStream
@@ -24,7 +25,7 @@ const max_distance_down = 50
 @onready var ray_cast_wall: RayCast2D = $RayCastWall
 @onready var raycast_pos_wallpos_2: Marker2D = $RaycastPosWallpos2
 @onready var raycast_pos_wallpos_1: Marker2D = $RaycastPosWallpos1
-
+@export var check : bool
 
 var is_paused = false
 var player
@@ -94,19 +95,25 @@ func _physics_process(delta: float) -> void:
 			sprite.flip_h = velocity.x >0
 			var chase_vel = (player_pos -global_position).normalized() * speed
 			velocity.x = chase_vel.x
-			if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
-				sprite.play("default")
-			else:
-				var collider = ray_cast_wall.get_collider()
-				if collider == null:
-					pass
-				else:
-					if collider.name == "SlideCol" or collider.name == "PlayerCol" or collider.name == "HurtCol":
-						pass
-					else: 
+			if check:
+				if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
+					sprite.play("default")
+					print("all fine")
+				elif ray_cast_wall.get_collider() != null:
+					print("wall colliding ")
+					if ray_cast_wall.get_collider().name == "Player":
+						print("player colliding")
+						sprite.play("default")
+					else:
+						print("not the player")
 						velocity.x = 0
 						sprite.play("idle")
-			sprite.flip_h = player_pos.x-global_position.x > 0
+						sprite.flip_h = player_pos.x-global_position.x > 0	
+				else:	
+					print("smthn fishy")
+					velocity.x = 0
+					sprite.play("idle")
+					sprite.flip_h = player_pos.x-global_position.x > 0
 	move_and_slide()
 
 func take_damage(damage_val:float) -> void:
@@ -140,6 +147,12 @@ func _on_enemy_body_entered(body) -> void:
 		body.apply_knockback(global_position)
 
 
+
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		enter_state(State.Chase)
+
+
+func _on_enemy_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Bullet"):
+		take_damage(20)
