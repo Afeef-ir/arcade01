@@ -36,7 +36,7 @@ func destroy() -> void:
 	await sprite.animation_finished
 	queue_free()
 	
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	#if(body.has_method(TAKE_DAMAGE_FN)):
 		#body.take_damage(DAMAGE)
 		

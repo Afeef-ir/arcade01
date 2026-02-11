@@ -13,15 +13,6 @@ var t_areas_to_unload : Array = []
 var paused : bool = false
 func _ready() -> void:
 	pause_menu.hide()
-	#var lvl1 = load("res://lvl_1.tscn").instantiate()
-	#var t1_2 = load("res://1_2.tscn").instantiate()
-	#var t2_1 = load("res://2_1.tscn").instantiate()
-	#add_child(t2_1)
-	#add_child(lvl1)
-	#add_child(t1_2)
-	#add_child(level_1)
-	#level_1.connect("change", Callable(self, "on_change"))
-	#bg_music.play()
 	var t1_2 = load("res://T-areas/1_2.tscn").instantiate()
 	var t2_1 = load("res://T-areas/2_1.tscn").instantiate()
 	add_child(t2_1)
@@ -47,7 +38,8 @@ func _load():
 		else:
 			if ResourceLoader.exists("res://Levels/level_" + str(level)+ ".tscn") :
 				var lvl_to_load = load("res://Levels/level_" + str(level)+ ".tscn").instantiate()
-				add_child(lvl_to_load)
+				#add_child(lvl_to_load)
+				call_deferred("add_child",lvl_to_load)
 				loaded_levels.append(level)
 				to_load.erase(level)
 				load_t_areas(level) 
@@ -61,7 +53,7 @@ func _load():
 						if ResourceLoader.exists("res://T-areas/" + area+ ".tscn"):
 							print("exists" + str(area))
 							var area_instance = load("res://T-areas/" + area+ ".tscn").instantiate()
-							add_child(area_instance)
+							call_deferred("add_child",area_instance)
 							print(area_instance.name)
 							area_instance.connect("entered", Callable(self, "on_entered"))
 							
@@ -130,52 +122,3 @@ func unload_t_areas(lvl):
 			var t_area_2 = get_node(str(lvl-1) +"_"+ str(lvl))
 			t_areas_to_unload.append(t_area_2)
 	return t_areas_to_unload
-				
-		
-#func pause_game():
-	#if paused:
-		#pause_menu.visible = false
-		#get_tree().paused = false
-	#else:
-		#pause_menu.visible = true
-		#get_tree().paused = true
-	#paused = !paused
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-		#func on_change():
-			#print(6)
-			#var current_scene = level_1.scene_file_path
-			#var next_lvl_num = current_scene.to_int() + 1
-			#var next_level_path = "res://Levels/level_" + str(next_lvl_num) + ".tscn"
-			#var next_level = load(next_level_path).instantiate()
-			#level_1.hide()
-			#remove_child(level_1)
-			#add_child(next_level)
-			#level_1 = next_level
-			#level_1.connect("change", Callable(self, "on_change"))

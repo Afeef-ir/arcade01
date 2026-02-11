@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://c7qy60fkjekjb"]
+[gd_scene load_steps=7 format=4 uid="uid://c7qy60fkjekjb"]
 
 [ext_resource type="Script" uid="uid://dt88v5jc5jtwk" path="res://Levels/level_1.gd" id="1_cb8d3"]
 [ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="3_absw3"]
 [ext_resource type="Texture2D" uid="uid://uk316m2xr3ug" path="res://images/forest/bg-layer-4-full.png" id="4_padch"]
 [ext_resource type="Texture2D" uid="uid://d3j4qpg6m3syo" path="res://images/forest/bg-layer-3-full-alpha.png" id="5_uwxw1"]
-[ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="6_uwxw1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uwxw1"]
 texture = ExtResource("3_absw3")
@@ -2595,11 +2594,6 @@ sources/0 = SubResource("TileSetAtlasSource_uwxw1")
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_cb8d3")
-
-[node name="Player" parent="." instance=ExtResource("6_uwxw1")]
-position = Vector2(16016, 1011)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Level" type="TileMapLayer" parent="."]
 position = Vector2(15797, 482)

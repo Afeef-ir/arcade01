@@ -25,7 +25,7 @@ const max_distance_down = 50
 @onready var ray_cast_wall: RayCast2D = $RayCastWall
 @onready var raycast_pos_wallpos_2: Marker2D = $RaycastPosWallpos2
 @onready var raycast_pos_wallpos_1: Marker2D = $RaycastPosWallpos1
-@export var check : bool
+
 
 var is_paused = false
 var player
@@ -95,25 +95,19 @@ func _physics_process(delta: float) -> void:
 			sprite.flip_h = velocity.x >0
 			var chase_vel = (player_pos -global_position).normalized() * speed
 			velocity.x = chase_vel.x
-			if check:
-				if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
+			if ray_cast_2d.is_colliding() and not ray_cast_wall.is_colliding():
+				sprite.play("default")
+			elif ray_cast_wall.get_collider() != null:
+				if ray_cast_wall.get_collider().name == "Player":
 					sprite.play("default")
-					print("all fine")
-				elif ray_cast_wall.get_collider() != null:
-					print("wall colliding ")
-					if ray_cast_wall.get_collider().name == "Player":
-						print("player colliding")
-						sprite.play("default")
-					else:
-						print("not the player")
-						velocity.x = 0
-						sprite.play("idle")
-						sprite.flip_h = player_pos.x-global_position.x > 0	
-				else:	
-					print("smthn fishy")
+				else:
 					velocity.x = 0
 					sprite.play("idle")
-					sprite.flip_h = player_pos.x-global_position.x > 0
+					sprite.flip_h = player_pos.x-global_position.x > 0	
+			else:	
+				velocity.x = 0
+				sprite.play("idle")
+				sprite.flip_h = player_pos.x-global_position.x > 0
 	move_and_slide()
 
 func take_damage(damage_val:float) -> void:

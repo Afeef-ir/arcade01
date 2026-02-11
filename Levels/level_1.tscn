@@ -3209,7 +3209,7 @@ patrol_points = Array[Vector2]([Vector2(10705, 1080), Vector2(11014, 1079)])
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_2i07x")]
-position = Vector2(5897, 1256)
+position = Vector2(5897, 1225)
 scale = Vector2(0.25, 0.25)
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("12_2i07x")]
