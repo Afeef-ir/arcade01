@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/jangroh_logo.png" id="2_x6lt7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1jqq"]
-bg_color = Color(0.128333, 0, 0.35, 1)
+bg_color = Color(0.0245, 0.140875, 0.49, 1)
 border_width_left = 100
 border_width_top = 100
 border_width_right = 100
 border_width_bottom = 100
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.102, 0.6, 0.5502, 1)
 border_blend = true
-shadow_color = Color(0.112, 0, 0.32, 1)
+shadow_color = Color(0.1785, 0, 0.51, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2ps0"]
 texture = ExtResource("2_x6lt7")

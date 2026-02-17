@@ -18,7 +18,8 @@ limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 4
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("4_rsvb7")]
-visible = false
-z_index = 1
+top_level = true
+z_index = 3

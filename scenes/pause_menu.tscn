@@ -11,6 +11,7 @@ border_color = Color(0.184, 0.266133, 0.8, 1)
 
 [node name="pause_menu" type="Control"]
 process_mode = 3
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
