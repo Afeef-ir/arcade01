@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx8jd8qln8wjo"]
 
 [ext_resource type="Texture2D" uid="uid://mh36wpquhc6u" path="res://images/LockAndKey/Key.png" id="1_5an6q"]
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_mx0kf"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="1_mx0kf"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 anchors_preset = 8

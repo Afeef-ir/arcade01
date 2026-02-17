@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cbfflchyvhypp" path="res://images/CutScene/cockpit_signal.png" id="5_2jyaw"]
 [ext_resource type="Texture2D" uid="uid://bgggrfj5yx3sc" path="res://images/CutScene/cockpit_atmo_red.png" id="5_5p8cn"]
 [ext_resource type="AudioStream" uid="uid://ban18qwcrf7hm" path="res://sound/explosion4.ogg" id="5_ijfoq"]
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="9_815rf"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="9_815rf"]
 [ext_resource type="Texture2D" uid="uid://dsniixfp53rn8" path="res://images/CutScene/cockpit_danger_atmo.png" id="10_urgb4"]
 [ext_resource type="Texture2D" uid="uid://c0cxpwsw4l142" path="res://images/CutScene/cockpit_helmet_grab.png" id="11_io4hs"]
 [ext_resource type="Texture2D" uid="uid://bj64bhvyhn6ro" path="res://images/CutScene/spaceshipdamaged.png" id="12_h26vn"]

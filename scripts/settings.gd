@@ -9,6 +9,8 @@ const SAVE_PATH = "user://settings.cfg"
  
 var config = ConfigFile.new()
 var toggled : bool = false
+@onready var button: Button = $Settings/Button
+@onready var button_2: Button = $Settings/Button2
 
 @onready var check_box: CheckBox = $Settings/CheckBox
 @onready var h_slider: HSlider = $Settings/HSlider
@@ -55,6 +57,8 @@ func _on_h_slider_2_value_changed(value: float) -> void:
 
 func _on_button_pressed() -> void:
 	h_slider.value = 0
+	print("pressed")
+	button.icon.resource_path = "res://buttons/buttons/music_off.png"
 	save_settings()
 
 func _on_button_2_pressed() -> void:

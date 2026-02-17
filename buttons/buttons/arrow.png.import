@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3c5fpgktayki"
-path="res://.godot/imported/pixel_portal1.png-7137cf64a2190bd13752a894da370369.ctex"
+uid="uid://ced2o1h5dtrvk"
+path="res://.godot/imported/arrow.png-ae10e6760787be936d8477db899b6f4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/pixel_portal1.png"
-dest_files=["res://.godot/imported/pixel_portal1.png-7137cf64a2190bd13752a894da370369.ctex"]
+source_file="res://buttons/buttons/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-ae10e6760787be936d8477db899b6f4b.ctex"]
 
 [params]
 

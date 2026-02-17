@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cva8nf6p2l5v8"]
 
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_b07fi"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="1_b07fi"]
 [ext_resource type="Script" uid="uid://cjtna5mus3jwq" path="res://scripts/main_menu.gd" id="1_x2ps0"]
-[ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/jangroh_logo.png" id="2_x6lt7"]
+[ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/Random/jangroh_logo.png" id="2_x6lt7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1jqq"]
 bg_color = Color(0.0245, 0.140875, 0.49, 1)

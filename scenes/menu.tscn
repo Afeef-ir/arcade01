@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy8t1jsofsded"]
 
 [ext_resource type="Script" uid="uid://dkqusqwch2ktt" path="res://scripts/menu.gd" id="1_vjb58"]
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_yqeox"]
-[ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/jangroh_logo.png" id="3_con2f"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://cxckrsvdk55fk" path="res://images/Random/jangroh_logo.png" id="3_con2f"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_vjb58")

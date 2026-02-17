@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlaq3f3hiu07f"
-path="res://.godot/imported/godotwaka.png-ef0518417b4f997d237759e5551dd05d.ctex"
+uid="uid://681sxmxe34l8"
+path="res://.godot/imported/sound_on.png-6566ee8406d1f7390f3b3bc07ba606ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/godotwaka.png"
-dest_files=["res://.godot/imported/godotwaka.png-ef0518417b4f997d237759e5551dd05d.ctex"]
+source_file="res://buttons/buttons/sound_on.png"
+dest_files=["res://.godot/imported/sound_on.png-6566ee8406d1f7390f3b3bc07ba606ad.ctex"]
 
 [params]
 

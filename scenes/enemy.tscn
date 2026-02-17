@@ -160,7 +160,6 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 visibility_layer = 3
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_5uy6h")
 
 [node name="HurtAnim" type="AnimationPlayer" parent="."]
@@ -170,7 +169,6 @@ libraries = {
 
 [node name="PhysicsCol" type="CollisionShape2D" parent="."]
 position = Vector2(-0.294118, 5.58823)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5uy6h")
 
 [node name="Detector" type="Area2D" parent="."]

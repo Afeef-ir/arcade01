@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=4 uid="uid://7je2pcmn28c1"]
 
-[ext_resource type="Script" uid="uid://dc6dl5g5aao27" path="res://cut_scene.gd" id="1_af1qv"]
+[ext_resource type="Script" path="res://cut_scene.gd" id="1_af1qv"]
 [ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="2_pxf6e"]
 [ext_resource type="PackedScene" uid="uid://bj7335nue8u71" path="res://scenes/player.tscn" id="3_6d88a"]
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="4_5lioo"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="4_5lioo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_awled"]
 texture = ExtResource("2_pxf6e")

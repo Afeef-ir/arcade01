@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dt88v5jc5jtwk" path="res://Levels/level_1.gd" id="1_arsda"]
 [ext_resource type="Texture2D" uid="uid://c58g1if2tkqku" path="res://images/forest/fgtiles-alpha.png" id="1_kbe2v"]
-[ext_resource type="Script" uid="uid://c58g621pwlflg" path="res://Scripts/kill_zone.gd" id="3_4pbjs"]
+[ext_resource type="Script" uid="uid://c58g621pwlflg" path="res://scripts/kill_zone.gd" id="3_4pbjs"]
 [ext_resource type="PackedScene" uid="uid://xuaovhjlydlt" path="res://scenes/portal.tscn" id="4_dgq3b"]
 [ext_resource type="PackedScene" uid="uid://djtuekka5eoo7" path="res://scenes/kill_zone.tscn" id="5_bcgyv"]
 [ext_resource type="Texture2D" uid="uid://ci0i2ygkq61ya" path="res://images/bullet/Bglayer1.png" id="5_s275v"]

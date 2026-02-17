@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8gegpl7kdq4o"
-path="res://.godot/imported/powers.png-324ba0a254c6830b2ca909307d497f1e.ctex"
+uid="uid://djpbx0u26aw65"
+path="res://.godot/imported/pause_hover.png-05c18a5fc015fe20b642fb4aefec7647.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/powers.png"
-dest_files=["res://.godot/imported/powers.png-324ba0a254c6830b2ca909307d497f1e.ctex"]
+source_file="res://buttons/buttons/pause_hover.png"
+dest_files=["res://.godot/imported/pause_hover.png-05c18a5fc015fe20b642fb4aefec7647.ctex"]
 
 [params]
 

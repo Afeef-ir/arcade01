@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://ce7ekodk61kg5"]
 
 [ext_resource type="PackedScene" uid="uid://bx8jd8qln8wjo" path="res://scenes/KeyUI.tscn" id="1_iraov"]
-[ext_resource type="Script" uid="uid://dwpcljw3m6il4" path="res://scenes/control.gd" id="1_qcjqi"]
-[ext_resource type="Texture2D" uid="uid://8gegpl7kdq4o" path="res://scenes/powers.png" id="2_or0tx"]
+[ext_resource type="Script" uid="uid://dwpcljw3m6il4" path="res://scripts/control (2).gd" id="1_qcjqi"]
+[ext_resource type="Texture2D" uid="uid://8gegpl7kdq4o" path="res://images/Random/powers.png" id="2_or0tx"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_er5qu"]
-[ext_resource type="Texture2D" uid="uid://c8g1tgf4qvar4" path="res://scenes/pause-button.png" id="4_qcjqi"]
-[ext_resource type="Texture2D" uid="uid://db83epu5uliac" path="res://images/icon.svg" id="5_s25gh"]
+[ext_resource type="Texture2D" uid="uid://ocqr4kaowgws" path="res://images/Random/icon.svg" id="5_s25gh"]
+[ext_resource type="Texture2D" uid="uid://bbukkr16k818b" path="res://buttons/buttons/pause.png" id="6_s25gh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or0tx"]
 bg_color = Color(0.230315, 0.230315, 0.230315, 1)
@@ -157,18 +157,10 @@ offset_bottom = 128.0
 
 [node name="Menu" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 1053.43
-offset_top = 29.0136
-offset_right = 1573.43
-offset_bottom = 549.013
-scale = Vector2(0.085, 0.085)
-icon = ExtResource("4_qcjqi")
-
-[node name="Panel3" type="Panel" parent="Control/Menu"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -1039.06
-offset_right = -527.058
-offset_bottom = 512.0
+offset_left = 1068.0
+offset_right = 1140.0
+offset_bottom = 72.0
+icon = ExtResource("6_s25gh")
+flat = true
 
 [connection signal="pressed" from="Control/Menu" to="Control" method="_on_menu_pressed"]

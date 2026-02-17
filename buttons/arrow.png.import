@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxckrsvdk55fk"
-path="res://.godot/imported/jangroh_logo.png-38157143eb85d31bc1bf77887b44931e.ctex"
+uid="uid://cgi0t3yblvy0k"
+path="res://.godot/imported/arrow.png-b73defcac10f35113ca97f3931b63d08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/jangroh_logo.png"
-dest_files=["res://.godot/imported/jangroh_logo.png-38157143eb85d31bc1bf77887b44931e.ctex"]
+source_file="res://buttons/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-b73defcac10f35113ca97f3931b63d08.ctex"]
 
 [params]
 

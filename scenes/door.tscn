@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d0cnuuyqk3qhb" path="res://scripts/door.gd" id="1_83dcw"]
 [ext_resource type="Texture2D" uid="uid://yp8wpluw1usp" path="res://images/LockAndKey/Door_Lock_Right.png" id="2_18pbm"]
 [ext_resource type="Texture2D" uid="uid://bs8t1x7qq0eeu" path="res://images/LockAndKey/Door_Frame.png" id="4_18pbm"]
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="5_18pbm"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="5_18pbm"]
 [ext_resource type="Texture2D" uid="uid://c5hdfp3v7ciwl" path="res://images/LockAndKey/Door_Sliding.png" id="5_q5w8r"]
 [ext_resource type="AudioStream" uid="uid://buuhm4reqi145" path="res://sound/unlock.wav" id="6_q5w8r"]
 

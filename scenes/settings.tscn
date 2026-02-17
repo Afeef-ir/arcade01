@@ -1,16 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8ndig5yekftn"]
+[gd_scene load_steps=15 format=3 uid="uid://c8ndig5yekftn"]
 
-[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/PressStart2P-Regular.ttf" id="1_5p8wc"]
-[ext_resource type="Script" uid="uid://cw574rh8cxm3y" path="res://scenes/settings.gd" id="1_r6d6q"]
+[ext_resource type="FontFile" uid="uid://4jx2w36kqr7r" path="res://images/Random/PressStart2P-Regular.ttf" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://cw574rh8cxm3y" path="res://scripts/settings.gd" id="1_r6d6q"]
+[ext_resource type="Texture2D" uid="uid://7ne5j5xbamgh" path="res://buttons/buttons/music_on.png" id="3_6wm04"]
+[ext_resource type="Texture2D" uid="uid://681sxmxe34l8" path="res://buttons/buttons/sound_on.png" id="4_f4mfi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6d6q"]
-bg_color = Color(0.6666, 0.6435, 0.99, 1)
+bg_color = Color(0.2028, 0.34944, 0.39, 1)
 border_width_left = 100
 border_width_top = 100
 border_width_right = 100
 border_width_bottom = 100
-border_color = Color(0.496859, 0.00323169, 0.981678, 1)
+border_color = Color(0.0032, 0.32, 0.15632, 1)
 border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color(0.0606667, 0.28, 0, 1)
+shadow_size = 60
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wm04"]
 bg_color = Color(0.0672, 0.32592, 0.42, 1)
@@ -101,10 +109,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -413.5
-offset_top = -233.5
-offset_right = 413.5
-offset_bottom = 233.5
+offset_left = -471.0
+offset_top = -328.0
+offset_right = 436.0
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
 ratio = 1.3496
@@ -112,35 +120,33 @@ script = ExtResource("1_r6d6q")
 
 [node name="Settings" type="Panel" parent="."]
 layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Settings"]
-layout_mode = 2
-offset_right = 630.263
-offset_bottom = 467.0
-
-[node name="Panel" type="Panel" parent="Settings/PanelContainer"]
-z_as_relative = false
-layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6d6q")
 
 [node name="Label" type="Label" parent="Settings"]
 z_index = 1
 layout_mode = 0
-offset_left = 121.0
-offset_top = 32.0
-offset_right = 527.0
-offset_bottom = 88.0
+offset_left = 251.73
+offset_top = 98.0
+offset_right = 571.73
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.208053, 0.47, 0.0564, 1)
+theme_override_colors/font_shadow_color = Color(0.099, 0.20955, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.23312, 0.1739, 0.47, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("1_5p8wc")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Settings"
 
 [node name="Back" type="Button" parent="Settings"]
 z_index = 1
 layout_mode = 2
-offset_left = 93.6316
-offset_top = 383.0
-offset_right = 973.632
-offset_bottom = 479.0
+offset_left = 193.23
+offset_top = 423.5
+offset_right = 1073.23
+offset_bottom = 519.5
 scale = Vector2(0.5, 0.5)
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.37, 0.559, 1, 1)
@@ -156,10 +162,10 @@ text = "Back"
 [node name="CheckBox" type="CheckBox" parent="Settings"]
 z_index = 1
 layout_mode = 0
-offset_left = 40.1316
-offset_top = 88.5
-offset_right = 373.132
-offset_bottom = 177.5
+offset_left = 139.73
+offset_top = 129.0
+offset_right = 472.73
+offset_bottom = 218.0
 scale = Vector2(1.465, 1.465)
 theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.21, 1, 0.223167, 1)
@@ -184,10 +190,10 @@ expand_icon = true
 
 [node name="HSlider" type="HSlider" parent="Settings"]
 layout_mode = 0
-offset_left = 121.132
-offset_top = 237.5
-offset_right = 553.132
-offset_bottom = 253.5
+offset_left = 220.73
+offset_top = 278.0
+offset_right = 652.73
+offset_bottom = 294.0
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4ppmf")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uhhto")
 max_value = 1.0
@@ -196,10 +202,10 @@ value = 1.0
 
 [node name="HSlider2" type="HSlider" parent="Settings"]
 layout_mode = 0
-offset_left = 121.132
-offset_top = 323.5
-offset_right = 553.132
-offset_bottom = 339.5
+offset_left = 220.73
+offset_top = 364.0
+offset_right = 652.73
+offset_bottom = 380.0
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_am25x")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_uhhto")
 max_value = 1.0
@@ -208,21 +214,19 @@ value = 0.3
 
 [node name="Button" type="Button" parent="Settings"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 219.0
-offset_right = 106.0
-offset_bottom = 271.0
-text = "Mute
-bgm"
+offset_left = 139.73
+offset_top = 250.0
+offset_right = 211.73
+offset_bottom = 322.0
+icon = ExtResource("3_6wm04")
 
 [node name="Button2" type="Button" parent="Settings"]
 layout_mode = 0
-offset_left = 50.1316
-offset_top = 303.5
-offset_right = 106.132
-offset_bottom = 355.5
-text = "Mute
-sfx"
+offset_left = 139.73
+offset_top = 343.0
+offset_right = 211.73
+offset_bottom = 415.0
+icon = ExtResource("4_f4mfi")
 
 [connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Settings/CheckBox" to="." method="_on_check_box_toggled"]
