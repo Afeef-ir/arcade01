@@ -215,7 +215,10 @@ func _physics_process(delta: float) -> void:
 				enter_state(State.Sliding)
 			else: # update
 				if horizontal_input: # air or ground control
-					velocity.x = horizontal_input * SPEED # -SPEED to SPEED
+					if sprint_mode:
+						velocity.x = horizontal_input * SPEED * 1.3
+					else:
+						velocity.x = horizontal_input * SPEED # -SPEED to SPEED
 					set_horizontal_flip(velocity.x < 0) # set flip only on input
 					
 				if try_jump(JUMP_VELOCITY):
@@ -307,7 +310,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		var _particle = vfx.instantiate()
 		_particle.position = global_position
 		_particle.rotation = global_rotation
-		_particle.self_modulate = "orange"
+		_particle.self_modulate = "dark gray"
 		_particle.emitting = true
 		_particle.amount = 100
 		get_tree().current_scene.add_child(_particle)

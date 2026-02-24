@@ -16,19 +16,27 @@ var travelled_distance = 0
 
 func _physics_process(delta: float) -> void:
 	global_position += Vector2(1,0).rotated(rotation)* speed * delta
+	var death_fx_instance = burst_fx.instantiate()
+	death_fx_instance.self_modulate = "blue"
+	death_fx_instance.lifetime = 0.3
+	death_fx_instance.amount = 2
+	death_fx_instance.position = global_position
+	death_fx_instance.rotation = global_rotation
+	get_tree().current_scene.add_child(death_fx_instance)
+	death_fx_instance.emitting = true
 	travelled_distance += speed * delta
 	if travelled_distance > RANGE:
 		queue_free()
 	
 func destroy() -> void:
 	speed = 0
-	
 	var death_fx_instance = burst_fx.instantiate()
 	death_fx_instance.self_modulate = "blue"
-	death_fx_instance.lifetime = 2
+	death_fx_instance.lifetime = 1
 	death_fx_instance.amount = 3
 	death_fx_instance.position = global_position
 	death_fx_instance.rotation = global_rotation
+	death_fx_instance.speed_scale = 1
 	get_tree().current_scene.add_child(death_fx_instance)
 	death_fx_instance.play(explode_sfx, 0.5)
 	
