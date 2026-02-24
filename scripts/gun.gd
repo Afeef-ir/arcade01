@@ -75,6 +75,6 @@ func _unhandled_input(event):
 		can_shoot = true
 	if Input.is_action_just_pressed(shoot_method) and can_shoot and !drag:
 		print(1)
-		_shoot()
+		_shoot()                                      
 		can_shoot = false
 		$shoot_timer.start()

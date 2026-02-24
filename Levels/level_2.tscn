@@ -2841,8 +2841,8 @@ position = Vector2(15652, 607)
 patrol_points = Array[Vector2]([Vector2(15358, 607), Vector2(15652, 607)])
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("13_4pbjs")]
-position = Vector2(16631, -97)
-patrol_points = Array[Vector2]([Vector2(16355, -111), Vector2(16631, -106)])
+position = Vector2(16418, -109)
+patrol_points = Array[Vector2]([Vector2(16355, -106), Vector2(16631, -106)])
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("13_4pbjs")]
 position = Vector2(17460, -268)

@@ -1,4 +1,3 @@
-# Bullet
 extends Node2D
 
 const RANGE = 500
@@ -39,15 +38,11 @@ func destroy() -> void:
 	death_fx_instance.speed_scale = 1
 	get_tree().current_scene.add_child(death_fx_instance)
 	death_fx_instance.play(explode_sfx, 0.5)
-	
 	sprite.play("explode")
 	await sprite.animation_finished
 	queue_free()
 	
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	#if(body.has_method(TAKE_DAMAGE_FN)):
-		#body.take_damage(DAMAGE)
-		
 	destroy()
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
