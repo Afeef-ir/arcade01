@@ -206,7 +206,6 @@ func _physics_process(delta: float) -> void:
 					else:
 						enter_state(State.Idle)
 			elif not is_on_wall():
-				await get_tree().create_timer(0.05).timeout
 				enter_state(State.Falling)
 
 		State.Falling:
