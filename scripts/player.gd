@@ -8,8 +8,12 @@ enum State
 	Sliding
 }
 
+#signals
 signal menu_show
+signal key_picked(tag)
+signal key_used(tag, remaining)
 
+#constants
 const TINY_NUMBER = 0.1
 const SPEED:float = 115.0
 const JUMP_VELOCITY = Vector2(0.0, -360.0)
@@ -27,9 +31,7 @@ const COLLISION_OFFSET = Vector2(0, -16)
 const vfx = preload("res://scenes/burst.tscn")
 const KEY_UI_SCENE := preload("res://scenes/KeyUI.tscn")
 
-signal key_picked(tag)
-signal key_used(tag, remaining)
-
+#variables
 @onready var keys_container: HBoxContainer = $player_hud/Control/KeyContainer
 @onready var default_col: CollisionShape2D = $PlayerCol
 @onready var slide_col: CollisionShape2D = $SlideCol
@@ -70,6 +72,7 @@ var current_state: State
 var Settings = load("res://scenes/settings.tscn").instantiate()
 var joystick
 var sprint_mode : bool = false
+#functions
 func pause():
 	is_paused = true
 	
@@ -398,7 +401,3 @@ func on_enable_or_disable_touch():
 func on_menu_press():
 	print(2)
 	emit_signal("menu_show")
-
-
-func _on_menu_pressed() -> void:
-	pass

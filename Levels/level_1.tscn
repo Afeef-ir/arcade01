@@ -3132,9 +3132,9 @@ enemy_health = 60.0
 patrol_points = Array[Vector2]([Vector2(4344, 1380), Vector2(4606, 1380)])
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("11_p7b0h")]
-position = Vector2(5052, 1229)
+position = Vector2(5620, 1245)
 enemy_health = 60.0
-patrol_points = Array[Vector2]([Vector2(5532, 1231), Vector2(4872, 1231)])
+patrol_points = Array[Vector2]([Vector2(4973, 1235), Vector2(5620, 1245)])
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("11_p7b0h")]
 position = Vector2(5804.54, 1473.31)
